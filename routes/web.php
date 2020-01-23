@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'tablaController@inicio');
 
 Route::get('fotos/{numero?}',function($numero = 'sin numero'){
     return view('fotos');
@@ -28,3 +26,4 @@ Route::get('nosotros/{nombre?}',function($nombre = null){
    return view('nosotros',compact('equipo','nombre'));
 
 })->name('nosotros');
+
