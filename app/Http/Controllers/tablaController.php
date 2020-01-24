@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class tablaController extends Controller
 {
     public function inicio(){
-        return view('layout',compact('numero'));
+        return view('layout');
     }
 }
