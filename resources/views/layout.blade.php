@@ -41,7 +41,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--end::Layout Skins -->
 
         <link rel="shortcut icon" href="
-        /assets/media/logos/favicon.ico" />
+        /assets/media/logos/favicon.png" />
     </head>
     <!-- end::Head -->
 
@@ -53,10 +53,10 @@ License: You must have a valid license purchased only from themeforest(the above
 	
 <!-- begin:: Header Mobile -->
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed " >
-	<div class="kt-header-mobile__logo">
+	<div class="kt-header-mobile__logo" width="12" height="12">
 		<a href="demo12/index.html">
             <img alt="Logo" src="
-            /assets/media/logos/logo-12.png"/>
+            /assets/media/logos/logo-12.png" />
 		</a>
 	</div>
 	<div class="kt-header-mobile__toolbar">
