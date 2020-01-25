@@ -14,42 +14,44 @@ License: You must have a valid license purchased only from themeforest(the above
 <html lang="en" >
     <!-- begin::Head -->
     <head><!--begin::Base Path (base relative path for assets of this page) -->
-<base href="../"><!--end::Base Path -->
+        <base href="../"><!--end::Base Path -->
         <meta charset="utf-8"/>
 
-        <title>Metronic | Dashboard</title>
+        <title>Dinamite Store</title>
         <meta name="description" content="Latest updates and statistic charts">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!--begin::Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">        <!--end::Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+        <!--end::Fonts -->
 
-                    <!--begin::Page Vendors Styles(used by this page) -->
-                            <link href="
-                            /assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-                        <!--end::Page Vendors Styles -->
+        <!--begin::Page Vendors Styles(used by this page) -->
+        <link href="/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+        <!--end::Page Vendors Styles -->
         
         
         <!--begin::Global Theme Styles(used by all pages) -->
-                    <link href="
-                    /assets/vendors/global/vendors.bundle.css" rel="stylesheet" type="text/css" />
-                    <link href="
-                    /assets/css/demo12/style.bundle.css" rel="stylesheet" type="text/css" />
-                <!--end::Global Theme Styles -->
+        <link href="/assets/vendors/global/vendors.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/demo12/style.bundle.css" rel="stylesheet" type="text/css" />
+        <!--end::Global Theme Styles -->
 
         <!--begin::Layout Skins(used by all pages) -->
-                <!--end::Layout Skins -->
+        <!--end::Layout Skins -->
 
+<<<<<<< HEAD
         <link rel="shortcut icon" href="
         /assets/media/logos/favicon.png" />
+=======
+        <link rel="shortcut icon" href="/assets/media/logos/favicon.png" />
+>>>>>>> 0e0a63dfb69b540516ab25f783b29b6f75a344ee
     </head>
     <!-- end::Head -->
 
     <!-- begin::Body -->
     <body  class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled kt-aside--fixed kt-page--loading"  >
 
-       
     	<!-- begin:: Page -->
+<<<<<<< HEAD
 	
 <!-- begin:: Header Mobile -->
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed " >
@@ -68,48 +70,157 @@ License: You must have a valid license purchased only from themeforest(the above
 	</div>
 </div>
 <!-- end:: Header Mobile -->
+=======
+        <!-- begin:: Header Mobile -->
+    <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed " >
+	    <div class="kt-header-mobile__logo">
+		    <a href="demo12/index.html">
+                <img alt="Logo" src="/assets/media/logos/logo-12.png"/>
+		    </a>
+	    </div>
+	    <div class="kt-header-mobile__toolbar">
+			<button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
+            <button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
+		    <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
+	    </div>
+    </div>
+    <!-- end:: Header Mobile -->
+>>>>>>> 0e0a63dfb69b540516ab25f783b29b6f75a344ee
 	<div class="kt-grid kt-grid--hor kt-grid--root">
 		<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
-							<!-- begin:: Aside -->
-<button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
+			<!-- begin:: Aside -->
+            <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
+            <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+	        <!-- begin:: Aside -->
+                <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
+	                <div class="kt-aside__brand-logo">
+		                <a href="demo12/index.html">
+                            <img alt="Logo" src="/assets/media/logos/logo-12.png">
+		                </a>
+	                </div>
+                <div class="kt-aside__brand-tools">
+			        <button class="kt-aside__brand-aside-toggler" id="kt_aside_toggler"><span></span></button>
+		        </div>
+	        </div>
+            <!-- end:: Aside -->	
+            <!-- begin:: Aside Menu -->
 
-<div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
-	<!-- begin:: Aside -->
-<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
-	<div class="kt-aside__brand-logo">
-		<a href="demo12/index.html">
-            <img alt="Logo" src="
-            /assets/media/logos/logo-12.png">
-		</a>
-	</div>
 
-			<div class="kt-aside__brand-tools">
-			<button class="kt-aside__brand-aside-toggler" id="kt_aside_toggler"><span></span></button>
-		</div>
-	</div>
-<!-- end:: Aside -->	<!-- begin:: Aside Menu -->
-<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
-	<div 
-		id="kt_aside_menu" 
-		class="kt-aside-menu " 
-		data-ktmenu-vertical="1"
-		 data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500"  
-		>		
-		
-		<ul class="kt-menu__nav ">
-			<li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true" ><a  href="demo12/index.html" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Dashboard</span></a></li><li class="kt-menu__section ">
-                <h4 class="kt-menu__section-text">Juegos</h4>
-                <i class="kt-menu__section-icon flaticon-more-v2"></i>
-            </li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-telegram-logo"></i><span class="kt-menu__link-text">Applications</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" ><span class="kt-menu__link"><span class="kt-menu__link-text">Applications</span></span></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Users</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/list-default.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Default</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/list-datatable.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Datatable</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/list-columns-1.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Columns 1</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/list-columns-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Columns 2</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/add-user.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Add User</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/edit-user.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Edit User</span></a></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Profile 1</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/profile-1/overview.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Overview</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/profile-1/personal-information.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Personal Information</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/profile-1/account-information.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Account Information</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/profile-1/change-password.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Change Password</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/profile-1/email-settings.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Email Settings</span></a></li></ul></div></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/profile-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Profile 2</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/profile-3.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Profile 3</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/user/profile-4.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Profile 4</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Contacts</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/contacts/list-columns.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Columns</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/contacts/list-datatable.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Datatable</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/contacts/view-contact.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">View Contact</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/contacts/add-contact.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Add Contact</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/contacts/edit-contact.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Edit Contact</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Chat</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/chat/private.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Private</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/chat/group.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Group</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/chat/popup.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Popup</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Projects</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/projects/list-columns-1.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Columns 1</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/projects/list-columns-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Columns 2</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/projects/list-columns-3.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Columns 3</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/projects/list-columns-4.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Columns 4</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/projects/list-datatable.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">List - Datatable</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/projects/view-project.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">View Project</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/projects/add-project.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Add Project</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/projects/edit-project.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Edit Project</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Support Center</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/support-center/home-1.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Home 1</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/support-center/home-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Home 2</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/support-center/faq-1.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">FAQ 1</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/support-center/faq-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">FAQ 2</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/support-center/faq-3.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">FAQ 3</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/support-center/feedback.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Feedback</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/support-center/license.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">License</span></a></li></ul></div></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/apps/inbox.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Inbox</span><span class="kt-menu__link-badge"><span class="kt-badge kt-badge--danger kt-badge--inline">new</span></span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-laptop"></i><span class="kt-menu__link-text">Pages</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" ><span class="kt-menu__link"><span class="kt-menu__link-text">Pages</span></span></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Wizard</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/wizard/wizard-1.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Wizard 1</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/wizard/wizard-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Wizard 2</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/wizard/wizard-3.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Wizard 3</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/wizard/wizard-4.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Wizard 4</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Pricing Tables</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/pricing/pricing-1.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Pricing Tables 1</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/pricing/pricing-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Pricing Tables 2</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/pricing/pricing-3.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Pricing Tables 3</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/pricing/pricing-4.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Pricing Tables 4</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Invoices</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/invoices/invoice-1.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Invoice 1</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/invoices/invoice-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Invoice 2</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">FAQ</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/faq/faq-1.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">FAQ 1</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">User Pages</span><span class="kt-menu__link-badge"><span class="kt-badge kt-badge--rounded kt-badge--brand">2</span></span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/user/login-1.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Login 1</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/user/login-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Login 2</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/user/login-3.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Login 3</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/user/login-4.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Login 4</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/user/login-5.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Login 5</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/user/login-6.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Login 6</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Error Pages</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/error/error-1.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Error 1</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/error/error-2.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Error 2</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/error/error-3.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Error 3</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/error/error-4.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Error 4</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/error/error-5.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Error 5</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/custom/pages/error/error-6.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Error 6</span></a></li></ul></div></li></ul></div></li><li class="kt-menu__section ">
-                <h4 class="kt-menu__section-text">Subscripciones</h4>
-                <i class="kt-menu__section-icon flaticon-more-v2"></i>
-            </li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                <i class="kt-menu__link-icon flaticon2-contract"></i><span class="kt-menu__link-text">Plataforma</span>
-                <i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" ><span class="kt-menu__link"><span class="kt-menu__link-text">Plataforma</span></span></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/skins/aside-light.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                    <span class="kt-menu__link-text">Conexion</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/skins/header-dark.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Dark Header</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-browser-2"></i><span class="kt-menu__link-text">Subheaders</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" ><span class="kt-menu__link"><span class="kt-menu__link-text">Subheaders</span></span></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/subheader/toolbar.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Toolbar Nav</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/subheader/actions.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Actions Buttons</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/subheader/tabbed.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Tabbed Nav</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/subheader/classic.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Classic</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/subheader/none.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">None</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover"><a  href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-console"></i><span class="kt-menu__link-text">General</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu "><span class="kt-menu__arrow"></span><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" ><span class="kt-menu__link"><span class="kt-menu__link-text">General</span></span></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/general/fixed-content.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Fixed Content</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/general/minimized-aside.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Minimized Aside</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/general/no-aside.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">No Aside</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/general/empty-page.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Empty Page</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/general/fixed-footer.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Fixed Footer</span></a></li><li class="kt-menu__item " aria-haspopup="true" ><a  href="demo12/layout/general/no-header-menu.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">No Header Menu</span></a></li></ul></div></li><li class="kt-menu__item " aria-haspopup="true" ><a target="_blank" href="https://keenthemes.com/metronic/preview/demo12/builder.html" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-expand"></i><span class="kt-menu__link-text">Builder</span></a></li><li class="kt-menu__section ">
+            <!------------------------------------------------------------------------
+                ----------------------------------------------------------------------
+                ------                                                          ------
+                ------                                                          ------
+                ------                     ASIDE MENÚ                           ------
+                ------                                                          ------
+                ------                                                          ------
+                ----------------------------------------------------------------------
+                ------------------------------------------------------------------------>
+
+            <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+	            <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">		
+		            <ul class="kt-menu__nav ">
+                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true" >
+                            <a  href="demo12/index.html" class="kt-menu__link ">
+                                <i class="kt-menu__link-icon flaticon2-architecture-and-city"></i>
+                                <span class="kt-menu__link-text">Inicio</span>
+                            </a>
+                        </li>
+                        <li class="kt-menu__section ">
+                            <h4 class="kt-menu__section-text">Juegos</h4>
+                            <i class="kt-menu__section-icon flaticon-more-v2"></i>
+                        </li>
+                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
+                            <a  href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                <i class="kt-menu__link-icon flaticon2-start-up"></i>
+                                <span class="kt-menu__link-text">Categoría</span>
+                                <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="kt-menu__submenu ">
+                                <span class="kt-menu__arrow"></span>
+                                <ul class="kt-menu__subnav">
+                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" >
+                                        <span class="kt-menu__link">
+                                            <span class="kt-menu__link-text">Categoría</span>
+                                        </span>
+                                    </li>
+                                    @foreach($InfoCategoria as $item)
+                                    <li class="kt-menu__item " aria-haspopup="true" >
+                                        <a  href="demo12/layout/skins/aside-light.html" class="kt-menu__link ">
+                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                            <span class="kt-menu__link-text">{{$item->nombre_categoria}}</span>
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                   
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
+                            <a  href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                <i class="kt-menu__link-icon flaticon2-laptop"></i>
+                                <span class="kt-menu__link-text">Plataforma</span>
+                                <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="kt-menu__submenu ">
+                                <span class="kt-menu__arrow"></span>
+                                <ul class="kt-menu__subnav">
+                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" >
+                                        <span class="kt-menu__link">
+                                            <span class="kt-menu__link-text">Plataforma</span>
+                                        </span>
+                                    </li>
+
+                                    @foreach($InfoPlataforma as $item)
+                                    <li class="kt-menu__item " aria-haspopup="true" >
+                                        <a  href="demo12/layout/skins/aside-light.html" class="kt-menu__link ">
+                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                            <span class="kt-menu__link-text">{{$item->nombre_plataforma}}</span>
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ----------- FIN BOTON JUEGOS ----------------- -->
+
+                        <!-- ----------- BOTON SUBSCRIPCIONES ----------------- -->
+                        <li class="kt-menu__section ">
+                            <h4 class="kt-menu__section-text">Subscripciones</h4>
+                            <i class="kt-menu__section-icon flaticon-more-v2"></i>
+                        </li>
+
+                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
+                            <a  href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                <i class="kt-menu__link-icon flaticon2-laptop"></i>
+                                <span class="kt-menu__link-text">Plataforma</span>
+                                <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="kt-menu__submenu ">
+                                <span class="kt-menu__arrow"></span>
+                                <ul class="kt-menu__subnav">
+                                 
+                                    @foreach($InfoPlataforma as $item)
+                                    <li class="kt-menu__item " aria-haspopup="true" >
+                                        <a  href="demo12/layout/skins/aside-light.html" class="kt-menu__link ">
+                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                            <span class="kt-menu__link-text">{{$item->nombre_plataforma}}</span>
+                                        </a>
+                                    </li>
+                                    @endforeach
+                              
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ----------- FIN BOTON SUBSCRIPCIONES ----------------- -->
+                    </ul>
+                </div>
             </div>
-</div>
-<!-- end:: Aside Menu --></div>
+            <!-- end:: Aside Menu -->
+        </div>
+
+
+
+
 <!-- end:: Aside -->			
 			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 				<!-- begin:: Header -->
@@ -789,17 +900,20 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
 </div>
 <!--end: My Cart -->
+@if($InfoUser != null)
 <div class="kt-header__topbar-item kt-header__topbar-item--user">
+
+
+        <!-- nombre_usuario -->
+        
         <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
             <div class="kt-header__topbar-user">
-            <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
-            <span class="kt-header__topbar-username kt-hidden-mobile">Sean</span>
-            <img alt="Pic" class="kt-radius-100" src="
-            /assets/media/users/300_25.jpg" />
+            <span class="kt-header__topbar-welcome kt-hidden-mobile">Hola,</span>
+            <span class="kt-header__topbar-username kt-hidden-mobile">{{$InfoUser}}</span>
             <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
             <!--<span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">S</span>-->
+            </div>
         </div>
-    </div>
 
         <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
         <!--begin: Head -->
@@ -817,9 +931,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <span class="btn btn-success btn-sm btn-bold btn-font-md">23 messages</span>
         </div>
     </div>
-<!--end: Head -->
-
-<!--begin: Navigation -->
+    <!--begin: Navigation -->
 <div class="kt-notification">
     <a href="demo12/custom/apps/user/profile-1/personal-information.html" class="kt-notification__item">
         <div class="kt-notification__item-icon">
@@ -896,6 +1008,21 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--end: Navigation -->
     </div>
     </div>
+@else
+<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default "  >
+		<ul class="kt-menu__nav ">
+            <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
+                <a  href="demo12/index.html" class="kt-menu__link "><span class="kt-menu__link-text">Iniciar sesion</span></a>
+            </li>
+            <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
+                <a  href="demo12/index.html" class="kt-menu__link "><span class="kt-menu__link-text">Registrate</span></a>
+            </li>
+        </ul>    
+    </div>
+@endif    
+<!--end: Head -->
+
+
 <!--end: User Bar -->
 	
 </div>
@@ -905,23 +1032,13 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 											
 <!-- begin:: Subheader -->
+
+<!-- dashboard -->
 <div class="kt-subheader   kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">
-				
-                Dashboard                            </h3>
-
-                            <span class="kt-subheader__separator kt-hidden"></span>
-                <div class="kt-subheader__breadcrumbs">
-                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
-                                            <span class="kt-subheader__breadcrumbs-separator"></span>
-                        <a href="" class="kt-subheader__breadcrumbs-link">
-                            Application                        </a>
-                                        <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
-                </div>
-                    </div>
-        
+            <h3 class="kt-subheader__title">Dashboard</h3>
+        </div>   
     </div>
 </div>
 <!-- end:: Subheader -->
@@ -939,12 +1056,12 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
 	<div class="kt-container  kt-container--fluid ">
 		<div class="kt-footer__copyright">
-			2019&nbsp;&copy;&nbsp;<a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">Keenthemes</a>
+			2018&nbsp;&copy;&nbsp;<a href="https://www.instagram.com/diego_ignacio_o/" target="_blank" class="kt-link">Equipo Dinamita</a>
 		</div>
 		<div class="kt-footer__menu">
-			<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">About</a>
-			<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
-			<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
+			<a href="https://www.instagram.com/neokayzer/" target="_blank" class="kt-footer__menu-link kt-link">Nosotros</a>
+			<a href="https://www.instagram.com/p/BidMC2MFc_I/" target="_blank" class="kt-footer__menu-link kt-link">Equipo</a>
+			<a href="https://www.instagram.com/manuel.pereira.99/" target="_blank" class="kt-footer__menu-link kt-link">Contactos</a>
 		</div>
 	</div>
 </div>
