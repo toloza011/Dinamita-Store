@@ -13,4 +13,6 @@
 
 Route::get('/', 'tablaController@inicio');
 
+Route::get('login',function(){return view('login');})->name('login');
+
 
