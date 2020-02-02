@@ -62,8 +62,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create()
     {
+        $data = $this->validate(request(),[
+            'name' => 'required|string',
+            'email' => 'email|required|string',
+            'password' => 'required|string'
+        ]);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

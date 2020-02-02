@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', 'tablaController@inicio');
-Route::get('login',function(){
-    return view('login');
-})->name('login');
+Route::get('/', 'tablaController@inicio')->name('home');
+
+Route::get('login',function(){return view('login');})->name('login');
+
+Route::post('validacion','Auth\LoginController@login')->name('validacion');
+
+Route::get('registrar',function(){return view('registrar');})->name('registrar');
+
+Route::post('registro','Auth\RegisterController@create')->name('registro');
