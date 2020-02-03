@@ -14,6 +14,6 @@ class tablaController extends Controller
         
         $InfoUser = null;
        // dd($InfoUser);
-        return view('home',compact('InfoCategoria','InfoPlataforma','InfoUser'));
+        return view('layout',compact('InfoCategoria','InfoPlataforma','InfoUser'));
     }
 }

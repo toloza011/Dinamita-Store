@@ -13,10 +13,14 @@
 
 Route::get('/', 'tablaController@inicio')->name('home');
 
-Route::get('login',function(){return view('login');})->name('login');
-
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('validacion','Auth\LoginController@login')->name('validacion');
+Route::get('logout','Auth\LoginController@logout')->name('logout');
 
 Route::get('registrar',function(){return view('registrar');})->name('registrar');
 
 Route::post('registro','Auth\RegisterController@create')->name('registro');
+
+Route::get('vistainicio','VistaInicioController@index')->name('vistainicio');
+
+
