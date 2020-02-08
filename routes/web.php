@@ -17,7 +17,9 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('validacion','Auth\LoginController@login')->name('validacion');
 Route::get('logout','Auth\LoginController@logout')->name('logout');
 
-Route::get('registrar',function(){return view('registrar');})->name('registrar');
+Route::get('registrar','VistaInicioController@registrar')->name('registrar');
+
+/* function(){return view('registro');} */
 
 Route::post('registro','Auth\RegisterController@create')->name('registro');
 

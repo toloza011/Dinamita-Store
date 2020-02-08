@@ -20,4 +20,13 @@ class VistaInicioController extends Controller
 
         return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria'));
     }
+
+    function registrar(){
+        $InfoCategoria = Categoria::all();
+        $InfoPlataforma = Plataforma::all();
+        
+        $InfoUser = null;
+       // dd($InfoUser);
+        return view('registro',compact('InfoCategoria','InfoPlataforma','InfoUser'));
+    }
 }

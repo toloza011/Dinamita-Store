@@ -989,7 +989,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <a  href="login" class="kt-menu__link "><span class="kt-menu__link-text">Iniciar sesion</span></a>
             </li>
             <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
-                <a  href="demo12/index.html" class="kt-menu__link "><span class="kt-menu__link-text">Registrate</span></a>
+                <a  href="registrar" class="kt-menu__link "><span class="kt-menu__link-text">Registrate</span></a>
             </li>
         </ul>    
     </div>
