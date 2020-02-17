@@ -18,7 +18,6 @@ class LoginController extends Controller
     {
         $this->auth = $auth;
 
-        $this->middleware('guest', ['only' => 'showLoginForm']);
     }   
 
     public function showLoginForm(){

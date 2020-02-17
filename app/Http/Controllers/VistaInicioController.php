@@ -16,7 +16,7 @@ class VistaInicioController extends Controller
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
         $InfoUser = DB::select("SELECT users.id, users.name, users.email FROM users WHERE users.id = '$idusuario' ");
-        
+        dd($InfoUser[0]->name);
 
         return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria'));
     }
