@@ -8,13 +8,12 @@ use App\User;
 
 class tablaController extends Controller
 {
-    public function inicio(){
+    public function inicio(Request $request){
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
-        
-        $InfoUser = null;
+        $request=$request;
        // dd($InfoUser);
-        return view('layout',compact('InfoCategoria','InfoPlataforma','InfoUser'));
+        return view('inicio',compact('InfoCategoria','InfoPlataforma','request'));
     }
     
    

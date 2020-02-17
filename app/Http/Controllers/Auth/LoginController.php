@@ -18,7 +18,7 @@ class LoginController extends Controller
     {
         $this->auth = $auth;
 
-        $this->middleware('guest', ['only' => 'showLoginForm']);
+        /* $this->middleware('guest', ['only' => 'showLoginForm']); */
     }   
 
     public function showLoginForm(){
@@ -36,18 +36,28 @@ class LoginController extends Controller
         $credentials = $request->only('email','password');           
         if(Auth::attempt($credentials, $request->has('remember')))
         {
-            return redirect('vistainicio'); 
+            
+          
+           /*  return $request->session()->all(); */
+             return redirect('vistainicio'); 
         }
         return back()   ->withErrors(['email'=>'Estas credenciales no coinciden con nuestros registros'])
                         ->withInput(request(['email']));
+        
+        /* $request->session()->flush() ; */
+        /* $request->session()->get('key'); 
+            return $request->session()->all();*/      
     }
     
-    public function logout(){
-        
-        $this->auth->logout();
+    
+    public function logout(Request $request){
+       
+        $request->session()->flush();
 
-        Session::flush();
-        return view('inicio');
+        
+       
+        return redirect()->route('home');
+
     }
 
 }
