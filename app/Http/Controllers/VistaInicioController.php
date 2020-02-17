@@ -12,21 +12,53 @@ use DB;
 class VistaInicioController extends Controller
 {
     public function index(Request $request){
-        $idusuario = Auth::user()->id;
-        $InfoCategoria = Categoria::all();
-        $InfoPlataforma = Plataforma::all();
-        $InfoUser = DB::select("SELECT users.id, users.name, users.email FROM users WHERE users.id = '$idusuario' ");
-        dd($InfoUser[0]->name);
+        if(Auth::user() != null){
+            $idusuario = Auth::user()->id;
+            $InfoCategoria = Categoria::all();
+            $InfoPlataforma = Plataforma::all();
+            $InfoUser = DB::select("SELECT users.id, users.name, users.email FROM users WHERE users.id = '$idusuario' ");
+            $nameUser = $InfoUser[0]->name;
+            session(['identificador' => $idusuario]);
+            session(['nombre' => $nameUser]);
+            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request')); 
+        }else{
+            $InfoCategoria = Categoria::all();
+            $InfoPlataforma = Plataforma::all();
+            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request')); 
 
-        return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria'));
+        }
+       
+        
+        
+        
+        
+        
+        
+     /*    return $request->session()->all(); */
+
+        
+        
     }
 
-    function registrar(){
+    function registrar(Request $request){
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
         
-        $InfoUser = null;
+       
        // dd($InfoUser);
-        return view('registro',compact('InfoCategoria','InfoPlataforma','InfoUser'));
+        return view('registro',compact('InfoCategoria','InfoPlataforma','request'));
+    }
+
+    function vistajuego(Request $request){
+       
+        $InfoCategoria = Categoria::all();
+        $InfoPlataforma = Plataforma::all();
+        //dd($request);
+        $request=$request;
+       
+       
+        
+       // dd($InfoUser);
+        return view('juegos',compact('InfoCategoria','InfoPlataforma','request'));
     }
 }

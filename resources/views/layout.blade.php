@@ -94,7 +94,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	            <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">		
 		            <ul class="kt-menu__nav ">
                         <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true" >
-                            <a  href="demo12/index.html" class="kt-menu__link ">
+                            <a  href="{{route('home')}}" class="kt-menu__link ">
                                 <i class="kt-menu__link-icon flaticon2-architecture-and-city"></i>
                                 <span class="kt-menu__link-text">Inicio</span>
                             </a>
@@ -206,7 +206,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default "  >
 		<ul class="kt-menu__nav ">
             <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
-                <a  href="demo12/index.html" class="kt-menu__link "><span class="kt-menu__link-text">Juegos</span></a>
+                <a  href="{{route('juego')}}" class="kt-menu__link "><span class="kt-menu__link-text">Juegos</span></a>
             </li>
             <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
                 <a  href="demo12/index.html" class="kt-menu__link "><span class="kt-menu__link-text">Subscripciones</span></a>
@@ -874,7 +874,9 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
 </div>
 <!--end: My Cart -->
-@if($InfoUser != null)
+
+@if($request->session()->has('identificador'))
+<?php $nombreUser = $request->session()->get('nombre'); ?>
 <div class="kt-header__topbar-item kt-header__topbar-item--user">
 
 
@@ -883,7 +885,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
             <div class="kt-header__topbar-user">
             <span class="kt-header__topbar-welcome kt-hidden-mobile">Hola,</span>
-            <span class="kt-header__topbar-username kt-hidden-mobile">{{$InfoUser[0]->name}}</span>
+            <span class="kt-header__topbar-username kt-hidden-mobile">{{$nombreUser}}</span>
             <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
             <!--<span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">S</span>-->
             </div>
@@ -974,7 +976,7 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
     </a>
     <div class="kt-notification__custom kt-space-between">
-        <a href="{{route('logout')}}" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Cerrar sesion</a>
+        <a href="logout"  class="btn btn-label btn-label-brand btn-sm btn-bold">Cerrar sesion</a>
 
         <a href="demo12/custom/user/login-v2.html" target="_blank" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
     </div>
@@ -1011,7 +1013,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="kt-subheader   kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">Dashboard</h3>
+            
         </div>   
     </div>
 </div>

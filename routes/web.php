@@ -25,4 +25,6 @@ Route::post('registro','Auth\RegisterController@create')->name('registro');
 
 Route::get('vistainicio','VistaInicioController@index')->name('vistainicio');
 
+Route::get('juego','VistaInicioController@vistajuego')->name('juego');
+
 
