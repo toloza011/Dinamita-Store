@@ -44,6 +44,7 @@
 					<div class="kt-login__head">
 						<h5 class="kt-login__title" style="text-align:center;"><strong>Iniciar Sesión</strong></h5>
 					</div>
+					<a class="btn btn-link" href="#">Olvidaste tu contraseña?</a>
 					<br>
 					<form class="kt-form" method="POST" action="validacion" >
 
