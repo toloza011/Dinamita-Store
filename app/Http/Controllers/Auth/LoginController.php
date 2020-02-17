@@ -37,7 +37,7 @@ class LoginController extends Controller
             
           
            /*  return $request->session()->all(); */
-             return redirect('vistainicio'); 
+             return redirect()->route('home'); 
         }
         return back()   ->withErrors(['email'=>'Estas credenciales no coinciden con nuestros registros'])
                         ->withInput(request(['email']));
@@ -52,8 +52,6 @@ class LoginController extends Controller
        
         $request->session()->flush();
 
-        
-       
         return redirect()->route('home');
 
     }
