@@ -9,7 +9,7 @@ use App\Plataforma;
 use DB;
 
 
-class VistaInicioController extends Controller
+class VistasController extends Controller
 {
     public function index(Request $request){
         $idusuario = Auth::user()->id;
@@ -27,21 +27,18 @@ class VistaInicioController extends Controller
         
     }
 
-    function registrar(){
+    function registrar(Request $request){
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
         
-        $InfoUser = DB::select("SELECT users.id, users.name, users.email FROM users WHERE users.id = '$idusuario' ");
        // dd($InfoUser);
-        return view('registro',compact('InfoCategoria','InfoPlataforma','InfoUser'));
+        return view('registro',compact('InfoCategoria','InfoPlataforma','request'));
     }
 
     function vistajuego(Request $request){
        
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
-        //dd($request);
-        $request=$request;
        
        
         
