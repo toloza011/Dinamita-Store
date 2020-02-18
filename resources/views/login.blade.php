@@ -24,11 +24,11 @@
 	<div class="row justify-content-center">
 		<div class=""></div>
 		<div class="kt-login__container center-block" >
-				<div class="kt-login__logo" style="margin-top: 11vh">
+				<div class="kt-login__logo" style="margin-top: 1vh">
 					<a href="#">
 						<img src="{{asset('./assets/media/logos/imagenLogin.png')}}"/>
 					</a>
-			</div>
+		</div>
 		</div>
 		</div>
 		<br>
@@ -38,19 +38,14 @@
 			    <div class="alert alert-danger col-12 col-md-4"><em> {!! session('mensaje') !!}</em></div>
 				@endif
 		</div>
-
-
 				<div class="kt-login__signin">
 					<div class="kt-login__head">
 						<h5 class="kt-login__title" style="text-align:center;"><strong>Iniciar Sesión</strong></h5>
 					</div>
-					<a class="btn btn-link" href="#">Olvidaste tu contraseña?</a>
 					<br>
 					<form class="kt-form" method="POST" action="validacion" >
 
 						<div class="row justify-content-center">
-
-
 							<div class="col-12 col-md-4">
 									<div class="input-group {{$errors->has('email')?'alert alert-danger':''}}">
 										<input class="form-control" type="email" style="border-radius:15px" placeholder="correo" name="email" value="{{old('email')}}"autocomplete="off" required>

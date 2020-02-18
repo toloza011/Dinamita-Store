@@ -22,13 +22,20 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!--begin::Fonts -->
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
         <!--end::Fonts -->
 
         <!--begin::Page Vendors Styles(used by this page) -->
         <link href="/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
         <!--end::Page Vendors Styles -->
-
+        <link rel="stylesheet" href="assets/css/catalogo.css">
 
         <!--begin::Global Theme Styles(used by all pages) -->
         <link href="/assets/vendors/global/vendors.bundle.css" rel="stylesheet" type="text/css" />
@@ -39,6 +46,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end::Layout Skins -->
 
         <link rel="shortcut icon" href="/assets/media/logos/favicon-web.png" />
+
     </head>
     <!-- end::Head -->
 
@@ -209,10 +217,10 @@ License: You must have a valid license purchased only from themeforest(the above
                 <a  href="{{route('juego')}}" class="kt-menu__link "><span class="kt-menu__link-text">Juegos</span></a>
             </li>
             <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
-                <a  href="demo12/index.html" class="kt-menu__link "><span class="kt-menu__link-text">Subscripciones</span></a>
+            <a  href="{{route('subcripciones')}}" class="kt-menu__link "><span class="kt-menu__link-text">Subscripciones</span></a>
             </li>
             <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
-                <a  href="demo12/index.html" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relampago</span></a>
+                <a  href="ofertas" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relampago</span></a>
             </li>
         </ul>
     </div>
@@ -1017,6 +1025,7 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
     </div>
 </div>
+
 <!-- end:: Subheader -->
 
 <!-- begin:: Content -->
@@ -1500,7 +1509,12 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--begin::Page Scripts(used by this page) -->
                             <script src="
                             /assets/js/demo12/pages/dashboard.js" type="text/javascript"></script>
-                        <!--end::Page Scripts -->
+                            <script>
+                                $(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+                            </script>
+                            <!--end::Page Scripts -->
             </body>
     <!-- end::Body -->
 </html>

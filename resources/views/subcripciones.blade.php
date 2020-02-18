@@ -1,5 +1,5 @@
 @extends('layout')
-@section('url','Catalogo de Videojuegos')
+@section('url','Subcripciones')
 @section('content')
 <div class="row">
     <div class="container container-fluid">
@@ -11,11 +11,10 @@
               </div>
             </div>
             <div class="col-md-4">
-               <h5>Filtrar por categoria: </h5>
-
+               <h5>Filtrar por Consola: </h5>
                <select name="" class="form-control" id="">
-                @foreach ($InfoCategoria as $categoria)
-                <option value="{{$categoria->nombre_categoria}}">{{$categoria->nombre_categoria}}</option>
+                @foreach ($InfoPlataforma as $plataforma)
+                <option value="{{$plataforma->nombre_plataforma}}">{{$plataforma->nombre_plataforma}}</option>
                 @endforeach
                </select>
             </div>
@@ -346,6 +345,6 @@
 	</div>
 </div>
 
-<!---fin catalogo--->
+
 
 @endsection
