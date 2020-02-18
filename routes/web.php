@@ -25,10 +25,6 @@ Route::get('registrar','VistasController@registrar')->name('registrar');
 //Funcion Registrar
 Route::post('registro','Auth\RegisterController@create')->name('registro');
 
-
-//Vista Inicio(recibe la id)
-Route::get('vistainicio','VistasController@index')->name('vistainicio');
-
 //Vista Juego 
 Route::get('juego','VistasController@vistajuego')->name('juego');
 
