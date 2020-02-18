@@ -1,9 +1,8 @@
 @extends('layout')
+
 @section('content')
 <h1>INICIO</h1>
-<<<<<<< HEAD
-@endsection
-=======
+
 <link rel="stylesheet"  href="{{asset('css/estilos.css')}}" >
 <div class="row justify-content-center">
 <div class="carrusel-all">
@@ -23,4 +22,3 @@
 
 
 @endsection
->>>>>>> e7275f2a709cc366074d20174a63851f610c032e
