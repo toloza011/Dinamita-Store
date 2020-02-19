@@ -904,7 +904,7 @@ License: You must have a valid license purchased only from themeforest(the above
             Sean Stone
         </div>
         <div class="kt-user-card__badge">
-            <span class="btn btn-success btn-sm btn-bold btn-font-md">23 messages</span>
+            <span class="btn btn-success btn-sm btn-bold btn-font-md">25 messages</span>
         </div>
     </div>
     <!--begin: Navigation -->
