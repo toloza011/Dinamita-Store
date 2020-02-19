@@ -16,21 +16,21 @@
           <div class="form-group">
             <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
             <div class="col-sm-10">
-            <input type="text" class="form-control" value="" name="nombre">
+            <input type="text" class="form-control" value="" name="nombre" required>
 
         </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 col-sm-2 control-label">Correo</label>
             <div class="col-sm-10">
-            <input type="email" class="form-control" value="" name="correo">
+            <input type="email" class="form-control" value="" name="correo" required>
 
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 col-sm-2 control-label">Contraseña</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" value="" name="contraseña" >
+              <input type="password" class="form-control" value="" name="contraseña" required>
 
             </div>
           </div>
