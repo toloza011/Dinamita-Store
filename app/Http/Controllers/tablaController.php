@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Categoria;
 use App\Plataforma;
 use App\User;
-use Illuminate\Support\Facades\Auth;
 use DB;
 
 class tablaController extends Controller
@@ -19,14 +19,17 @@ class tablaController extends Controller
             $nameUser = $InfoUser[0]->name;
             session(['identificador' => $idusuario]);
             session(['nombre' => $nameUser]);
-            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request')); 
+            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request'));
         }else{
             $InfoCategoria = Categoria::all();
             $InfoPlataforma = Plataforma::all();
-            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request')); 
+            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request'));
 
         }
+
     }
     
+   
+
 
 }
