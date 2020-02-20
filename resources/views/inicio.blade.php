@@ -25,7 +25,7 @@
     <!-- lo saco de la base de datos: NOMBRE DE LA CATEGORIA -->
     <div class="container"><h1>Estrategia</h1>
     <div class="container container-fluid">
-    <div class="row">
+    <div class="row">     
     	<div class="col-md-12">
             <div class="col-sm-4 col-md-3">
 				<div class="thumbnail" >
