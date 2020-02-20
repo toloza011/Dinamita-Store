@@ -12,7 +12,7 @@
 */
 
 //Inicio
-Route::get('/', 'VistasController@inicio')->name('home');
+Route::get('/','VistasController@inicio')->name('home');
 
 //Login-Registrar-Logout
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -28,5 +28,4 @@ Route::get('juego','VistasController@vistajuego')->name('juego');
 Route::get('subscripciones','VistasController@vistaSubcripcion')->name('subcripciones');
 //Review Producto
 Route::get('Review/{id}','VistasController@vistaReview')->name('review');
-
 

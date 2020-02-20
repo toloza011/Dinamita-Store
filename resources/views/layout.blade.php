@@ -65,18 +65,22 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <!-- begin::Body -->
 
-<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled kt-aside--fixed kt-page--loading">
 
-    <!-- begin:: Page -->
-    <!-- begin:: Header Mobile -->
-    <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
-        <div class="kt-header-mobile__logo">
-            <a href="demo12/index.html">
-                <img alt="Logo" src="/assets/media/logos/logo-12.png" />
-            </a>
-        </div>
-        <div class="kt-header-mobile__toolbar">
-            <button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
+    <!-- end::Head -->
+
+    <!-- begin::Body -->
+    <body  class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled kt-aside--fixed kt-page--loading"  >
+
+    	<!-- begin:: Page -->
+        <!-- begin:: Header Mobile -->
+    <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed " >
+	    <div class="kt-header-mobile__logo">
+		    <a href="demo12/index.html">
+                <img alt="Logo" src="/assets/media/logos/logo-12.png"/>
+		    </a>
+	    </div>
+	    <div class="kt-header-mobile__toolbar">
+			<button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
             <button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
             <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
         </div>

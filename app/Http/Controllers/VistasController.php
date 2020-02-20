@@ -7,8 +7,8 @@ use App\User;
 use App\Categoria;
 use App\Plataforma;
 use App\Juego;
-use DB;
 use App\Subcripcion;
+use DB;
 
 class VistasController extends Controller
 {
@@ -34,14 +34,6 @@ class VistasController extends Controller
 
     }
 
-    function registrar(Request $request){
-        $InfoCategoria = Categoria::all();
-        $InfoPlataforma = Plataforma::all();
-
-       // dd($InfoUser);
-        return view('registro',compact('InfoCategoria','InfoPlataforma','request'));
-    }
-
     function vistajuego(Request $request){
         $InfoJuego=Juego::orderBy('id_juego','DESC')->paginate(12);
         $InfoCategoria = Categoria::all();
@@ -49,6 +41,8 @@ class VistasController extends Controller
        // dd($InfoUser);
         return view('juegos',compact('InfoJuego','InfoCategoria','InfoPlataforma','request'));
     }
+
+
 
     function vistaSubcripcion(Request $request){
         $InfoSubcripcion=Subcripcion::orderBy('id_subscripcion','DESC')->paginate(12);
@@ -63,4 +57,15 @@ class VistasController extends Controller
         $InfoPlataforma = Plataforma::all();
         return view('reviewProducto',compact('InfoSubcripcion','InfoJuego','InfoCategoria','InfoPlataforma','request'));
     }
+
+
+    function registrar(Request $request){
+        $InfoCategoria = Categoria::all();
+        $InfoPlataforma = Plataforma::all();
+
+       // dd($InfoUser);
+        return view('registro',compact('InfoCategoria','InfoPlataforma','request'));
+    }
+
+
 }
