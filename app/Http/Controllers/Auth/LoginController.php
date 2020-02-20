@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 use Session;
+use App\Juego;
 
 class LoginController extends Controller
 {
@@ -37,11 +38,15 @@ class LoginController extends Controller
 
         $credentials = $request->only('email','password');
         if(Auth::attempt($credentials, $request->has('remember')))
-        {
-
-
-           /*  return $request->session()->all(); */
-             return redirect('home');
+        {   $idusuario = Auth::user()->id;
+            $InfoCategoria = Categoria::all();
+            $InfoPlataforma = Plataforma::all();
+            $InfoUser = DB::select("SELECT users.id, users.name, users.email FROM users WHERE users.id = '$idusuario' ");
+            $nameUser = $InfoUser[0]->name;
+            $consulta = Juego::all()->sortByDesc('id_juego')->take(10);
+            session(['identificador' => $idusuario]);
+            session(['nombre' => $nameUser]);
+            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request','consulta'));
         }
         return back()   ->withErrors(['email'=>'Estas credenciales no coinciden con nuestros registros'])
                         ->withInput(request(['email']));

@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Categoria;
 use App\Plataforma;
-use DB;
 use App\Juego;
+use DB;
 use App\Subcripcion;
 
 class VistasController extends Controller
@@ -19,13 +19,16 @@ class VistasController extends Controller
             $InfoPlataforma = Plataforma::all();
             $InfoUser = DB::select("SELECT users.id, users.name, users.email FROM users WHERE users.id = '$idusuario' ");
             $nameUser = $InfoUser[0]->name;
+            $consulta = Juego::all()->sortByDesc('id_juego')->take(10);
             session(['identificador' => $idusuario]);
             session(['nombre' => $nameUser]);
-            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request'));
+            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request','consulta'));
         }else{
             $InfoCategoria = Categoria::all();
             $InfoPlataforma = Plataforma::all();
-            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request'));
+            $consulta = Juego::all()->sortByDesc('id_juego')->take(10);
+
+            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request','consulta'));
 
         }
 

@@ -6,16 +6,9 @@
 <div class="row justify-content-center">
 <div class="carrusel-all">
     <div align="center"class="content-carrousel">
-        <figure><img src="{{asset('assets/media/juegos/DeadByDaylight.jpg')}}" ></figure>
-        <figure><img src="{{asset('assets/media/juegos/Celeste.png')}}" ></figure>
-        <figure><img src="{{asset('assets/media/juegos/Borderlands2.jpg')}}" ></figure>
-        <figure><img src="{{asset('assets/media/juegos/DarkSouls3.jpg')}}" ></figure>
-        <figure><img src="{{asset('assets/media/juegos/ResidentEvil2.png')}}" ></figure>
-        <figure><img src="{{asset('assets/media/juegos/TombRaider.jpg')}}" ></figure>
-        <figure><img src="{{asset('assets/media/juegos/AssassinCreedO.jpg')}}" ></figure>
-        <figure><img src="{{asset('assets/media/juegos/NoManSky.png')}}" ></figure>
-        <figure><img src="{{asset('assets/media/juegos/DevilMaycry5.png')}}" ></figure>
-        <figure><img src="{{asset('assets/media/juegos/xd.jpg')}}" ></figure>
+        @foreach($consulta as $item)
+        <figure><a href=""><img src="{{asset($item->url_juego)}}" ></a></figure>
+        @endforeach
     </div>
 </div></div>
 
@@ -62,7 +55,9 @@
 					<div class="caption">
 						<div class="row">
 							<div class="col-md-6 col-xs-6">
-								<h3>Celeste</h3>
+								<h3>Celeste
+
+                                </h3>
 							</div>
 							<div class="col-md-6 col-xs-6 price">
 								<h3>
@@ -124,8 +119,8 @@
 					</div>
 				</div>
             </div>
-  
-      
+
+
 
         </div>
     </div>

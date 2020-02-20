@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Juego;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,11 +50,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $consulta = Juego::all()->sortByDesc('id_juego')->take(10);
+        $validacion= Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        if($validacion){
+           return view('login',compact('consulta'));
+        }else{
+          return "Error en la validacion de usuario!";
+        }
     }
 
     /**
@@ -69,11 +76,11 @@ class RegisterController extends Controller
             'correo' => 'email|required|string',
             'contraseña' => 'required|string'
         ]);
-        return User::create([
+        $newUser= User::create([
             'name' => $data['nombre'],
             'email' => $data['correo'],
             'password' => Hash::make($data['contraseña']),
         ]);
-        
+        return redirect()->route('login',compact('newUser','data'))->with('mensaje','Usuario Creado exitosamente');
     }
 }

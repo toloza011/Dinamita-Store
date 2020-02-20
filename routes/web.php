@@ -29,3 +29,4 @@ Route::get('subscripciones','VistasController@vistaSubcripcion')->name('subcripc
 //Review Producto
 Route::get('Review/{id}','VistasController@vistaReview')->name('review');
 
+
