@@ -6,16 +6,11 @@
 <div class="row justify-content-center">
 <div class="carrusel-all">
     <div align="center"class="content-carrousel">
-        <figure><a href="#"><img src="{{asset('assets/media/juegos/DeadByDaylight.jpg')}}" ></a></figure>
-        <figure><a href="#"><img src="{{asset('assets/media/juegos/Celeste.png')}}" ></a></figure>
-        <figure><a href="#"><img src="{{asset('assets/media/juegos/Borderlands2.jpg')}}" ></a></figure>
-        <figure><a href="#"><img src="{{asset('assets/media/juegos/DarkSouls3.jpg')}}" ></a></figure>
-        <figure><a href="#"><img src="{{asset('assets/media/juegos/ResidentEvil2.png')}}" ></a></figure>
-        <figure><a href="#"><img src="{{asset('assets/media/juegos/TombRaider.jpg')}}" ></a></figure>
-        <figure><a href="#"><img src="{{asset('assets/media/juegos/AssassinCreedO.jpg')}}" ></a></figure>
-        <figure><a href="#"><img src="{{asset('assets/media/juegos/NoManSky.png')}}" ></a></figure>
-        <figure><a href="#"><img src="{{asset('assets/media/juegos/DevilMaycry5.png')}}" ></a></figure>
-        <figure><a href="#"><img src="{{asset('assets/media/juegos/xd.jpg')}}" ></a></figure>
+        @foreach($consulta  as $item)
+        
+       
+        <figure><a href="google.com"><img src="{{asset($item->url_juego)}}" ></a></figure>
+        @endforeach
     </div>
 </div></div>
 
@@ -25,7 +20,7 @@
     <!-- lo saco de la base de datos: NOMBRE DE LA CATEGORIA -->
     <div class="container"><h1>Estrategia</h1>
     <div class="container container-fluid">
-    <div class="row">     
+    <div class="row">
     	<div class="col-md-12">
             <div class="col-sm-4 col-md-3">
 				<div class="thumbnail" >

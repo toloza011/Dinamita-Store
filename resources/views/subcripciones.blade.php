@@ -27,323 +27,36 @@
   <div class="container container-fluid">
     <div class="row">
     	<div class="col-md-12">
+        @foreach($InfoSubcripcion as $subcripcion)
             <div class="col-sm-4 col-md-3">
 				<div class="thumbnail" >
 					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
+					<img src="https://production-gameflipusercontent.fingershock.com/us-east-1:664ca064-051c-4496-8b49-dc4a9c991987/2ffe09d3-c7a0-4802-8f1a-281c846bc889/8ec97db4-177e-4885-b350-21ead6b32265" class="img-responsive caratula">
 					<div class="caption">
 						<div class="row">
 							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
+                            <h5>{{$subcripcion->tipo_subscripcion}}</h5>
 							</div>
 							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
+								<h4>
+                                <label>${{$subcripcion->precio_subscripcion}}</label></h4>
 							</div>
 						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
+                            <a href="{{route('review',$subcripcion->id_subscripcion)}}" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
 						    </div>
-
 						<p> </p>
 					</div>
 				</div>
             </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
 
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
+            @endforeach
 
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
-
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
-
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
-
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
-
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
-
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
-
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
-
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
-
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
-
-						<p> </p>
-					</div>
-				</div>
-            </div>
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
-					<div class="caption">
-						<div class="row">
-							<div class="col-md-6 col-xs-6">
-								<h3>Galaxy S5</h3>
-							</div>
-							<div class="col-md-6 col-xs-6 price">
-								<h3>
-								<label>$649.99</label></h3>
-							</div>
-						</div>
-						<p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
-						    </div>
-
-						<p> </p>
-					</div>
-				</div>
-            </div>
 
         </div>
     </div>
 	</div>
-</div>
 
 
 

@@ -54,6 +54,9 @@ License: You must have a valid license purchased only from themeforest(the above
         </style>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
         <link rel="shortcut icon" href="/assets/media/logos/favicon-web.png" />
+        <link rel="stylesheet" href="css/adminlte.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
     </head>
     <!-- end::Head -->
