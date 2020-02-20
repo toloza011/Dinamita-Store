@@ -11,25 +11,20 @@
 |
 */
 
-//Inicio 
-Route::get('/', 'tablaController@inicio')->name('home');
+//Inicio
+Route::get('/', 'VistasController@inicio')->name('home');
 
-//Login-Registro-Logout
+//Login-Registrar-Logout
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-//Valida la sesion 
 Route::post('validacion','Auth\LoginController@login')->name('validacion');
-//cerrar sesion 
 Route::get('logout','Auth\LoginController@logout')->name('logout');
-//Vista Registrar
-Route::get('registrar','VistasController@registrar')->name('registrar');
-//Funcion Registrar
 Route::post('registro','Auth\RegisterController@create')->name('registro');
 
-
-//Vista Inicio(recibe la id)
-Route::get('vistainicio','VistasController@index')->name('vistainicio');
-
-//Vista Juego 
+//Vista Registrar
+Route::get('registrar','VistasController@registrar')->name('registrar');
+//Vista Juego
 Route::get('juego','VistasController@vistajuego')->name('juego');
+//Vista Subscripciones
+Route::get('subscripciones','VistasController@vistaSubcripcion')->name('subcripciones');
 
 
