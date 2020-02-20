@@ -26,5 +26,6 @@ Route::get('registrar','VistasController@registrar')->name('registrar');
 Route::get('juego','VistasController@vistajuego')->name('juego');
 //Vista Subscripciones
 Route::get('subscripciones','VistasController@vistaSubcripcion')->name('subcripciones');
-
+//Review Producto
+Route::get('Review/{id}','VistasController@vistaReview')->name('review');
 

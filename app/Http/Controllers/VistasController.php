@@ -7,7 +7,8 @@ use App\User;
 use App\Categoria;
 use App\Plataforma;
 use DB;
-
+use App\Juego;
+use App\Subcripcion;
 
 class VistasController extends Controller
 {
@@ -33,29 +34,30 @@ class VistasController extends Controller
     function registrar(Request $request){
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
-        
+
        // dd($InfoUser);
         return view('registro',compact('InfoCategoria','InfoPlataforma','request'));
     }
 
     function vistajuego(Request $request){
-       
+        $InfoJuego=Juego::orderBy('id_juego','DESC')->paginate(12);
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
-       
        // dd($InfoUser);
-        return view('juegos',compact('InfoCategoria','InfoPlataforma','request'));
+        return view('juegos',compact('InfoJuego','InfoCategoria','InfoPlataforma','request'));
     }
 
     function vistaSubcripcion(Request $request){
+        $InfoSubcripcion=Subcripcion::orderBy('id_subscripcion','DESC')->paginate(12);
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
-      
-        return view('subcripciones', compact('InfoPlataforma', 'InfoCategoria','request'));
-
-
+        return view('subcripciones', compact('InfoSubcripcion','InfoPlataforma', 'InfoCategoria','request'));
     }
-    
-
-
+    function vistaReview(Request $request,$id){
+        $InfoSubcripcion= Subcripcion::all()->where('id_subscripcion',$id)->first();
+        $InfoJuego=Juego::all()->where('id_juego',$id)->first();
+        $InfoCategoria = Categoria::all();
+        $InfoPlataforma = Plataforma::all();
+        return view('reviewProducto',compact('InfoSubcripcion','InfoJuego','InfoCategoria','InfoPlataforma','request'));
+    }
 }
