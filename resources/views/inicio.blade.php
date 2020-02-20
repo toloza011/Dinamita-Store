@@ -6,16 +6,16 @@
 <div class="row justify-content-center">
 <div class="carrusel-all">
     <div align="center"class="content-carrousel">
-        <figure><a href="google.com"><img src="{{asset('assets/media/juegos/DeadByDaylight.jpg')}}" ></a></figure>
-        <figure><a href="twitch.com"><img src="{{asset('assets/media/juegos/Celeste.png')}}" ></a></figure>
-        <figure><a href="twitch.com"><img src="{{asset('assets/media/juegos/Borderlands2.jpg')}}" ></a></figure>
-        <figure><a href="twitch.com"><img src="{{asset('assets/media/juegos/DarkSouls3.jpg')}}" ></a></figure>
-        <figure><a href="twitch.com"><img src="{{asset('assets/media/juegos/ResidentEvil2.png')}}" ></a></figure>
-        <figure><a href="twitch.com"><img src="{{asset('assets/media/juegos/TombRaider.jpg')}}" ></a></figure>
-        <figure><a href="twitch.com"><img src="{{asset('assets/media/juegos/AssassinCreedO.jpg')}}" ></a></figure>
-        <figure><a href="twitch.com"><img src="{{asset('assets/media/juegos/NoManSky.png')}}" ></a></figure>
-        <figure><a href="twitch.com"><img src="{{asset('assets/media/juegos/DevilMaycry5.png')}}" ></a></figure>
-        <figure><a href="twitch.com"><img src="{{asset('assets/media/juegos/xd.jpg')}}" ></a></figure>
+        <figure><a href="#"><img src="{{asset('assets/media/juegos/DeadByDaylight.jpg')}}" ></a></figure>
+        <figure><a href="#"><img src="{{asset('assets/media/juegos/Celeste.png')}}" ></a></figure>
+        <figure><a href="#"><img src="{{asset('assets/media/juegos/Borderlands2.jpg')}}" ></a></figure>
+        <figure><a href="#"><img src="{{asset('assets/media/juegos/DarkSouls3.jpg')}}" ></a></figure>
+        <figure><a href="#"><img src="{{asset('assets/media/juegos/ResidentEvil2.png')}}" ></a></figure>
+        <figure><a href="#"><img src="{{asset('assets/media/juegos/TombRaider.jpg')}}" ></a></figure>
+        <figure><a href="#"><img src="{{asset('assets/media/juegos/AssassinCreedO.jpg')}}" ></a></figure>
+        <figure><a href="#"><img src="{{asset('assets/media/juegos/NoManSky.png')}}" ></a></figure>
+        <figure><a href="#"><img src="{{asset('assets/media/juegos/DevilMaycry5.png')}}" ></a></figure>
+        <figure><a href="#"><img src="{{asset('assets/media/juegos/xd.jpg')}}" ></a></figure>
     </div>
 </div></div>
 
