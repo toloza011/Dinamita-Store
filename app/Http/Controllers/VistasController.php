@@ -54,7 +54,7 @@ class VistasController extends Controller
         return view('subcripciones', compact('InfoSubcripcion','InfoPlataforma', 'InfoCategoria','request'));
     }
     function vistaReview(Request $request,$id){
-        $InfoJuego=Juego::all()->where('id_juego',$id)->first();
+        $InfoJuego=Juego::all()->where('id_juego','=',$id)->first();
         $CategoriaJuego = DB::select("SELECT juegos_categoria.id_categoria FROM juegos_categoria WHERE juegos_categoria.id_juego = $id");
         $id_categoria=$CategoriaJuego[0]->id_categoria;
         $Categoria=Categoria::all()->where('id_categoria',$id_categoria);
