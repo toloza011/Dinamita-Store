@@ -1,19 +1,27 @@
 @extends('layout')
 @section('url','Catalogo de Videojuegos')
 @section('content')
+<!---filtos--->
 <div class="row">
     <div class="container container-fluid">
         <div class="col-md-12">
             <div class="col-md-8">
+            <h5>Buscar: </h5>
+            <form action="" class="">
+            <div class="row">
               <div class="form-group">
-               <h5>Buscar: </h5>
-                <input type="text" class="form-control" placeholder="Buscar...">
-              </div>
+                    <input type="search" name="buscador" id="buscador" class="form-control " style="width:500px;" placeholder="Buscar...">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Buscar">
+            </div>
+        </div>
+        </form>
             </div>
             <div class="col-md-4">
                <h5>Filtrar por categoria: </h5>
-
-               <select name="" class="form-control" id="">
+               <select name="" class="form-control" id="tipo">
+               <option value="" selected>Todos</option>
                 @foreach ($InfoCategoria as $categoria)
                 <option value="{{$categoria->nombre_categoria}}">{{$categoria->nombre_categoria}}</option>
                 @endforeach
@@ -21,8 +29,8 @@
             </div>
           </div>
     </div>
-
 </div>
+<!---fin filtros---->
 <br>
 <!---catalogo de productos--->
   <div class="container container-fluid">
@@ -32,7 +40,7 @@
             <div class="col-sm-4 col-md-3">
 				<div class="thumbnail" >
 					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" class="img-responsive caratula">
+                <img src="{{asset($juego->url_juego)}}" class="img-responsive caratula">
 					<div class="caption">
 						<div class="row">
 							<div class="col-md-8 col-xs-8">
@@ -43,7 +51,6 @@
 								<label>${{$juego->precio_juego}}</label></h5>
 							</div>
 						</div>
-                    <p class="text-center">{{$juego->descripcion_juego}}</p>
 						<div class="row">
 							<div class="col-md-12 text-center">
                             <a href="{{route('review',$juego->id_juego)}}" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
@@ -52,10 +59,15 @@
 					</div>
 				</div>
             </div>
+
+
+
             @endforeach
+
+
+
         </div>
             </div>
-
         </div>
 
 <!---fin catalogo--->

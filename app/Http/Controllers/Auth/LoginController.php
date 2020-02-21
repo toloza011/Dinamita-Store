@@ -23,7 +23,6 @@ class LoginController extends Controller
 
         /* $this->middleware('guest', ['only' => 'showLoginForm']); */
     }
-
     public function showLoginForm(Request $request){
         $InfoCategoria=Categoria::all();
         $InfoPlataforma=Plataforma::all();

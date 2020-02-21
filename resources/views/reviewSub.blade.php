@@ -1,17 +1,16 @@
 @extends('layout')
-@section('url','Review Producto')
+@section('url','Review Subcripcion')
 @section('content')
-
-@if($InfoJuego)
+@if($InfoSubcripcion)
 <section class="content">
     <!-- Default box -->
     <div class="card card-solid">
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-sm-6">
-                    <h3 class="d-inline-block d-sm-none">Titulo</h3>
+                <h3 class="d-inline-block d-sm-none">{{$InfoSubcripcion->tiposubscripcion}}</h3>
                     <div class="col-12">
-                        <img src="{{asset($InfoJuego->url_juego)}}" class="product-image" alt="Product Image">
+                        <img src="{{asset($InfoSubcripcion->url_subscripcion)}}" class="product-image" alt="Product Image">
                     </div>
                     <div class="col-12 product-image-thumbs">
                         <div class="product-image-thumb active"><img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" alt="Product Image"></div>
@@ -22,41 +21,12 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <h3 class="my-3">{{$InfoJuego->nombre_juego}}</h3>
-                    <p>{{$InfoJuego->descripcion_juego}}</p>
+                    <h3 class="my-3">{{$InfoSubcripcion->tipo_subscripcion}}</h3>
                     <hr>
-                    <h4>Genero</h4>
-                    @foreach($Categoria as $categorias)
-                    <p>{{$categorias->nombre_categoria}}</p>
-                    @endforeach
-                    <hr>
-                    <h4>Plataforma</h4>
-                    <div class="descripcion_juegobtn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-default text-center active">
-                            <input type="radio" name="color_option" id="color_option1" autocomplete="off" checked=""> PS4
-                            <br>
-                            <i class="fab fa-playstation" style="color:black;"></i>
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option2" autocomplete="off"> XOne
-                            <br>
-                            <i class="fab fa-xbox" style="color:black;"></i>
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option3" autocomplete="off"> PC
-                            <br>
-                            <i class="fas fa-desktop" style="color:black;"></i>
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option4" autocomplete="off"> Switch
-                            <br>
-                            <i class="fa fa-gamepad" style="color:black"></i>
-                        </label>
 
-                    </div>
                     <div class="bg-gray py-2 px-3 mt-4">
                         <h2 class="mb-0">
-                 ${{$InfoJuego->precio_juego}}
+                 ${{$InfoSubcripcion->precio_subscripcion}}
               </h2>
                     </div>
 
@@ -104,6 +74,5 @@
 
 </section>
 @endif
-
-
 @endsection
+

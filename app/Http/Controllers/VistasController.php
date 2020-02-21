@@ -35,27 +35,38 @@ class VistasController extends Controller
     }
 
     function vistajuego(Request $request){
-        $InfoJuego=Juego::orderBy('id_juego','DESC')->paginate(12);
+        $nombre=$request->get('buscador');
+        $InfoJuego = Juego::where('nombre_juego','like',"%$nombre%")->paginate(5);
+        $allJuegos=Juego::all();
+        $categoria=$request->get('tipo');
+        $CategoriaJuegos = DB::select("SELECT juegos_categoria.id_categoria FROM juegos_categoria");
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
        // dd($InfoUser);
-        return view('juegos',compact('InfoJuego','InfoCategoria','InfoPlataforma','request'));
+        return view('juegos',compact('InfoJuego','allJuegos','InfoCategoria','InfoPlataforma','request'))->withJuego($InfoJuego);
     }
 
-
-
     function vistaSubcripcion(Request $request){
-        $InfoSubcripcion=Subcripcion::orderBy('id_subscripcion','DESC')->paginate(12);
+        $nombre=$request->get('buscador');
+        $InfoSubcripcion = Subcripcion::where('tipo_subscripcion','like',"%$nombre%")->paginate(5);
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
         return view('subcripciones', compact('InfoSubcripcion','InfoPlataforma', 'InfoCategoria','request'));
     }
     function vistaReview(Request $request,$id){
-        $InfoSubcripcion= Subcripcion::all()->where('id_subscripcion',$id)->first();
         $InfoJuego=Juego::all()->where('id_juego',$id)->first();
+        $CategoriaJuego = DB::select("SELECT juegos_categoria.id_categoria FROM juegos_categoria WHERE juegos_categoria.id_juego = $id");
+        $id_categoria=$CategoriaJuego[0]->id_categoria;
+        $Categoria=Categoria::all()->where('id_categoria',$id_categoria);
+        $InfoPlataforma = Plataforma::all();
+        $InfoCategoria=Categoria::all();
+        return view('reviewProducto',compact('CategoriaJuego','InfoJuego','InfoCategoria','Categoria','InfoPlataforma','request'));
+    }
+    function vistaReviewSub(Request $request,$id){
+        $InfoSubcripcion= Subcripcion::all()->where('id_subscripcion',$id)->first();
         $InfoCategoria = Categoria::all();
         $InfoPlataforma = Plataforma::all();
-        return view('reviewProducto',compact('InfoSubcripcion','InfoJuego','InfoCategoria','InfoPlataforma','request'));
+        return view('reviewSub',compact('InfoSubcripcion','InfoCategoria','InfoPlataforma','request'));
     }
 
 

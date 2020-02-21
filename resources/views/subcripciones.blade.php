@@ -5,11 +5,19 @@
     <div class="container container-fluid">
         <div class="col-md-12">
             <div class="col-md-8">
-              <div class="form-group">
-               <h5>Buscar: </h5>
-                <input type="text" class="form-control" placeholder="Buscar...">
-              </div>
+                <h5>Buscar: </h5>
+                <form action="" class="">
+                <div class="row">
+                  <div class="form-group">
+                        <input type="search" name="buscador" id="buscador" class="form-control " style="width:500px;" placeholder="Buscar...">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Buscar">
+                </div>
             </div>
+            </form>
+                </div>
+
             <div class="col-md-4">
                <h5>Filtrar por Consola: </h5>
                <select name="" class="form-control" id="">
@@ -31,7 +39,7 @@
             <div class="col-sm-4 col-md-3">
 				<div class="thumbnail" >
 					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
-					<img src="https://production-gameflipusercontent.fingershock.com/us-east-1:664ca064-051c-4496-8b49-dc4a9c991987/2ffe09d3-c7a0-4802-8f1a-281c846bc889/8ec97db4-177e-4885-b350-21ead6b32265" class="img-responsive caratula">
+                <img src="{{$subcripcion->url_subscripcion}}" class="img-responsive caratula">
 					<div class="caption">
 						<div class="row">
 							<div class="col-md-6 col-xs-6">
@@ -44,7 +52,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12 text-center">
-                            <a href="{{route('review',$subcripcion->id_subscripcion)}}" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
+                            <a href="{{route('reviewSub',$subcripcion->id_subscripcion)}}" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
 						    </div>
 						<p> </p>
 					</div>

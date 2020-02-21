@@ -27,5 +27,5 @@ Route::get('juego','VistasController@vistajuego')->name('juego');
 //Vista Subscripciones
 Route::get('subscripciones','VistasController@vistaSubcripcion')->name('subcripciones');
 //Review Producto
-Route::get('Review/{id}','VistasController@vistaReview')->name('review');
-
+Route::get('ReviewJuego/{id}','VistasController@vistaReview')->name('review');
+Route::get('ReviewSub/{id}','VistasController@vistaReviewSub')->name('reviewSub');
