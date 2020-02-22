@@ -30,17 +30,16 @@ class VistasController extends Controller
             $InfoPlataforma = Plataforma::all();
             $consulta = Juego::all()->sortByDesc('id_juego')->take(9);
             $contador = DB::table('promociones')->count("*");
-            $contador2 = DB::table('ventas')->count("*");
+            $populares = DB::table('ventas')->join('codigos','codigos.id_codigo','=','ventas.id_codigo')->join('juegos','juegos.id_juego','=','codigos.id_juego')->select('juegos.id_juego','juegos.nombre_juego','juegos.url_juego','juegos.precio_juego',DB::raw('count(*) as totalV'))->groupBy('id_juego','nombre_juego','url_juego','precio_juego')->orderBy('totalV','DESC')->take(4)->get();
             $ofertas = DB::table('promociones')->join('juegos','juegos.id_juego','=','promociones.id_juego')
                                                 ->join('ofertas','ofertas.id_oferta','=','promociones.id_oferta')->get();
-            $populares = DB::table('ventas')->join('codigos','codigos.id_codigo','=','codigos.id_codigo')
-                                                ->join('juegos','juegos.id_juego','=','codigos.id_juego')->get();                                  
-            //dd($populares);
+            
+           
             if($contador == 0){
                 $ofertas = "no";
             }
-            //dd($ofertas);
-            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request','consulta','ofertas'));
+            //dd($populares);
+            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request','consulta','ofertas','populares'));
 
         }
 
