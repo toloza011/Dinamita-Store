@@ -19,16 +19,27 @@ class VistasController extends Controller
             $InfoPlataforma = Plataforma::all();
             $InfoUser = DB::select("SELECT users.id, users.name, users.email FROM users WHERE users.id = '$idusuario' ");
             $nameUser = $InfoUser[0]->name;
-            $consulta = Juego::all()->sortByDesc('id_juego')->take(10);
+            $consulta = Juego::all()->sortByDesc('id_juego')->take(9);
+            $ofertas = DB::table('promociones')->join('juegos','juegos.id_juego','=','promociones.id_juego')
+                                                ->join('ofertas','ofertas.id_oferta','=','promociones.id_oferta')->get();
             session(['identificador' => $idusuario]);
             session(['nombre' => $nameUser]);
-            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request','consulta'));
+            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request','consulta','ofertas'));
         }else{
             $InfoCategoria = Categoria::all();
             $InfoPlataforma = Plataforma::all();
-            $consulta = Juego::all()->sortByDesc('id_juego')->take(10);
-
-            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request','consulta'));
+            $consulta = Juego::all()->sortByDesc('id_juego')->take(9);
+            $contador = DB::table('promociones')->count("*");
+            $populares = DB::table('ventas')->join('codigos','codigos.id_codigo','=','ventas.id_codigo')->join('juegos','juegos.id_juego','=','codigos.id_juego')->select('juegos.id_juego','juegos.nombre_juego','juegos.url_juego','juegos.precio_juego',DB::raw('count(*) as totalV'))->groupBy('id_juego','nombre_juego','url_juego','precio_juego')->orderBy('totalV','DESC')->take(4)->get();
+            $ofertas = DB::table('promociones')->join('juegos','juegos.id_juego','=','promociones.id_juego')
+                                                ->join('ofertas','ofertas.id_oferta','=','promociones.id_oferta')->get();
+            
+           
+            if($contador == 0){
+                $ofertas = "no";
+            }
+            //dd($populares);
+            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request','consulta','ofertas','populares'));
 
         }
 
@@ -58,9 +69,10 @@ class VistasController extends Controller
         $CategoriaJuego = DB::select("SELECT juegos_categoria.id_categoria FROM juegos_categoria WHERE juegos_categoria.id_juego = $id");
         $id_categoria=$CategoriaJuego[0]->id_categoria;
         $Categoria=Categoria::all()->where('id_categoria',$id_categoria);
+        $imgs=DB::select("SELECT imagenes.url FROM imagenes WHERE imagenes.id_juego = $id");
         $InfoPlataforma = Plataforma::all();
         $InfoCategoria=Categoria::all();
-        return view('reviewProducto',compact('CategoriaJuego','InfoJuego','InfoCategoria','Categoria','InfoPlataforma','request'));
+        return view('reviewProducto',compact('CategoriaJuego','InfoJuego','InfoCategoria','Categoria','InfoPlataforma','imgs','request'));
     }
     function vistaReviewSub(Request $request,$id){
         $InfoSubcripcion= Subcripcion::all()->where('id_subscripcion',$id)->first();

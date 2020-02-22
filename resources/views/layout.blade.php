@@ -957,8 +957,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- end:: Subheader -->
 
                     <!-- begin:: Content -->
-
+                    <div class="card card-solid">
                     @yield('content')
+                    </div>
                     <!-- CONTENIDO DE LA PAGINAAAAA AQUIIII -->
 
                     <!-- end:: Content -->
