@@ -1,68 +1,57 @@
 @extends('layout')
 
 @section('content')
-<!-- SILEDER OFERTAS -->
-<link rel="stylesheet" href="css/flexslider.css" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script src="{{asset('/js/jquery.flexslider.js')}}"></script>
-<script type="text/javascript" charset="utf-8">
-  $(window).load(function() {
-    $('.flexslider').flexslider({
-    	touch: true,
-    	pauseOnAction: false,
-    	pauseOnHover: false,
-    });
-  });
-</script>
-<style>
-@font-face {
-  font-family:'flexslider-icon';
-  src: url('../fonts/flexslider-icon.eot');
-  src: url('../fonts/flexslider-icon.eot?#iefix') format('embedded-opentype'), url('../fonts/flexslider-icon.woff') 
-  format('woff'), url('../fonts/flexslider-icon.ttf') format('truetype'), url('../fonts/flexslider-icon.svg#flexslider-icon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}</style>
-<!-- EDN SLIDER OFERTA -->
-<link rel="stylesheet"  href="{{asset('css/estilos.css')}}" >
+
+<link rel="stylesheet" href="{{asset('css/estilos.css')}}">
+<link rel="stylesheet" href="{{asset('css/slider.css')}}">
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
 <div class="card card-solid">
-<div align ="center"class="container" style="margin-top:4%;">
-<h1><b>NOVEDADES</b></h1>
-</div>
-<div class="row justify-content-center">
-	<div class="carrusel-all" style="margin-top:3%">
-    	<div align="center"class="content-carrousel">
-        	@foreach($consulta as $item)
-        		<figure><a href="{{route('review',$item->id_juego)}}"><img src="{{asset($item->url_juego)}}"></a></figure>
-        	@endforeach
-    	</div>
+	<div class="container" align="center" style="margin-top:4%">
+		<h1><strong>NOVEDADES</strong></h1>
+	</div>
+	<div class="row justify-content-center" style="margin-top:4%">
+		<div class="carrusel-all">
+			<div align="center" class="content-carrousel" >
+				@foreach($consulta as $item)
+				<figure><a href="{{route('review',$item->id_juego)}}"><img src="{{asset($item->url_juego)}}"></a></figure>
+				@endforeach
+			</div>
+		</div>
+
+	</div>
+	<div class="container" align="center" style="margin-top:2%">
+		<h1><strong>ULTIMAS OFERTAS</strong></h1>
+	</div>
+
+	<div class="container" style="width:80%;margin-top:4%">
+
+		<div class="highlight-main">
+		@foreach($consulta as $item)
+			<div class="carousel-cell">
+			<a href="{{route('review',$item->id_juego)}}"><img align="center" style="width:100%; height:400px" src="{{asset($item->url_juego)}}"></a>
+				<div>hola</div>
+			</div>
+		@endforeach
+		
+		</div>
+		<div class="highlight-thumbs">
+		@foreach($consulta as $item)
+			<div class="carousel-cell">
+			<a href="{{route('review',$item->id_juego)}}"><img style="width:200px; height:100px"src="{{asset($item->url_juego)}}"></a>
+			</div>
+			@endforeach
+			<div class="carousel-scrollbar is-hidden">
+				<div class="carousel-scrollbar-inner"></div>
+			</div>
+		</div>
+		<script src="js/slider2.js"></script>
 	</div>
 </div>
 
-<div class="flexslider">
-		<ul class="slides">
-			<li>
-				<img src="	assets/media/juegos/Celeste.png" alt="">
-				<section class="flex-caption">
-					<p>LOREM IPSUM 1</p>
-				</section>
-			</li>
-			<li>
-				<img src="assets/media/juegos/DarkSouls3.jpg" alt="">
-				<section class="flex-caption">
-					<p>LOREM IPSUM 2</p>
-				</section>
-			</li>
-			<li>
-				<img src="assets/media/juegos/AssassinCreedO.jpg" alt="">
-				<section class="flex-caption">
-					<p>LOREM IPSUM 3</p>
-				</section>
-			</li>
-		</ul>
-	</div>
 
-</div>
 
 
 

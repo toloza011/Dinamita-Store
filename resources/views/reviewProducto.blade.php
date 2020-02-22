@@ -7,18 +7,16 @@
     <!-- Default box -->
     <div class="card card-solid">
         <div class="card-body">
-            <div class="row">
+            <div style="margin-top:5%"class="row">
                 <div class="col-12 col-sm-6">
                     <h3 class="d-inline-block d-sm-none">Titulo</h3>
-                    <div class="col-12">
-                        <img src="{{asset($InfoJuego->url_juego)}}" class="product-image" alt="Product Image">
+                    <div style="width:600px;"class="col-12">
+                        <img style="width:600px;height:300px"src="{{asset($InfoJuego->url_juego)}}" class="product-image" alt="Product Image">
                     </div>
                     <div class="col-12 product-image-thumbs">
-                        <div class="product-image-thumb active"><img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" alt="Product Image"></div>
-                        <div class="product-image-thumb"><img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" alt="Product Image"></div>
-                        <div class="product-image-thumb"><img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" alt="Product Image"></div>
-                        <div class="product-image-thumb"><img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" alt="Product Image"></div>
-                        <div class="product-image-thumb"><img src="https://www.minecraft.net/content/dam/minecraft/home/Games_Subnav_Minecraft-228x350.png" alt="Product Image"></div>
+                        @foreach($imgs as $item)
+                        <div class="product-image-thumb active"><img src="{{asset($item->url)}}" alt="Product Image"></div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-12 col-sm-6">
