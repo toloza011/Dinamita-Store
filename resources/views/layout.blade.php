@@ -1402,7 +1402,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="kt-portlet__foot">
                                 <div class="kt-chat__input">
                                     <div class="kt-chat__editor">
-                                        <textarea placeholder="Type here..." style="height: 50px"></textarea>
+                                        <!-- <textarea placeholder="Type here..." style="height: 50px"></textarea> -->
                                     </div>
                                     <div class="kt-chat__toolbar">
                                         <div class="kt_chat__tools">
