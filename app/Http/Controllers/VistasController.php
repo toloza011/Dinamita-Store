@@ -19,17 +19,27 @@ class VistasController extends Controller
             $InfoPlataforma = Plataforma::all();
             $InfoUser = DB::select("SELECT users.id, users.name, users.email FROM users WHERE users.id = '$idusuario' ");
             $nameUser = $InfoUser[0]->name;
-            $consulta = Juego::all()->sortByDesc('id_juego')->take(10);
+            $consulta = Juego::all()->sortByDesc('id_juego')->take(9);
+            $ofertas = DB::table('promociones')->join('juegos','juegos.id_juego','=','promociones.id_juego')
+                                                ->join('ofertas','ofertas.id_oferta','=','promociones.id_oferta')->get();
             session(['identificador' => $idusuario]);
             session(['nombre' => $nameUser]);
-            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request','consulta'));
+            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request','consulta','ofertas'));
         }else{
             $InfoCategoria = Categoria::all();
             $InfoPlataforma = Plataforma::all();
-            $consulta = Juego::all()->sortByDesc('id_juego')->take(10);
+            $consulta = Juego::all()->sortByDesc('id_juego')->take(9);
+            $contador = DB::table('promociones')->count("*");
+            $contador2 = DB::table('ventas')->count("*");
             $ofertas = DB::table('promociones')->join('juegos','juegos.id_juego','=','promociones.id_juego')
                                                 ->join('ofertas','ofertas.id_oferta','=','promociones.id_oferta')->get();
-
+            $populares = DB::table('ventas')->join('codigos','codigos.id_codigo','=','codigos.id_codigo')
+                                                ->join('juegos','juegos.id_juego','=','codigos.id_juego')->get();                                  
+            //dd($populares);
+            if($contador == 0){
+                $ofertas = "no";
+            }
+            //dd($ofertas);
             return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request','consulta','ofertas'));
 
         }
