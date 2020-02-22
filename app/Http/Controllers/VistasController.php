@@ -27,10 +27,10 @@ class VistasController extends Controller
             $InfoCategoria = Categoria::all();
             $InfoPlataforma = Plataforma::all();
             $consulta = Juego::all()->sortByDesc('id_juego')->take(10);
-            $ofertas = DB::select("SELECT * FROM promociones");
-            $nombreOferta = DB:: select("SELECT ofertas.id_oferta, ofertas.nombre_oferta FROM ofertas" );
-            dd($nombreOferta);
-            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request','consulta'));
+            $ofertas = DB::table('promociones')->join('juegos','juegos.id_juego','=','promociones.id_juego')
+                                                ->join('ofertas','ofertas.id_oferta','=','promociones.id_oferta')->get();
+
+            return view('inicio', compact('InfoPlataforma', 'InfoCategoria','request','consulta','ofertas'));
 
         }
 

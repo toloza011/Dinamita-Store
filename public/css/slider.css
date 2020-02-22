@@ -2,7 +2,29 @@
     max-width: 100%;
     margin: 0 auto;
   
-  }
+}
+
+.container1{
+  background-color: black;
+  color: white;
+  height: 90px;
+}
+
+
+.oferta{
+  background-color: rgb(80,107,20);
+  color: rgb(142,173,50);
+  width: 8%;
+  
+  margin-left:10px;
+  margin-bottom: 10px;
+}
+.container2{
+  background-color: rgb(55,67,88);
+  margin-left:10px;
+  margin-bottom: 10px;
+  width: 8%;
+}
   
   /* Main Carousel */
   .highlight-main .carousel-cell,
