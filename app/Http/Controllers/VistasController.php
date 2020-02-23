@@ -30,7 +30,7 @@ class VistasController extends Controller
             $InfoPlataforma = Plataforma::all();
             $consulta = Juego::all()->sortByDesc('id_juego')->take(9);
             $contador = DB::table('promociones')->count("*");
-            $populares = DB::table('ventas')->join('codigos','codigos.id_codigo','=','ventas.id_codigo')->join('juegos','juegos.id_juego','=','codigos.id_juego')->select('juegos.id_juego','juegos.nombre_juego','juegos.url_juego','juegos.precio_juego',DB::raw('count(*) as totalV'))->groupBy('id_juego','nombre_juego','url_juego','precio_juego')->orderBy('totalV','DESC')->take(4)->get();
+            $populares = DB::table('ventas')->join('codigos','codigos.id_codigo','=','ventas.id_codigo')->join('juegos','juegos.id_juego','=','codigos.id_juego')->join('plataformas','plataformas.id_plataforma','=','juegos.id_plataforma')->select('juegos.id_juego','juegos.nombre_juego','juegos.url_juego','juegos.precio_juego','plataformas.nombre_plataforma',DB::raw('count(*) as totalV'))->groupBy('id_juego','nombre_juego','url_juego','precio_juego','nombre_plataforma')->orderBy('totalV','DESC')->take(4)->get();
             $ofertas = DB::table('promociones')->join('juegos','juegos.id_juego','=','promociones.id_juego')
                                                 ->join('ofertas','ofertas.id_oferta','=','promociones.id_oferta')->get();
             
@@ -88,6 +88,19 @@ class VistasController extends Controller
 
        // dd($InfoUser);
         return view('registro',compact('InfoCategoria','InfoPlataforma','request'));
+    }
+
+    function buscar(Request $request){
+        $InfoCategoria = Categoria::all();
+        $InfoPlataforma = Plataforma::all();
+
+        $clave = $_GET['buscador'];
+
+        $consulta = DB::table('juegos')->select('*')->where('nombre_juego','like',"%$clave%")->get();
+        $consulta2 = DB::table('subscripciones')->select('*')->where('tipo_subscripcion','like',"%$clave%")->get();
+        //dd($consulta);
+        return view('buscador',compact('InfoCategoria','InfoPlataforma','request','consulta','consulta2'));
+
     }
 
 
