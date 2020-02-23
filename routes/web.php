@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,7 @@
 */
 
 //Inicio
-Route::get('/', 'VistasController@inicio')->name('home');
+Route::get('/','VistasController@inicio')->name('home');
 
 //Login-Registrar-Logout
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -26,5 +28,13 @@ Route::get('registrar','VistasController@registrar')->name('registrar');
 Route::get('juego','VistasController@vistajuego')->name('juego');
 //Vista Subscripciones
 Route::get('subscripciones','VistasController@vistaSubcripcion')->name('subcripciones');
+//Review Producto
+Route::get('ReviewJuego/{id}','VistasController@vistaReview')->name('review');
+Route::get('ReviewSub/{id}','VistasController@vistaReviewSub')->name('reviewSub');
 
+Route::get('Agregar',function(Request $request){
+    $InfoCategoria = App\Categoria::all();
+    $InfoPlataforma = App\Plataforma::all();
 
+   return view('agregarJuego',compact('InfoPlataforma', 'InfoCategoria','request'));
+});

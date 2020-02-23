@@ -1,6 +1,6 @@
 
 .carrusel-all{
-    width: 190px;
+    width: 240px;
     margin: auto;
     perspective: 800px;
     position: relative;
@@ -32,37 +32,35 @@
 }
 
 .content-carrousel figure:nth-child(1){
-    transform: rotateY(36deg) translateZ(300px);
+    transform: rotateY(0deg) translateZ(300px);
 }
 
 .content-carrousel figure:nth-child(2){
-    transform: rotateY(72deg) translateZ(300px);
+    transform: rotateY(45deg) translateZ(300px);
 }
 
 .content-carrousel figure:nth-child(3){
-    transform: rotateY(108deg) translateZ(300px);
+    transform: rotateY(90deg) translateZ(300px);
 }
 .content-carrousel figure:nth-child(4){
-    transform: rotateY(144deg) translateZ(300px);
+    transform: rotateY(135deg) translateZ(300px);
 }
 .content-carrousel figure:nth-child(5){
     transform: rotateY(180deg) translateZ(300px);
 }
 .content-carrousel figure:nth-child(6){
-    transform: rotateY(216deg) translateZ(300px);
+    transform: rotateY(225deg) translateZ(300px);
 }
 .content-carrousel figure:nth-child(7){
-    transform: rotateY(252deg) translateZ(300px);
+    transform: rotateY(270deg) translateZ(300px);
 }
 .content-carrousel figure:nth-child(8){
-    transform: rotateY(288deg) translateZ(300px);
+    transform: rotateY(315deg) translateZ(300px);
 }
 .content-carrousel figure:nth-child(9){
-    transform: rotateY(324deg) translateZ(300px);
-}
-.content-carrousel figure:nth-child(10){
     transform: rotateY(360deg) translateZ(300px);
 }
+
 
 .content-carrousel img{
     width: 100%;

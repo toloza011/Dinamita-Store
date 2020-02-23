@@ -21,7 +21,7 @@
 
 		@if(Session::has('mensaje'))
 			    <div class="alert alert-danger col-12 col-md-4"><em> {!! session('mensaje') !!}</em></div>
-				@endif
+		@endif
 		</div>
 				<div class="kt-login__signin">
 					<div class="kt-login__head">
