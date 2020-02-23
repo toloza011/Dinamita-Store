@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +33,9 @@ Route::get('ReviewJuego/{id}','VistasController@vistaReview')->name('review');
 Route::get('ReviewSub/{id}','VistasController@vistaReviewSub')->name('reviewSub');
 
 Route::get('buscar','VistasController@buscar')->name('buscar');
+Route::get('Agregar',function(Request $request){
+    $InfoCategoria = App\Categoria::all();
+    $InfoPlataforma = App\Plataforma::all();
+
+   return view('agregarJuego',compact('InfoPlataforma', 'InfoCategoria','request'));
+});
