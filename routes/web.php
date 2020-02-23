@@ -11,20 +11,20 @@
 |
 */
 
-Route::get('/', 'tablaController@inicio')->name('home');
+//Inicio
+Route::get('/', 'VistasController@inicio')->name('home');
 
+//Login-Registrar-Logout
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('validacion','Auth\LoginController@login')->name('validacion');
 Route::get('logout','Auth\LoginController@logout')->name('logout');
-
-Route::get('registrar','VistaInicioController@registrar')->name('registrar');
-
-/* function(){return view('registro');} */
-
 Route::post('registro','Auth\RegisterController@create')->name('registro');
 
-Route::get('vistainicio','VistaInicioController@index')->name('vistainicio');
-
-Route::get('juego','VistaInicioController@vistajuego')->name('juego');
+//Vista Registrar
+Route::get('registrar','VistasController@registrar')->name('registrar');
+//Vista Juego
+Route::get('juego','VistasController@vistajuego')->name('juego');
+//Vista Subscripciones
+Route::get('subscripciones','VistasController@vistaSubcripcion')->name('subcripciones');
 
 

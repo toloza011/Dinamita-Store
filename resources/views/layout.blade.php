@@ -22,14 +22,22 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!--begin::Fonts -->
+
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
         <!--end::Fonts -->
 
         <!--begin::Page Vendors Styles(used by this page) -->
         <link href="/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
         <!--end::Page Vendors Styles -->
-        
-        
+        <link rel="stylesheet" href="assets/css/catalogo.css">
+
         <!--begin::Global Theme Styles(used by all pages) -->
         <link href="/assets/vendors/global/vendors.bundle.css" rel="stylesheet" type="text/css" />
         <link href="/assets/css/demo12/style.bundle.css" rel="stylesheet" type="text/css" />
@@ -37,8 +45,16 @@ License: You must have a valid license purchased only from themeforest(the above
 
         <!--begin::Layout Skins(used by all pages) -->
         <!--end::Layout Skins -->
-
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+            body {
+                font-family: 'Montserrat', sans-serif;
+        /* Otro ejemplo */
+            }
+        </style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
         <link rel="shortcut icon" href="/assets/media/logos/favicon-web.png" />
+
     </head>
     <!-- end::Head -->
 
@@ -76,7 +92,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			        <button class="kt-aside__brand-aside-toggler" id="kt_aside_toggler"><span></span></button>
 		        </div>
 	        </div>
-            <!-- end:: Aside -->	
+            <!-- end:: Aside -->
             <!-- begin:: Aside Menu -->
 
 
@@ -91,7 +107,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 ------------------------------------------------------------------------>
 
             <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
-	            <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">		
+	            <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 		            <ul class="kt-menu__nav ">
                         <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true" >
                             <a  href="{{route('home')}}" class="kt-menu__link ">
@@ -125,7 +141,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </a>
                                     </li>
                                     @endforeach
-                                   
+
                                 </ul>
                             </div>
                         </li>
@@ -172,7 +188,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="kt-menu__submenu ">
                                 <span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
-                                 
+
                                     @foreach($InfoPlataforma as $item)
                                     <li class="kt-menu__item " aria-haspopup="true" >
                                         <a  href="demo12/layout/skins/aside-light.html" class="kt-menu__link ">
@@ -181,7 +197,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </a>
                                     </li>
                                     @endforeach
-                              
+
                                 </ul>
                             </div>
                         </li>
@@ -195,26 +211,26 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 
-<!-- end:: Aside -->			
+<!-- end:: Aside -->
 			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 				<!-- begin:: Header -->
 <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed " >
 			<!-- begin: Header Menu -->
 <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
 <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
-	
+
 	<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default "  >
 		<ul class="kt-menu__nav ">
             <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
                 <a  href="{{route('juego')}}" class="kt-menu__link "><span class="kt-menu__link-text">Juegos</span></a>
             </li>
             <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
-                <a  href="demo12/index.html" class="kt-menu__link "><span class="kt-menu__link-text">Subscripciones</span></a>
+            <a  href="{{route('subcripciones')}}" class="kt-menu__link "><span class="kt-menu__link-text">Subscripciones</span></a>
             </li>
             <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
-                <a  href="demo12/index.html" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relampago</span></a>
+                <a  href="ofertas" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relampago</span></a>
             </li>
-        </ul>    
+        </ul>
     </div>
 </div>
 <!-- end: Header Menu -->		<!-- begin:: Header Topbar -->
@@ -246,15 +262,15 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--end: Search -->
 
 <!--begin: Notifications -->
-    
+
     <div class="kt-header__topbar-item dropdown">
         <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px" aria-expanded="true">
             <span class="kt-header__topbar-icon kt-pulse kt-pulse--brand">
                                     <i class="flaticon2-bell-alarm-symbol"></i>
                                 <span class="kt-pulse__ring"></span>
-            </span>            
+            </span>
             <!--
-                Use dot badge instead of animated pulse effect: 
+                Use dot badge instead of animated pulse effect:
                 <span class="kt-badge kt-badge--dot kt-badge--notify kt-badge--sm kt-badge--brand"></span>
             -->
         </div>
@@ -644,7 +660,7 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
     </div>
 <!--end: Notifications --><!--begin: Quick Actions -->
-    
+
     <div class="kt-header__topbar-item dropdown">
         <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px" aria-expanded="true">
             <span class="kt-header__topbar-icon">
@@ -656,7 +672,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--begin: Head -->
     <div class="kt-head kt-head--skin-dark" style="background-image: url(./assets/media/misc/bg-1.jpg)">
         <h3 class="kt-head__title">
-            User Quick Actions 
+            User Quick Actions
             <span class="kt-space-15"></span>
             <span class="btn btn-success btn-sm btn-bold btn-font-md">23 tasks pending</span>
         </h3>
@@ -736,19 +752,19 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="kt-mycart__head kt-head" style="background-image: url(./assets/media/misc/bg-1.jpg);">
             <div class="kt-mycart__info">
                 <span class="kt-mycart__icon"><i class="flaticon2-shopping-cart-1 kt-font-success"></i></span>
-                <h3 class="kt-mycart__title">My Cart</h3>
-            </div> 
+                <h3 class="kt-mycart__title">Mi Carrito</h3>
+            </div>
             <div class="kt-mycart__button">
                 <button type="button" class="btn btn-success btn-sm" style=" ">2 Items</button>
-            </div>                
-        </div>        
-    
+            </div>
+        </div>
+
     <div class="kt-mycart__body kt-scroll" data-scroll="true" data-height="245" data-mobile-height="200">
         <div class="kt-mycart__item">
             <div class="kt-mycart__container">
                 <div class="kt-mycart__info">
                     <a href="#" class="kt-mycart__title">
-                        Samsung                      
+                        Samsung
                     </a>
                     <span class="kt-mycart__desc">
                         Profile info, Timeline etc
@@ -760,21 +776,21 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="kt-mycart__quantity">7</span>
                         <a href="#" class="btn btn-label-success btn-icon">&minus;</a>
                         <a href="#" class="btn btn-label-success btn-icon">&plus;</a>
-                    </div>    
+                    </div>
                 </div>
-                
+
                 <a href="#" class="kt-mycart__pic">
                     <img src="
                     /assets/media/products/product9.jpg" title="">
-                </a>    
-            </div>     			 
+                </a>
+            </div>
         </div>
 
         <div class="kt-mycart__item">
             <div class="kt-mycart__container">
                 <div class="kt-mycart__info">
                     <a href="#" class="kt-mycart__title">
-                        Panasonic                       
+                        Panasonic
                     </a>
 
                     <span class="kt-mycart__desc">
@@ -786,22 +802,22 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="kt-mycart__text">for</span>
                         <span class="kt-mycart__quantity">1</span>
                         <a href="#" class="btn btn-label-success btn-icon">&minus;</a>
-                        <a href="#" class="btn btn-label-success btn-icon">&plus;</a>                          
-                    </div>    
+                        <a href="#" class="btn btn-label-success btn-icon">&plus;</a>
+                    </div>
                 </div>
-                
+
                 <a href="#" class="kt-mycart__pic">
                     <img src="
                     /assets/media/products/product13.jpg" title="">
-                </a>     
-            </div>     			 
-        </div>    
-        
+                </a>
+            </div>
+        </div>
+
         <div class="kt-mycart__item">
             <div class="kt-mycart__container">
                 <div class="kt-mycart__info">
                     <a href="#" class="kt-mycart__title">
-                        Fujifilm                       
+                        Fujifilm
                     </a>
                     <span class="kt-mycart__desc">
                         Profile info, Timeline etc
@@ -813,21 +829,21 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="kt-mycart__quantity">6</span>
                         <a href="#" class="btn btn-label-success btn-icon">&minus;</a>
                         <a href="#" class="btn btn-label-success btn-icon">&plus;</a>
-                    </div>    
+                    </div>
                 </div>
-                
+
                 <a href="#" class="kt-mycart__pic">
                     <img src="
                     /assets/media/products/product16.jpg" title="">
-                </a>    
-            </div>     			 
+                </a>
+            </div>
         </div>
 
         <div class="kt-mycart__item">
             <div class="kt-mycart__container">
                 <div class="kt-mycart__info">
                     <a href="#" class="kt-mycart__title">
-                        Candy Machine                      
+                        Candy Machine
                     </a>
 
                     <span class="kt-mycart__desc">
@@ -839,16 +855,16 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="kt-mycart__text">for</span>
                         <span class="kt-mycart__quantity">4</span>
                         <a href="#" class="btn btn-label-success btn-icon">&minus;</a>
-                        <a href="#" class="btn btn-label-success btn-icon">&plus;</a>                       
-                    </div>    
+                        <a href="#" class="btn btn-label-success btn-icon">&plus;</a>
+                    </div>
                 </div>
-                
+
                 <a href="#" class="kt-mycart__pic">
                     <img src="
                     /assets/media/products/product15.jpg" title="" alt="">
-                </a>     
-            </div>     			 
-        </div>          
+                </a>
+            </div>
+        </div>
     </div>
 
     <div class="kt-mycart__footer">
@@ -856,14 +872,14 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="kt-mycart__subtitel">
                 <span>Sub Total</span>
                 <span>Taxes</span>
-                <span>Total</span>                    
-            </div>  
-                    
+                <span>Total</span>
+            </div>
+
             <div class="kt-mycart__prices">
-                <span>$ 840.00</span> 
-                <span>$ 72.00</span> 
+                <span>$ 840.00</span>
+                <span>$ 72.00</span>
                 <span class="kt-font-brand">$ 912.00</span>
-            </div>  
+            </div>
         </div>
         <div class="kt-mycart__button kt-align-right">
             <button type="button" class="btn btn-primary btn-sm">Place Order</button>
@@ -881,7 +897,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
         <!-- nombre_usuario -->
-        
+
         <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
             <div class="kt-header__topbar-user">
             <span class="kt-header__topbar-welcome kt-hidden-mobile">Hola,</span>
@@ -993,46 +1009,47 @@ License: You must have a valid license purchased only from themeforest(the above
             <li class="kt-menu__item  kt-menu__item--active "  aria-haspopup="true">
                 <a  href="registrar" class="kt-menu__link "><span class="kt-menu__link-text">Registrate</span></a>
             </li>
-        </ul>    
+        </ul>
     </div>
-@endif    
+@endif
 <!--end: Head -->
 
 
 <!--end: User Bar -->
-	
+
 </div>
 <!-- end:: Header Topbar --></div>
 <!-- end:: Header -->
 
 				<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-											
+
 <!-- begin:: Subheader -->
 
 <!-- dashboard -->
 <div class="kt-subheader   kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
-            
-        </div>   
+           <h3><i class="fa fa-angle-right"></i>@yield('url','Bienvenido')</h3>
+        </div>
     </div>
 </div>
+
 <!-- end:: Subheader -->
-					
+
 <!-- begin:: Content -->
 
 @yield('content')
     <!-- CONTENIDO DE LA PAGINAAAAA AQUIIII -->
-    
 
-    
-<!-- end:: Content -->				
+
+
+<!-- end:: Content -->
 
 				<!-- begin:: Footer -->
 <div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
 	<div class="kt-container  kt-container--fluid ">
 		<div class="kt-footer__copyright">
-			2018&nbsp;&copy;&nbsp;<a href="https://www.instagram.com/diego_ignacio_o/" target="_blank" class="kt-link">Equipo Dinamita</a>
+			2020&nbsp;&copy;&nbsp;<a href="https://www.instagram.com/diego_ignacio_o/" target="_blank" class="kt-link">Equipo Dinamita</a>
 		</div>
 		<div class="kt-footer__menu">
 			<a href="https://www.instagram.com/neokayzer/" target="_blank" class="kt-footer__menu-link kt-link">Nosotros</a>
@@ -1046,12 +1063,12 @@ License: You must have a valid license purchased only from themeforest(the above
 	</div>
 <!-- end:: Page -->
 
-	
-	
-	
-	
 
-	
+
+
+
+
+
 
     <!-- begin::Scrolltop -->
 <div id="kt_scrolltop" class="kt-scrolltop">
@@ -1095,9 +1112,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo1.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo1/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 2
@@ -1107,9 +1124,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo2.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo2/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 3
@@ -1119,9 +1136,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo3.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo3/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 4
@@ -1131,9 +1148,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo4.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo4/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 5
@@ -1143,9 +1160,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo5.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo5/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 6
@@ -1155,9 +1172,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo6.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo6/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 7
@@ -1167,9 +1184,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo7.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo7/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 8
@@ -1179,9 +1196,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo8.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo8/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 9
@@ -1191,9 +1208,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo9.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo9/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 10
@@ -1203,9 +1220,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo10.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo10/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 11
@@ -1215,9 +1232,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo11.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo11/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item kt-demo-panel__item--active">
                     <div class="kt-demo-panel__item-title">
                         Demo 12
@@ -1227,9 +1244,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo12.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="demo12/index.html" class="btn btn-brand btn-elevate " target="_blank">Preview</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 13
@@ -1239,9 +1256,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo13.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="#" class="btn btn-brand btn-elevate disabled" >Coming soon</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div><div class="kt-demo-panel__item ">
                     <div class="kt-demo-panel__item-title">
                         Demo 14
@@ -1251,9 +1268,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         /assets/media/demos/preview/demo14.jpg" alt=""/>
                         <div class="kt-demo-panel__item-preview-overlay">
                             <a href="#" class="btn btn-brand btn-elevate disabled" >Coming soon</a>
-                            
+
                         </div>
-                    </div>                    
+                    </div>
                 </div>
 		<a href="https://1.envato.market/EA4JP" target="_blank" class="kt-demo-panel__purchase btn btn-brand btn-elevate btn-bold btn-upper">
 			Buy Metronic Now!
@@ -1261,7 +1278,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</div>
 </div>
 <!-- end::Demo Panel -->
-	
+
 
 <!--Begin:: Chat-->
 <div class="modal fade- modal-sticky-bottom-right" id="kt_chat_modal" role="dialog" data-backdrop="false">
@@ -1475,7 +1492,6 @@ License: You must have a valid license purchased only from themeforest(the above
     </div>
 </div>
 <!--ENd:: Chat-->
-
         <!-- begin::Global Config(global config for global JS sciprts) -->
         <script>
             var KTAppOptions = {"colors":{"state":{"brand":"#2c77f4","light":"#ffffff","dark":"#282a3c","primary":"#5867dd","success":"#34bfa3","info":"#36a3f7","warning":"#ffb822","danger":"#fd3995"},"base":{"label":["#c5cbe3","#a1a8c3","#3d4465","#3e4466"],"shape":["#f0f3ff","#d9dffa","#afb4d4","#646c9a"]}}};
@@ -1496,11 +1512,16 @@ License: You must have a valid license purchased only from themeforest(the above
                             <script src="
                             /assets/vendors/custom/gmaps/gmaps.js" type="text/javascript"></script>
                         <!--end::Page Vendors -->
-         
+
                     <!--begin::Page Scripts(used by this page) -->
                             <script src="
                             /assets/js/demo12/pages/dashboard.js" type="text/javascript"></script>
-                        <!--end::Page Scripts -->
+                            <script>
+                                $(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+                            </script>
+                            <!--end::Page Scripts -->
             </body>
     <!-- end::Body -->
 </html>
