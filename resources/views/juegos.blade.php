@@ -36,10 +36,10 @@
   <div class="container container-fluid">
     <div class="row">
     	<div class="col-md-12">
-            @foreach($InfoJuego as $juego)
+            @foreach($allJuegos as $juego)
             <div class="col-sm-4 col-md-3">
 				<div class="thumbnail" >
-					<h4 class="text-center"><span class="label label-info">Samsung</span></h4>
+					<h4 class="text-center"><span class="badge badge-dark">{{$juego->nombre_plataforma}}</span></h4>
                 <img src="{{asset($juego->url_juego)}}" class="img-responsive caratula">
 					<div class="caption">
 						<div class="row">
@@ -51,22 +51,28 @@
 								<label>${{$juego->precio_juego}}</label></h5>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
-                            <a href="{{route('review',$juego->id_juego)}}" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a></div>
+						<div style="" class="row text-center ">
+							<div class="col-md-6">
+                            <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
+							</div>
+							<div class="col-md-6">
+							<a href="{{route('review',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)"class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
 						    </div>
+							</div>
 						<p></p>
 					</div>
 				</div>
             </div>
             @endforeach
-
+            
 
 
         </div>
             </div>
         </div>
-
+        <div >
+        {{ $allJuegos->links() }}
+        </div>
 <!---fin catalogo--->
 
 @endsection
