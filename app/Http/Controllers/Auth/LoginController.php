@@ -48,12 +48,13 @@ class LoginController extends Controller
             $contador = DB::table('promociones')->count("*");
             $ofertas = DB::table('promociones')->join('juegos','juegos.id_juego','=','promociones.id_juego')
                                                 ->join('ofertas','ofertas.id_oferta','=','promociones.id_oferta')->get();
+            $populares = DB::table('ventas')->join('codigos', 'codigos.id_codigo', '=', 'ventas.id_codigo')->join('juegos', 'juegos.id_juego', '=', 'codigos.id_juego')->join('plataformas', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->select('juegos.id_juego', 'juegos.nombre_juego', 'juegos.url_juego', 'juegos.precio_juego', 'plataformas.nombre_plataforma', DB::raw('count(*) as totalV'))->groupBy('id_juego', 'nombre_juego', 'url_juego', 'precio_juego', 'nombre_plataforma')->orderBy('totalV', 'DESC')->take(4)->get();
             session(['identificador' => $idusuario]);
             session(['nombre' => $nameUser]);
             if($contador == 0){
                 $ofertas = "no";
             }
-            return view('inicio', compact('InfoUser', 'InfoPlataformaJ','InfoPlataformaS', 'InfoCategoria','request','consulta','ofertas'));
+            return view('inicio', compact('InfoUser', 'InfoPlataformaJ','InfoPlataformaS', 'InfoCategoria','request','consulta','ofertas','populares'));
         }
         return back()   ->withErrors(['email'=>'Estas credenciales no coinciden con nuestros registros'])
                         ->withInput(request(['email']));

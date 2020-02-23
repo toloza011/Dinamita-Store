@@ -745,7 +745,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <h3 class="kt-mycart__title">Mi Carrito</h3>
                                             </div>
                                             <div class="kt-mycart__button">
-                                                <button type="button" class="btn btn-success btn-sm" style=" ">2 Items</button>
+                                                <button type="button" class="btn btn-success btn-sm" >2 Items</button>
                                             </div>
                                         </div>
                              <!------ITEM CARRITO-------------->
@@ -1455,3 +1455,4 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- end::Body -->
 
 </html>
+

@@ -32,11 +32,13 @@ Route::get('subscripciones','VistasController@vistaSubcripcion')->name('subcripc
 Route::get('ReviewJuego/{id}','VistasController@vistaReview')->name('review');
 Route::get('ReviewSub/{id}','VistasController@vistaReviewSub')->name('reviewSub');
 
+Route::get('Categoria/{id}','VistasController@vistaCategoria')->name('categoria');
+
 Route::get('buscar','VistasController@buscar')->name('buscar');
 Route::get('Agregar',function(Request $request){
     $InfoCategoria = App\Categoria::all();
-    $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('juegos','plataformas.id_plataforma','=','juegos.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
-    $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('subscripciones','plataformas.id_plataforma','=','subscripciones.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
+    $InfoPlataformaJ = App\Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('juegos','plataformas.id_plataforma','=','juegos.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
+    $InfoPlataformaS = App\Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('subscripciones','plataformas.id_plataforma','=','subscripciones.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
 
    return view('agregarJuego',compact('InfoPlataformaJ','InfoPlataformaS', 'InfoCategoria','request'));
 });

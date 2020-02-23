@@ -16,17 +16,9 @@
     <script>
         $( "select" )
             .change(function () {
-                var str;
-                $( "select option:selected" ).each(function() {
-                    str = $( this ).text();
-                });
-                if(str == "Categorias"){
-                    $( "#caca" ).text( str );
-                }else{
-                    $("#caca").text("");
-                }
+               alert();
                 
             })
-        .change();
+        ;
     </script>
 @endsection
