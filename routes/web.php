@@ -22,6 +22,9 @@ Route::post('validacion','Auth\LoginController@login')->name('validacion');
 Route::get('logout','Auth\LoginController@logout')->name('logout');
 Route::post('registro','Auth\RegisterController@create')->name('registro');
 
+//Vista Agregar
+Route::get('/getTableAll', 'AgregarJuegoController@getTableAll')->name('getTable');
+
 //Vista Registrar
 Route::get('registrar','VistasController@registrar')->name('registrar');
 //Vista Juego
@@ -32,9 +35,11 @@ Route::get('subscripciones','VistasController@vistaSubcripcion')->name('subcripc
 Route::get('ReviewJuego/{id}','VistasController@vistaReview')->name('review');
 Route::get('ReviewSub/{id}','VistasController@vistaReviewSub')->name('reviewSub');
 
+Route::get('buscar','VistasController@buscar')->name('buscar');
 Route::get('Agregar',function(Request $request){
     $InfoCategoria = App\Categoria::all();
-    $InfoPlataforma = App\Plataforma::all();
+    $InfoPlataformaJ = App\Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('juegos','plataformas.id_plataforma','=','juegos.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
+    $InfoPlataformaS = App\Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('subscripciones','plataformas.id_plataforma','=','subscripciones.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
 
-   return view('agregarJuego',compact('InfoPlataforma', 'InfoCategoria','request'));
+   return view('agregarJuego',compact('InfoPlataformaJ','InfoPlataformaS', 'InfoCategoria','request'));
 });

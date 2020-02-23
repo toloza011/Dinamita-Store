@@ -169,7 +169,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </span>
                                         </li>
 
-                                        @foreach($InfoPlataforma as $item)
+                                        @foreach($InfoPlataformaJ as $item)
                                         <li class="kt-menu__item " aria-haspopup="true">
                                             <a href="demo12/layout/skins/aside-light.html" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
@@ -198,7 +198,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <span class="kt-menu__arrow"></span>
                                     <ul class="kt-menu__subnav">
 
-                                        @foreach($InfoPlataforma as $item)
+                                        @foreach($InfoPlataformaS as $item)
                                         <li class="kt-menu__item " aria-haspopup="true">
                                             <a href="demo12/layout/skins/aside-light.html" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>

@@ -21,7 +21,7 @@
             <div class="col-md-4">
                <h5>Filtrar por Consola: </h5>
                <select name="" class="form-control" id="">
-                @foreach ($InfoPlataforma as $plataforma)
+                @foreach ($InfoPlataformaS as $plataforma)
                 <option value="{{$plataforma->nombre_plataforma}}">{{$plataforma->nombre_plataforma}}</option>
                 @endforeach
                </select>

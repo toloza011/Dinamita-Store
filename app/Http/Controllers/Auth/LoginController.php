@@ -25,8 +25,9 @@ class LoginController extends Controller
     }
     public function showLoginForm(Request $request){
         $InfoCategoria=Categoria::all();
-        $InfoPlataforma=Plataforma::all();
-        return view('login',compact('InfoCategoria','InfoPlataforma','request'));
+        $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('juegos','plataformas.id_plataforma','=','juegos.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
+        $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('subscripciones','plataformas.id_plataforma','=','subscripciones.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
+        return view('login',compact('InfoCategoria','InfoPlataformaJ','InfoPlataformaS','request'));
     }
 
     public function login(Request $request){
@@ -39,7 +40,8 @@ class LoginController extends Controller
         if(Auth::attempt($credentials, $request->has('remember')))
         {   $idusuario = Auth::user()->id;
             $InfoCategoria = Categoria::all();
-            $InfoPlataforma = Plataforma::all();
+            $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('juegos','plataformas.id_plataforma','=','juegos.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
+            $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('subscripciones','plataformas.id_plataforma','=','subscripciones.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
             $InfoUser = DB::select("SELECT users.id, users.name, users.email FROM users WHERE users.id = '$idusuario' ");
             $nameUser = $InfoUser[0]->name;
             $consulta = Juego::all()->sortByDesc('id_juego')->take(9);
@@ -51,7 +53,7 @@ class LoginController extends Controller
             if($contador == 0){
                 $ofertas = "no";
             }
-            return view('inicio', compact('InfoUser', 'InfoPlataforma', 'InfoCategoria','request','consulta','ofertas'));
+            return view('inicio', compact('InfoUser', 'InfoPlataformaJ','InfoPlataformaS', 'InfoCategoria','request','consulta','ofertas'));
         }
         return back()   ->withErrors(['email'=>'Estas credenciales no coinciden con nuestros registros'])
                         ->withInput(request(['email']));

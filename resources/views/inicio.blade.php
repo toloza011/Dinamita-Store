@@ -11,21 +11,20 @@
 <div class="container container-fluid">
         <div class="col-md-12">
             <div class="col-md-12">
-            <h5 style="margin-top:4%;color:black">Buscar: </h5>
-            <form  action="" class="">
-            <div class="row col-12">
-              	<div style="width:50%">
+            <form  action="{{route('buscar')}}" method="GET">
+            <div style="margin-top:10px"class="row justify-content-end">
+              	<div style="width:30%">
                 <input   type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
             	</div>
                 <input type="submit" class="btn btn-dark" value="Buscar">
-				
 			</div>	
+			</form>
 		</div>
 </div>
 
-	<div class="row justify-content-center" align="center" style="margin-top:200px">
-		<h1 style="font-family: fantasy;color:rgb(219,21,48)">N</h1>
-		<h1 style="font-family: fantasy;color:rgb(41,39,52)">OVEDADES</h1>
+	<div class="row justify-content-center" align="center" style="margin-top:100px">
+		<h1 style="font-family: fantasy;color:rgb(219,21,48); font-size:100px">N</h1>
+		<h1 style="font-family: fantasy;color:rgb(41,39,52);font-size:100px">OVEDADES</h1>
 	</div>
 	<div class="row justify-content-center">
 		<div class="carrusel-all">
@@ -85,9 +84,9 @@
 	<div class="container">
 	<h5 style="margin-top:80px;margin-left:1%; color:black"><b>Lo más vendido</b></h5>
 		@foreach($populares as $juego)
-            <div class="col-sm-4 col-md-3">
-				<div class="thumbnail" >
-					<h4 class="text-center"><span class="badge badge-dark">Samsung</span></h4>
+            <div  class="col-sm-4 col-md-3">
+				<div style="height:350px;" class="thumbnail" >
+					<h4 class="text-center"><span class="badge badge-dark">{{$juego->nombre_plataforma}}</span></h4>
                 <img src="{{asset($juego->url_juego)}}" class="img-responsive caratula">
 					<div class="caption">
 						<div class="row">
@@ -105,7 +104,7 @@
 								<label>${{$juego->precio_juego}}</label></h5>
 							</div>
 						</div>
-						<div class="row text-center">
+						<div style="" class="row text-center ">
 							<div class="col-md-6">
                             <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
 							</div>
