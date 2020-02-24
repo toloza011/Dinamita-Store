@@ -19,16 +19,6 @@
                 </select>
 
             </div>
-            <div class="col-md-8">
-                <form action="{{route('buscar')}}" method="GET">
-                    <div style="margin-top:10px" class="row justify-content-end">
-                        <div style="width:30%">
-                            <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
-                        </div>
-                        <input type="submit" class="btn btn-dark" value="Buscar">
-                    </div>
-                </form>
-            </div>
 
         </div>
     </div>
@@ -64,9 +54,15 @@
                             <div class="col-md-6">
                                 <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
                             </div>
+                            @if($request->session()->has('identificador'))
                             <div class="col-md-6">
-                                <a href="{{route('review',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                <a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
                             </div>
+                            @else
+                            <div class="col-md-6">
+                                <a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                            </div>
+                            @endif
                         </div>
                         <p></p>
                     </div>
@@ -84,11 +80,23 @@
 </div>
 <!---fin catalogo--->
 <script>
-  
-    $("#mySelect").change(function(){
-        
-      
+    $("#mySelect").change(function() {
+
+        var x = $("#mySelect").val();
+
+        ruta(x);
     });
+
+
+    function ruta(id) {
+
+
+        url = '{{ route("categoria", ":id") }}';
+
+        url = url.replace(':id', id);
+
+        location.href = url;
+
+    }
 </script>
 @endsection
-

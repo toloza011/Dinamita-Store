@@ -814,6 +814,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                         </div>
                         <!--end: My Cart -->
+
                         <div class="kt-header__topbar-item kt-header__topbar-item--user">
 
                             <!-- nombre_usuario -->
@@ -831,7 +832,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!--begin: Head -->
                                 <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(./assets/media/misc/bg-1.jpg)">
                                     <div class="kt-user-card__avatar">
-                                        <img class="kt-hidden" alt="Pic" src="/assets/media/users/300_25.jpg" />
+                                        <img class="kt-hidden" alt="Pic" src="
+            /assets/media/users/300_25.jpg" />
                                         <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
                                         <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">S</span>
                                     </div>
@@ -951,6 +953,18 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     <!-- begin:: Content -->
                     <div class="card card-solid">
+
+                   
+                            <form action="{{route('buscar')}}" method="GET">
+                                <div style="margin-top:10px;margin-right:50px" class="row justify-content-end">
+                                    <div style="width:30%">
+                                        <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
+                                    </div>
+                                    <input type="submit" class="btn btn-dark" value="Buscar">
+                                </div>
+                            </form>
+              
+
                         @yield('content')
                     </div>
                     <!-- CONTENIDO DE LA PAGINAAAAA AQUIIII -->
