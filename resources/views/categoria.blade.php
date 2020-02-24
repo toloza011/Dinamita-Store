@@ -5,7 +5,7 @@
 <div class="row">
     <div class="container container-fluid">
         <div class="col-md-12">
-            <div style="margin-top:4%" class="col-md-4">
+            <div style="margin-top:4%;margin-bottom:20px" class="col-md-4">
                 <h5 style="color:black">Filtrar por categoria: </h5>
                 <select style="width:300px" class="form-control" name="tablas" id="mySelect">
                     <option value="0" >Todos</option>
@@ -20,12 +20,12 @@
                 </select>
 
             </div>
-           
+            <div class="container"><h1 style="color:black;margin-left:10px"> <b>{{$Categoria->nombre_categoria}}</b></h1></div>
         </div>
     </div>
 </div>
 
-<div class="container"><h1 style="color:black;margin-top:20px"> <b>{{$Categoria->nombre_categoria}}</b></h1></div>
+
 
 <div class="container container-fluid">
     <div class="row">
