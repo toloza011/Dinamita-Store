@@ -20,22 +20,12 @@
                 </select>
 
             </div>
-            <div class="col-md-8">
-                <form action="{{route('buscar')}}" method="GET">
-                    <div style="margin-top:10px" class="row justify-content-end">
-                        <div style="width:30%">
-                            <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
-                        </div>
-                        <input type="submit" class="btn btn-dark" value="Buscar">
-                    </div>
-                </form>
-            </div>
-
+           
         </div>
     </div>
 </div>
 
-<div><h1>{{$Categoria->nombre_categoria}}</h1></div>
+<div class="container"><h1 style="color:black;margin-top:20px"> <b>{{$Categoria->nombre_categoria}}</b></h1></div>
 
 <div class="container container-fluid">
     <div class="row">

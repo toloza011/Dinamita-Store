@@ -110,11 +110,14 @@ class VistasController extends Controller
         $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         $clave = $_GET['buscador'];
+        $ofertas = DB::table('promociones')->join('juegos', 'juegos.id_juego', '=', 'promociones.id_juego')
+        ->join('ofertas', 'ofertas.id_oferta', '=', 'promociones.id_oferta')->get();
 
-        $consulta = DB::table('juegos')->select('*')->where('nombre_juego', 'like', "%$clave%")->get();
+
+        $consulta = DB::table('juegos')->select('*')->join('plataformas','plataformas.id_plataforma','=','juegos.id_plataforma')->where('nombre_juego', 'like', "%$clave%")->get();
         $consulta2 = DB::table('subscripciones')->select('*')->where('tipo_subscripcion', 'like', "%$clave%")->get();
         //dd($consulta);
-        return view('buscador', compact('InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request', 'consulta', 'consulta2'));
+        return view('buscador', compact('InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request', 'consulta', 'consulta2','ofertas','clave'));
     }
 
     function vistaCategoria(Request $request, $id)

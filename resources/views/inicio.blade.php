@@ -10,20 +10,8 @@
 
 
 <div class="container container-fluid">
-	<div class="col-md-12">
-		<div class="col-md-12">
-			<form action="{{route('buscar')}}" method="GET">
-				<div style="margin-top:10px" class="row justify-content-end">
-					<div style="width:30%">
-						<input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
-					</div>
-					<input type="submit" class="btn btn-dark" value="Buscar">
-				</div>
-			</form>
-		</div>
-	</div>
 
-	<div class="row justify-content-center" align="center" style="margin-top:100px">
+	<div class="row justify-content-center" align="center" style="margin-top:80px">
 		<h1 style="font-family: fantasy;color:rgb(219,21,48); font-size:100px">N</h1>
 		<h1 style="font-family: fantasy;color:rgb(41,39,52);font-size:100px">OVEDADES</h1>
 	</div>

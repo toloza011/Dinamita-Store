@@ -19,16 +19,6 @@
                 </select>
 
             </div>
-            <div class="col-md-8">
-                <form action="{{route('buscar')}}" method="GET">
-                    <div style="margin-top:10px" class="row justify-content-end">
-                        <div style="width:30%">
-                            <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
-                        </div>
-                        <input type="submit" class="btn btn-dark" value="Buscar">
-                    </div>
-                </form>
-            </div>
 
         </div>
     </div>
@@ -84,26 +74,23 @@
 </div>
 <!---fin catalogo--->
 <script>
-  
-    $("#mySelect").change(function(){
-        
+    $("#mySelect").change(function() {
+
         var x = $("#mySelect").val();
-    
-        ruta(x);  
+
+        ruta(x);
     });
 
 
-    function ruta(id){
+    function ruta(id) {
 
-       
+
         url = '{{ route("categoria", ":id") }}';
 
-        url = url.replace(':id',id);
+        url = url.replace(':id', id);
 
-        location.href=url;
+        location.href = url;
 
     }
-
 </script>
 @endsection
-
