@@ -770,7 +770,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <div class="kt-mycart__action">
                                                             @foreach($ofertas as $item2)
                                                             @if($item->id_juego == $item2->id_juego)
-                                                            <?php 
+                                                            <?php
                                                                 $item->precio_juego = $item2->precio_juego - (($item2->descuento * $item2->precio_juego) / 100);
                                                             ?>
                                                             @endif
@@ -778,10 +778,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <?php 
                                                                 $tot += $item->precio_juego
                                                             ?>
-                                                            <div style="flex-direction:row">
-                                                                <span class="kt-mycart__price">CLP ${{$item->precio_juego}}</span>
-                                                                <span class="kt-mycart__icon"><a href="#" class="flaticon2-trash kt-font-success"></a></span>
-                                                            </div>
+                                                            <span class="kt-mycart__price">CLP ${{$item->precio_juego}}</span>
+                                                            <span class="kt-mycart__icon"><a href="{{route('del',$item->id_carrito)}}" class="flaticon2-trash kt-font-success"></a></span>
                                                         </div>
                                                     </div>
                                                     <a href="#" class="kt-mycart__pic">
