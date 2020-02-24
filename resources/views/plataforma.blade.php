@@ -1,28 +1,37 @@
 @extends('layout')
-@section('url','Subcripciones')
+@section('url','Catalogo de Videojuegos')
 @section('content')
+
+
 <div class="row">
     <div class="container container-fluid">
         <div class="col-md-12">
-            <div style="margin-top:4%" class="col-md-4">
-                <h5 style="color:black">Filtrar por plataforma: </h5>
+            <div style="margin-top:4%;margin-bottom:20px" class="col-md-4">
+                <h5 style="color:black">Filtrar por categoria: </h5>
                 <select style="width:300px" class="form-control" name="tablas" id="mySelect">
-                    <option value="0" selected>Todos</option>
+                    <option value="0" >Todos</option>
+                 
                     @foreach ($InfoPlataformaS as $categoria)
-                    <option value="{{$categoria->id_plataforma}}">{{$categoria->nombre_plataforma}}</option>
+                    @if($Plataforma->nombre_plataforma == $categoria->nombre_plataforma)
+                    <option value="{{$categoria->id_plataforma}}" selected>{{$categoria->nombre_plataforma}}</option>
+                    @else
+                    <option value="{{$categoria->id_plataforma}}" >{{$categoria->nombre_plataforma}}</option>
+                    @endif
                     @endforeach
                 </select>
 
             </div>
-
+            <div class="container"><h1 style="color:black;margin-left:10px"> <b>{{$Plataforma->nombre_plataforma}}</b></h1></div>
         </div>
     </div>
 </div>
-<!---catalogo de productos--->
+
+
+
 <div class="container container-fluid">
     <div class="row">
-        <div style="margin-top:18px" class="col-md-12">
-            @foreach($InfoSubcripcion as $subcripcion)
+        <div class="col-md-12">
+        @foreach($Subs as $subcripcion)
             <div class="col-sm-4 col-md-3">
                 <div style="height:350px;" class="thumbnail">
                     @foreach($InfoPlataformaS as $plataforma)
@@ -65,36 +74,38 @@
 
 
 
+
         </div>
     </div>
 </div>
 
-
 <script>
-    $("#mySelect").change(function() {
-
-        var x = $("#mySelect").val();
   
-        ruta(x);
+    $("#mySelect").change(function(){
+        
+        var x = $("#mySelect").val();
+        if(x == "0"){
+            url = '{{ route("subcripciones") }}';
+            window.location.href=url;
+        }else{
+        
+        ruta(x);  
+        }
     });
 
 
-    function ruta(id) {
+    function ruta(id){
 
-
+       
         url = '{{ route("plataforma", ":id") }}';
 
-        url = url.replace(':id', id);
+        url = url.replace(':id',id);
 
-        location.href = url;
+        location.href=url;
 
     }
+
 </script>
-
-
-
-
-
 
 
 @endsection
