@@ -16,6 +16,9 @@ use Illuminate\Http\Request;
 //Inicio
 Route::get('/','VistasController@inicio')->name('home');
 
+//Carrito
+Route::get('carrito/{id}','CarritoController@index')->name('carrito');
+
 //Login-Registrar-Logout
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('validacion','Auth\LoginController@login')->name('validacion');
@@ -34,6 +37,8 @@ Route::get('subscripciones','VistasController@vistaSubcripcion')->name('subcripc
 //Review Producto
 Route::get('ReviewJuego/{id}','VistasController@vistaReview')->name('review');
 Route::get('ReviewSub/{id}','VistasController@vistaReviewSub')->name('reviewSub');
+
+Route::get('Categoria/{id}','VistasController@vistaCategoria')->name('categoria');
 
 Route::get('buscar','VistasController@buscar')->name('buscar');
 Route::get('Agregar',function(Request $request){

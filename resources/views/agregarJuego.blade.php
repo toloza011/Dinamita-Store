@@ -46,34 +46,18 @@
         var str;
         var asd = '/getTable';
         str = $('#mySelect').val();
-        $.ajax({ url: asd});
-        /* if(str == '1'){
-            alert('asd');
+        if(str == '1'){
             oTable = $('#listClients').DataTable({
-                /* "columns": [{
-                        data: 'id_categoria',
-                        name: 'id_categoria'
-                    },
-                    {
-                        data: 'nombre_categoria',
-                        name: 'nombre_categoria'
-                    }/* ,
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    },
-                    {
-                        data: 'action2',
-                        name: 'action2',
-                        orderable: false,
-                        searchable: false
-                    } 
-                ]
+                /* ------------- AQUí IRÍA LA RUTA -------------- */
             }); 
-        }  */
+        } 
     });
+
+
+
+
+
+
 
 /* 
     $("#mySelect").change(function() {
