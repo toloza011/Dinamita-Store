@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 //Inicio
 Route::get('/','VistasController@inicio')->name('home');
 
+
+
 //Carrito
 Route::get('carrito/{id}','CarritoController@index')->name('carrito');
 Route::get('del/{id}','CarritoController@delete')->name('del');
