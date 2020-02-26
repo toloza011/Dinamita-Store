@@ -26,7 +26,7 @@
 <!---fin filtros---->
 <br>
 <!---catalogo de productos--->
-<div class="container container-fluid">
+<div  class="container container-fluid">
     <div class="row">
         <div class="col-md-12">
             @foreach($allJuegos as $juego)
