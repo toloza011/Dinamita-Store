@@ -186,7 +186,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                             <!-- ----------- BOTON SUBSCRIPCIONES ----------------- -->
                             <li class="kt-menu__section ">
-                                <h4 class="kt-menu__section-text">Subscripciones</h4>
+                                <h4 class="kt-menu__section-text">Suscripciones</h4>
                                 <i class="kt-menu__section-icon flaticon-more-v2"></i>
                             </li>
 
@@ -233,7 +233,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <a href="{{route('juego')}}" class="kt-menu__link "><span class="kt-menu__link-text">Juegos</span></a>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
-                                    <a href="{{route('subcripciones')}}" class="kt-menu__link "><span class="kt-menu__link-text">Subscripciones</span></a>
+                                    <a href="{{route('subcripciones')}}" class="kt-menu__link "><span class="kt-menu__link-text">Suscripciones</span></a>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
                                     <a href="ofertas" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relampago</span></a>
@@ -752,6 +752,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 $tot += 1;
                                             ?>
                                             @endforeach
+                                            @foreach($asd2 as $item)
+                                            <?php
+                                                $tot += 1;
+                                            ?>
+                                            @endforeach
                                             <div class="kt-mycart__button">
                                                 <h6 class="kt-mycart__title"><strong><?php echo $tot?> Items</strong></h6>
                                             </div>
@@ -762,11 +767,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <?php
                                                     $tot = 0;
                                                 ?>
+                                                @if($asd != null)
+                                                <h4 style="margin-left: 20px; margin-top:20px"><strong><u>JUEGOS</u></strong></h4>
+                                                @endif
                                                 @foreach($asd as $item)
                                                 <div class="kt-mycart__container">
                                                     <div class="kt-mycart__info">
-                                                        <a href="#" class="kt-mycart__title"><strong>{{$item->nombre_juego}}</strong></a>
-                                                        <span class="kt-mycart__desc">{{$item->nombre_plataforma}}</span>
+                                                        <span class="kt-mycart__title"><strong>{{$item->nombre_juego}}</strong></span>
                                                         <div class="kt-mycart__action">
                                                             @foreach($ofertas as $item2)
                                                             @if($item->id_juego == $item2->id_juego)
@@ -782,9 +789,30 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <span class="kt-mycart__icon"><a href="{{route('del',$item->id_carrito)}}" class="flaticon2-trash kt-font-success"></a></span>
                                                         </div>
                                                     </div>
-                                                    <a href="#" class="kt-mycart__pic">
+                                                    <span class="kt-mycart__pic">
                                                         <img src="{{asset($item->url_juego)}}" title="">
-                                                    </a>
+                                                    </span>
+                                                </div>
+                                                @endforeach
+                                                @if($asd2 != null)
+                                                <h4 style="margin-left: 20px; margin-top:20px"><strong><u>SUSCRIPCIONES</u></strong></h4>
+                                                @endif
+                                                @foreach($asd2 as $item)
+                                                <div class="kt-mycart__container">
+                                                    <div class="kt-mycart__info">
+                                                        <span class="kt-mycart__title"><strong>{{$item->nombre_plataforma}}</strong></span>
+                                                        <span class="kt-mycart__title">{{$item->tipo_subscripcion}}</span>
+                                                        <div class="kt-mycart__action">
+                                                            <?php 
+                                                                $tot += $item->precio_subscripcion
+                                                            ?>
+                                                            <span class="kt-mycart__price">CLP ${{$item->precio_subscripcion}}</span>
+                                                            <span class="kt-mycart__icon"><a href="{{route('del',$item->id_carrito)}}" class="flaticon2-trash kt-font-success"></a></span>
+                                                        </div>
+                                                    </div>
+                                                    <span class="kt-mycart__pic">
+                                                        <img src="{{asset($item->url_subscripcion)}}" title="">
+                                                    </span>
                                                 </div>
                                                 @endforeach
                                             </div>
