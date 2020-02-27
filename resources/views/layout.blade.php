@@ -186,7 +186,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                             <!-- ----------- BOTON SUBSCRIPCIONES ----------------- -->
                             <li class="kt-menu__section ">
-                                <h4 class="kt-menu__section-text">Subscripciones</h4>
+                                <h4 class="kt-menu__section-text">Suscripciones</h4>
                                 <i class="kt-menu__section-icon flaticon-more-v2"></i>
                             </li>
 
@@ -233,7 +233,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <a href="{{route('juego')}}" class="kt-menu__link "><span class="kt-menu__link-text">Juegos</span></a>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
-                                    <a href="{{route('subcripciones')}}" class="kt-menu__link "><span class="kt-menu__link-text">Subscripciones</span></a>
+                                    <a href="{{route('subcripciones')}}" class="kt-menu__link "><span class="kt-menu__link-text">Suscripciones</span></a>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
                                     <a href="ofertas" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relampago</span></a>
