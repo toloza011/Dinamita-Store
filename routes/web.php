@@ -60,4 +60,38 @@ Route::get('/getCategoriasAll', 'CategoriasController@getCategoriaAll')->name('g
 Route::get('/categoria/{id_categoria}/editar', ['uses' => 'CategoriasController@edit'])->name('editarCategoria');
 Route::get('/update/{id_categoria}', ['uses' => 'CategoriasController@update'])->name('update');
 Route::post('QuitarCategoria','CategoriasController@QuitarCategoria');
+Route::get('Crear','CategoriasController@agregar')->name('create');
+Route::post('insertar','CategoriasController@insertar');
+
+//rutas Plataforma
+Route::get('AgregarPlataforma', function (Request $request) {
+    $InfoCategoria = App\Categoria::all();
+    $InfoPlataformaJ = App\Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+    $InfoPlataformaS = App\Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+
+    return view('plataforma.listaPlataforma', compact('InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
+})->name("agregarPlataforma");
+Route::get('/getPlataformasAll', 'PlataformasController@getPlataformaAll')->name('getPlataforma');
+Route::get('/plataforma/{id_plataforma}/editar', ['uses' => 'PlataformasController@edit'])->name('editarPlataforma');
+Route::get('/update2/{id_plataforma}', ['uses' => 'PlataformasController@update'])->name('updatePlataforma');
+Route::post('QuitarPlataforma','PlataformasController@QuitarPlataforma');
+Route::get('CrearPlataforma','PlataformasController@agregar')->name('createPlataforma');
+Route::post('insertarPlataforma','PlataformasController@insertar');
+
+
+//rutas Usuarios
+
+Route::get('ListaUsuarios', function (Request $request) {
+    $InfoCategoria = App\Categoria::all();
+    $InfoPlataformaJ = App\Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+    $InfoPlataformaS = App\Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+
+    return view('users.listaUsuarios', compact('InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
+})->name("ListaUsuarios");
+Route::get('/getUsuariosAll', 'UserController@getUserAll')->name('getUser');
+Route::get('/users/{id}/editar', ['uses' => 'UserController@edit'])->name('editarUsuario');
+Route::get('/update3/{id}', ['uses' => 'UserController@update'])->name('updateUsuario');
+Route::post('QuitarUsuario','UserController@QuitarPlataforma');
+
+
 

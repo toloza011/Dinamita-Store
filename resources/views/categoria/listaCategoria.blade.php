@@ -4,6 +4,9 @@
 @if(Session::has('mensaje'))
 <div class="alert alert-success"><em> {!! session('mensaje') !!}</em></div>
 @endif
+@if(Session::has('mensaje2'))
+<div class="alert alert-danger"><em> {!! session('mensaje2') !!}</em></div>
+@endif
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -18,7 +21,7 @@
     <div class="kt-portlet__body">
         <h4 class="box-title" align="center">Listado de Categoria</h4>
         <div align="right">
-            <a href="#" class="btn btn-dark">Registrar Categoria</a>
+            <a href="{{route('create')}}" class="btn btn-dark">Registrar Categoria</a>
         </div>
         <br>
         <!--begin: Datatable -->

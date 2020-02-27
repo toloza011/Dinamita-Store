@@ -57,7 +57,7 @@ class LoginController extends Controller
             if($contador == 0){
                 $ofertas = "no";
             }
-            return view('inicio', compact('asd','asd2','InfoUser', 'InfoPlataformaJ','InfoPlataformaS', 'InfoCategoria','request','consulta','ofertas','populares'));
+            return redirect()->route('home');
         }
         return back()   ->withErrors(['email'=>'Estas credenciales no coinciden con nuestros registros'])
                         ->withInput(request(['email']));
