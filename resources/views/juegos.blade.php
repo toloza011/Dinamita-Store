@@ -80,11 +80,13 @@
 </div>
 <!---fin catalogo--->
 <script>
-    $("#mySelect").change(function() {
-
-        var x = $("#mySelect").val();
-
-        ruta(x);
+    $(".date").datepicker({
+        onSelect: function(dateText) {
+            display("Selected date: " + dateText + ", Current Selected Value= " + this.value);
+            $(this).change();
+        }
+    }).on("change", function() {
+        display("Change event");
     });
 
 
