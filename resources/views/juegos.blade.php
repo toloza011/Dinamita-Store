@@ -18,15 +18,7 @@
                     @endforeach
                 </select>
             </div>
-            <div style="margin-top:4%" class="col-md-4">
-            <h5 style="color:black">Filtrar por plataforma: </h5>
-                <select style="width:300px" class="form-control" name="tablas" id="mySelect2">
-                    <option value="0" selected>Todos</option>
-                    @foreach ($InfoPlataformaJ as $plataforma)
-                    <option value="{{$plataforma->id_plataforma}}">{{$plataforma->nombre_plataforma}}</option>
-                    @endforeach
-                </select>
-            </div>    
+             
         </div>
     </div>
 </div>

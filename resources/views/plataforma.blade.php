@@ -8,19 +8,21 @@
         <div class="col-md-12">
             <div style="margin-top:4%;margin-bottom:20px" class="col-md-4">
 
-                <h5 style="color:black">Filtrar por categoria: </h5>
+                <h5 style="color:black">Filtrar por plataforma: </h5>
                 <select style="width:300px" class="form-control" name="tablas" id="mySelect">
-                    <option value="0" >Todos</option>
+                    <option value="0">Todos</option>
                     @foreach ($InfoPlataformaS as $categoria)
                     @if($Plataforma->nombre_plataforma == $categoria->nombre_plataforma)
                     <option value="{{$categoria->id_plataforma}}" selected>{{$categoria->nombre_plataforma}}</option>
                     @else
-                    <option value="{{$categoria->id_plataforma}}" >{{$categoria->nombre_plataforma}}</option>
+                    <option value="{{$categoria->id_plataforma}}">{{$categoria->nombre_plataforma}}</option>
                     @endif
                     @endforeach
                 </select>
             </div>
-            <div class="container"><h1 style="color:black;margin-left:10px"> <b>{{$Plataforma->nombre_plataforma}}</b></h1></div>
+            <div class="container">
+                <h1 style="color:black;margin-left:10px"> <b>{{$Plataforma->nombre_plataforma}}</b></h1>
+            </div>
         </div>
     </div>
 </div>
@@ -30,7 +32,7 @@
 <div class="container container-fluid">
     <div class="row">
         <div class="col-md-12">
-        @foreach($Subs as $subcripcion)
+            @foreach($Subs as $subcripcion)
             <div class="col-sm-4 col-md-3">
                 <div style="height:350px;" class="thumbnail">
                     @foreach($InfoPlataformaS as $plataforma)
@@ -77,51 +79,26 @@
 @else
 @if($contJuegos>0)
 <!----Catalogo Juegos--------->
-<div class="row">
-    <div class="col-md-12">
-      <div class="text-center">
-        <div class="container"><h1 style="color:black;text-align:center"> <b>{{$Plataforma->nombre_plataforma}}</b></h1></div>
-      </div>
-    </div>
-</div>
+
 <div class="row">
     <div class="container container-fluid">
         <div class="col-md-12">
             <div style="margin-top:4%;margin-bottom:20px" class="col-md-4">
-                <h5 style="color:black">Filtrar por consola: </h5>
+                <h5 style="color:black">Filtrar por plataforma: </h5>
                 <select style="width:300px" class="form-control" name="tablas" id="mySelect">
-                    <option value="0" >Todos</option>
+                    <option value="0">Todos</option>
                     @foreach ($InfoPlataformaJ as $categoria)
                     @if($Plataforma->nombre_plataforma == $categoria->nombre_plataforma)
                     <option value="{{$categoria->id_plataforma}}" selected>{{$categoria->nombre_plataforma}}</option>
                     @else
-                    <option value="{{$categoria->id_plataforma}}" >{{$categoria->nombre_plataforma}}</option>
+                    <option value="{{$categoria->id_plataforma}}">{{$categoria->nombre_plataforma}}</option>
                     @endif
                     @endforeach
                 </select>
             </div>
-
-
-  <!-----
-  <div class="container container-fluid">
-    <div class="col-md-12">
-        <div style="margin-top:4%" class="col-md-4">
-            <h5 style="color:black">Filtrar por categoria: </h5>
-            <select style="width:300px" class="form-control" name="tablas" id="mySelect">
-                <option value="0" selected>Todos</option>
-                @foreach ($InfoCategoria as $categoria)
-                <option value="{{$categoria->id_categoria}}">{{$categoria->nombre_categoria}}</option>
-                @endforeach
-            </select>
-
-        </div>
-
-    </div>
-</div>
-  <!------>
-
-
-
+            <div class="container">
+                <h1 style="color:black;margin-left:10px"> <b>{{$Plataforma->nombre_plataforma}}</b></h1>
+            </div>
 
         </div>
     </div>
@@ -133,7 +110,7 @@
 <div class="container container-fluid">
     <div class="row">
         <div class="col-md-12">
-        @foreach($Juegos as $juego)
+            @foreach($Juegos as $juego)
             <div class="col-sm-4 col-md-3">
                 <div style="height:350px;" class="thumbnail">
                     @foreach($InfoPlataformaJ as $plataforma)
@@ -181,31 +158,29 @@
 <!---- FIN Catalogo JUEGOS--------->
 
 <script>
-
-    $("#mySelect").change(function(){
+    $("#mySelect").change(function() {
 
         var x = $("#mySelect").val();
-        if(x == "0"){
+        if (x == "0") {
             url = '{{ route("subcripciones") }}';
-            window.location.href=url;
-        }else{
+            window.location.href = url;
+        } else {
 
-        ruta(x);
+            ruta(x);
         }
     });
 
 
-    function ruta(id){
+    function ruta(id) {
 
 
         url = '{{ route("plataforma", ":id") }}';
 
-        url = url.replace(':id',id);
+        url = url.replace(':id', id);
 
-        location.href=url;
+        location.href = url;
 
     }
-
 </script>
 
 
