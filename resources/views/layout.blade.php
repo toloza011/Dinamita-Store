@@ -146,13 +146,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </li>
                                         @foreach($InfoCategoria as $item)
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="demo12/layout/skins/aside-light.html" class="kt-menu__link ">
+                                            <a href="{{route('categoria',$item->id_categoria)}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">{{$item->nombre_categoria}}</span>
                                             </a>
                                         </li>
                                         @endforeach
-
                                     </ul>
                                 </div>
                             </li>
@@ -173,7 +172,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                         @foreach($InfoPlataformaJ as $item)
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="demo12/layout/skins/aside-light.html" class="kt-menu__link ">
+                                            <a href="{{route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">{{$item->nombre_plataforma}}</span>
                                             </a>
@@ -202,7 +201,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                         @foreach($InfoPlataformaS as $item)
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="demo12/layout/skins/aside-light.html" class="kt-menu__link ">
+                                            <a href="{{Route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">{{$item->nombre_plataforma}}</span>
                                             </a>
@@ -724,7 +723,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                         </div>
                         <!--end: Quick Actions -->
-                        
+
 
                         @if($request->session()->has('identificador'))
                         <?php $nombreUser = $request->session()->get('nombre'); ?>
@@ -782,7 +781,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             ?>
                                                             @endif
                                                             @endforeach
-                                                            <?php 
+                                                            <?php
                                                                 $tot += $item->precio_juego
                                                             ?>
                                                             <span class="kt-mycart__price">CLP ${{$item->precio_juego}}</span>
@@ -803,7 +802,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <span class="kt-mycart__title"><strong>{{$item->nombre_plataforma}}</strong></span>
                                                         <span class="kt-mycart__title">{{$item->tipo_subscripcion}}</span>
                                                         <div class="kt-mycart__action">
-                                                            <?php 
+                                                            <?php
                                                                 $tot += $item->precio_subscripcion
                                                             ?>
                                                             <span class="kt-mycart__price">CLP ${{$item->precio_subscripcion}}</span>
@@ -980,7 +979,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- begin:: Content -->
                     <div class="card card-solid">
 
-                   
+
                             <form action="{{route('buscar')}}" method="GET">
                                 <div style="margin-top:10px;margin-right:50px" class="row justify-content-end">
                                     <div style="width:30%">
@@ -989,7 +988,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <input type="submit" class="btn btn-dark" value="Buscar">
                                 </div>
                             </form>
-              
+
 
                         @yield('content')
                     </div>

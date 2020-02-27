@@ -27,12 +27,12 @@ class VistasController extends Controller
             $asd = DB::select("SELECT carritos.id_carrito,juegos.id_juego, juegos.nombre_juego, juegos.precio_juego, juegos.url_juego, plataformas.nombre_plataforma FROM juegos, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_juego = juegos.id_juego and plataformas.id_plataforma = juegos.id_plataforma");
             $asd2 = DB::select("SELECT carritos.id_carrito, subscripciones.id_subscripcion, subscripciones.precio_subscripcion, subscripciones.tipo_subscripcion, subscripciones.url_subscripcion, plataformas.nombre_plataforma FROM subscripciones, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_subscripcion = subscripciones.id_subscripcion and plataformas.id_plataforma = subscripciones.id_plataforma");
 
-            
+
             $consulta = Juego::all()->sortByDesc('id_juego')->take(9);
             $ofertas = DB::table('promociones')->join('juegos', 'juegos.id_juego', '=', 'promociones.id_juego')
                 ->join('ofertas', 'ofertas.id_oferta', '=', 'promociones.id_oferta')->get();
-                $populares = DB::table('ventas')->join('codigos', 'codigos.id_codigo', '=', 'ventas.id_codigo')->join('juegos', 'juegos.id_juego', '=', 'codigos.id_juego')->join('plataformas', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->select('juegos.id_juego', 'juegos.nombre_juego', 'juegos.url_juego', 'juegos.precio_juego', 'plataformas.nombre_plataforma', DB::raw('count(*) as totalV'))->groupBy('id_juego', 'nombre_juego', 'url_juego', 'precio_juego', 'nombre_plataforma')->orderBy('totalV', 'DESC')->take(4)->get();    
-         
+                $populares = DB::table('ventas')->join('codigos', 'codigos.id_codigo', '=', 'ventas.id_codigo')->join('juegos', 'juegos.id_juego', '=', 'codigos.id_juego')->join('plataformas', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->select('juegos.id_juego', 'juegos.nombre_juego', 'juegos.url_juego', 'juegos.precio_juego', 'plataformas.nombre_plataforma', DB::raw('count(*) as totalV'))->groupBy('id_juego', 'nombre_juego', 'url_juego', 'precio_juego', 'nombre_plataforma')->orderBy('totalV', 'DESC')->take(4)->get();
+
             return view('inicio', compact('asd','asd2','InfoUser', 'InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request', 'consulta', 'ofertas','populares'));
         } else {
             $InfoCategoria = Categoria::all();
@@ -44,12 +44,12 @@ class VistasController extends Controller
             $ofertas = DB::table('promociones')->join('juegos', 'juegos.id_juego', '=', 'promociones.id_juego')
                 ->join('ofertas', 'ofertas.id_oferta', '=', 'promociones.id_oferta')->get();
 
-
+                $asd2 = DB::select("SELECT carritos.id_carrito, subscripciones.id_subscripcion, subscripciones.precio_subscripcion, subscripciones.tipo_subscripcion, subscripciones.url_subscripcion, plataformas.nombre_plataforma FROM subscripciones, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_subscripcion = subscripciones.id_subscripcion and plataformas.id_plataforma = subscripciones.id_plataforma");
             if ($contador == 0) {
                 $ofertas = "no";
             }
             //dd($InfoPlataformaJ);
-            return view('inicio', compact('InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request', 'consulta', 'ofertas', 'populares'));
+            return view('inicio', compact('asd2','InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request', 'consulta', 'ofertas', 'populares'));
         }
     }
 
@@ -89,7 +89,7 @@ class VistasController extends Controller
             $idusuario = Auth::user()->id;
             $asd = DB::select("SELECT carritos.id_carrito,juegos.id_juego, juegos.nombre_juego, juegos.precio_juego, juegos.url_juego, plataformas.nombre_plataforma FROM juegos, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_juego = juegos.id_juego and plataformas.id_plataforma = juegos.id_plataforma");
             $asd2 = DB::select("SELECT carritos.id_carrito, subscripciones.id_subscripcion, subscripciones.precio_subscripcion, subscripciones.tipo_subscripcion, subscripciones.url_subscripcion, plataformas.nombre_plataforma FROM subscripciones, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_subscripcion = subscripciones.id_subscripcion and plataformas.id_plataforma = subscripciones.id_plataforma");
-            return view('subcripciones', compact('asd','asd2','ofertas','InfoSubcripcion', 'InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
+            return view('subcripciones', compact('idusuario','asd','asd2','ofertas','InfoSubcripcion', 'InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
         }else{
             return view('subcripciones', compact('InfoSubcripcion','ofertas', 'InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
         }
@@ -120,6 +120,7 @@ class VistasController extends Controller
     }
     function vistaReviewSub(Request $request, $id)
     {
+        $ofertas = DB::table('promociones')->join('juegos', 'juegos.id_juego', '=', 'promociones.id_juego')->join('ofertas', 'ofertas.id_oferta', '=', 'promociones.id_oferta')->get();
         $InfoSubcripcion = Subcripcion::all()->where('id_subscripcion', $id)->first();
         $InfoCategoria = Categoria::all();
         $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
@@ -193,20 +194,24 @@ class VistasController extends Controller
 
     function vistaPlataforma(Request $request, $id)
     {
+        $idusuario = Auth::user()->id;
         $ofertas = DB::table('promociones')->join('juegos', 'juegos.id_juego', '=', 'promociones.id_juego')->join('ofertas', 'ofertas.id_oferta', '=', 'promociones.id_oferta')->get();
         $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         $InfoCategoria = Categoria::all();
-        $Plataforma = Plataforma::all()->where('id_plataforma', '=', $id)->first();
-        $Juegos = DB::table('juegos_categoria')->select('juegos.id_juego', 'juegos.nombre_juego', 'juegos.precio_juego', 'juegos.url_juego', 'plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'juegos.id_juego', 'juegos_categoria.id_juego')->join('plataformas', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->where('juegos_categoria.id_categoria', '=', $id)->get();
-        $Subs = Subcripcion::select("*")->join('plataformas', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->where('subscripciones.id_plataforma', '=', $id)->get();
-
+        $Plataforma=Plataforma::all()->where('id_plataforma', '=', $id)->first();
+        $Juegos=DB::table('juegos_categoria')->distinct()->select('juegos.id_juego','juegos.nombre_juego','juegos.precio_juego','juegos.url_juego','plataformas.id_plataforma','plataformas.nombre_plataforma')->join('juegos','juegos.id_juego','juegos_categoria.id_juego')->join('plataformas','plataformas.id_plataforma','=','juegos.id_plataforma')->where('juegos.id_plataforma', '=', $id)->get();
+        $Subs=Subcripcion::select("*")->join('plataformas','plataformas.id_plataforma','=','subscripciones.id_plataforma')->where('subscripciones.id_plataforma', '=', $id)->get();
+        $contJuegos=$Juegos->count();
+        $contSubs=$Subs->count();
+        $asd = DB::select("SELECT carritos.id_carrito,juegos.id_juego, juegos.nombre_juego, juegos.precio_juego, juegos.url_juego, plataformas.nombre_plataforma FROM juegos, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_juego = juegos.id_juego and plataformas.id_plataforma = juegos.id_plataforma");
+        $asd2 = DB::select("SELECT carritos.id_carrito, subscripciones.id_subscripcion, subscripciones.precio_subscripcion, subscripciones.tipo_subscripcion, subscripciones.url_subscripcion, plataformas.nombre_plataforma FROM subscripciones, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_subscripcion = subscripciones.id_subscripcion and plataformas.id_plataforma = subscripciones.id_plataforma");
         if (Auth::user() != null) {
             $idusuario = Auth::user()->id;
             $asd = DB::select("SELECT carritos.id_carrito,juegos.id_juego, juegos.nombre_juego, juegos.precio_juego, juegos.url_juego, plataformas.nombre_plataforma FROM juegos, carritos,plataformas WHERE carritos.id = '$idusuario' and carritos.id_juego = juegos.id_juego and plataformas.id_plataforma = juegos.id_plataforma ");
-            return view('plataforma', compact('Subs', 'asd', 'ofertas', 'Juegos', 'Plataforma', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
-        } else {
-            return view('plataforma', compact('Subs', 'ofertas', 'Juegos', 'Plataforma', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
+            return view('plataforma', compact('asd','asd2','contJuegos','contSubs','Subs','asd','ofertas','Juegos','Plataforma','InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
+        }else{
+            return view('plataforma', compact('asd','asd2','contJuegos','contSubs','Subs','ofertas','Juegos','Plataforma','InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
         }
     }
 }
