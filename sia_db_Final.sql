@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-02-2020 a las 05:48:49
--- Versión del servidor: 10.3.16-MariaDB
--- Versión de PHP: 7.3.7
+-- Tiempo de generación: 27-02-2020 a las 01:34:10
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -164,15 +164,40 @@ CREATE TABLE `imagenes` (
 --
 
 INSERT INTO `imagenes` (`id_imagen`, `url`, `id_juego`, `id_subscripcion`, `id_oferta`) VALUES
-(4, 'assets/media/juegos/AssassinCreedO-2.jpg', 4, NULL, NULL),
-(5, 'assets/media/juegos/BatmanAK-2.jpg', 5, NULL, NULL),
-(6, 'assets/media/juegos/Borderlands3-2.jpg', 6, NULL, NULL),
-(7, 'assets/media/juegos/Celeste-2.png', 2, NULL, NULL),
-(8, 'assets/media/juegos/Darksouls3-2.jpg', 3, NULL, NULL),
-(9, 'assets/media/juegos/DeadByDaylight-2.jpg', 9, NULL, NULL),
-(10, 'assets/media/juegos/DevilMaycry5-2.png', 7, NULL, NULL),
-(11, 'assets/media/juegos/NoManSky-2.jpg', 8, NULL, NULL),
-(12, 'assets/media/juegos/TombRaider-2.jpg', 11, NULL, NULL);
+(4, 'assets/media/juegos/AsO1.jpg', 4, NULL, NULL),
+(5, 'assets/media/juegos/B1.jpg', 5, NULL, NULL),
+(6, 'assets/media/juegos/BL1.jpg', 6, NULL, NULL),
+(7, 'assets/media/juegos/C1.png', 2, NULL, NULL),
+(8, 'assets/media/juegos/DS1.jpg', 3, NULL, NULL),
+(9, 'assets/media/juegos/Dead1.jpg', 9, NULL, NULL),
+(10, 'assets/media/juegos/D1.png', 7, NULL, NULL),
+(11, 'assets/media/juegos/N1.png', 8, NULL, NULL),
+(12, 'assets/media/juegos/TombRaider-2.jpg', 11, NULL, NULL),
+(13, 'assets/media/juegos/AsO2.jpg', 4, NULL, NULL),
+(14, 'assets/media/juegos/AsO3.jpg', 4, NULL, NULL),
+(15, 'assets/media/juegos/AsO4.jpg', 4, NULL, NULL),
+(16, 'assets/media/juegos/DS2.jpg', 3, NULL, NULL),
+(17, 'assets/media/juegos/C2.png', 2, NULL, NULL),
+(18, 'assets/media/juegos/C3.png', 2, NULL, NULL),
+(19, 'assets/media/juegos/C4.png', 2, NULL, NULL),
+(20, 'assets/media/juegos/B2.jpg', 5, NULL, NULL),
+(21, 'assets/media/juegos/B3.jpg', 5, NULL, NULL),
+(22, 'assets/media/juegos/B4.jpg', 5, NULL, NULL),
+(23, 'assets/media/juegos/M1.jpg', 12, NULL, NULL),
+(24, 'assets/media/juegos/M2.jpg', 12, NULL, NULL),
+(25, 'assets/media/juegos/M3.png', 12, NULL, NULL),
+(27, 'assets/media/juegos/BL2.jpg', 6, NULL, NULL),
+(28, 'assets/media/juegos/BL3.jpg', 6, NULL, NULL),
+(29, 'assets/media/juegos/BL4.jpg', 6, NULL, NULL),
+(30, 'assets/media/juegos/D2.png', 7, NULL, NULL),
+(31, 'assets/media/juegos/D3.jpg', 7, NULL, NULL),
+(32, 'assets/media/juegos/D4.png', 7, NULL, NULL),
+(33, 'assets/media/juegos/N2.jpg', 8, NULL, NULL),
+(34, 'assets/media/juegos/N3.jpg', 8, NULL, NULL),
+(35, 'assets/media/juegos/N4.jpg', 8, NULL, NULL),
+(36, 'assets/media/juegos/Dead2.jpg', 9, NULL, NULL),
+(37, 'assets/media/juegos/Dead3.jpg', 9, NULL, NULL),
+(38, 'assets/media/juegos/Dead4.jpg', 9, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -195,17 +220,17 @@ CREATE TABLE `juegos` (
 --
 
 INSERT INTO `juegos` (`id_juego`, `nombre_juego`, `precio_juego`, `stock_juego`, `descripcion_juego`, `url_juego`, `id_plataforma`) VALUES
-(2, 'Celeste', 9500, 0, NULL, 'assets/media/juegos/Celeste.png', 1),
-(3, 'Dark Souls 3', 10000, 0, 'vas a pasar mas tiempo muerto que jugando ', 'assets/media/juegos/DarkSouls3.jpg', 2),
-(4, 'Assassins Creed Origins', 25000, 0, 'unos saltos chingones', 'assets/media/juegos/AssassinCreedO.jpg', 2),
-(5, 'Batman Arkham Knight', 3000, 0, NULL, 'assets/media/juegos/BatmanAK.jpg', 1),
-(6, 'Borderlands 3', 30000, 0, 'Best juego last ', 'assets/media/juegos/Borderlands3.jpg', 1),
-(7, ' Devil May Cry 5', 12000, 0, 'Su protagonista se llama dante ', 'assets/media/juegos/DevilMaycry5.png', 1),
-(8, 'No Man\'s Sky', 15000, 0, 'No se ', 'assets/media/juegos/NoManSky.png', 1),
-(9, 'Day by Daylight', 9500, 0, 'Escapa del asesino ', 'assets/media/juegos/DeadByDaylight.jpg', 1),
-(10, 'Resident Evil 2', 15000, 0, 'El mismo jugeo de zombies', 'assets/media/juegos/ResidentEvil2.png', 1),
-(11, 'Shadow of the Tomb Raider', 8000, 0, 'XDDDDDDD', 'assets/media/juegos/TombRaider.jpg', 2),
-(12, 'Borderlands 3', 30000, 0, 'Best juego last ', 'assets/media/juegos/Borderlands3.jpg', 1);
+(2, 'Celeste', 9500, 0, 'Ayuda a Madeline a sobrevivir a los demonios de su interior en su viaje hasta la cima de la montaña Celeste, en este ajustadísimo plataforma, obra de los creadores de TowerFall. Enfréntate a cientos de desafíos diseñados a mano, devela retorcidos secretos y, y reconstruye el misterio de la montaña.', 'assets/media/juegos/Celeste.png', 1),
+(3, 'Dark Souls 3', 10000, 0, 'Dark Souls continúa redefiniendo los límites con el nuevo y ambicioso capítulo de esta serie revolucionaria, tan aclamada por la crítica. ¡Prepárate para sumergirte en la oscuridad!', 'assets/media/juegos/DarkSouls3.jpg', 2),
+(4, 'Assassins Creed Origins', 25000, 0, 'ASSASSIN’S CREED® ORIGINS ES UN NUEVO COMIENZO *¡Discovery Tour by Assassin’s Creed®: Antiguo Egipto está ya disponible como actualización gratuita!* El esplendor y el misterio del antiguo Egipto se desdibujan en una cruenta lucha por el poder.', 'assets/media/juegos/AssassinCreedO.jpg', 2),
+(5, 'Batman Arkham Knight', 3000, 0, 'Batman™: Arkham Knight es la épica conclusión de la galardonada trilogía de Arkham, creada por Rocksteady Studios. El título, desarrollado en exclusiva para plataformas de nueva generación, presenta la espectacular versión del batmóvil imaginada por Rocksteady.', 'assets/media/juegos/BatmanAK.jpg', 1),
+(6, 'Borderlands 3', 30000, 0, '¡Descubre el shooter cooperativo original, repleto de mejoras! Encarna a uno de los cuatro mercenarios de gatillo fácil, equípate con tropecientas armas y adéntrate en el planeta desértico de Pandora.', 'assets/media/juegos/Borderlands3.jpg', 1),
+(7, ' Devil May Cry 5', 12000, 0, 'El cazademonios definitivo vuelve con estilo en el juego que los fans de la acción estaban esperando.', 'assets/media/juegos/DevilMaycry5.png', 1),
+(8, 'No Man\'s Sky', 15000, 0, 'No Man\'s Sky es un juego de ciencia ficción sobre exploración y supervivencia en un universo infinito generado de forma procedimental.', 'assets/media/juegos/NoManSky.png', 1),
+(9, 'Daed by Daylight', 9500, 0, 'Dead by Daylight es un juego de horror de multijugador (4 contra 1) en el que un jugador representa el rol del asesino despiadado y los 4 restantes juegan como supervivientes que intentan escapar de él para evitar ser capturados y asesinados.', 'assets/media/juegos/DeadByDaylight.jpg', 1),
+(10, 'Resident Evil 2', 15000, 0, 'Publicado originalmente en 1998, Resident Evil 2, uno de los juegos más icónicos de todos los tiempos, regresa completamente reinventado para las consolas de nueva generación.', 'assets/media/juegos/ResidentEvil2.png', 1),
+(11, 'Shadow of the Tomb Raider', 8000, 0, 'Mientras Lara Croft trata de salvar el mundo de un apocalipsis maya, deberá convertirse en la saqueadora de tumbas que está destinada a ser.', 'assets/media/juegos/TombRaider.jpg', 2),
+(12, 'Minecraft', 1500, 0, 'Minecraft es un videojuego de construcción, de tipo «mundo abierto» o sandbox', 'assets/media/juegos/Minecraft.png', 1);
 
 -- --------------------------------------------------------
 
@@ -239,7 +264,8 @@ INSERT INTO `juegos_categoria` (`id_juego`, `id_categoria`) VALUES
 (10, 11),
 (10, 17),
 (11, 1),
-(11, 2);
+(11, 2),
+(12, 19);
 
 -- --------------------------------------------------------
 
@@ -573,7 +599,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `juegos`

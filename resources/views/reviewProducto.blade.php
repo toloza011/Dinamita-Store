@@ -31,7 +31,7 @@
                         <img align="center" style="width:100%; height:350px" src="{{asset($InfoJuego->url_juego)}}">
 
                     </div>
-                    @foreach($imagenes as $item)
+                    @foreach($imgs as $item)
                     <div class="carousel-cell">
 
                         <img align="center" style="width:100%; height:350px" src="{{asset($item->url)}}">
@@ -46,7 +46,7 @@
                         <img align="center" style="width:200px; height:100px" src="{{asset($InfoJuego->url_juego)}}">
 
                     </div>
-                    @foreach($imagenes as $item)
+                    @foreach($imgs as $item)
                     <div class="carousel-cell">
                         <img style="width:200px; height:100px" src="{{asset($item->url)}}">
                     </div>
