@@ -94,7 +94,7 @@
                             </div>
                             @if($request->session()->has('identificador'))
                             <div class="col-md-6">
-                                <a href="{{route('carrito', $subcripcion->id_subscripcion)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                <a href="{{route('carrito2', $subcripcion->id_subscripcion)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
                             </div>
                             @else
                             <div class="col-md-6">

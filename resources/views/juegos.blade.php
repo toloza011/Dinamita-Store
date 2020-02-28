@@ -80,25 +80,16 @@
 </div>
 <!---fin catalogo--->
 <script>
-    $(".date").datepicker({
-        onSelect: function(dateText) {
-            display("Selected date: " + dateText + ", Current Selected Value= " + this.value);
-            $(this).change();
-        }
-    }).on("change", function() {
-        display("Change event");
+    $("#mySelect").change(function() {
+        var x = $("#mySelect").val();
+        ruta(x);
     });
 
 
     function ruta(id) {
-
-
         url = '{{ route("categoria", ":id") }}';
-
         url = url.replace(':id', id);
-
         location.href = url;
-
     }
 </script>
 @endsection

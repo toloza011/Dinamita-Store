@@ -20,6 +20,7 @@ Route::get('/', 'VistasController@inicio')->name('home');
 
 //Carrito
 Route::get('carrito/{id}', 'CarritoController@index')->name('carrito');
+Route::get('carrito2/{id}', 'CarritoController@insert_subscripcion')->name('carrito2');
 Route::get('del/{id}', 'CarritoController@delete')->name('del');
 
 //Login-Registrar-Logout

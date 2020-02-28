@@ -213,6 +213,52 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                             </li>
                             <!-- ----------- FIN BOTON SUBSCRIPCIONES ----------------- -->
+                            <!-- ----------- BOTON ADMINISTRADOR ----------------- -->
+                            @if($request->session()->has('identificador') && $request->session()->get('identificador') == 4)
+                            <li class="kt-menu__section ">
+                                <h4 class="kt-menu__section-text">ADMINISTRADOR</h4>
+                                <i class="kt-menu__section-icon flaticon-more-v2"></i>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                    <i class="kt-menu__link-icon flaticon2-laptop"></i>
+                                    <span class="kt-menu__link-text">Administrar</span>
+                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                </a>
+                                <div class="kt-menu__submenu ">
+                                    <span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item " aria-haspopup="true">
+                                            <a href="#" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Categorías</span>
+                                            </a>
+                                            <a href="#" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Usuarios</span>
+                                            </a>
+                                            <a href="#" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Plataformas</span>
+                                            </a>
+                                            <a href="#" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Ofertas</span>
+                                            </a>
+                                            <a href="#" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Juegos</span>
+                                            </a>
+                                            <a href="#" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Suscripciones</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            @endif
+                            <!-- ----------- FIN BOTON ADMINISTRADOR ----------------- -->
                         </ul>
                     </div>
                 </div>
@@ -979,19 +1025,21 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     <!-- begin:: Content -->
                     <div class="card card-solid">
-
-                   
-                            <form action="{{route('buscar')}}" method="GET">
-                                <div style="margin-top:10px;margin-right:50px" class="row justify-content-end">
-                                    <div style="width:30%">
-                                        <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
-                                    </div>
-                                    <input type="submit" class="btn btn-dark" value="Buscar">
+                        @if(Session::has('mensaje'))
+                        <div class="alert alert-success"><em> {!! session('mensaje') !!}</em></div>
+                        @endif
+                        @if(Session::has('mensaje2'))
+                        <div class="alert alert-danger"><em> {!! session('mensaje2') !!}</em></div>
+                        @endif
+                        <form action="{{route('buscar')}}" method="GET">
+                            <div style="margin-top:10px;margin-right:50px" class="row justify-content-end">
+                                <div style="width:30%">
+                                    <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
                                 </div>
-                            </form>
-              
-
-                        @yield('content')
+                                <input type="submit" class="btn btn-dark" value="Buscar">
+                            </div>
+                        </form>
+                    @yield('content')
                     </div>
                     <!-- CONTENIDO DE LA PAGINAAAAA AQUIIII -->
 
