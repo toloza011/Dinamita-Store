@@ -17,9 +17,8 @@
                     <option value="{{$categoria->id_categoria}}">{{$categoria->nombre_categoria}}</option>
                     @endforeach
                 </select>
-
             </div>
-
+             
         </div>
     </div>
 </div>

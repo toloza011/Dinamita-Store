@@ -85,23 +85,35 @@
         if(x == "0"){
             url = '{{ route("juego") }}';
             window.location.href=url;
-        }else{
-        
+        }else{ 
         ruta(x);  
         }
     });
-
-
     function ruta(id){
-
-       
-        url = '{{ route("categoria", ":id") }}';
-
+        url = '{{ route("categoria", ":id","0") }}';
         url = url.replace(':id',id);
-
         location.href=url;
-
     }
+    $("#mySelect2").change(function(){
+        
+        var x = $("#mySelect2").val();
+        if(x == "0"){
+            url = '{{ route("juego") }}';
+            window.location.href=url;
+        }else{
+        
+        rutas2(x);  
+        }
+    });
+
+    function ruta2(id){
+        url = '{{ route("categoria","0",":id") }}';
+        url = url.replace(':id',id);
+        location.href=url;
+    }
+
+
+
 
 </script>
 
