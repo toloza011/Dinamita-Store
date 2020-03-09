@@ -31,7 +31,8 @@ Route::post('registro', 'Auth\RegisterController@create')->name('registro');
 
 //Vista Agregar
 Route::get('/getTableAll', 'AgregarJuegoController@getTableAll')->name('getTable');
-
+//Vista Pagar
+Route::get('pagar', 'VistasController@pagar')->name('pagar');
 //Vista Registrar
 Route::get('registrar', 'VistasController@registrar')->name('registrar');
 //Vista Juego

@@ -212,12 +212,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                             </li>
                             <!-- ----------- FIN BOTON SUBSCRIPCIONES ----------------- -->
-                            <!-- ----------- BOTON ADMINISTRADOR ----------------- -->
-                            @if($request->session()->has('identificador') && $request->session()->get('identificador') == 4)
+                            @if($request->session()->has('identificador'))
+                            <?php $idUser = $request->session()->get('identificador');?>
+                            
+                            @if($idUser == 4)
                             <li class="kt-menu__section ">
-                                <h4 class="kt-menu__section-text">ADMINISTRADOR</h4>
+                                <h4 class="kt-menu__section-text">Admin</h4>
                                 <i class="kt-menu__section-icon flaticon-more-v2"></i>
                             </li>
+
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
                                 <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                     <i class="kt-menu__link-icon flaticon2-laptop"></i>
@@ -227,37 +230,50 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="kt-menu__submenu ">
                                     <span class="kt-menu__arrow"></span>
                                     <ul class="kt-menu__subnav">
+
+                                        
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="#" class="kt-menu__link ">
-                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">Categorías</span>
-                                            </a>
-                                            <a href="#" class="kt-menu__link ">
+                                            <a href="{{Route('ListaUsuarios')}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">Usuarios</span>
                                             </a>
-                                            <a href="#" class="kt-menu__link ">
-                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">Plataformas</span>
-                                            </a>
-                                            <a href="#" class="kt-menu__link ">
-                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-                                                <span class="kt-menu__link-text">Ofertas</span>
-                                            </a>
-                                            <a href="#" class="kt-menu__link ">
+                                        </li>
+                                        <li class="kt-menu__item " aria-haspopup="true">
+                                            <a href="{{Route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">Juegos</span>
                                             </a>
-                                            <a href="#" class="kt-menu__link ">
+                                        </li>
+                                        <li class="kt-menu__item " aria-haspopup="true">
+                                            <a href="{{Route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">Suscripciones</span>
                                             </a>
                                         </li>
+                                        <li class="kt-menu__item " aria-haspopup="true">
+                                            <a href="{{Route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Ofertas</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-menu__item " aria-haspopup="true">
+                                            <a href="{{Route('agregar')}}" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Categorias</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-menu__item " aria-haspopup="true">
+                                            <a href="{{Route('agregarPlataforma')}}" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                                                <span class="kt-menu__link-text">Plataformas</span>
+                                            </a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </li>
                             @endif
-                            <!-- ----------- FIN BOTON ADMINISTRADOR ----------------- -->
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -301,8 +317,10 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                         @if($request->session()->has('identificador'))
-                        <?php $nombreUser = $request->session()->get('nombre'); ?>
+                        <?php $nombreUser = $request->session()->get('nombre'); 
+                               $idUser = $request->session()->get('identificador'); ?>
                         <!--begin: My Cart -->
+                        @if($idUser != 4 )
                         <div class="kt-header__topbar-item dropdown">
                             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px" aria-expanded="true">
                                 <span class="kt-header__topbar-icon">
@@ -405,7 +423,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </div>
                                             </div>
                                             <div class="kt-mycart__button kt-align-right">
-                                                <button type="button" class="btn btn-danger btn-sm" style="background-color: red">Pagar</button>
+                                                <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: red">Pagar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -413,6 +431,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </form>
                             </div>
                         </div>
+                        @endif
                         <!--end: My Cart -->
 
                         <div class="kt-header__topbar-item kt-header__topbar-item--user">
@@ -1010,16 +1029,13 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end::Global Theme Bundle -->
 
         <!--begin::Page Vendors(used by this page) -->
-        <script src="
-                            /assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+        <script src="/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
         <script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM" type="text/javascript"></script>
-        <script src="
-                            /assets/vendors/custom/gmaps/gmaps.js" type="text/javascript"></script>
+        <script src="/assets/vendors/custom/gmaps/gmaps.js" type="text/javascript"></script>
         <!--end::Page Vendors -->
 
         <!--begin::Page Scripts(used by this page) -->
-        <script src="
-                            /assets/js/demo12/pages/dashboard.js" type="text/javascript"></script>
+        <script src="/assets/js/demo12/pages/dashboard.js" type="text/javascript"></script>
         <script>
             $(function() {
                 $('[data-toggle="tooltip"]').tooltip();
