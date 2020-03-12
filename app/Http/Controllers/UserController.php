@@ -7,14 +7,7 @@ use App\Categoria;
 use App\Plataforma;
 use App\Juego;
 use DB;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Session\Middleware\AuthenticateSession;
-
+use DataTables;
 
 class UserController extends Controller
 {
@@ -43,16 +36,12 @@ class UserController extends Controller
 
     public function edit(Request $request, $id)
     {
-
         $InfoCategoria = Categoria::all();
         $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
-        $idusuario = Auth::user()->id;
-            $InfoUser = DB::select("SELECT users.id, users.name, users.email, users.password FROM users WHERE users.id = '$idusuario' ");
-            $User=$InfoUser[0];
         $usuario = DB::table('users')->select("*")->where('id', '=', $id)->first();
 
-        return view('users.editar', compact('usuario','User', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
+        return view('users.editar', compact('usuario', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
     }
 
     public function update($id)
