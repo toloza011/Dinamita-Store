@@ -1,6 +1,27 @@
 @extends('layout')
 @section('url','Subcripciones')
 @section('content')
+<?php
+
+    require_once '../vendor/autoload.php';
+
+    use Transbank\Webpay\Webpay;
+    use Transbank\Webpay\Configuration;
+
+    $transaction = (new Webpay(Configuration :: forTestingWebpayPlusNormal()))->getNormalTransaction();
+    $amount = 10000;
+    $sessionId = 'sessionId';
+    $buyOrder = strval(rand(10000,9999999));
+    $returnUrl = 'http://localhost:8000/return.php';
+    $finalUrl = 'http://localhost:8000/final.php';
+
+    $initResult = $transaction->initTransaction(
+        $amount, $sessionId, $buyOrder, $returnUrl, $finalUrl
+    );
+    $formAction = $initResult->url;
+    $tokenWs = $initResult->token;
+
+?>
 <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
 <link rel="stylesheet" href="{{asset('css/slider.css')}}">
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
@@ -10,7 +31,7 @@
     <h1 class="flaticon2-shopping-cart-1" style='margin-left: 50px'><strong> CARRITO</strong></h1>
 </div>
 <div class='row'>
-    <div class='col-md-6'>
+    <div class='col-md-6' style='margin-bottom: 40px'>
         <div class="container container-fluid" data-scroll="true" data-height="700" data-mobile-height="200">
             <h3 style='margin: 30px'><strong><u>JUEGOS</u></strong></h3>
             <div class="row">
@@ -141,10 +162,11 @@
                 <h4><strong>CLP $ <?php echo $tot ?></strong></h4>
             </div>
         </div>
-        <a href="#" style="background-color:rgb(231, 76, 60); margin-top: 20px" class="btn btn-dark col-md-12 btn-lg">Comprar</a>
+        <form action="<?php echo $formAction ?>" method="POST">
+            <input type="hidden" name='token_ws' value='<?php echo $tokenWs ?>'>
+            <input type="submit" style="background-color:rgb(231, 76, 60); margin-top: 20px" class="btn btn-dark col-md-12 btn-lg" value= 'Comprar'/>
+        </form>
     </div>
 </div>
-
-
 
 @endsection
