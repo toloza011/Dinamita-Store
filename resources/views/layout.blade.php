@@ -239,13 +239,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </a>
                                         </li>
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="{{Route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
+                                            <a href="{{Route('ListaJuegos')}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">Juegos</span>
                                             </a>
                                         </li>
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="{{Route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
+                                            <a href="{{Route('ListaSus')}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">Suscripciones</span>
                                             </a>

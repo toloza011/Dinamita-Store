@@ -84,3 +84,7 @@ class RegisterController extends Controller
         return redirect()->route('login',compact('newUser','data'))->with('mensaje','Usuario Creado exitosamente');
     }
 }
+
+
+
+
