@@ -1,12 +1,7 @@
 @extends('layout')
 @section('content')
 
-@if(Session::has('mensaje'))
-<div class="alert alert-success"><em> {!! session('mensaje') !!}</em></div>
-@endif
-@if(Session::has('mensaje2'))
-<div class="alert alert-danger"><em> {!! session('mensaje2') !!}</em></div>
-@endif
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -30,7 +25,6 @@
 
                             <th width="500">Nombre</th>
                             <th width="500">Correo</th>
-                            <th width="200">Editar</th>
                             <th width="200">Eliminar</th>
                         </thead>
                     </table>
@@ -81,12 +75,6 @@
                     data: 'email',
                     name: 'email'
 
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searchable: false
                 },
                 {
                     data: 'action2',

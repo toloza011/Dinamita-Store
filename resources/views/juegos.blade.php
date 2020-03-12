@@ -18,7 +18,7 @@
                     @endforeach
                 </select>
             </div>
-             
+
         </div>
     </div>
 </div>
@@ -30,7 +30,7 @@
         <div class="col-md-12">
             @foreach($allJuegos as $juego)
             <div class="col-sm-4 col-md-3">
-                <div style="height:350px;" class="thumbnail">
+                <div style="height:380px;" class="thumbnail">
                     <h4 class="text-center"><span class="badge badge-dark">{{$juego->nombre_plataforma}}</span></h4>
                     <img src="{{asset($juego->url_juego)}}" class="img-responsive caratula">
                     <div class="caption">
@@ -38,8 +38,7 @@
                             <div class="col-md-8 col-xs-8">
                                 <h5>{{$juego->nombre_juego}}</h5>
                             </div>
-                            <div class="col-md-4 col-xs-4 price">
-
+                            <div class="col-md-4 col-sm-6 col-xs-6 price">
                                 <h5>
                                     @foreach($ofertas as $item)
                                     @if($juego->id_juego == $item->id_juego)
@@ -49,9 +48,23 @@
                                     <label>${{$juego->precio_juego}}</label></h5>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-8 col-xs-8">
+                                <h5>Stock</h5>
+                            </div>
+                            @if($juego->stock_juego == 0)
+                            <div class="col-md-4 col-xs-4 price" align='right'>
+                                <h5 style='color: red'><label>{{$juego->stock_juego}}</label></h5>
+                            </div>
+                            @else
+                            <div class="col-md-4 col-xs-4 price" align='right'>
+                                <h5><label>{{$juego->stock_juego}}</label></h5>
+                            </div>
+                            @endif
+                        </div>
                         <div class="row text-center ">
                             <div class="col-md-6">
-                                <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
+                                <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                             </div>
                             @if($request->session()->has('identificador'))
                             <div class="col-md-6">

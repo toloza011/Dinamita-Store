@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div style="margin-top:4%;margin-bottom:20px" class="col-md-4">
                 <h5 style="color:black">Filtrar por categoria: </h5>
-                <select style="width:300px" class="form-control" name="tablas" id="mySelect">
+                <select style="width:300px" class="form-control " name="tablas" id="mySelect">
                     <option value="0" >Todos</option>
                  
                     @foreach ($InfoCategoria as $categoria)
@@ -29,7 +29,7 @@
 
 <div class="container container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style='margin-bottom: 20px'>
             @foreach($Juegos as $juego)
             <div class="col-sm-4 col-md-3">
                 <div style="height:350px;" class="thumbnail">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="row text-center ">
                             <div class="col-md-6">
-                                <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
+                                <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                             </div>
                             @if($request->session()->has('identificador'))
                             <div class="col-md-6">
@@ -116,5 +116,11 @@
 
 
 </script>
+
+<script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
 
 @endsection

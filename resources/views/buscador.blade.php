@@ -43,7 +43,7 @@
 						</div>
 						<div class="row text-center ">
 							<div class="col-md-6">
-								<a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
+								<a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
 							</div>
 							@if($request->session()->has('identificador'))
 							<div class="col-md-6">
@@ -63,9 +63,14 @@
 		</div>
 	</div>
 </div>
-
+<?php
+	$total = 0;
+	foreach($consulta2 as $item)
+	$total++;
+?>
+@if($total != 0)
 <div class="container container-fluid">
-<h2 style="color:black;margin-left:20px;"><b>Suscripciones</b> </h2>
+<h2 style="color:black;margin-left:20px; margin-top: 30px;"><b>Suscripciones</b> </h2>
     <div class="row">
         <div style="margin-top:18px" class="col-md-12">
             @foreach($consulta2 as $subcripcion)
@@ -90,7 +95,7 @@
                         </div>
                         <div class="row text-center ">
                             <div class="col-md-6">
-                                <a href="{{route('reviewSub',$subcripcion->id_subscripcion)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
+                                <a href="{{route('reviewSub',$subcripcion->id_subscripcion)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                             </div>
                             @if($request->session()->has('identificador'))
                             <div class="col-md-6">
@@ -114,7 +119,7 @@
         </div>
     </div>
 </div>
-
+@endif
 
 
 

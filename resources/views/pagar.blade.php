@@ -60,7 +60,7 @@
                                 
                                 <div class="row text-center ">
                                     <div class="col-md-6">
-                                        <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
+                                        <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                                     </div>
                                     <div class="col-md-6">
                                         <a href="{{route('del',$juego->id_carrito)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-dark btn-product"><span style="margin-right:5px" class="flaticon2-trash"></span>Eliminar</a>

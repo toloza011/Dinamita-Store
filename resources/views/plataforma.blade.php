@@ -31,7 +31,7 @@
 
 <div class="container container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style='margin-bottom: 20px'>
             @foreach($Subs as $subcripcion)
             <div class="col-sm-4 col-md-3">
                 <div style="height:350px;" class="thumbnail">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="row text-center ">
                             <div class="col-md-6">
-                                <a href="{{route('reviewSub',$subcripcion->id_subscripcion)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
+                                <a href="{{route('reviewSub',$subcripcion->id_subscripcion)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                             </div>
                             @if($request->session()->has('identificador'))
                             <div class="col-md-6">
@@ -109,7 +109,7 @@
 
 <div class="container container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style='margin-bottom: 20px'>
             @foreach($Juegos as $juego)
             <div class="col-sm-4 col-md-3">
                 <div style="height:350px;" class="thumbnail">
@@ -132,7 +132,7 @@
                         </div>
                         <div class="row text-center ">
                             <div class="col-md-6">
-                                <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
+                                <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                             </div>
                             @if($request->session()->has('identificador'))
                             <div class="col-md-6">

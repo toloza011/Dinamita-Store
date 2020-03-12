@@ -93,104 +93,111 @@
                         <i class="fa fa-gamepad" style="color:black"></i>
                     </label>
                 </div>
-                @elseif($PlataformaJuego[0]->id_plataforma==4)
-                <div class="descripcion_juegobtn-group btn-group-toggle">
-                    <label class="btn btn-default text-center active">
-                        <input type="radio" name="color_option" id="color_option1" autocomplete="off"> PS4
-                        <br>
-                        <i class="fab fa-playstation" style="color:black;"></i>
-                    </label>
-                    <label class="btn btn-default text-center">
-                        <input type="radio" name="color_option" id="color_option2" autocomplete="off"> XOne
-                        <br>
-                        <i class="fab fa-xbox" style="color:black;"></i>
-                    </label>
-                    <label class="btn btn-default text-center">
-                        <input type="radio" name="color_option" id="color_option3" autocomplete="off"> PC
-                        <br>
-                        <i class="fas fa-desktop" style="color:black;"></i>
-                    </label>
-                    <label class="btn btn-default text-center">
-                        <input type="radio" name="color_option" id="color_option4" autocomplete="off"> Switch
-                        <br>
-                        <i class="fa fa-gamepad" style="color:black"></i>
-                    </label>
-                </div>
-                @elseif($PlataformaJuego[0]->id_plataforma==5)
-                <div class="descripcion_juegobtn-group btn-group-toggle">
-                    <label class="btn btn-default text-center ">
-                        <input type="radio" name="color_option" id="color_option1" autocomplete="off"> PS4
-                        <br>
-                        <i class="fab fa-playstation" style="color:black;"></i>
-                    </label>
-                    <label class="btn btn-default text-center">
-                        <input type="radio" name="color_option" id="color_option2" autocomplete="off"> XOne
-                        <br>
-                        <i class="fab fa-xbox" style="color:black;"></i>
-                    </label>
-                    <label class="btn btn-default text-center">
-                        <input type="radio" name="color_option" id="color_option3" autocomplete="off"> PC
-                        <br>
-                        <i class="fas fa-desktop" style="color:black;"></i>
-                    </label>
-                    <label class="btn btn-default text-center active">
-                        <input type="radio" name="color_option" id="color_option4" autocomplete="off"> Switch
-                        <br>
-                        <i class="fa fa-gamepad" style="color:black"></i>
-                    </label>
-                </div>
-                @else
-                <div class="descripcion_juegobtn-group btn-group-toggle">
-                    <label class="btn btn-default text-center ">
-                        <input type="radio" name="color_option" id="color_option1" autocomplete="off"> PS4
-                        <br>
-                        <i class="fab fa-playstation" style="color:black;"></i>
-                    </label>
-                    <label class="btn btn-default text-center">
-                        <input type="radio" name="color_option" id="color_option2" autocomplete="off"> XOne
-                        <br>
-                        <i class="fab fa-xbox" style="color:black;"></i>
-                    </label>
-                    <label class="btn btn-dark text-center active">
-                        <input type="radio" name="color_option" id="color_option3" autocomplete="off"> PC
-                        <br>
-                        <i class="fas fa-desktop" style="color:white;"></i>
-                    </label>
-                    <label class="btn btn-default text-center ">
-                        <input type="radio" name="color_option" id="color_option4" autocomplete="off"> Switch
-                        <br>
-                        <i class="fa fa-gamepad" style="color:black"></i>
-                    </label>
-                </div>
-                @endif
-
-                <div class="bg-gray py-2 px-3 mt-4 row">
-                    <div class="col-9">
-                    <h2 class="mb-0">CLP</h2>
+                
+                    @elseif($PlataformaJuego[0]->id_plataforma==4)
+                    <div class="descripcion_juegobtn-group btn-group-toggle">
+                        <label class="btn btn-default text-center active">
+                            <input type="radio" name="color_option" id="color_option1" autocomplete="off"> PS4
+                            <br>
+                            <i class="fab fa-playstation" style="color:black;"></i>
+                        </label>
+                        <label class="btn btn-default text-center">
+                            <input type="radio" name="color_option" id="color_option2" autocomplete="off"> XOne
+                            <br>
+                            <i class="fab fa-xbox" style="color:black;"></i>
+                        </label>
+                        <label class="btn btn-default text-center">
+                            <input type="radio" name="color_option" id="color_option3" autocomplete="off"> PC
+                            <br>
+                            <i class="fas fa-desktop" style="color:black;"></i>
+                        </label>
+                        <label class="btn btn-default text-center">
+                            <input type="radio" name="color_option" id="color_option4" autocomplete="off"> Switch
+                            <br>
+                            <i class="fa fa-gamepad" style="color:black"></i>
+                        </label>
                     </div>
-                    <div align="right"class="col-3 ">
-                    <h2  class="mb-0">
-                        @foreach($ofertas as $item)
-                        @if($InfoJuego->id_juego == $item->id_juego)
-                        <?php $InfoJuego->precio_juego=$item->precio_juego - (($item->descuento * $item->precio_juego) / 100);?>
-                          @endif
-                        @endforeach
-                        ${{$InfoJuego->precio_juego}}
-                    </h2>
+                    @elseif($PlataformaJuego[0]->id_plataforma==5)
+                    <div class="descripcion_juegobtn-group btn-group-toggle">
+                        <label class="btn btn-default text-center ">
+                            <input type="radio" name="color_option" id="color_option1" autocomplete="off"> PS4
+                            <br>
+                            <i class="fab fa-playstation" style="color:black;"></i>
+                        </label>
+                        <label class="btn btn-default text-center">
+                            <input type="radio" name="color_option" id="color_option2" autocomplete="off"> XOne
+                            <br>
+                            <i class="fab fa-xbox" style="color:black;"></i>
+                        </label>
+                        <label class="btn btn-default text-center">
+                            <input type="radio" name="color_option" id="color_option3" autocomplete="off"> PC
+                            <br>
+                            <i class="fas fa-desktop" style="color:black;"></i>
+                        </label>
+                        <label class="btn btn-default text-center active">
+                            <input type="radio" name="color_option" id="color_option4" autocomplete="off"> Switch
+                            <br>
+                            <i class="fa fa-gamepad" style="color:black"></i>
+                        </label>
                     </div>
-                    
-                </div>
+                    @else
+                    <div class="descripcion_juegobtn-group btn-group-toggle">
+                        <label class="btn btn-default text-center ">
+                            <input type="radio" name="color_option" id="color_option1" autocomplete="off"> PS4
+                            <br>
+                            <i class="fab fa-playstation" style="color:black;"></i>
+                        </label>
+                        <label class="btn btn-default text-center">
+                            <input type="radio" name="color_option" id="color_option2" autocomplete="off"> XOne
+                            <br>
+                            <i class="fab fa-xbox" style="color:black;"></i>
+                        </label>
+                        <label class="btn btn-dark text-center active">
+                            <input type="radio" name="color_option" id="color_option3" autocomplete="off"> PC
+                            <br>
+                            <i class="fas fa-desktop" style="color:white;"></i>
+                        </label>
+                        <label class="btn btn-default text-center ">
+                            <input type="radio" name="color_option" id="color_option4" autocomplete="off"> Switch
+                            <br>
+                            <i class="fa fa-gamepad" style="color:black"></i>
+                        </label>
+                    </div>
+                    @endif
+                  
+                    <div class="bg-gray py-2 px-3 mt-4 row"style="margin-left:1px">
+                        <div class="col-9">
+                        <h2 class="mb-0">CLP</h2>
+                        </div>
+                        <div align="right"class="col-3 ">
+                        <h2  class="mb-0">
+                            @foreach($ofertas as $item)
+                            @if($InfoJuego->id_juego == $item->id_juego)
+                            <?php $InfoJuego->precio_juego=$item->precio_juego - (($item->descuento * $item->precio_juego) / 100);?>
+                            @endif
+                            @endforeach
+                            ${{$InfoJuego->precio_juego}}
+                        </h2>
+                        </div>
+                        
+                    </div>
+                    @if($request->session()->has('identificador'))
+                    <div class="mt-4">
+                        <a href="{{route('carrito',$InfoJuego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>
+                    </div>
+                    @else
+                    <div class="mt-4">
+                        <a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>
+                    </div>
+                    @endif
+                   
+                
+                
+
+                
 
 
-                @if($request->session()->has('identificador'))
-                <div align="right"class="mt-4">
-                    <a href="{{route('carrito',$InfoJuego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>
-                </div>
-                @else
-                <div class="mt-4">
-                    <a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>
-                </div>
-                @endif
+                
 
 
             </div>

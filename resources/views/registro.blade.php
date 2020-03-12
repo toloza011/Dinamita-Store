@@ -10,6 +10,7 @@
 
       <form class="form-horizontal style-form" method="post" action="{{route('registro')}}">
         @csrf
+    <div class="col-md-6">
         <div class="form-group">
           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         </div>
@@ -34,14 +35,27 @@
 
             </div>
           </div>
-
-          </div>
           <div class="form-group">
-            <div class="col-lg-offset-2 col-lg-10">
-            <input class="btn btn-success" type="submit" value="Registrar">
-            <a class="btn btn-warning" href="">Cancelar</a>
-            </div>
+            <div class="col-md-offset-2 col-md-6">
+            <input class="btn btn-dark btn-product" type="submit" value="Registrar">
+            <a class="btn btn-danger btn-product" href="">Cancelar</a>
           </div>
+          </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-offset-2 col-md-6 mt-3" >
+                <div class="kt-login__container center-block" >
+                    <div class="kt-login__logo" style="">
+                        <a href="#">
+                            <img src="{{asset('./assets/media/logos/imagenLogin.png')}}" style="height:230px;"/>
+                        </a>
+            </div>
+            </div>
+              </div>
+          </div>
+
+
+        </div>
         </form>
     </div>
 </div>

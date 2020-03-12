@@ -32,6 +32,7 @@
 
 						<div class="row justify-content-center">
 							<div class="col-12 col-md-4">
+
 									<div class="input-group {{$errors->has('email')?'alert alert-danger':''}}">
 										<input class="form-control" type="email" style="border-radius:15px" placeholder="correo" name="email" value="{{old('email')}}"autocomplete="off" required>
                                         {!!$errors->first('email','<span class="help-block">:message</span>')!!}
@@ -39,7 +40,6 @@
 									<br>
 									<div class="input-group {{$errors->has('password')?'alert alert-danger':''}}">
 										<input class="form-control" type="password" style="border-radius:15px" placeholder="Contraseña" name="password" required>
-
 									</div>
 									<br>
 
@@ -55,7 +55,28 @@
 											<!--<button id="kt_login_signin_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Acceder</button>-->
 							</div>
 						</div>
-					</form>
-							<br><br><em><strong><h3 align="center" style="color: red">"Los mejores juegos al mejor precio"</h3></strong></em>
+                    </form>
+                    <a href="{{route('RecuperarContra')}}">Hazme Click</a>
+                    <form action="{{route('RecuperarContra')}}" method="get">
+                        <div class="row justify-content-center">
+                            <input type="submit" id="kt_login_signin_submit" class="btn btn-success form-control col-6 col-md-3 mt-2" style="border-radius:25px" value="¿Olvidaste tu contraseña?">
+                            <!--<button id="kt_login_signin_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Acceder</button>-->
+                          </div>
+                    </form>
+                    <!--- <a href="" class="kt-notification__item">
+                                        <div class="kt-notification__item-icon">
+                                            <i class="fas fa-key"></i>
+                                        </div>
+                                        <div class="kt-notification__item-details">
+                                            <div class="kt-notification__item-title kt-font-bold">
+                                                Olvidaste tu contraseña?
+                                            </div>
+                                            <div class="kt-notification__item-time">
+                                                Cambia tu contraseña
+                                            </div>
+                                        </div>
+                                    </a>
+                                   --->
+							<br><br><em><strong><h2 align="center" style="color: red">Los mejores juegos al mejor precio</h2></strong></em>
 							</div>
 @endsection
