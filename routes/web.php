@@ -20,6 +20,7 @@ Route::get('/', 'VistasController@inicio')->name('home');
 
 //Carrito
 Route::get('carrito/{id}', 'CarritoController@index')->name('carrito');
+Route::get('carrito2/{id}', 'CarritoController@insert_subscripcion')->name('carrito2');
 Route::get('del/{id}', 'CarritoController@delete')->name('del');
 
 //Login-Registrar-Logout
@@ -30,7 +31,8 @@ Route::post('registro', 'Auth\RegisterController@create')->name('registro');
 
 //Vista Agregar
 Route::get('/getTableAll', 'AgregarJuegoController@getTableAll')->name('getTable');
-
+//Vista Pagar
+Route::get('pagar', 'VistasController@pagar')->name('pagar');
 //Vista Registrar
 Route::get('registrar', 'VistasController@registrar')->name('registrar');
 //Vista Juego

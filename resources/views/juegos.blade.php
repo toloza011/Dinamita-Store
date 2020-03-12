@@ -80,22 +80,15 @@
 <!---fin catalogo--->
 <script>
     $("#mySelect").change(function() {
-
         var x = $("#mySelect").val();
-
         ruta(x);
     });
 
 
     function ruta(id) {
-
-
         url = '{{ route("categoria", ":id") }}';
-
         url = url.replace(':id', id);
-
         location.href = url;
-
     }
 </script>
 @endsection

@@ -423,7 +423,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </div>
                                             </div>
                                             <div class="kt-mycart__button kt-align-right">
-                                                <button type="button" class="btn btn-danger btn-sm" style="background-color: red">Pagar</button>
+                                                <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: red">Pagar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -517,6 +517,12 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     <!-- begin:: Content -->
                     <div class="card card-solid">
+                        @if(Session::has('mensaje'))
+                        <div class="alert alert-success"><em> {!! session('mensaje') !!}</em></div>
+                        @endif
+                        @if(Session::has('mensaje2'))
+                        <div class="alert alert-danger"><em> {!! session('mensaje2') !!}</em></div>
+                        @endif
 
 
                         <form action="{{route('buscar')}}" method="GET">
@@ -527,9 +533,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <input type="submit" class="btn btn-dark" value="Buscar">
                             </div>
                         </form>
-
-
-                        @yield('content')
+                    @yield('content')
                     </div>
                     <!-- CONTENIDO DE LA PAGINAAAAA AQUIIII -->
 
