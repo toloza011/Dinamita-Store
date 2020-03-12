@@ -18,7 +18,7 @@
                     @endforeach
                 </select>
             </div>
-             
+
         </div>
     </div>
 </div>
@@ -38,8 +38,7 @@
                             <div class="col-md-8 col-xs-8">
                                 <h5>{{$juego->nombre_juego}}</h5>
                             </div>
-                            <div class="col-md-4 col-xs-4 price">
-
+                            <div class="col-md-4 col-sm-6 col-xs-6 price">
                                 <h5>
                                     @foreach($ofertas as $item)
                                     @if($juego->id_juego == $item->id_juego)

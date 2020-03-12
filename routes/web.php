@@ -94,4 +94,18 @@ Route::get('/update3/{id}', ['uses' => 'UserController@update'])->name('updateUs
 Route::post('QuitarUsuario','UserController@QuitarPlataforma');
 
 
+//Perfil Usuario
+Route::get('Configuracion/User/{id}','VistasController@InfoUsuario')->name('InfoUser');
+Route::get('Configuracion/User/{id}/editar','UserController@updateUsuario')->name('updateUser');
+Route::get('RecuperarPass','UserController@RecuperarPass')->name('RecuperarContra');
+Route::get('CambiarPass','UserController@EnviarDatos')->name('EnviarDatos');
+
+//Fin Perfil Usuario
+
+//Ofertas
+Route::get('OfertasRelampagos','VistasController@indexOfertas')->name('Ofertas');
+
+
+//Fin Ofertas
+
 

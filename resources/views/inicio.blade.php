@@ -36,7 +36,6 @@
 		</div>
 		<div style="height:600px; " class="highlight-main">
 			@foreach($ofertas as $item)
-
 			<?php $valorOferta = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100); ?>
 			<div class="carousel-cell">
 				<a href="{{route('review',$item->id_juego)}}"><img align="center" style="width:100%; height:500px" src="{{asset($item->url_juego)}}"></a>

@@ -28,6 +28,7 @@ class LoginController extends Controller
         $InfoCategoria=Categoria::all();
         $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('juegos','plataformas.id_plataforma','=','juegos.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
         $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma','plataformas.nombre_plataforma')->join('subscripciones','plataformas.id_plataforma','=','subscripciones.id_plataforma')->groupBy('id_plataforma','nombre_plataforma')->get();
+
         return view('login',compact('InfoCategoria','InfoPlataformaJ','InfoPlataformaS','request'));
     }
 
