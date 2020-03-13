@@ -7,9 +7,21 @@
 
     use Transbank\Webpay\Webpay;
     use Transbank\Webpay\Configuration;
+    $tot=0;
+    foreach($asd as $juego){
+        foreach($ofertas as $item){
+            if($juego->id_juego == $item->id_juego){
+                $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);
+            }
+        }
+        $tot += $juego->precio_juego;
+    }
+    foreach($asd2 as $qwe){
+        $tot+=$qwe->precio_subscripcion;
+    }
 
     $transaction = (new Webpay(Configuration :: forTestingWebpayPlusNormal()))->getNormalTransaction();
-    $amount = 10000;
+    $amount = $tot;
     $sessionId = 'sessionId';
     $buyOrder = strval(rand(10000,9999999));
     $returnUrl = 'http://localhost:8000/return.php';
@@ -38,7 +50,7 @@
                 <div class="col-md-12">
                     @foreach($asd as $juego)
                     <div class="col-sm-4 col-md-6">
-                        <div style="height:350px;" class="thumbnail">
+                        <div style="height:380px;" class="thumbnail">
                             <h4 class="text-center"><span class="badge badge-dark">{{$juego->nombre_plataforma}}</span></h4>
                             <img src="{{asset($juego->url_juego)}}" class="img-responsive caratula">
                             <div class="caption">
@@ -57,7 +69,20 @@
                                         </h5>
                                     </div>
                                 </div>
-                                
+                                <div class="row">
+                                    <div class="col-md-8 col-xs-8">
+                                        <h5>Stock</h5>
+                                    </div>
+                                    @if($juego->stock_juego == 0)
+                                    <div class="col-md-4 col-xs-4 price" align='right'>
+                                        <h5 style='color: red'><label>{{$juego->stock_juego}}</label></h5>
+                                    </div>
+                                    @else
+                                    <div class="col-md-4 col-xs-4 price" align='right'>
+                                        <h5><label>{{$juego->stock_juego}}</label></h5>
+                                    </div>
+                                    @endif
+                                </div>
                                 <div class="row text-center ">
                                     <div class="col-md-6">
                                         <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
@@ -78,7 +103,7 @@
                 <div style="margin-top:18px" class="col-md-12">
                     @foreach($asd2 as $subcripcion)
                     <div class="col-sm-4 col-md-6">
-                        <div style="height:350px;" class="thumbnail">
+                        <div style="height:380px;" class="thumbnail">
                             @foreach($InfoPlataformaS as $plataforma)
                             @if($subcripcion->id_plataforma == $plataforma->id_plataforma )
                             <?php $x = $plataforma->nombre_plataforma ?>
@@ -96,6 +121,20 @@
                                             <label>${{$subcripcion->precio_subscripcion}}</label>
                                         </h4>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-xs-8">
+                                        <h5>Stock</h5>
+                                    </div>
+                                    @if($subcripcion->stock_suscripcion == 0)
+                                    <div class="col-md-4 col-xs-4 price" align='right'>
+                                        <h5 style='color: red'><label>{{$subcripcion->stock_suscripcion}}</label></h5>
+                                    </div>
+                                    @else
+                                    <div class="col-md-4 col-xs-4 price" align='right'>
+                                        <h5><label>{{$subcripcion->stock_suscripcion}}</label></h5>
+                                    </div>
+                                    @endif
                                 </div>
                                 <div class="row text-center ">
                                     <div class="col-md-6">

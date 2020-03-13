@@ -34,7 +34,7 @@
         <div class="col-md-12" style='margin-bottom: 20px'>
             @foreach($Subs as $subcripcion)
             <div class="col-sm-4 col-md-3">
-                <div style="height:350px;" class="thumbnail">
+                <div style="height:380px;" class="thumbnail">
                     @foreach($InfoPlataformaS as $plataforma)
                     @if($subcripcion->id_plataforma == $plataforma->id_plataforma )
                     <?php $x = $plataforma->nombre_plataforma ?>
@@ -51,6 +51,20 @@
                                 <h4>
                                     <label>${{$subcripcion->precio_subscripcion}}</label></h4>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 col-xs-8">
+                                <h5>Stock</h5>
+                            </div>
+                            @if($subcripcion->stock_suscripcion == 0)
+                            <div class="col-md-4 col-xs-4 price" align='right'>
+                                <h5 style='color: red'><label>{{$subcripcion->stock_suscripcion}}</label></h5>
+                            </div>
+                            @else
+                            <div class="col-md-4 col-xs-4 price" align='right'>
+                                <h5><label>{{$subcripcion->stock_suscripcion}}</label></h5>
+                            </div>
+                            @endif
                         </div>
                         <div class="row text-center ">
                             <div class="col-md-6">
@@ -112,7 +126,7 @@
         <div class="col-md-12" style='margin-bottom: 20px'>
             @foreach($Juegos as $juego)
             <div class="col-sm-4 col-md-3">
-                <div style="height:350px;" class="thumbnail">
+                <div style="height:380px;" class="thumbnail">
                     @foreach($InfoPlataformaJ as $plataforma)
                     @if($juego->id_plataforma == $plataforma->id_plataforma )
                     <?php $x = $plataforma->nombre_plataforma ?>
@@ -129,6 +143,20 @@
                                 <h4>
                                     <label>${{$juego->precio_juego}}</label></h4>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 col-xs-8">
+                                <h5>Stock</h5>
+                            </div>
+                            @if($juego->stock_juego == 0)
+                            <div class="col-md-4 col-xs-4 price" align='right'>
+                                <h5 style='color: red'><label>{{$juego->stock_juego}}</label></h5>
+                            </div>
+                            @else
+                            <div class="col-md-4 col-xs-4 price" align='right'>
+                                <h5><label>{{$juego->stock_juego}}</label></h5>
+                            </div>
+                            @endif
                         </div>
                         <div class="row text-center ">
                             <div class="col-md-6">
