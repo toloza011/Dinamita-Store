@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-02-2020 a las 01:34:10
+-- Tiempo de generación: 13-03-2020 a las 15:09:06
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.26
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -46,6 +46,15 @@ CREATE TABLE `carritos` (
   `id_juego` int(11) DEFAULT NULL,
   `id_subscripcion` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `carritos`
+--
+
+INSERT INTO `carritos` (`id_carrito`, `id`, `id_juego`, `id_subscripcion`) VALUES
+(47, 6, 10, NULL),
+(49, 6, 6, NULL),
+(50, 6, NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -102,7 +111,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `id`, `nombre_cl`, `fono`) VALUES
-(2, 5, 'Cliente', 999999999);
+(3, 6, 'Cliente', 123);
 
 -- --------------------------------------------------------
 
@@ -128,7 +137,8 @@ INSERT INTO `codigos` (`id_codigo`, `id_juego`, `id_subscripcion`, `codigo`) VAL
 (4, 3, NULL, 'zzzzzzzzzzz'),
 (5, 3, NULL, 'cxxxxxxxxxxxx'),
 (6, 9, NULL, 'gggggggggg'),
-(7, 9, NULL, 'yjytjjytjy');
+(7, 9, NULL, 'yjytjjytjy'),
+(9, 3, NULL, 'asdasdasd');
 
 -- --------------------------------------------------------
 
@@ -221,7 +231,7 @@ CREATE TABLE `juegos` (
 
 INSERT INTO `juegos` (`id_juego`, `nombre_juego`, `precio_juego`, `stock_juego`, `descripcion_juego`, `url_juego`, `id_plataforma`) VALUES
 (2, 'Celeste', 9500, 0, 'Ayuda a Madeline a sobrevivir a los demonios de su interior en su viaje hasta la cima de la montaña Celeste, en este ajustadísimo plataforma, obra de los creadores de TowerFall. Enfréntate a cientos de desafíos diseñados a mano, devela retorcidos secretos y, y reconstruye el misterio de la montaña.', 'assets/media/juegos/Celeste.png', 1),
-(3, 'Dark Souls 3', 10000, 0, 'Dark Souls continúa redefiniendo los límites con el nuevo y ambicioso capítulo de esta serie revolucionaria, tan aclamada por la crítica. ¡Prepárate para sumergirte en la oscuridad!', 'assets/media/juegos/DarkSouls3.jpg', 2),
+(3, 'Dark Souls 3', 10000, 1, 'Dark Souls continúa redefiniendo los límites con el nuevo y ambicioso capítulo de esta serie revolucionaria, tan aclamada por la crítica. ¡Prepárate para sumergirte en la oscuridad!', 'assets/media/juegos/DarkSouls3.jpg', 2),
 (4, 'Assassins Creed Origins', 25000, 0, 'ASSASSIN’S CREED® ORIGINS ES UN NUEVO COMIENZO *¡Discovery Tour by Assassin’s Creed®: Antiguo Egipto está ya disponible como actualización gratuita!* El esplendor y el misterio del antiguo Egipto se desdibujan en una cruenta lucha por el poder.', 'assets/media/juegos/AssassinCreedO.jpg', 2),
 (5, 'Batman Arkham Knight', 3000, 0, 'Batman™: Arkham Knight es la épica conclusión de la galardonada trilogía de Arkham, creada por Rocksteady Studios. El título, desarrollado en exclusiva para plataformas de nueva generación, presenta la espectacular versión del batmóvil imaginada por Rocksteady.', 'assets/media/juegos/BatmanAK.jpg', 1),
 (6, 'Borderlands 3', 30000, 0, '¡Descubre el shooter cooperativo original, repleto de mejoras! Encarna a uno de los cuatro mercenarios de gatillo fácil, equípate con tropecientas armas y adéntrate en el planeta desértico de Pandora.', 'assets/media/juegos/Borderlands3.jpg', 1),
@@ -377,20 +387,21 @@ CREATE TABLE `subscripciones` (
   `precio_subscripcion` int(11) DEFAULT NULL,
   `tipo_subscripcion` varchar(20) DEFAULT NULL,
   `url_subscripcion` varchar(500) NOT NULL,
-  `id_plataforma` int(11) NOT NULL
+  `id_plataforma` int(11) NOT NULL,
+  `stock_suscripcion` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `subscripciones`
 --
 
-INSERT INTO `subscripciones` (`id_subscripcion`, `precio_subscripcion`, `tipo_subscripcion`, `url_subscripcion`, `id_plataforma`) VALUES
-(3, 2500, '1 mes', 'assets/media/subs/Nintendo.png', 5),
-(4, 5300, '3 meses', 'assets/media/subs/Nintendo.png', 5),
-(5, 13500, '12 meses', 'assets/media/subs/Nintendo.png', 5),
-(6, 6000, '1 mes', 'assets/media/subs/Xbox.jpg', 3),
-(7, 17900, '3 meses', 'assets/media/subs/PS.jpg', 4),
-(8, 35900, '12 meses', 'assets/media/subs/PS.jpg', 4);
+INSERT INTO `subscripciones` (`id_subscripcion`, `precio_subscripcion`, `tipo_subscripcion`, `url_subscripcion`, `id_plataforma`, `stock_suscripcion`) VALUES
+(3, 2500, '1 mes', 'assets/media/subs/Nintendo.png', 5, 0),
+(4, 5300, '3 meses', 'assets/media/subs/Nintendo.png', 5, 0),
+(5, 13500, '12 meses', 'assets/media/subs/Nintendo.png', 5, 0),
+(6, 6000, '1 mes', 'assets/media/subs/Xbox.jpg', 3, 0),
+(7, 17900, '3 meses', 'assets/media/subs/PS.jpg', 4, 0),
+(8, 35900, '12 meses', 'assets/media/subs/PS.jpg', 4, 0);
 
 -- --------------------------------------------------------
 
@@ -415,7 +426,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (4, 'Admin', 'demo_admin@gmail.com', NULL, '$2y$10$pXZii2ci4xSIcqRiN0/XKemxpAW/rFtWknGwT5WrlLlmTWeS3c63W', NULL, '2020-02-24 07:45:50', '2020-02-24 07:45:50'),
-(5, 'Cliente', 'demo_cliente@gmail.com', NULL, '$2y$10$uFWyclaCeGXTpcknekZjae7uBcf1Si9X2qwTKNVk.IfAZXh7gWHMW', NULL, '2020-02-24 07:46:14', '2020-02-24 07:46:14');
+(6, 'Cliente', 'demo_cliente@gmail.com', NULL, '$2y$10$pXZii2ci4xSIcqRiN0/XKemxpAW/rFtWknGwT5WrlLlmTWeS3c63W', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -433,8 +444,8 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id_cliente`, `id_codigo`) VALUES
-(2, 1),
-(2, 5);
+(3, 1),
+(3, 5);
 
 --
 -- Índices para tablas volcadas
@@ -569,25 +580,25 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de la tabla `carritos`
 --
 ALTER TABLE `carritos`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `codigos`
 --
 ALTER TABLE `codigos`
-  MODIFY `id_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -599,13 +610,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `juegos`
 --
 ALTER TABLE `juegos`
-  MODIFY `id_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -623,7 +634,7 @@ ALTER TABLE `ofertas`
 -- AUTO_INCREMENT de la tabla `plataformas`
 --
 ALTER TABLE `plataformas`
-  MODIFY `id_plataforma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_plataforma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `subscripciones`
@@ -635,7 +646,7 @@ ALTER TABLE `subscripciones`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
