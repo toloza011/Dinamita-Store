@@ -85,7 +85,7 @@ body {
 .popup.active {	transform: scale(1); opacity: 1; }
 .popup.active h3 { animation: entradaTitulo 0s ease 0s forwards; }
 .popup.active h4 { animation: entradaSubtitulo .0s ease .0s forwards; }
-.popup.active img { animation: entradaImagen .5s ease 0s forwards; }
+.popup.active img { animation: entradaImagen .4s ease .2s forwards; }
 
 @keyframes entradaTitulo {
 	from {

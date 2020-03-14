@@ -39,8 +39,9 @@
                                 <h5>{{$subcripcion->tipo_subscripcion}}</h5>
                             </div>
                             <div class="col-md-5 col-xs-5 price">
-                                <h4>
-                                    <label>${{$subcripcion->precio_subscripcion}}</label></h4>
+                                <h4 align='right'>
+                                    <label>${{$subcripcion->precio_subscripcion}}</label>
+                                </h4>
                             </div>
                         </div>
                         <div class="row">

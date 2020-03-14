@@ -83,7 +83,7 @@
 						</div>
 						<div class="col-md-4 col-xs-4 price" align='right'>
 
-							<h5>
+							<h5 align='right'>
 								@foreach($ofertas as $item)
 								@if($juego->id_juego == $item->id_juego)
 								<?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	?>

@@ -20,18 +20,20 @@
         $tot+=$qwe->precio_subscripcion;
     }
 
-    $transaction = (new Webpay(Configuration :: forTestingWebpayPlusNormal()))->getNormalTransaction();
-    $amount = $tot;
-    $sessionId = 'sessionId';
-    $buyOrder = strval(rand(10000,9999999));
-    $returnUrl = 'http://localhost:8000/return.php';
-    $finalUrl = 'http://localhost:8000/final.php';
+    if($tot != 0){
+        $transaction = (new Webpay(Configuration :: forTestingWebpayPlusNormal()))->getNormalTransaction();
+        $amount = $tot;
+        $sessionId = 'sessionId';
+        $buyOrder = strval(rand(10000,9999999));
+        $returnUrl = 'http://127.0.0.1:8000/retorno.blade.php';
+        $finalUrl = route('home');
 
-    $initResult = $transaction->initTransaction(
-        $amount, $sessionId, $buyOrder, $returnUrl, $finalUrl
-    );
-    $formAction = $initResult->url;
-    $tokenWs = $initResult->token;
+        $initResult = $transaction->initTransaction(
+            $amount, $sessionId, $buyOrder, $returnUrl, $finalUrl
+        );
+        $formAction = $initResult->url;
+        $tokenWs = $initResult->token;
+    }
 
 ?>
 <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
@@ -45,7 +47,9 @@
 <div class='row'>
     <div class='col-md-6' style='margin-bottom: 40px'>
         <div class="container container-fluid" data-scroll="true" data-height="700" data-mobile-height="200">
+            @if($asd != null)
             <h3 style='margin: 30px'><strong><u>JUEGOS</u></strong></h3>
+            @endif
             <div class="row">
                 <div class="col-md-12">
                     @foreach($asd as $juego)
@@ -59,7 +63,7 @@
                                         <h5>{{$juego->nombre_juego}}</h5>
                                     </div>
                                     <div class="col-md-4 col-xs-4 price">
-                                        <h5>
+                                        <h5 align='right'>
                                             @foreach($ofertas as $item)
                                             @if($juego->id_juego == $item->id_juego)
                                             <?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);    ?>
@@ -98,7 +102,9 @@
                     @endforeach
                 </div>
             </div>
+            @if($asd2 != null)
             <h3 style='margin: 30px; margin-top: 40px'><strong><u>SUSCRIPCIONES</u></strong></h3>
+            @endif
             <div class="row">
                 <div style="margin-top:18px" class="col-md-12">
                     @foreach($asd2 as $subcripcion)
@@ -117,7 +123,7 @@
                                         <h5>{{$subcripcion->tipo_subscripcion}}</h5>
                                     </div>
                                     <div class="col-md-5 col-xs-5 price">
-                                        <h4>
+                                        <h4 align='right'>
                                             <label>${{$subcripcion->precio_subscripcion}}</label>
                                         </h4>
                                     </div>
@@ -155,7 +161,9 @@
     </div>
     <div class='col-md-5' style='margin-top: 30px; margin-left: 30px'>
         <?php $tot = 0; ?>
+        @if($asd != null)
         <p><strong><u>Juegos</u></strong></p>
+        @endif
         <div class='row'>
             <div class='col-md-5'>
                 @foreach($asd as $juego)
@@ -174,7 +182,9 @@
                 @endforeach
             </div>
         </div>
+        @if($asd2 != null)
         <p style='margin-top: 20px'><strong><u>Suscripciones</u></strong></p>
+        @endif
         <div class='row'>
             <div class='col-md-5'>
                 @foreach($asd2 as $subcripcion)
@@ -201,10 +211,14 @@
                 <h4><strong>CLP $ <?php echo $tot ?></strong></h4>
             </div>
         </div>
-        <form action="<?php echo $formAction ?>" method="POST">
-            <input type="hidden" name='token_ws' value='<?php echo $tokenWs ?>'>
-            <input type="submit" style="background-color:rgb(231, 76, 60); margin-top: 20px" class="btn btn-dark col-md-12 btn-lg" value= 'Comprar'/>
-        </form>
+        @if($tot != 0)
+            <form action="<?php echo $formAction ?>" method="POST">
+                <input type="hidden" name='token_ws' value='<?php echo $tokenWs ?>'>
+                <input type="submit" style="background-color:rgb(231, 76, 60); margin-top: 20px" class="btn btn-dark col-md-12 btn-lg" value= 'Comprar'/>
+            </form>
+        @else
+            <a href="{{route('botonPagar')}}" style="background-color:rgb(231, 76, 60); margin-top: 20px" class="btn btn-dark col-md-12 btn-lg">Comprar</a>
+        @endif
     </div>
 </div>
 
