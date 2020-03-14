@@ -73,7 +73,7 @@
                                 <a href="{{route('reviewSub',$subcripcion->id_subscripcion)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                             </div>
                             @if($request->session()->has('identificador'))
-                                @if($subcripcion->stock_suscripcion != 0)
+                                @if($subcripcion->stock_suscripcion != 0 && $request->session()->get('identificador') != 4)
                                     <div class="col-md-6">
                                         <a href="{{route('carrito2', $subcripcion->id_subscripcion)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
                                     </div>
@@ -96,7 +96,13 @@
             <div class="overlay" id="overlay">
                 <div class="popup" id="popup">
                     <img alt="Logo" src="/assets/media/logos/x.png"/>
-                    <h4>Stock no Disponible</h4>
+                    <?php
+                        if($request->session()->get('identificador') == 4)
+                        $texto = 'Función Comprar No Disponible Para La Cuenta';
+                        else
+                        $texto = 'Stock No Disponible';
+                    ?>
+                    <h4>{{$texto}}</h4>
                     <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup btn btn-danger btn-product">Aceptar</a>
                 </div>
             </div>
@@ -178,7 +184,7 @@
                                 <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                             </div>
                             @if($request->session()->has('identificador'))
-                                @if($juego->stock_juego != 0)
+                                @if($juego->stock_juego != 0 && $request->session()->get('identificador') != 4)
                                     <div class="col-md-6">
                                         <a href="{{route('carrito', $juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
                                     </div>
@@ -201,7 +207,13 @@
             <div class="overlay" id="overlay">
                 <div class="popup" id="popup">
                     <img alt="Logo" src="/assets/media/logos/x.png"/>
-                    <h4>Stock no Disponible</h4>
+                    <?php
+                        if($request->session()->get('identificador') == 4)
+                        $texto = 'Función Comprar No Disponible Para La Cuenta';
+                        else
+                        $texto = 'Stock No Disponible';
+                    ?>
+                    <h4>{{$texto}}</h4>
                     <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup btn btn-danger btn-product">Aceptar</a>
                 </div>
             </div>
