@@ -2,6 +2,9 @@
 
 @section('content')
 
+
+<link rel="stylesheet" href="{{asset('css/estilos1.css')}}">
+
 <div class="row">
 	<div class="container container-fluid">
 		<div class="col-md-12">
@@ -56,21 +59,35 @@
 							<div class="col-md-6">
 								<a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
 							</div>
-							@if($request->session()->has('identificador'))
-							<div class="col-md-6">
-								<a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-							</div>
+                            @if($request->session()->has('identificador'))
+                                @if($juego->stock_juego != 0)
+                                    <div class="col-md-6">
+                                        <a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                    </div>
+                                @else
+                                    <div class="col-md-6">
+                                        <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                    </div>
+                                @endif
 							@else
-							<div class="col-md-6">
-								<a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-							</div>
+                                <div class="col-md-6">
+                                    <a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                </div>
 							@endif
 						</div>
 						<p></p>
 					</div>
 				</div>
 			</div>
-			@endforeach
+            @endforeach
+            <div class="overlay" id="overlay">
+                <div class="popup" id="popup">
+                    <img alt="Logo" src="/assets/media/logos/x.png"/>
+                    <h4>Stock no Disponible</h4>
+                    <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup btn btn-danger btn-product">Aceptar</a>
+                </div>
+            </div>
+            <script src="js/popup.js"></script>
 		</div>
 	</div>
 </div>
