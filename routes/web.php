@@ -141,6 +141,7 @@ Route::get('ListaOfertas', function (Request $request) {
     return view('ofertas.listaOfertas', compact('InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
 })->name("ListaOfertas");
 Route::get('/getOfertasAll', 'OfertasController@getOfertasAll')->name('getOfertas');
+Route::get('/oferta/{id_oferta}/editar', ['uses' => 'OfertasController@edit'])->name('editarOferta');
 
 
 //Perfil Usuario

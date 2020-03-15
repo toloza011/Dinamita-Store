@@ -4,22 +4,22 @@
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                Modificar Juego:{{$nombre_juego->nombre_juego}}
+                Modificar Juego:{{$sus->nombre_plataforma}}
             </h3>
 
         </div>
     </div>
     <h3 class="kt-portlet__head-title" style="margin-left:20px">
-        {{$nombre_juego->stock_juego}} Copias del juego
+        {{$sus->stock_suscripcion}} Copias del juego
     </h3>
     <div class="row col-12">
-        <form action="{{route('updateStockk', $nombre_juego->id_juego )}}" method="post">
+        <form action="{{route('updateStockk2', $sus->id_subscripcion)}}" method="post">
             @csrf
             <div class="col-md-6 ">
                 <div class="kt-portlet__body">
+                    <label>Agregar Codigo</label>
+                    <div class="form-group">
 
-                    <div class="form-group {{ $errors->has('nombre_juego') ? ' has-error' : '' }}">
-                        <label>Agregar Codigo</label>
                         <input type="text" class="form-control" placeholder="Ingrese Codigo" id="codigo" name="codigo">
 
                     </div>
@@ -42,89 +42,79 @@
     </div>
 
 
-    <div class="row col-12">
-        <div class="col-6">
-            <form action="{{route('updateNombreJ', $nombre_juego->id_juego )}}" method="get">
-                <div class="col-md-8 ">
 
-                    <div class="kt-portlet__body">
 
-                        <div class="form-group {{ $errors->has('nombre_juego') ? ' has-error' : '' }}">
-                            <label>Nombre</label>
-                            <input type="text" class="form-control" width="1500px" placeholder="Ingrese nombre" id="nombre" name="nombre" value="{{$nombre_juego->nombre_juego}}">
-                            @if ($errors->has('$nombre_juego'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('$nombre_juego') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="row" align="center">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input style="margin-top:45px" type="submit" value="Modificar Categoria" class="btn btn-dark" id="caja">
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="col-4">
-            <form action="{{route('updatePrecioJ', $nombre_juego->id_juego )}}" method="get">
-                <div class="col-md-10 ">
-
-                    <div class="kt-portlet__body">
-
-                        <div class="form-group {{ $errors->has('nombre_juego') ? ' has-error' : '' }}">
-                            <label>Precio(CLP)</label>
-                            <input type="number" class="form-control" placeholder="Ingrese precio" id="precio" name="precio" value="{{$nombre_juego->precio_juego}}">
-                            @if ($errors->has('$nombre_juego'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('$nombre_juego') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="row" align="center">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <input style="margin-top:45px" type="submit" value="Modificar precio" class="btn btn-dark" id="caja">
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="row col-12">
-        <div class="col-md-5 ">
-            <form action="{{route('agregarImagenJ', $nombre_juego->id_juego )}}" method="POST" enctype="multipart/form-data" files="true">
-                @csrf
+    <form action="{{route('updateSus', $sus->id_subscripcion)}}" method="post" enctype="multipart/form-data" files="true">
+        @csrf
+        <div class="row">
+            <div class="col-3">
                 <div class="kt-portlet__body">
-                    <div class="form-group {{ $errors->has('nombre_juego') ? ' has-error' : '' }}">
-                        <label>Agregar Imagen</label>
+                    <label>Plataforma</label>
+                    <div class="form-group  ">
+                        <select class=" form-control  js-example-basic-multiple" name="tipo" id="tipo">
+                            <option value="{{$sus->id_plataforma}}">{{$sus->nombre_plataforma}}</option>
+                            @foreach($InfoPlataformaAll as $item)
+                            @if($sus->id_plataforma != $item->id_plataforma)
+                            <option value="{{$item->id_plataforma}}">{{$item->nombre_plataforma}}</option>
+                            @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="kt-portlet__body">
+                    <label>Precio(CLP)</label>
+                    <div class="form-group ">
+
+                        <input type="number" class="form-control" placeholder="Ingrese precio" id="precio" name="precio" value="{{$sus->precio_subscripcion}}">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="kt-portlet__body">
+                    <label>Descripcion</label>
+                    <div class="form-group ">
+
+                        <input type="text" class="form-control" placeholder="Ingrese descripcion" id="descripcion" name="descripcion" value="{{$sus->tipo_subscripcion}}">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="kt-portlet__body">
+                    <label>Cambiar Imagen</label>
+                    <div class="form-group  ">
+
                         <input accept="image/*" type="file" name="imagen">
                     </div>
                 </div>
+            </div>
         </div>
         <div class="row" align="center">
             <div class="col-md-8">
                 <div class="form-group">
-                    <input style="margin-top:45px" type="submit" value="Agregar Imagen" class="btn btn-dark">
+                    <input style="width:150px" type="submit" value="Guardar" class="btn btn-dark" id="caja">
                 </div>
             </div>
         </div>
-        </form>
-    </div>
+    </form>
 </div>
-</div>
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 
-
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
+</script>
 
 
 
