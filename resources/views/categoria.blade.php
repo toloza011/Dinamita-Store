@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="container container-fluid">
-        <div class="col-md-12">
+        <div >
             <div style="margin-top:4%;margin-bottom:20px" class="col-md-4">
                 <h5 style="color:black">Filtrar por categoria: </h5>
                 <select style="width:300px" class="form-control " name="tablas" id="mySelect">

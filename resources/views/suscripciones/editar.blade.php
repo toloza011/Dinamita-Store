@@ -4,102 +4,116 @@
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                Modificar Juego:{{$sus->nombre_plataforma}}
+                Modificar Suscripcion:{{$sus->nombre_plataforma}}
             </h3>
 
         </div>
     </div>
-    <h3 class="kt-portlet__head-title" style="margin-left:20px">
-        {{$sus->stock_suscripcion}} Copias del juego
-    </h3>
-    <div class="row col-12">
-        <form action="{{route('updateStockk2', $sus->id_subscripcion)}}" method="post">
-            @csrf
-            <div class="col-md-6 ">
-                <div class="kt-portlet__body">
-                    <label>Agregar Codigo</label>
-                    <div class="form-group">
-
-                        <input type="text" class="form-control" placeholder="Ingrese Codigo" id="codigo" name="codigo">
-
+    <div class="row">
+        <h3 class="kt-portlet__head-title" style="margin-left:40px">
+            {{$sus->stock_suscripcion}} Copias de la suscripcion
+        </h3>
+        <div class="row col-12">
+            <div class="col-6">
+                <form action="{{route('updateStockk2', $sus->id_subscripcion)}}" method="post">
+                    @csrf
+                    <div class="col-md-10">
+                        <div class="kt-portlet__body">
+                            <label>Agregar Codigo</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Ingrese Codigo" id="codigo" name="codigo">
+                            </div>
+                        </div>
                     </div>
 
-                </div>
 
-            </div>
-
-            <div class="row" align="center">
-                <div class="col-md-8">
-                    <div class="form-group">
+                    <div class="row" align="center">
+                        <div class="col-8">
+                            <div class="form-group">
 
 
-                        <input style="margin-top:45px" type="submit" value="Agregar Codigo" class="btn btn-dark" id="caja">
+                                <input style="margin-top:45px" type="submit" value="Agregar Codigo" class="btn btn-dark" id="caja">
 
+                            </div>
+                        </div>
                     </div>
-                </div>
             </div>
-        </form>
-    </div>
+            </form>
+        </div>
 
 
 
 
-    <form action="{{route('updateSus', $sus->id_subscripcion)}}" method="post" enctype="multipart/form-data" files="true">
-        @csrf
-        <div class="row">
-            <div class="col-3">
-                <div class="kt-portlet__body">
-                    <label>Plataforma</label>
-                    <div class="form-group  ">
-                        <select class=" form-control  js-example-basic-multiple" name="tipo" id="tipo">
-                            <option value="{{$sus->id_plataforma}}">{{$sus->nombre_plataforma}}</option>
-                            @foreach($InfoPlataformaAll as $item)
-                            @if($sus->id_plataforma != $item->id_plataforma)
-                            <option value="{{$item->id_plataforma}}">{{$item->nombre_plataforma}}</option>
-                            @endif
-                            @endforeach
-                        </select>
+
+        <div class="row col-12">
+            <div class="col-6">
+                <form action="{{route('updateSus', $sus->id_subscripcion)}}" method="post" enctype="multipart/form-data" files="true">
+                    @csrf
+                    <div class="col-md-10 ">
+                        <div class="kt-portlet__body">
+                            <label>Plataforma</label>
+                            <div class="form-group  ">
+                                <select class=" form-control  js-example-basic-multiple" name="tipo" id="tipo">
+                                    <option value="{{$sus->id_plataforma}}">{{$sus->nombre_plataforma}}</option>
+                                    @foreach($InfoPlataformaAll as $item)
+                                    @if($sus->id_plataforma != $item->id_plataforma)
+                                    <option value="{{$item->id_plataforma}}">{{$item->nombre_plataforma}}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </div>
             </div>
-            <div class="col-2">
-                <div class="kt-portlet__body">
-                    <label>Precio(CLP)</label>
-                    <div class="form-group ">
+            <div class="col-6">
+                <div class="col-md-10 ">
+                    <div class="kt-portlet__body">
+                        <label>Precio(CLP)</label>
+                        <div class="form-group ">
 
-                        <input type="number" class="form-control" placeholder="Ingrese precio" id="precio" name="precio" value="{{$sus->precio_subscripcion}}">
+                            <input type="number" class="form-control" placeholder="Ingrese precio" id="precio" name="precio" value="{{$sus->precio_subscripcion}}">
 
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="kt-portlet__body">
-                    <label>Descripcion</label>
-                    <div class="form-group ">
-
-                        <input type="text" class="form-control" placeholder="Ingrese descripcion" id="descripcion" name="descripcion" value="{{$sus->tipo_subscripcion}}">
-
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="kt-portlet__body">
-                    <label>Cambiar Imagen</label>
-                    <div class="form-group  ">
+            <div class="row col-12">
+                <div class="col-6">
+                    <div class="col-md-10 ">
+                        <div class="kt-portlet__body">
+                            <label>Descripcion</label>
+                            <div class="form-group ">
 
-                        <input accept="image/*" type="file" name="imagen">
+                                <input type="text" class="form-control" placeholder="Ingrese descripcion" id="descripcion" name="descripcion" value="{{$sus->tipo_subscripcion}}">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col-md-10 ">
+                        <div class="kt-portlet__body">
+                            <label>Cambiar Imagen</label>
+                            <div class="form-group  ">
+
+                                <input accept="image/*" type="file" name="imagen">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" align="center">
-            <div class="col-md-8">
+        <div class="row col-12">
+            <div class="col-6 offset-5">
                 <div class="form-group">
-                    <input style="width:150px" type="submit" value="Guardar" class="btn btn-dark" id="caja">
+                    <input align="center" type="submit" value="Guardar" class="btn btn-dark btn-lg" id="caja">
                 </div>
             </div>
         </div>
+
+    </div>
     </form>
+</div>
 </div>
 
 
