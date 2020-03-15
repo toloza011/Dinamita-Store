@@ -127,8 +127,20 @@ Route::get('/getSuscripcionesAll', 'SuscripcionesController@getSusAll')->name('g
 Route::get('/sus/{id_subscripcion}/editar', ['uses' => 'SuscripcionesController@edit'])->name('editarSus');
 Route::post('/updateStock2/{id}', ['uses' => 'SuscripcionesController@updateStock'])->name('updateStockk2');
 Route::post('/updaSus/{id}', ['uses' => 'SuscripcionesController@updateSus'])->name('updateSus');
+Route::get('CrearSus','SuscripcionesController@agregar')->name('createSus');
+Route::post('insertarSus','SuscripcionesController@insertar');
+Route::post('QuitarSus','SuscripcionesController@QuitarSus');
 
+//Rutas Ofertas
+Route::get('OfertasRelampagos','VistasController@indexOfertas')->name('Ofertas');
+Route::get('ListaOfertas', function (Request $request) {
+    $InfoCategoria = App\Categoria::all();
+    $InfoPlataformaJ = App\Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+    $InfoPlataformaS = App\Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
 
+    return view('ofertas.listaOfertas', compact('InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
+})->name("ListaOfertas");
+Route::get('/getSuscripcionesAll', 'OfertasController@getOfertasAll')->name('getOfertas');
 
 
 //Perfil Usuario
@@ -139,8 +151,7 @@ Route::get('CambiarPass','UserController@EnviarDatos')->name('EnviarDatos');
 
 //Fin Perfil Usuario
 
-//Ofertas
-Route::get('OfertasRelampagos','VistasController@indexOfertas')->name('Ofertas');
+
 
 
 //Fin Ofertas

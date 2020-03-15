@@ -14,20 +14,19 @@
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 <div class="kt-portlet">
     <div class="kt-portlet__body">
-        <h4 class="box-title" align="center">Listado de Suscripciones</h4>
+        <h4 class="box-title" align="center">Listado de Ofertas</h4>
         <div align="right">
-            <a href="{{route('createSus')}}" class="btn btn-dark">Registrar Suscripcion</a>
+            <a href="{{route('createJuegos')}}" class="btn btn-dark">Registrar Oferta</a>
         </div>
         <br>
         <!--begin: Datatable -->
         <div id="kt_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
             <div class="row">
                 <div class="col-sm-12">
-                    <table class="table table-striped- table-bordered table-responsive table-hover table-checkable dataTable no-footer dtr-inline" id="listSuscripcion" role="grid" aria-describedby="kt_table_1_info" style="width: 1536px;">
+                    <table class="table table-striped- table-bordered table-responsive table-hover table-checkable dataTable no-footer dtr-inline" id="listCategoria" role="grid" aria-describedby="kt_table_1_info" style="width: 1536px;">
                         <thead>
 
-                            <th width="2000">Plataforma</th>
-                            <th width="2000">Tiempo</th>
+                            <th width="2000">Nombre</th>
                             <th width="200">Editar</th>
                             <th width="200">Eliminar</th>
                         </thead>
@@ -46,7 +45,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $.noConflict();
-        oTable = $('#listSuscripcion').DataTable({
+        oTable = $('#listCategoria').DataTable({
             responsive: true,
             "processing": false,
             "serverSide": true,
@@ -70,14 +69,10 @@
                     "previous": "Anterior"
                 }
             },
-            "ajax": "{{ route('getSus') }}",
+            "ajax": "{{ route('getOfertas') }}",
             "columns": [{
-                    data: 'nombre_plataforma',
-                    name: 'nombre_plataforma'
-                },
-                {
-                    data: 'tipo_sus',
-                    name: 'tipo_sus'
+                    data: 'nombre_oferta',
+                    name: 'nombre_oferta'
                 },
                 {
                     data: 'action',
