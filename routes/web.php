@@ -23,6 +23,9 @@ Route::get('carrito/{id}', 'CarritoController@index')->name('carrito');
 Route::get('carrito2/{id}', 'CarritoController@insert_subscripcion')->name('carrito2');
 Route::get('del/{id}', 'CarritoController@delete')->name('del');
 
+//Pagar
+Route::get('botonPagar', 'PagarController@index')->name('botonPagar');
+
 //Login-Registrar-Logout
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('validacion', 'Auth\LoginController@login')->name('validacion');

@@ -50,7 +50,7 @@
                                 <h5>{{$subcripcion->tipo_subscripcion}}</h5>
                             </div>
                             <div class="col-md-5 col-xs-5 price">
-                                <h4>
+                                <h4 align='right'>
                                     <label>${{$subcripcion->precio_subscripcion}}</label></h4>
                             </div>
                         </div>
@@ -161,8 +161,14 @@
                                 <h5>{{$juego->nombre_juego}}</h5>
                             </div>
                             <div class="col-md-5 col-xs-5 price">
-                                <h4>
-                                    <label>${{$juego->precio_juego}}</label></h4>
+                                <h4 align='right'>
+                                    @foreach($ofertas as $item)
+                                        @if($juego->id_juego == $item->id_juego)
+                                            <?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	?>
+                                        @endif
+                                    @endforeach
+                                    <label>${{$juego->precio_juego}}</label>
+                                </h4>
                             </div>
                         </div>
                         <div class="row">

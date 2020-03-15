@@ -422,9 +422,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <span class="kt-font-dark">CLP $<?php echo $tot ?></span>
                                                 </div>
                                             </div>
+                                            @if($asd != null || $asd2 != null)
                                             <div class="kt-mycart__button kt-align-right">
                                                 <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: red">Pagar</a>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <!-- end:: Mycart -->
