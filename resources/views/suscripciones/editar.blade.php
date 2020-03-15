@@ -17,9 +17,9 @@
             @csrf
             <div class="col-md-6 ">
                 <div class="kt-portlet__body">
-                <label>Agregar Codigo</label>
+                    <label>Agregar Codigo</label>
                     <div class="form-group">
-                        
+
                         <input type="text" class="form-control" placeholder="Ingrese Codigo" id="codigo" name="codigo">
 
                     </div>
@@ -44,14 +44,14 @@
 
 
 
-    <form action="{{route('updateSus', $sus->id_subscripcion)}}" method="post">
-    @csrf
+    <form action="{{route('updateSus', $sus->id_subscripcion)}}" method="post" enctype="multipart/form-data" files="true">
+        @csrf
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <div class="kt-portlet__body">
-                <label>Plataforma</label>
+                    <label>Plataforma</label>
                     <div class="form-group  ">
-                        <select class=" form-control  js-example-basic-multiple"name="tipo" id="tipo">
+                        <select class=" form-control  js-example-basic-multiple" name="tipo" id="tipo">
                             <option value="{{$sus->id_plataforma}}">{{$sus->nombre_plataforma}}</option>
                             @foreach($InfoPlataformaAll as $item)
                             @if($sus->id_plataforma != $item->id_plataforma)
@@ -64,21 +64,30 @@
             </div>
             <div class="col-2">
                 <div class="kt-portlet__body">
-                <label>Precio(CLP)</label>
+                    <label>Precio(CLP)</label>
                     <div class="form-group ">
-                        
+
                         <input type="number" class="form-control" placeholder="Ingrese precio" id="precio" name="precio" value="{{$sus->precio_subscripcion}}">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="kt-portlet__body">
+                    <label>Descripcion</label>
+                    <div class="form-group ">
+
+                        <input type="text" class="form-control" placeholder="Ingrese descripcion" id="descripcion" name="descripcion" value="{{$sus->tipo_subscripcion}}">
 
                     </div>
                 </div>
             </div>
             <div class="col-4">
                 <div class="kt-portlet__body">
-                <label>Descripcion</label>
-                    <div class="form-group ">
-                        
-                        <input type="text" class="form-control" placeholder="Ingrese descripcion" id="descripcion" name="descripcion" value="{{$sus->tipo_subscripcion}}">
+                    <label>Cambiar Imagen</label>
+                    <div class="form-group  ">
 
+                        <input accept="image/*" type="file" name="imagen">
                     </div>
                 </div>
             </div>
@@ -102,10 +111,10 @@
 
 
 <script>
-        $(document).ready(function() {
-            $('.js-example-basic-multiple').select2();
-        });
-    </script>
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
+</script>
 
 
 
