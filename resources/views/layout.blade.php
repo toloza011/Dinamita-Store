@@ -77,7 +77,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- begin:: Header Mobile -->
     <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
         <div class="kt-header-mobile__logo">
-            <a href="demo12/index.html">
+        <a href="{{route('home')}}">
                 <img alt="Logo" src="/assets/media/logos/logo-12.png" />
             </a>
         </div>
@@ -96,7 +96,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- begin:: Aside -->
                 <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
                     <div class="kt-aside__brand-logo">
-                        <a href="demo12/index.html">
+                    <a href="{{route('home')}}">
                             <img alt="Logo" src="/assets/media/logos/logo-12.png">
                         </a>
                     </div>
@@ -214,7 +214,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- ----------- FIN BOTON SUBSCRIPCIONES ----------------- -->
                             @if($request->session()->has('identificador'))
                             <?php $idUser = $request->session()->get('identificador');?>
-                            
+
                             @if($idUser == 4)
                             <li class="kt-menu__section ">
                                 <h4 class="kt-menu__section-text">Admin</h4>
@@ -231,7 +231,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <span class="kt-menu__arrow"></span>
                                     <ul class="kt-menu__subnav">
 
-                                        
+
                                         <li class="kt-menu__item " aria-haspopup="true">
                                             <a href="{{Route('ListaUsuarios')}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
@@ -239,13 +239,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </a>
                                         </li>
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="{{Route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
+                                            <a href="{{Route('ListaJuegos')}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">Juegos</span>
                                             </a>
                                         </li>
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="{{Route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
+                                            <a href="{{Route('ListaSus')}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">Suscripciones</span>
                                             </a>
@@ -297,7 +297,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <a href="{{route('subcripciones')}}" class="kt-menu__link "><span class="kt-menu__link-text">Suscripciones</span></a>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
-                                    <a href="ofertas" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relampago</span></a>
+                                <a href="{{route('Ofertas')}}" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relampago</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -317,7 +317,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                         @if($request->session()->has('identificador'))
-                        <?php $nombreUser = $request->session()->get('nombre'); 
+                        <?php $nombreUser = $request->session()->get('nombre');
                                $idUser = $request->session()->get('identificador'); ?>
                         <!--begin: My Cart -->
                         @if($idUser != 4 )
@@ -422,9 +422,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <span class="kt-font-dark">CLP $<?php echo $tot ?></span>
                                                 </div>
                                             </div>
+                                            @if($asd != null || $asd2 != null)
                                             <div class="kt-mycart__button kt-align-right">
-                                                <button type="button" class="btn btn-danger btn-sm" style="background-color: red">Pagar</button>
+                                                <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: red">Pagar</a>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <!-- end:: Mycart -->
@@ -441,7 +443,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
                                 <div class="kt-header__topbar-user">
                                     <span class="kt-header__topbar-welcome kt-hidden-mobile">Hola,</span>
-                                    <span class="kt-header__topbar-username kt-hidden-mobile">{{$nombreUser}}</span>
+                                <span class="kt-header__topbar-username kt-hidden-mobile">{{$nombreUser}}</span>
                                     <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
                                     <!--<span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">S</span>-->
                                 </div>
@@ -451,18 +453,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!--begin: Head -->
                                 <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(./assets/media/misc/bg-1.jpg)">
                                     <div class="kt-user-card__avatar">
-                                        <img class="" alt="Pic" src="assets/media/bg/300_25.png" />
+                                        <img class="" alt="Pic" src="{{asset('assets/media/bg/300_25.png')}}" />
                                         <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-                                       
                                     </div>
-                                    <div class="kt-user-card__name">
+                                    <div class="kt-user-card__name" style="color:black;">
                                         {{$nombreUser}}
                                     </div>
 
                                 </div>
                                 <!--begin: Navigation -->
                                 <div class="kt-notification">
-                                    <a href="#" class="kt-notification__item">
+                                <a href="{{route('InfoUser',$idUser)}}" class="kt-notification__item">
                                         <div class="kt-notification__item-icon">
                                             <i class="flaticon2-calendar-3 kt-font-success"></i>
                                         </div>
@@ -471,14 +472,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 Mi Perfil
                                             </div>
                                             <div class="kt-notification__item-time">
-                                                Configuracion de cuenta
+                                                Configuracion de Cuenta
                                             </div>
                                         </div>
+
                                     </a>
 
 
                                     <div class="kt-notification__custom kt-space-between">
-                                        <a href="logout" class="btn btn-label btn-label-brand btn-sm btn-bold">Cerrar sesion</a>
+                                        <a href="{{route('logout')}}" class="btn btn-label btn-label-brand btn-sm btn-bold">Cerrar sesion</a>
 
                                     </div>
                                 </div>
@@ -517,6 +519,12 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     <!-- begin:: Content -->
                     <div class="card card-solid">
+                        @if(Session::has('mensaje'))
+                        <div class="alert alert-success"><em> {!! session('mensaje') !!}</em></div>
+                        @endif
+                        @if(Session::has('mensaje2'))
+                        <div class="alert alert-danger"><em> {!! session('mensaje2') !!}</em></div>
+                        @endif
 
 
                         <form action="{{route('buscar')}}" method="GET">
@@ -527,9 +535,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <input type="submit" class="btn btn-dark" value="Buscar">
                             </div>
                         </form>
-
-
-                        @yield('content')
+                    @yield('content')
                     </div>
                     <!-- CONTENIDO DE LA PAGINAAAAA AQUIIII -->
 

@@ -23,7 +23,7 @@ class CategoriasController extends Controller
                 $token =  csrf_field();
 
                 return ' <form action="QuitarCategoria" method="post" id="FormularioEliminarCategoria" class="delete">  ' . $token . ' <input type="hidden" name="id_categoria" id="id_categoria" value=' .  $id_categoria->id_categoria  . '>
-            <td><button type="submit" value="Eliminar" id="boton1" class="btn btn-danger" onclick="return confirm(`¿Está seguro que desea eliminar?`);" /><i class="fa fa-trash"></i></td>
+            <td><button type="submit" value="Eliminar" id="boton1" class="btn btn-danger" onclick="return confirm(`¿Está seguro que desea eliminar ' .  $id_categoria->nombre_categoria  . '?`);" /><i class="fa fa-trash"></i></td>
             </form>
             ';
             })

@@ -23,7 +23,7 @@ class PlataformasController extends Controller
                 $token =  csrf_field();
 
                 return ' <form action="QuitarPlataforma" method="post" id="FormularioEliminarPlataforma" class="delete">  ' . $token . ' <input type="hidden" name="id_plataforma" id="id_plataforma" value=' .  $id_plataforma->id_plataforma  . '>
-            <td><button type="submit" value="Eliminar" id="boton1" class="btn btn-danger" onclick="return confirm(`¿Está seguro que desea eliminar?`);" /><i class="fa fa-trash"></i></td>
+            <td><button type="submit" value="Eliminar" id="boton1" class="btn btn-danger" onclick="return confirm(`¿Está seguro que desea eliminar ' .  $id_plataforma->nombre_plataforma  . '?`);" /><i class="fa fa-trash"></i></td>
             </form>
             ';
             })

@@ -3,6 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
 <link rel="stylesheet" href="{{asset('css/slider.css')}}">
+<link rel="stylesheet" href="{{asset('css/estilos1.css')}}">
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
@@ -24,8 +25,6 @@
 		</div>
 	</div>
 	@if($ofertas != "no")
-
-
 	<div class="container" style="width:80%; margin-top:2%">
 		<div class="asd" align="center">
 			<!-- <h1 style="font-family: fantasy;color:red">U</h1>
@@ -36,7 +35,6 @@
 		</div>
 		<div style="height:600px; " class="highlight-main">
 			@foreach($ofertas as $item)
-
 			<?php $valorOferta = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100); ?>
 			<div class="carousel-cell">
 				<a href="{{route('review',$item->id_juego)}}"><img align="center" style="width:100%; height:500px" src="{{asset($item->url_juego)}}"></a>
@@ -75,7 +73,7 @@
 		<h5 style="margin-top:80px;margin-left:1%; color:black"><b>Lo más vendido</b></h5>
 		@foreach($populares as $juego)
 		<div class="col-sm-4 col-md-3">
-			<div style="height:350px;" class="thumbnail">
+			<div style="height:380px;" class="thumbnail">
 				<h4 class="text-center"><span class="badge badge-dark">{{$juego->nombre_plataforma}}</span></h4>
 				<img src="{{asset($juego->url_juego)}}" class="img-responsive caratula">
 				<div class="caption">
@@ -83,29 +81,50 @@
 						<div class="col-md-8 col-xs-8">
 							<h5>{{$juego->nombre_juego}}</h5>
 						</div>
-						<div class="col-md-4 col-xs-4 price">
+						<div class="col-md-4 col-xs-4 price" align='right'>
 
-							<h5>
+							<h5 align='right'>
 								@foreach($ofertas as $item)
 								@if($juego->id_juego == $item->id_juego)
 								<?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	?>
 								@endif
 								@endforeach
-								<label>${{$juego->precio_juego}}</label></h5>
+								<label>${{$juego->precio_juego}}</label>
+							</h5>
 						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8 col-xs-8">
+							<h5>Stock</h5>
+						</div>
+						@if($juego->stock_juego == 0)
+						<div class="col-md-4 col-xs-4 price" align='right'>
+							<h5 style='color: red'><label>{{$juego->stock_juego}}</label></h5>
+						</div>
+						@else
+						<div class="col-md-4 col-xs-4 price" align='right'>
+							<h5><label>{{$juego->stock_juego}}</label></h5>
+						</div>
+						@endif
 					</div>
 					<div class="row text-center ">
 						<div class="col-md-6">
-							<a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
+							<a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
 						</div>
 						@if($request->session()->has('identificador'))
-						<div class="col-md-6">
-							<a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-						</div>
+							@if($juego->stock_juego != 0 && $request->session()->get('identificador') != 4)
+								<div class="col-md-6">
+									<a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+								</div>
+							@else
+								<div class="col-md-6">
+									<a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+								</div>
+							@endif
 						@else
-						<div class="col-md-6">
-							<a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-						</div>
+							<div class="col-md-6">
+								<a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+							</div>
 						@endif
 					</div>
 					<p></p>
@@ -113,13 +132,19 @@
 			</div>
 		</div>
 		@endforeach
+		<div class="overlay" id="overlay">
+			<div class="popup" id="popup">
+				<img alt="Logo" src="/assets/media/logos/x.png"/>
+				<?php
+                    if($request->session()->get('identificador') == 4)
+                    $texto = 'Función Comprar No Disponible Para La Cuenta';
+                    else
+                    $texto = 'Stock No Disponible';
+                ?>
+				<h4>{{$texto}}</h4>
+				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup btn btn-danger btn-product">Aceptar</a>
+			</div>
+		</div>
+		<script src="js/popup.js"></script>
 	</div>
-
-
-
-
-
-
-
-
 	@endsection
