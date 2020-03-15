@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Plataforma;
 use App\Categoria;
+
 use App\Codigo as AppCodigo;
 use Illuminate\Http\Request;
 use App\Juego;
@@ -51,7 +52,7 @@ class JuegosController extends Controller
         $InfoCategoria = Categoria::all();
         $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
-
+        
 
         $nombre_juego = DB::table('juegos')->select("*")->where('id_juego', '=', $id_juego)->first();
 

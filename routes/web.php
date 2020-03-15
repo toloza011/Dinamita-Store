@@ -121,7 +121,9 @@ Route::get('ListaSuscripciones', function (Request $request) {
     return view('suscripciones.listaSuscripciones', compact('InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
 })->name("ListaSus");
 Route::get('/getSuscripcionesAll', 'SuscripcionesController@getSusAll')->name('getSus');
-Route::get('/sus/{id_juego}/editar', ['uses' => 'SuscripcionesController@edit'])->name('editarSus');
+Route::get('/sus/{id_subscripcion}/editar', ['uses' => 'SuscripcionesController@edit'])->name('editarSus');
+Route::post('/updateStock2/{id}', ['uses' => 'SuscripcionesController@updateStock'])->name('updateStockk2');
+Route::post('/updaSus/{id}', ['uses' => 'SuscripcionesController@updateSus'])->name('updateSus');
 
 
 

@@ -3,6 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
 <link rel="stylesheet" href="{{asset('css/slider.css')}}">
+<link rel="stylesheet" href="{{asset('css/estilos1.css')}}">
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
@@ -24,8 +25,6 @@
 		</div>
 	</div>
 	@if($ofertas != "no")
-
-
 	<div class="container" style="width:80%; margin-top:2%">
 		<div class="asd" align="center">
 			<!-- <h1 style="font-family: fantasy;color:red">U</h1>
@@ -113,13 +112,19 @@
 							<a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
 						</div>
 						@if($request->session()->has('identificador'))
-						<div class="col-md-6">
-							<a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-						</div>
+							@if($juego->stock_juego != 0 && $request->session()->get('identificador') != 4)
+								<div class="col-md-6">
+									<a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+								</div>
+							@else
+								<div class="col-md-6">
+									<a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+								</div>
+							@endif
 						@else
-						<div class="col-md-6">
-							<a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-						</div>
+							<div class="col-md-6">
+								<a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+							</div>
 						@endif
 					</div>
 					<p></p>
@@ -127,13 +132,19 @@
 			</div>
 		</div>
 		@endforeach
+		<div class="overlay" id="overlay">
+			<div class="popup" id="popup">
+				<img alt="Logo" src="/assets/media/logos/x.png"/>
+				<?php
+                    if($request->session()->get('identificador') == 4)
+                    $texto = 'Función Comprar No Disponible Para La Cuenta';
+                    else
+                    $texto = 'Stock No Disponible';
+                ?>
+				<h4>{{$texto}}</h4>
+				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup btn btn-danger btn-product">Aceptar</a>
+			</div>
+		</div>
+		<script src="js/popup.js"></script>
 	</div>
-
-
-
-
-
-
-
-
 	@endsection
