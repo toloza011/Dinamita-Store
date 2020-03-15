@@ -71,9 +71,9 @@
                 <hr>
                 <h4 style="color:black"><b>Stock</b></h4>
                 @if($InfoJuego->stock_juego != 0)
-                    <p style="margin-left:12px;color:black;">{{$InfoJuego->stock_juego}} Copias</p>
+                    <p style="color:black;">{{$InfoJuego->stock_juego}} Copias</p>
                 @else
-                <p style="margin-left:12px;color:red;">{{$InfoJuego->stock_juego}} Copias</p>
+                <p style="color:red;">{{$InfoJuego->stock_juego}} Copias</p>
                 @endif
                 <hr>
                 <h4 style="color:black"><b>Plataforma</b></h4>
@@ -172,13 +172,14 @@
                         </label>
                     </div>
                     @endif
-                  
+
+
                     <div class="bg-gray py-2 px-3 mt-4 row"style="margin-left:1px">
                         <div class="col-9">
-                        <h2 class="mb-0">CLP</h2>
+                        <h2 class="mb-0"> CLP</h2>
                         </div>
                         <div align="right"class="col-3 ">
-                        <h2  class="mb-0">
+                        <h2  class="mb-0"> 
                             @foreach($ofertas as $item)
                             @if($InfoJuego->id_juego == $item->id_juego)
                             <?php $InfoJuego->precio_juego=$item->precio_juego - (($item->descuento * $item->precio_juego) / 100);?>
@@ -187,12 +188,16 @@
                             ${{$InfoJuego->precio_juego}}
                         </h2>
                         </div>
-                        
                     </div>
+
+
+
                     @if($request->session()->has('identificador'))
                         @if($InfoJuego->stock_juego != 0 && $request->session()->get('identificador') != 4)
-                            <div class="mt-4">
-                                <a href="{{route('carrito',$InfoJuego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>
+                        <div class="row">
+                            <div class="mt-4 col-md-12"  > 
+                                <a href="{{route('carrito',$InfoJuego->id_juego)}}" style="background-color:rgb(231, 76, 60) " class="btn btn-danger btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>
+                            </div>
                             </div>
                         @else
                             <div class="mt-4">
@@ -200,10 +205,13 @@
                             </div>
                         @endif
                     @else
-                        <div class="mt-4">
-                            <a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>
+                  
+                        <div class="mt-4 row">
+                            <a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger  btn-flat  "><i class="fas fa-cart-plus fa-lg mr-2 "></i>Agregar al carrito</a>
                         </div>
+                    
                     @endif
+                    
             </div>
             <div class="overlay" id="overlay">
                 <div class="popup" id="popup">
