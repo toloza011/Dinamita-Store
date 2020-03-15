@@ -89,13 +89,10 @@ class JuegosController extends Controller
         if ($nuevoNombre != '') {
             DB::table('juegos')->where("id_juego", "=", $id_juego)->update(['nombre_juego' => $nuevoNombre]);
             return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Nombre Actualizado con Exito');
-        } else {
+        } else if{
             return redirect()->route('editarJuego', $id_juego)->with('mensaje2', 'Porfavor ingrese un nombre');
         }
-    }
 
-    public function updatePrecioJ($id_juego)
-    {
 
         $nuevoPrecio = $_GET['precio'];
 
@@ -105,14 +102,11 @@ class JuegosController extends Controller
         } else {
             return redirect()->route('editarJuego', $id_juego)->with('mensaje2', 'Porfavor ingrese un precio');
         }
-    }
 
-    public function agregarImagenJ(Request $request, $id_juego)
-    {
 
         //$post = \Post::create($request->all());
 
-
+        if($request->file('imagen'))
         $file = $request->file('imagen');
         $name = time() . $file->getClientOriginalName();
 
