@@ -54,11 +54,11 @@ class JuegosController extends Controller
         $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         
 
-        $nombre_juego = DB::table('juegos')->select("*")->where('id_juego', '=', $id_juego)->first();
+        $nombre_juego = DB::table('juegos')->select("*")->join('plataformas','plataformas.id_plataforma','=','juegos.id_plataforma')->where('id_juego', '=', $id_juego)->first();
+        $PlataformasAll = Plataforma::all();
 
 
-
-        return view('juegos.editar', compact('nombre_juego', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
+        return view('juegos.editar', compact('nombre_juego', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS','PlataformasAll', 'request'));
     }
 
     public function updateStock($id_juego)
@@ -83,47 +83,58 @@ class JuegosController extends Controller
         return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Codigo Agregado Con Exito');
     }
 
-    public function updateNombreJ($id_juego)
+    public function updateNombreJ(Request $request, $id_juego)
     {
-
-        $nuevoNombre = $_GET['nombre'];
-        if ($nuevoNombre != '') {
-            DB::table('juegos')->where("id_juego", "=", $id_juego)->update(['nombre_juego' => $nuevoNombre]);
-            return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Nombre Actualizado con Exito');
-        } else if{
-            return redirect()->route('editarJuego', $id_juego)->with('mensaje2', 'Porfavor ingrese un nombre');
-        }
-
-
-        $nuevoPrecio = $_GET['precio'];
-
-        if ($nuevoPrecio != '') {
-            DB::table('juegos')->where("id_juego", "=", $id_juego)->update(['precio_juego' => $nuevoPrecio]);
-            return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Precio Actualizado con Exito');
-        } else {
-            return redirect()->route('editarJuego', $id_juego)->with('mensaje2', 'Porfavor ingrese un precio');
-        }
-
-
-        //$post = \Post::create($request->all());
-
-        if($request->file('imagen'))
+        $nuevoPrecio = $_POST['precio'];
+        $nuevoNombre = $_POST['nombre'];
+        $nuevaPlataforma = $_POST['tipo'];
         $file = $request->file('imagen');
-        $name = time() . $file->getClientOriginalName();
-
-
-        $archivo = "assets/media/juegos/" . $name;
-        //dd($archivo);
-        //$file->move('assets/media/juegos/');
-        Storage::disk('public')->put($name, \File::get($file));
-        //copy($ruta,$destino);
-        Imagenes::insert(
-            [
-                'id_juego' => $id_juego,
-                'url' => $archivo
-            ]
-        );
-        return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Imagen Agregada con exito');
+        if($nuevoNombre != '' && $nuevoPrecio != ''){
+            DB::table('juegos')->where("id_juego", "=", $id_juego)->update(['nombre_juego' => $nuevoNombre,'precio_juego' => $nuevoPrecio,'id_plataforma' => $nuevaPlataforma]);
+            if($request->file('imagen')){
+                $file = $request->file('imagen');
+                $name = time() . $file->getClientOriginalName();
+                $archivo = "assets/media/juegos/" . $name;
+                Storage::disk('public')->put($name, \File::get($file));
+                Imagenes::insert(
+                    [
+                        'id_juego' => $id_juego,
+                        'url' => $archivo
+                    ]
+                );
+            }
+            return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Juego actualizado con exito');
+        }else if($nuevoPrecio == '' && $nuevoNombre != ''){
+            DB::table('juegos')->where("id_juego", "=", $id_juego)->update(['nombre_juego' => $nuevoNombre,'id_plataforma' => $nuevaPlataforma]);
+            if($request->file('imagen')){
+                $file = $request->file('imagen');
+                $name = time() . $file->getClientOriginalName();
+                $archivo = "assets/media/juegos/" . $name;
+                Storage::disk('public')->put($name, \File::get($file));
+                Imagenes::insert(
+                    [
+                        'id_juego' => $id_juego,
+                        'url' => $archivo
+                    ]
+                );
+            }
+            return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Nombre actualizado con exito');
+        }else if($nuevoPrecio != ''  && $nuevoNombre == ''){
+            DB::table('juegos')->where("id_juego", "=", $id_juego)->update(['precio_juego' => $nuevoPrecio,'id_plataforma' => $nuevaPlataforma,]);
+            if($request->file('imagen')){
+                $file = $request->file('imagen');
+                $name = time() . $file->getClientOriginalName();
+                $archivo = "assets/media/juegos/" . $name;
+                Storage::disk('public')->put($name, \File::get($file));
+                Imagenes::insert(
+                    [
+                        'id_juego' => $id_juego,
+                        'url' => $archivo
+                    ]
+                );
+            }
+            return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Precio actualizado con exito');
+        }
     }
 
     public function agregar(Request $request)

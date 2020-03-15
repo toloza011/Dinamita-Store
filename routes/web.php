@@ -108,7 +108,7 @@ Route::get('ListaJuegos', function (Request $request) {
 Route::get('/getJuegosAll', 'JuegosController@getJuegosAll')->name('getJuegos');
 Route::get('/juego/{id_juego}/editar', ['uses' => 'JuegosController@edit'])->name('editarJuego');
 Route::post('/updateStock/{id}', ['uses' => 'JuegosController@updateStock'])->name('updateStockk');
-Route::get('/updatenombre/{id}', ['uses' => 'JuegosController@updateNombreJ'])->name('updateJuegos');
+Route::post('/updatenombre/{id}', ['uses' => 'JuegosController@updateNombreJ'])->name('updateJuegos');
 Route::get('CrearJuego','JuegosController@agregar')->name('createJuegos');
 Route::post('insertarJuego','JuegosController@insertar');
 Route::post('QuitarJuego','JuegosController@QuitarJuego');
