@@ -140,7 +140,7 @@ Route::get('ListaOfertas', function (Request $request) {
 
     return view('ofertas.listaOfertas', compact('InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
 })->name("ListaOfertas");
-Route::get('/getSuscripcionesAll', 'OfertasController@getOfertasAll')->name('getOfertas');
+Route::get('/getOfertasAll', 'OfertasController@getOfertasAll')->name('getOfertas');
 
 
 //Perfil Usuario
