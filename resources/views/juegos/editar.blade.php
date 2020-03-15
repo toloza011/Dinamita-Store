@@ -30,11 +30,9 @@
 
                     </div>
 
-                    <div class="row" allign="center">
+                    <div class="row" align="center">
                         <div class="col-8">
                             <div class="form-group">
-
-
                                 <input style="margin-top:45px" type="submit" value="Agregar Codigo" class="btn btn-dark" id="caja">
 
                             </div>
@@ -109,15 +107,14 @@
         </div>
         <div class="row col-12">
             <div class="col-6 offset-5">
-                    <div class="form-group">
-                        <input align="center" type="submit" value="Guardar" class="btn btn-dark btn-lg" id="caja">
-                    </div>
-
+                <div class="form-group">
+                    <input align="center" type="submit" value="Guardar" class="btn btn-dark btn-lg" id="caja">
                 </div>
             </div>
         </div>
-        </form>
     </div>
+    </form>
+</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>

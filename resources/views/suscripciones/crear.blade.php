@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-12">
 
-                        <div class="col-md-8" align="center">
+                        <div class="col-6 offset-5">
                             <div class="form-group">
                                 <input type="submit" value="registrar Suscripcion" class="btn btn-dark" is="caja">
                             </div>
