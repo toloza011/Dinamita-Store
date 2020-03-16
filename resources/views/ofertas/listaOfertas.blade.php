@@ -22,7 +22,7 @@
     <div class="kt-portlet__body">
         <h4 class="box-title" align="center">Listado de Ofertas</h4>
         <div align="right">
-            <a href="{{route('createJuegos')}}" class="btn btn-dark">Registrar Oferta</a>
+            <a href="{{route('createOferta')}}" class="btn btn-dark">Registrar Oferta</a>
         </div>
         <br>
         <!--begin: Datatable -->
@@ -32,7 +32,9 @@
                     <table class="table table-striped- table-bordered table-responsive table-hover table-checkable dataTable no-footer dtr-inline" id="listCategoria" role="grid" aria-describedby="kt_table_1_info" style="width: 1536px;">
                         <thead>
 
-                            <th width="2000">Nombre</th>
+                            <th width="1000">Nombre</th>
+                            <th width="500">Fecha de inicio</th>
+                            <th width="500">Fecha de termino</th>
                             <th width="200">Editar</th>
                             <th width="200">Eliminar</th>
                         </thead>
@@ -96,6 +98,14 @@
             "columns": [{
                     data: 'nombre_oferta',
                     name: 'nombre_oferta'
+                },
+                {
+                    data: 'fecha_inicio',
+                    name: 'fecha_inicio'
+                },
+                {
+                    data: 'fecha_fin',
+                    name: 'fecha_fin'
                 },
                 {
                     data: 'action',

@@ -4,6 +4,15 @@
 .login{
    height: 60vh;
 }
+.help-block{
+	color:#ffff;
+
+}
+.alert.alert-danger {
+	background-color:rgb(231, 76, 60);
+    
+    border: 1px solid #fd397a;
+    color: #ffffff; }
 </style>
 <div class="container">
 	<div class="row justify-content-center">
@@ -34,7 +43,7 @@
 							<div class="col-12 col-md-4">
 
 									<div class="input-group {{$errors->has('email')?'alert alert-danger':''}}">
-										<input class="form-control" type="email" style="border-radius:15px" placeholder="correo" name="email" value="{{old('email')}}"autocomplete="off" required>
+										<input class="form-control" type="email" style="border-radius:15px, " placeholder="correo" name="email" value="{{old('email')}}"autocomplete="off" required>
                                         {!!$errors->first('email','<span class="help-block">:message</span>')!!}
 									</div>
 									<br>
@@ -51,15 +60,15 @@
 										</div>-->
 									</div>
 									<div class="row justify-content-center">
-											<input type="submit" id="kt_login_signin_submit" class="btn btn-danger form-control col-6 col-md-2" style="border-radius:25px" value="Acceder">
+									
+											<input type="submit" id="kt_login_signin_submit" class="btn btn-danger form-control col-6 col-md-3 mt-2" style="border-radius:25px;background-color:rgb(231, 76, 60)" value="Acceder">
 											<!--<button id="kt_login_signin_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Acceder</button>-->
 							</div>
 						</div>
                     </form>
-                    <a href="{{route('RecuperarContra')}}">Hazme Click</a>
                     <form action="{{route('RecuperarContra')}}" method="get">
                         <div class="row justify-content-center">
-                            <input type="submit" id="kt_login_signin_submit" class="btn btn-success form-control col-6 col-md-3 mt-2" style="border-radius:25px" value="¿Olvidaste tu contraseña?">
+                            <input type="submit" id="kt_login_signin_submit" class="btn btn-dark form-control col-6 col-md-3 mt-2" style="border-radius:25px;background-color:black" value="¿Olvidaste tu contraseña?">
                             <!--<button id="kt_login_signin_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Acceder</button>-->
                           </div>
                     </form>

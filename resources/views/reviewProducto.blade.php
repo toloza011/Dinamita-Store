@@ -228,9 +228,9 @@
             </div>
             <script src="js/popup.js"></script>
         </div>
-    </div>
+        </div>
     <!-- /.card-body -->
-
+ 
     <!-- /.card -->
 
 </section>
