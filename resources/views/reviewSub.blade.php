@@ -27,9 +27,14 @@
                             <p style="color:black">{{$InfoSubcripcion->tipo_subscripcion}} de suscripción</p>
                                 
                                 <hr>    
-                                <h3 class="my-3" style="color:black;"><b> Stock </b></h3>
-                                <p style="color:black">{{$InfoSubcripcion->stock_suscripcion}}</p>
-                                <hr>
+                                <h4 style="color:black"><b>Stock</b></h4>
+                                    @if($InfoSubcripcion->stock_suscripcion!= 0)
+                                        <p style="color:black;">{{$InfoSubcripcion->stock_suscripcion}} Copias</p>
+                                    @else
+                                    <p style="color:red;">{{$InfoSubcripcion->stock_suscripcion}} Copias</p>
+                                    @endif
+                                 <hr>   
+                                
                             
                                 <h4 style="color:black"><b>Plataforma</b></h4>  
 
