@@ -45,12 +45,14 @@
 </div>
 
 @else
+                @empty($asd)
                 <form action="{{route('home')}}" method="GET" id='return-form1'>
                     <input type="hidden">
                 </form>
                 <script>
                     document.getElementById('return-form1').submit();
                 </script>
+                @endempty
                 @endif
                 @else
                 <form action="{{route('home')}}" method="GET" id='return-form'>

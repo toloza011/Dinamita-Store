@@ -1,7 +1,14 @@
 @extends('layout')
 @section('content')
 
-
+@empty($asd)
+<form action="{{route('home')}}" method="GET" id='return-form1'>
+                    <input type="hidden">
+                </form>
+                <script>
+                    document.getElementById('return-form1').submit();
+                </script>
+ @endempty
 @if($request->session()->has('identificador'))
 <?php $idUser = $request->session()->get('identificador'); ?>
 
