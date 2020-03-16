@@ -370,7 +370,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             @if($item->id_juego == $item2->id_juego)
                                                             <?php
                                                             $item->precio_juego = $item2->precio_juego - (($item2->descuento * $item2->precio_juego) / 100);
-                                                            
+                                                            session(['x'=>1]);
                                                             ?>
                                                             @endif
                                                             @endforeach

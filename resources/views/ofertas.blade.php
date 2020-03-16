@@ -7,9 +7,6 @@
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
-
-
 <script src="js/slider2.js"></script>
 
 <style>
@@ -28,8 +25,6 @@ h2::after {
 	bottom: -10px;
 }
 </style>
-
-
 
    <!-------- OFERTA 50% DESCUENTO----->
     <div class="row mt-5">
@@ -56,10 +51,12 @@ h2::after {
 							<h5 align='right'>
                                 <?php  
                                  $aux=$juego->precio_juego; 
+                                 $descuento=session('x');
                                 ?>
                                 @foreach($ofertas as $item)
-                                @if($juego->id_juego == $item->id_juego )
-								<?php $aux = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	?>
+                                @if($juego->id_juego == $item->id_juego && $descuento==1)
+                                <?php $aux = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	
+                                ?>
                                 
                                 @endif
                                 @endforeach
@@ -151,12 +148,21 @@ h2::after {
 						<div class="col-md-4 col-xs-4 price" align='right'>
 
 							<h5 align='right'>
-								@foreach($ofertas as $item)
-								@if($juego->id_juego == $item->id_juego)
-								<?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	?>
-								@endif
-								@endforeach
-								<label>${{$juego->precio_juego}}</label>
+								<?php  
+                                 $aux=$juego->precio_juego; 
+                                 $descuento=session('x');
+                                ?>
+                                @foreach($ofertas as $item)
+                                @if($juego->id_juego == $item->id_juego && $descuento==1)
+                                <?php $aux = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	
+                                ?>
+                                
+                                @endif
+                                @endforeach
+                                
+
+                                
+								<label>${{$aux}}</label>
 							</h5>
 						</div>
 					</div>
@@ -230,12 +236,21 @@ h2::after {
 						<div class="col-md-4 col-xs-4 price" align='right'>
 
 							<h5 align='right'>
-								@foreach($ofertas as $item)
-								@if($juego->id_juego == $item->id_juego)
-								<?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	?>
-								@endif
-								@endforeach
-								<label>${{$juego->precio_juego}}</label>
+								<?php  
+                                 $aux=$juego->precio_juego; 
+                                 $descuento=session('x');
+                                ?>
+                                @foreach($ofertas as $item)
+                                @if($juego->id_juego == $item->id_juego && $descuento==1)
+                                <?php $aux = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	
+                                ?>
+                                
+                                @endif
+                                @endforeach
+                                
+
+                                
+								<label>${{$aux}}</label>
 							</h5>
 						</div>
 					</div>
@@ -284,7 +299,6 @@ h2::after {
 	</div>
     <script src="js/popup.js"></script>
     
-<br>
 
 
 
