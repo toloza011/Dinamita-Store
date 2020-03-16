@@ -13,6 +13,7 @@
     
     border: 1px solid #fd397a;
     color: #ffffff; }
+	
 </style>
 <div class="container">
 	<div class="row justify-content-center">

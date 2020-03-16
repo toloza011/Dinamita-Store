@@ -9,6 +9,24 @@
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 
+<style>
+#ola{
+	color: #ff1e00;
+}
+
+h2::after {
+	content: "";
+	width: 100px;
+	position: absolute;
+	margin: 0 auto;
+	height: 4px;
+	background: rgba(230, 14, 14, 0.911);
+	left: 0;
+	right: 0;
+	bottom: -10px;
+}
+</style>
+
 <div class="container container-fluid">
 
 	<div class="row justify-content-center" align="center" style="margin-top:80px">
@@ -69,8 +87,26 @@
 		<script src="js/slider2.js"></script>
 	</div>
 	@endif
-	<div class="container">
-		<h5 style="margin-top:80px;margin-left:1%; color:black"><b>Lo más vendido</b></h5>
+	@php
+	$xx=0;
+	@endphp
+	@foreach($populares as $item )
+	@php
+	$xx += 1;	
+	@endphp
+	@endforeach
+
+		@if($xx!= 0)
+		<div  class="row mt-5">
+       		<div class="col-md-12">
+					<div class="text-center" style="font-size:large;">
+					<h2 style="text-transform:uppercase; font-size:30px;">Productos<br><b id="ola">de tendencia</b></h2>
+					</div>
+       		</div>
+   		</div>
+		@endif
+		   <br>
+		
 		@foreach($populares as $juego)
 		<div class="col-sm-4 col-md-3">
 			<div style="height:380px;" class="thumbnail">
