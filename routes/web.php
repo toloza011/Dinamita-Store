@@ -139,6 +139,14 @@ Route::get('ListaOfertas', function (Request $request) {
     return view('ofertas.listaOfertas', compact('InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
 })->name("ListaOfertas");
 Route::get('/getOfertasAll', 'OfertasController@getOfertasAll')->name('getOfertas');
+Route::get('/getOfertasJuegosAll/{id_oferta}', 'OfertasController@getOfertasJuegosAll')->name('getJuegosOferta');
+Route::get('/oferta/{id_oferta}/editar', ['uses' => 'OfertasController@edit'])->name('editarOferta');
+Route::post('/updaOfertas/{id}', ['uses' => 'OfertasController@updateOferta'])->name('updateOferta');
+Route::post('editarPorcentaje','OfertasController@editarPorcentaje')->name("editarPorcentaje");
+Route::get('CrearOferta','OfertasController@agregar')->name('createOferta');
+Route::post('insertarOferta','OfertasController@insertar');
+Route::post('QuitarOferta','OfertasController@QuitarOferta');
+
 
 
 //Perfil Usuario
