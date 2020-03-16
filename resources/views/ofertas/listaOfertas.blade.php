@@ -16,7 +16,7 @@
     <div class="kt-portlet__body">
         <h4 class="box-title" align="center">Listado de Ofertas</h4>
         <div align="right">
-            <a href="{{route('createJuegos')}}" class="btn btn-dark">Registrar Oferta</a>
+            <a href="{{route('createOferta')}}" class="btn btn-dark">Registrar Oferta</a>
         </div>
         <br>
         <!--begin: Datatable -->

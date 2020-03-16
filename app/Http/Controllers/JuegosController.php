@@ -151,8 +151,8 @@ class JuegosController extends Controller
     {
 
 
-        $nombre = $_POST['nombre'];
-        $precio = $_POST['precio'];
+        $nombre = $_GET['nombre'];
+        $precio = $_GET['precio'];
         $plataforma = $_POST['plataforma'];
         $descripcion = $_POST['descripcion'];
         $file = $request->file('imagen');
