@@ -424,7 +424,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                             @if($asd != null || $asd2 != null)
                                             <div class="kt-mycart__button kt-align-right">
-                                                <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: red">Pagar</a>
+                                                <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: rgb(231, 76, 60); width: 100px ; border-radius: 30px;">Pagar</a>
                                             </div>
                                             @endif
                                         </div>
