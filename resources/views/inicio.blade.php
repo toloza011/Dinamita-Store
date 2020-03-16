@@ -87,7 +87,8 @@
 								@foreach($ofertas as $item)
 								@if($juego->id_juego == $item->id_juego)
 								<?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	?>
-								@endif
+                                
+                                @endif
 								@endforeach
 								<label>${{$juego->precio_juego}}</label>
 							</h5>

@@ -5,7 +5,7 @@
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                Registro de Suscripcion
+                Registro de Oferta
             </h3>
         </div>
     </div>
@@ -13,25 +13,21 @@
     <div class="row">
         <div class="col-md-12 ">
             <div class="kt-portlet__body">
-                <form action="insertarSus" method="POST" enctype="multipart/form-data" files="true">
+                <form action="insertarOferta" method="POST" enctype="multipart/form-data" files="true">
                     @csrf
                     <div class="row col-12">
                         <div class="form-group col-6">
-                            <label>Plataforma</label>
-                            <div class="form-group  ">
-                                <select class=" form-control  js-example-basic-multiple" name="plataforma" id="plataforma">
-                                    <option value="0">Seleccione Plataforma</option>
-                                    @foreach($PlataformasAll as $item)
-                                    <option value="{{$item->id_plataforma}}">{{$item->nombre_plataforma}}</option>
-                                
-                                    @endforeach
-                                </select>
-                            </div>
-                          
+                            <label>Nombre</label>
+                            <input type="text" class="form-control " placeholder="Ingrese nombre" name="nombre" required>
+                            @if ($errors->has('rut'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('categoria') }}</strong>
+                            </span>
+                            @endif
                         </div>
                         <div class="form-group col-6">
-                            <label>Precio</label>
-                            <input type="number" class="form-control" placeholder="Ingrese precio" name="precio" required>
+                            <label>Descripcion</label>
+                            <input type="text" class="form-control" placeholder="Ingrese descripcion" name="descripcion" required>
                             @if ($errors->has('rut'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('categoria') }}</strong>
@@ -40,27 +36,18 @@
                         </div>
                     </div>
 
-
                     
                     <div class="row col-12">
                         <div class="form-group col-6">
-                            <label>imagen</label>
-                            <input type="file" class="form-control " placeholder="Ingrese imagen" name="imagen" required>
+                            <label>Fecha Fin</label>
+                            <input type="date" class="form-control " name="fecha_f" required>
                             @if ($errors->has('rut'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('categoria') }}</strong>
                             </span>
                             @endif
                         </div>
-                        <div class="form-group col-6">
-                            <label>Tipo</label>
-                            <input type="text" class="form-control " placeholder="Ingrese descripcion" name="descripcion" required>
-                            @if ($errors->has('rut'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('categoria') }}</strong>
-                            </span>
-                            @endif
-                        </div>
+  
                     </div>
                     <div class="col-12">
 

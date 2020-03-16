@@ -110,9 +110,7 @@ Route::get('ListaJuegos', function (Request $request) {
 Route::get('/getJuegosAll', 'JuegosController@getJuegosAll')->name('getJuegos');
 Route::get('/juego/{id_juego}/editar', ['uses' => 'JuegosController@edit'])->name('editarJuego');
 Route::post('/updateStock/{id}', ['uses' => 'JuegosController@updateStock'])->name('updateStockk');
-Route::get('/updatenombre/{id}', ['uses' => 'JuegosController@updateNombreJ'])->name('updateNombreJ');
-Route::get('/updateprecio/{id}', ['uses' => 'JuegosController@updatePrecioJ'])->name('updatePrecioJ');
-Route::post('/updateimagen/{id}', ['uses' => 'JuegosController@agregarImagenJ'])->name('agregarImagenJ');
+Route::post('/updatenombre/{id}', ['uses' => 'JuegosController@updateNombreJ'])->name('updateJuegos');
 Route::get('CrearJuego','JuegosController@agregar')->name('createJuegos');
 Route::post('insertarJuego','JuegosController@insertar');
 Route::post('QuitarJuego','JuegosController@QuitarJuego');
@@ -126,8 +124,30 @@ Route::get('ListaSuscripciones', function (Request $request) {
     return view('suscripciones.listaSuscripciones', compact('InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
 })->name("ListaSus");
 Route::get('/getSuscripcionesAll', 'SuscripcionesController@getSusAll')->name('getSus');
-Route::get('/sus/{id_juego}/editar', ['uses' => 'SuscripcionesController@edit'])->name('editarSus');
+Route::get('/sus/{id_subscripcion}/editar', ['uses' => 'SuscripcionesController@edit'])->name('editarSus');
+Route::post('/updateStock2/{id}', ['uses' => 'SuscripcionesController@updateStock'])->name('updateStockk2');
+Route::post('/updaSus/{id}', ['uses' => 'SuscripcionesController@updateSus'])->name('updateSus');
+Route::get('CrearSus','SuscripcionesController@agregar')->name('createSus');
+Route::post('insertarSus','SuscripcionesController@insertar');
+Route::post('QuitarSus','SuscripcionesController@QuitarSus');
 
+//Rutas Ofertas
+Route::get('OfertasRelampagos','VistasController@indexOfertas')->name('Ofertas');
+Route::get('ListaOfertas', function (Request $request) {
+    $InfoCategoria = App\Categoria::all();
+    $InfoPlataformaJ = App\Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+    $InfoPlataformaS = App\Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+
+    return view('ofertas.listaOfertas', compact('InfoPlataformaJ', 'InfoPlataformaS', 'InfoCategoria', 'request'));
+})->name("ListaOfertas");
+Route::get('/getOfertasAll', 'OfertasController@getOfertasAll')->name('getOfertas');
+Route::get('/getOfertasJuegosAll/{id_oferta}', 'OfertasController@getOfertasJuegosAll')->name('getJuegosOferta');
+Route::get('/oferta/{id_oferta}/editar', ['uses' => 'OfertasController@edit'])->name('editarOferta');
+Route::post('/updaOfertas/{id}', ['uses' => 'OfertasController@updateOferta'])->name('updateOferta');
+Route::post('editarPorcentaje','OfertasController@editarPorcentaje')->name("editarPorcentaje");
+Route::get('CrearOferta','OfertasController@agregar')->name('createOferta');
+Route::post('insertarOferta','OfertasController@insertar');
+Route::post('QuitarOferta','OfertasController@QuitarOferta');
 
 
 
@@ -139,8 +159,7 @@ Route::get('CambiarPass','UserController@EnviarDatos')->name('EnviarDatos');
 
 //Fin Perfil Usuario
 
-//Ofertas
-Route::get('OfertasRelampagos','VistasController@indexOfertas')->name('Ofertas');
+
 
 
 //Fin Ofertas
