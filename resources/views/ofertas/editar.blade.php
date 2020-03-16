@@ -118,7 +118,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <div class="kt-portlet">
+    <div class="kt-portlet" style="margin-bottom:60px">
         <div class="kt-portlet__body">
             <h4 class="box-title" align="center">Juegos</h4>
             <br>
