@@ -1,6 +1,11 @@
 @extends('layout')
 @section('content')
 
+@if($request->session()->has('identificador'))
+<?php $idUser = $request->session()->get('identificador'); ?>
+
+@if($idUser == 4)
+
 <div class="kt-portlet">
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
@@ -51,6 +56,22 @@
     </div>
 </div>
 
+@else
+                <form action="{{route('home')}}" method="GET" id='return-form1'>
+                    <input type="hidden">
+                </form>
+                <script>
+                    document.getElementById('return-form1').submit();
+                </script>
+                @endif
+                @else
+                <form action="{{route('home')}}" method="GET" id='return-form'>
+                    <input type="hidden" >
+                </form>
+                <script>
+                    document.getElementById('return-form').submit();
+                </script>
+                @endif
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

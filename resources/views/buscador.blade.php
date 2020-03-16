@@ -20,9 +20,10 @@
 <div class="container container-fluid">
 	<div class="row">
 		<div class="col-md-12" style='margin-bottom: 20px'>
-			@foreach($consulta as $juego)
+            @foreach($consulta as $juego)
+            <?php $k=0; ?>
 			<div class="col-sm-4 col-md-3">
-				<div style="height:380px;" class="thumbnail">
+				<div style="height:400px;" class="thumbnail">
 					<h4 class="text-center"><span class="badge badge-dark">{{$juego->nombre_plataforma}}</span></h4>
 					<img src="{{asset($juego->url_juego)}}" class="img-responsive caratula">
 					<div class="caption">
@@ -30,16 +31,25 @@
 							<div class="col-md-8 col-xs-8">
 								<h5>{{$juego->nombre_juego}}</h5>
 							</div>
-							<div class="col-md-4 col-xs-4 price">
-
-								<h5 align='right'>
-									@foreach($ofertas as $item)
-									@if($juego->id_juego == $item->id_juego)
-									<?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);    ?>
-									@endif
-									@endforeach
-									<label>${{$juego->precio_juego}}</label></h5>
-							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 price">
+                                <h5 align='right'> 
+                                    @foreach($ofertas as $item)
+                                    
+                                    @if($juego->id_juego == $item->id_juego)
+                                    <?php $kk = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);    ?>
+                                    <strike>
+                                        <h6 align="right" style="margin-top:4px">${{$juego->precio_juego}}</h6>
+                                    </strike>
+                                    <label align="right">${{$kk}}</label>
+                                    <?php $k=1;?>
+                                
+                                    @endif
+                                    @endforeach
+                                    @if($k == 0)   
+                                    <h6 align="right" style="margin-top:4px">${{$juego->precio_juego}}</h6>
+                                    @endif
+                                </h5>
+                            </div>
 						</div>
                         <div class="row" align='bottom'>
                             <div class="col-md-8 col-xs-8">

@@ -11,6 +11,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
+@if($request->session()->has('identificador'))
+<?php $idUser = $request->session()->get('identificador'); ?>
+
+@if($idUser == 4)
+
+
+
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 <div class="kt-portlet">
     <div class="kt-portlet__body">
@@ -37,7 +44,22 @@
     </div>
 </div>
 
-
+@else
+                <form action="{{route('home')}}" method="GET" id='return-form1'>
+                    <input type="hidden">
+                </form>
+                <script>
+                    document.getElementById('return-form1').submit();
+                </script>
+                @endif
+                @else
+                <form action="{{route('home')}}" method="GET" id='return-form'>
+                    <input type="hidden" >
+                </form>
+                <script>
+                    document.getElementById('return-form').submit();
+                </script>
+                @endif
 
 
 
