@@ -23,7 +23,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <title>Dinamite Store</title>
     <meta name="description" content="Latest updates and statistic charts">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!--begin::Fonts -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -371,6 +370,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             @if($item->id_juego == $item2->id_juego)
                                                             <?php
                                                             $item->precio_juego = $item2->precio_juego - (($item2->descuento * $item2->precio_juego) / 100);
+                                                            
                                                             ?>
                                                             @endif
                                                             @endforeach
