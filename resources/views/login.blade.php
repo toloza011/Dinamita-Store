@@ -56,7 +56,6 @@
 							</div>
 						</div>
                     </form>
-                    <a href="{{route('RecuperarContra')}}">Hazme Click</a>
                     <form action="{{route('RecuperarContra')}}" method="get">
                         <div class="row justify-content-center">
                             <input type="submit" id="kt_login_signin_submit" class="btn btn-success form-control col-6 col-md-3 mt-2" style="border-radius:25px" value="¿Olvidaste tu contraseña?">
