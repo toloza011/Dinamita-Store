@@ -1,6 +1,12 @@
 @extends('layout')
 @section('content')
 
+
+@if($request->session()->has('identificador'))
+<?php $idUser = $request->session()->get('identificador'); ?>
+
+@if($idUser == 4)
+
 <div class="kt-portlet">
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
@@ -14,7 +20,7 @@
         <div class="col-md-6 ">
             <div class="kt-portlet__body">
                 <form action="insertar" method="post">
-                @csrf
+                    @csrf
                     <div class="form-group {{ $errors->has('categoria') ? ' has-error' : '' }}">
                         <label>Categoria</label>
                         <input type="text" class="form-control" placeholder="Ingrese categoria" name="categoria">
@@ -38,13 +44,28 @@
 
                 </form>
 
-
+                @else
+                <form action="{{route('home')}}" method="GET" id='return-form1'>
+                    <input type="hidden">
+                </form>
+                <script>
+                    document.getElementById('return-form1').submit();
+                </script>
+                @endif
+                @else
+                <form action="{{route('home')}}" method="GET" id='return-form'>
+                    <input type="hidden" >
+                </form>
+                <script>
+                    document.getElementById('return-form').submit();
+                </script>
+                @endif
 
 
                 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
                 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
-            
+
 
 
                 @endsection
