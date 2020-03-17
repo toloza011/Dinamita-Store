@@ -62,9 +62,13 @@ class JuegosController extends Controller
 
     public function updateStock($id_juego)
     {
-
+        $codigos = Codigo::select('codigos.codigo')->where('id_juego', '=', $id_juego)->get(); 
         $codigo = $_POST['codigo'];
-
+        foreach($codigos as $item){
+                if($codigo == $item->codigo){
+                return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'El codigo esta repetido');
+                }
+            }
         Codigo::insert(
             [
                 'codigo' => $codigo,
