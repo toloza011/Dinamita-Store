@@ -52,20 +52,23 @@ class JuegosController extends Controller
         $InfoCategoria = Categoria::all();
         $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
-        
-
+        $juegoCategorias = DB::table('juegos_categoria')->join("juegos","juegos.id_juego","=","juegos_categoria.id_juego")->join("categorias","categorias.id_categoria","=","juegos_categoria.id_categoria")->select("*")->where('juegos.id_juego','=',$id_juego)->get();
+        $categoriasDanger = Juegos_categoria::where("id_juego","<>",$id_juego)->get();
         $nombre_juego = DB::table('juegos')->select("*")->join('plataformas','plataformas.id_plataforma','=','juegos.id_plataforma')->where('id_juego', '=', $id_juego)->first();
         $PlataformasAll = Plataforma::all();
 
-
-        return view('juegos.editar', compact('nombre_juego', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS','PlataformasAll', 'request'));
+        return view('juegos.editar', compact('nombre_juego', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS','PlataformasAll','juegoCategorias','categoriasDanger' , 'request'));
     }
 
     public function updateStock($id_juego)
     {
-
+        $codigos = Codigo::select('codigos.codigo')->where('id_juego', '=', $id_juego)->get(); 
         $codigo = $_POST['codigo'];
-
+        foreach($codigos as $item){
+                if($codigo == $item->codigo){
+                return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'El codigo esta repetido');
+                }
+            }
         Codigo::insert(
             [
                 'codigo' => $codigo,
@@ -89,6 +92,8 @@ class JuegosController extends Controller
         $nuevoNombre = $_POST['nombre'];
         $nuevaPlataforma = $_POST['tipo'];
         $file = $request->file('imagen');
+        $categorias = $request->categorias;
+        $categoriasold = $request->categoriasJuego;
         if($nuevoNombre != '' && $nuevoPrecio != ''){
             DB::table('juegos')->where("id_juego", "=", $id_juego)->update(['nombre_juego' => $nuevoNombre,'precio_juego' => $nuevoPrecio,'id_plataforma' => $nuevaPlataforma]);
             if($request->file('imagen')){
@@ -102,7 +107,21 @@ class JuegosController extends Controller
                         'url' => $archivo
                     ]
                 );
+                
             }
+            if ($categoriasold != $categorias) {
+                    DB::table('juegos_categoria')->where('id_juego', '=', $id_juego)->delete();
+                    foreach ($categorias as $item) {
+                            Juegos_categoria::insert(
+                                [
+                                    'id_juego' => $id_juego,
+                                    'id_categoria' => $item,
+                                ]
+                            );
+                           
+                        }
+        
+                    }
             return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Juego actualizado con exito');
         }else if($nuevoPrecio == '' && $nuevoNombre != ''){
             DB::table('juegos')->where("id_juego", "=", $id_juego)->update(['nombre_juego' => $nuevoNombre,'id_plataforma' => $nuevaPlataforma]);
@@ -118,6 +137,19 @@ class JuegosController extends Controller
                     ]
                 );
             }
+            if ($categoriasold != $categorias) {
+                DB::table('juegos_categoria')->where('id_juego', '=', $id_juego)->delete();
+                foreach ($categorias as $item) {
+                        Juegos_categoria::insert(
+                            [
+                                'id_juego' => $id_juego,
+                                'id_categoria' => $item,
+                            ]
+                        );
+                       
+                    }
+    
+                }
             return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Nombre actualizado con exito');
         }else if($nuevoPrecio != ''  && $nuevoNombre == ''){
             DB::table('juegos')->where("id_juego", "=", $id_juego)->update(['precio_juego' => $nuevoPrecio,'id_plataforma' => $nuevaPlataforma,]);
@@ -133,6 +165,19 @@ class JuegosController extends Controller
                     ]
                 );
             }
+            if ($categoriasold != $categorias) {
+                DB::table('juegos_categoria')->where('id_juego', '=', $id_juego)->delete();
+                foreach ($categorias as $item) {
+                        Juegos_categoria::insert(
+                            [
+                                'id_juego' => $id_juego,
+                                'id_categoria' => $item,
+                            ]
+                        );
+                       
+                    }
+    
+                }
             return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Precio actualizado con exito');
         }
     }
