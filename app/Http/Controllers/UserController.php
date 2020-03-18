@@ -15,7 +15,6 @@ use PHPMailer\PHPMailer\Exception;
 
 
 
-
 class UserController extends Controller
 {
     public function getUserAll()
@@ -123,7 +122,7 @@ class UserController extends Controller
             $mail->setFrom('DinamiteStore2020@gmail.com', 'Dinamite Store');
             $mail->addAddress($correo, 'RECEPIENT_NAME');
 
-       
+
 
             $mail->isHTML(true);
             $mail->Subject = 'Prueba enviar correos desde pagina web';
@@ -137,12 +136,12 @@ class UserController extends Controller
             \Session::flash('mensaje2', 'No existe registro de este correo');
             return Redirect::back();
         }
-        
- 
+
+
     }
 
 
-    
+
     public function CambiarPass(Request $request, $id)
     {
     }
