@@ -15,7 +15,7 @@ $comprobar=true;
         </div>
     </div>
     <div class="card-body">
-    <form action="{{route('EnviarDatos')}}" method="post">
+    <form action="{{route('EnviarDatos')}}" method="get">
         @csrf
       <div class="row">
           <div class="col-md-6">

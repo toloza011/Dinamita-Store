@@ -23,7 +23,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+Create database sia_db;
+use sia_db;
 --
 -- Estructura de tabla para la tabla `administradores`
 --

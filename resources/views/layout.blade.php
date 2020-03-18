@@ -546,7 +546,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div style="width:30%">
                                     <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
                                 </div>
-                                <input type="submit" class="btn btn-dark" value="Buscar">
+                                <input id="buscarxd" type="submit" class="btn btn-dark" value="Buscar">
                             </div>
                         </form>
 
