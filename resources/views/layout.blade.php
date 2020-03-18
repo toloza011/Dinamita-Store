@@ -339,17 +339,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <?php
                                             $tot = 0;
                                             ?>
+                                            @isset($asd)
                                             @foreach($asd as $item)
                                             <?php
                                             $tot += 1;
                                             ?>
                                             @endforeach
+                                            @endisset
+                                            @isset($asd2)
                                             @foreach($asd2 as $item)
                                             <?php
                                             $tot += 1;
                                             ?>
                                             @endforeach
-                                            @endif
+                                            @endisset
                                             <div class="kt-mycart__button">
                                                 <h6 class="kt-mycart__title"><strong><?php echo $tot ?> Items</strong></h6>
                                             </div>
@@ -360,6 +363,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <?php
                                                 $tot = 0;
                                                 ?>
+                                                @isset($asd)
                                                 @if($asd != null)
                                                 <h4 style="margin-left: 20px; margin-top:20px"><strong><u>JUEGOS</u></strong></h4>
                                                 @endif
@@ -389,6 +393,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </span>
                                                 </div>
                                                 @endforeach
+                                                @endisset
+                                                @isset($asd2)
                                                 @if($asd2 != null)
                                                 <h4 style="margin-left: 20px; margin-top:20px"><strong><u>SUSCRIPCIONES</u></strong></h4>
                                                 @endif
@@ -410,6 +416,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </span>
                                                 </div>
                                                 @endforeach
+                                                @endisset
                                             </div>
                                         </div>
                                         <!---------FIN ITEM CARRITO-------------------------------->
@@ -425,17 +432,22 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <span class="kt-font-dark">CLP $<?php echo $tot ?></span>
                                                 </div>
                                             </div>
+                                            @isset($asd)
+                                            @isset($asd2)
                                             @if($asd != null || $asd2 != null)
                                             <div class="kt-mycart__button kt-align-right">
                                                 <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: red">Pagar</a>
                                             </div>
                                             @endif
+                                            @endisset
+                                            @endisset
                                         </div>
                                     </div>
                                     <!-- end:: Mycart -->
                                 </form>
                             </div>
                         </div>
+                        @endif
                         @endif
                         <!--end: My Cart -->
 

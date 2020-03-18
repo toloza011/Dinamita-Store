@@ -1,6 +1,11 @@
 @extends('layout')
 @section('content')
 
+@if($request->session()->has('identificador'))
+<?php $idUser = $request->session()->get('identificador'); ?>
+
+@if($idUser == 4)
+
 <div class="kt-portlet">
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
@@ -18,7 +23,7 @@
                     <div class="row col-12">
                         <div class="form-group col-6">
                             <label>Nombre</label>
-                            <input type="text" class="form-control " placeholder="Ingrese nombre" name="nombre" required>
+                            <input type="text" class="form-control " placeholder="Ingrese nombre" id="nombre" name="nombre" required>
                             @if ($errors->has('rut'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('categoria') }}</strong>
@@ -87,13 +92,13 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        
+
                             <div class="col-md-8" align="center">
                                 <div class="form-group">
                                     <input type="submit" value="registrar Juego" class="btn btn-dark" is="caja">
                                 </div>
                             </div>
-                        
+
                     </div>
 
                 </form>
@@ -102,6 +107,22 @@
     </div>
 
 
+    @else
+                <form action="{{route('home')}}" method="GET" id='return-form1'>
+                    <input type="hidden">
+                </form>
+                <script>
+                    document.getElementById('return-form1').submit();
+                </script>
+                @endif
+                @else
+                <form action="{{route('home')}}" method="GET" id='return-form'>
+                    <input type="hidden" >
+                </form>
+                <script>
+                    document.getElementById('return-form').submit();
+                </script>
+                @endif
 
 
 

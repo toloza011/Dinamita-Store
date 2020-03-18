@@ -1,5 +1,12 @@
 @extends('layout')
 @section('content')
+
+@if($request->session()->has('identificador'))
+<?php $idUser = $request->session()->get('identificador'); ?>
+
+@if($idUser == 4)
+
+
 <div class="kt-portlet">
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
@@ -33,7 +40,7 @@
                     <div class="row" align="center">
                         <div class="col-8">
                             <div class="form-group">
-                                <input style="margin-top:45px" type="submit" value="Agregar Codigo" class="btn btn-dark" id="caja">
+                                <input style="margin-top:51px;margin-left:-45px" type="submit" value="Agregar Codigo" class="btn btn-dark" id="caja">
 
                             </div>
                         </div>
@@ -95,6 +102,44 @@
                 </div>
             </div>
             <div class="col-6">
+                <div class="kt-portlet__body">
+                    <label>Categorias</label>
+                    <div hidden>
+                        <select name="categoriasJuego[]" multiple="multiple">
+                            @foreach($juegoCategorias as $item)
+                            <option value="{{$item->id_categoria}}" selected>{{$item->nombre_categoria}}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <?php $aux = 0; ?>
+                    <select class="form-control  js-example-basic-multiple" multiple="multiple" placeholder="Ingrese categorias" name="categorias[]" required>
+                        @foreach($juegoCategorias as $item)
+                        <option value="{{$item->id_categoria}}" selected>{{$item->nombre_categoria}}</option>
+                        @endforeach
+                        @foreach($InfoCategoria as $x)
+                        <?php $aux = 0; ?>
+                        <?php $aux2 = 0 ?>
+                        @foreach($categoriasDanger as $danger)
+                        @if($x->id_categoria == $danger->id_categoria)
+                        <?php $aux2 = 1 ?>
+                        @endif
+                        @endforeach
+                        @foreach($juegoCategorias as $item)
+                        @if($item->id_categoria == $x->id_categoria)
+                        <?php $aux = 1; ?>
+                        @endif
+                        @endforeach
+                        @if($aux == 0 && $aux2 ==0)
+                        <option value="{{$x->id_categoria}}">{{$x->nombre_categoria}}</option>
+                        @endif
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row col-12">
+            <div class="col-6">
                 <div class="col-md-10 ">
                     <div class="kt-portlet__body">
                         <div class="form-group {{ $errors->has('nombre_juego') ? ' has-error' : '' }}">
@@ -104,18 +149,40 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row col-12">
-            <div class="col-6 offset-5">
-                <div class="form-group">
-                    <input align="center" type="submit" value="Guardar" class="btn btn-dark btn-lg" id="caja">
+            <div class="col-6">
+                <div class="col-md-10 ">
+                    <div class="form-group">
+                        <input style="margin-right:100px;" type="submit" value="Guardar" class="btn btn-dark btn-lg" id="caja">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </form>
 </div>
-</div>
+</form>
+
+@else
+<form action="{{route('home')}}" method="GET" id='return-form1'>
+    <input type="hidden">
+</form>
+<script>
+    document.getElementById('return-form1').submit();
+</script>
+@endif
+@else
+<form action="{{route('home')}}" method="GET" id='return-form'>
+    <input type="hidden">
+</form>
+<script>
+    document.getElementById('return-form').submit();
+</script>
+@endif
+
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
+</script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 

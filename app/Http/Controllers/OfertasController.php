@@ -81,7 +81,10 @@ class OfertasController extends Controller
 
         //dd($juegosOld);
         DB::table('ofertas')->where("id_oferta", "=", $id_oferta)->update(['nombre_oferta' => $nuevoNombre, 'descripcion_oferta' => $nuevaDescripcion, 'fecha_fin' => $nuevoFechaFin]);
-
+        if($juegos == ''){
+            DB::table('promociones')->where('id_oferta', '=', $id_oferta)->delete();
+            return redirect()->route('editarOferta', $id_oferta)->with('mensaje', 'Oferta actualizado con exito');
+        }
         if ($juegosOld != $juegos) {
 
             $descuento = DB::table('promociones')->select("id_juego", "descuento")->where('id_oferta', '=', $id_oferta)->get();

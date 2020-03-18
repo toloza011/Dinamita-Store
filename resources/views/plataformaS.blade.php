@@ -70,7 +70,7 @@
                         </div>
                         <div class="row text-center ">
                             <div class="col-md-6">
-                                <a href="{{route('review',$sub->id_subscripcion)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
+                                <a href="{{route('reviewSub',$sub->id_subscripcion)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                             </div>
                             @if($request->session()->has('identificador'))
                                 @if($sub->stock_subscripcion != 0 && $request->session()->get('identificador') != 4)
