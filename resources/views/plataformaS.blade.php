@@ -1,45 +1,56 @@
 @extends('layout')
-@section('url','Subcripciones')
+@section('url','Catalogo de Suscripciones')
 @section('content')
 <link rel="stylesheet" href="{{asset('css/estilos1.css')}}">
+
+<!----Catalogo Subcripciones--------->
+@if($contSubs>0)
+
+<!----Catalogo Juegos--------->
 <div class="row">
     <div class="container container-fluid">
-        <div>
-            <div style="margin-top:4%" class="col-md-4">
+        <div >
+            <div style="margin-top:4%;margin-bottom:20px" class="col-md-4">
                 <h5 style="color:black">Filtrar por plataforma: </h5>
                 <select style="width:300px" class="form-control" name="tablas" id="mySelect">
-                    <option value="0" selected>Todos</option>
+                    <option value="0">Todos</option>
                     @foreach ($InfoPlataformaS as $categoria)
+                    @if($Plataforma->nombre_plataforma == $categoria->nombre_plataforma)
+                    <option value="{{$categoria->id_plataforma}}" selected>{{$categoria->nombre_plataforma}}</option>
+                    @else
                     <option value="{{$categoria->id_plataforma}}">{{$categoria->nombre_plataforma}}</option>
+                    @endif
                     @endforeach
                 </select>
+            </div>
+            <div class="container">
+                <h1 style="color:black;margin-left:10px"> <b>{{$Plataforma->nombre_plataforma}}</b></h1>
             </div>
 
         </div>
     </div>
 </div>
-<!---catalogo de productos--->
 <div class="container container-fluid">
     <div class="row">
-        <div style="margin-top:18px" class="col-md-12">
-            @foreach($InfoSubcripcion as $subcripcion)
+        <div class="col-md-12" style='margin-bottom: 20px'>
+            @foreach($Subs as $sub)
             <div class="col-sm-4 col-md-3">
                 <div style="height:380px;" class="thumbnail">
                     @foreach($InfoPlataformaS as $plataforma)
-                    @if($subcripcion->id_plataforma == $plataforma->id_plataforma )
+                    @if($sub->id_plataforma == $plataforma->id_plataforma)
                     <?php $x = $plataforma->nombre_plataforma ?>
                     @endif
                     @endforeach
                     <h4 class="text-center"><span class="badge badge-dark">{{$x}}</span></h4>
-                    <img src="{{$subcripcion->url_subscripcion}}" class="img-responsive caratula">
+                    <img src="{{$sub->url_subscripcion}}" class="img-responsive caratula">
                     <div class="caption">
                         <div class="row">
                             <div class="col-md-7 col-xs-7">
-                                <h5>{{$subcripcion->tipo_subscripcion}}</h5>
+                                <h5>{{$sub->tipo_subscripcion}}</h5>
                             </div>
                             <div class="col-md-5 col-xs-5 price">
                                 <h4 align='right'>
-                                    <label>${{$subcripcion->precio_subscripcion}}</label>
+                                    <label>${{$sub->precio_subscripcion}}</label>
                                 </h4>
                             </div>
                         </div>
@@ -47,24 +58,24 @@
                             <div class="col-md-8 col-xs-8">
                                 <h5>Stock</h5>
                             </div>
-                            @if($subcripcion->stock_suscripcion == 0)
+                            @if($sub->stock_subscripcion == 0)
                             <div class="col-md-4 col-xs-4 price" align='right'>
-                                <h5 style='color: red'><label>{{$subcripcion->stock_suscripcion}}</label></h5>
+                                <h5 style='color: red'><label>{{$sub->stock_suscripcion}}</label></h5>
                             </div>
                             @else
                             <div class="col-md-4 col-xs-4 price" align='right'>
-                                <h5><label>{{$subcripcion->stock_suscripcion}}</label></h5>
+                                <h5><label>{{$sub->stock_suscripcion}}</label></h5>
                             </div>
                             @endif
                         </div>
                         <div class="row text-center ">
                             <div class="col-md-6">
-                                <a href="{{route('reviewSub',$subcripcion->id_subscripcion)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
+                                <a href="{{route('reviewSub',$sub->id_subscripcion)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                             </div>
                             @if($request->session()->has('identificador'))
-                                @if($subcripcion->stock_suscripcion != 0 && $request->session()->get('identificador') != 4)
+                                @if($sub->stock_subscripcion != 0 && $request->session()->get('identificador') != 4)
                                     <div class="col-md-6">
-                                        <a href="{{route('carrito2', $subcripcion->id_subscripcion)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                        <a href="{{route('carrito', $sub->stock_subscripcion)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
                                     </div>
                                 @else
                                     <div class="col-md-6">
@@ -72,9 +83,9 @@
                                     </div>
                                 @endif
                             @else
-                                <div class="col-md-6">
-                                    <a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-                                </div>
+                            <div class="col-md-6">
+                                <a href="{{route('login')}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                            </div>
                             @endif
                         </div>
                         <p></p>
@@ -100,13 +111,23 @@
     </div>
 </div>
 
+@else
+<h1>No hay Resultados para este filtro :(</h1>
+@endif
+
+<!---- FIN Catalogo JUEGOS--------->
 
 <script>
     $("#mySelect").change(function() {
 
         var x = $("#mySelect").val();
+        if (x == "0") {
+            url = '{{ route("subcripciones") }}';
+            window.location.href = url;
+        } else {
 
-        ruta(x);
+            ruta(x);
+        }
     });
 
 
@@ -121,4 +142,6 @@
 
     }
 </script>
+
+
 @endsection

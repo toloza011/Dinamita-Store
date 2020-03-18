@@ -40,9 +40,9 @@
                                 <h5>{{$juego->nombre_juego}}</h5>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-6 price">
-                                <h5 align='right'> 
+                                <h5 align='right'>
                                     @foreach($ofertas as $item)
-                                    
+
                                     @if($juego->id_juego == $item->id_juego)
                                     <?php $kk = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);    ?>
                                     <strike>
@@ -50,10 +50,10 @@
                                     </strike>
                                     <label align="right">${{$kk}}</label>
                                     <?php $k=1;?>
-                                
+
                                     @endif
                                     @endforeach
-                                    @if($k == 0)   
+                                    @if($k == 0)
                                     <h6 align="right" style="margin-top:4px">${{$juego->precio_juego}}</h6>
                                     @endif
                                 </h5>
