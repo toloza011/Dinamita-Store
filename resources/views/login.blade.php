@@ -62,20 +62,7 @@
                             <!--<button id="kt_login_signin_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Acceder</button>-->
                           </div>
                     </form>
-                    <!--- <a href="" class="kt-notification__item">
-                                        <div class="kt-notification__item-icon">
-                                            <i class="fas fa-key"></i>
-                                        </div>
-                                        <div class="kt-notification__item-details">
-                                            <div class="kt-notification__item-title kt-font-bold">
-                                                Olvidaste tu contraseña?
-                                            </div>
-                                            <div class="kt-notification__item-time">
-                                                Cambia tu contraseña
-                                            </div>
-                                        </div>
-                                    </a>
-                                   --->
+
 							<br><br><em><strong><h2 align="center" style="color: red">Los mejores juegos al mejor precio</h2></strong></em>
 							</div>
 @endsection

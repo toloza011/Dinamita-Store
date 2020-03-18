@@ -1,13 +1,14 @@
 
 @extends('layout')
 @section('content')
-<link rel="stylesheet" href="{{asset('css/estilos.css')}}">
+
 <link rel="stylesheet" href="{{asset('css/slider.css')}}">
 <link rel="stylesheet" href="{{asset('css/estilos1.css')}}">
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script src="js/slider2.js"></script>
+<script src="js/popup.js"></script>
 
 <style>
     h2 b {
@@ -49,20 +50,20 @@ h2::after {
 						</div>
 						<div class="col-md-4 col-xs-4 price" align='right'>
 							<h5 align='right'>
-                                <?php  
-                                 $aux=$juego->precio_juego; 
+                                <?php
+                                 $aux=$juego->precio_juego;
                                  $descuento=session('x');
                                 ?>
                                 @foreach($ofertas as $item)
                                 @if($juego->id_juego == $item->id_juego && $descuento==1)
-                                <?php $aux = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	
+                                <?php $aux = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);
                                 ?>
-                                
+
                                 @endif
                                 @endforeach
-                                
 
-                                
+
+
 								<label>${{$aux}}</label>
 							</h5>
 						</div>
@@ -120,8 +121,8 @@ h2::after {
                 <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup btn btn-danger btn-product">Aceptar</a>
             </div>
         </div>
-        
-		
+
+
 	</div>
    <!-------- OFERTA 20% DESCUENTO----->
 
@@ -148,20 +149,20 @@ h2::after {
 						<div class="col-md-4 col-xs-4 price" align='right'>
 
 							<h5 align='right'>
-								<?php  
-                                 $aux=$juego->precio_juego; 
+								<?php
+                                 $aux=$juego->precio_juego;
                                  $descuento=session('x');
                                 ?>
                                 @foreach($ofertas as $item)
                                 @if($juego->id_juego == $item->id_juego && $descuento==1)
-                                <?php $aux = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	
+                                <?php $aux = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);
                                 ?>
-                                
+
                                 @endif
                                 @endforeach
-                                
 
-                                
+
+
 								<label>${{$aux}}</label>
 							</h5>
 						</div>
@@ -206,8 +207,8 @@ h2::after {
         </div>
         @endif
 		@endforeach
-		
-		
+
+
 	</div>
 
 
@@ -236,20 +237,20 @@ h2::after {
 						<div class="col-md-4 col-xs-4 price" align='right'>
 
 							<h5 align='right'>
-								<?php  
-                                 $aux=$juego->precio_juego; 
+								<?php
+                                 $aux=$juego->precio_juego;
                                  $descuento=session('x');
                                 ?>
                                 @foreach($ofertas as $item)
                                 @if($juego->id_juego == $item->id_juego && $descuento==1)
-                                <?php $aux = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	
+                                <?php $aux = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);
                                 ?>
-                                
+
                                 @endif
                                 @endforeach
-                                
 
-                                
+
+
 								<label>${{$aux}}</label>
 							</h5>
 						</div>
@@ -294,11 +295,10 @@ h2::after {
         </div>
         @endif
 		@endforeach
-		
-		
-	</div>
-    <script src="js/popup.js"></script>
-    
+
+
+    </div>
+    @stop
 
 
 
@@ -316,6 +316,8 @@ h2::after {
 
 
 
-@stop
+
+
+
 
 

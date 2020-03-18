@@ -25,7 +25,7 @@
 <!---fin filtros---->
 <br>
 <!---catalogo de productos--->
-<div  class="container container-fluid">
+<div class="container container-fluid">
     <div class="row">
         <div class="col-md-12">
             @foreach($allJuegos as $juego)
@@ -104,7 +104,7 @@
         </div>
     </div>
 </div>
-<div>
+<div class="col-md-6 offset-6">
     {{ $allJuegos->links() }}
 </div>
 <!---fin catalogo--->

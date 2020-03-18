@@ -1,6 +1,9 @@
 @extends('layout')
 @section('url','Recuperar Contraseña')
 @section('content')
+<?php
+$comprobar=true;
+?>
 <div class="card card-danger">
     <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(./assets/media/misc/bg-1.jpg)">
         <div class="kt-user-card__avatar">
