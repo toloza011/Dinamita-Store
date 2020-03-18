@@ -1,19 +1,19 @@
 @extends('layout')
 @section('content')
 <style>
-.login{
-   height: 60vh;
-}
-.help-block{
-	color:#ffff;
-
-}
-.alert.alert-danger {
-	background-color:rgb(231, 76, 60);
-    
-    border: 1px solid #fd397a;
-    color: #ffffff; }
-	
+	.login {
+		height: 60vh;
+	}
+	#buscador{
+    	display: none;
+  	}
+  	#buscarxd{
+    	display:none;
+  	}
+	#kt_login_signin_submitxd{
+		border-radius:25px;
+		background-color:rgb(231, 76, 60);
+	}
 </style>
 <div class="container">
 	<div class="row justify-content-center">
