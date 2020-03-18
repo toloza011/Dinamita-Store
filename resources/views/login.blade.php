@@ -4,6 +4,16 @@
 	.login {
 		height: 60vh;
 	}
+	#buscador{
+    	display: none;
+  	}
+  	#buscarxd{
+    	display:none;
+  	}
+	#kt_login_signin_submitxd{
+		border-radius:25px;
+		background-color:rgb(231, 76, 60);
+	}
 </style>
 <div class="container">
 	<div class="row justify-content-center">
@@ -51,7 +61,7 @@
 										</div>-->
 			</div>
 			<div class="row justify-content-center">
-				<input type="submit" id="kt_login_signin_submit" class="btn btn-danger form-control col-6 col-md-2" style="border-radius:25px" value="Acceder">
+				<input type="submit" id="kt_login_signin_submitxd" class="btn btn-danger form-control col-6 col-md-3 mt-2" style="border-radius:25px" value="Acceder">
 				<!--<button id="kt_login_signin_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Acceder</button>-->
 			</div>
 	</div>
