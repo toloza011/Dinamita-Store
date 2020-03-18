@@ -18,13 +18,13 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class=""></div>
-		<div class="kt-login__container center-block" >
+			<div class="kt-login__container center-block" >
 				<div class="kt-login__logo" style="margin-top: 1vh">
 					<a href="#">
 						<img src="{{asset('./assets/media/logos/imagenLogin.png')}}" style="height:150px;"/>
 					</a>
-		</div>
-		</div>
+				</div>
+			</div>
 		</div>
 		<br>
 		<div class="row justify-content-center">

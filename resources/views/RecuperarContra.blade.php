@@ -1,17 +1,28 @@
 @extends('layout')
 @section('url','Recuperar Contraseña')
 @section('content')
+
+<style>
+	
+	#buscador{
+    	display: none;
+  	}
+  	#buscarxd{
+    	display:none;
+  	}
+	
+</style>
 <div class="card card-danger">
-    <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(./assets/media/misc/bg-1.jpg)">
-        <div class="kt-user-card__avatar">
-            <img class="" alt="Pic" src="{{asset('assets/media/bg/300_25.png')}}" />
-            <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-        </div>
-        <div class="mt-3 ml-3">
-            <h1>Recuperar Contraseña</h1>
-        </div>
-    </div>
-    <div class="card-body">
+   
+    <div  class="row mt-5">
+       		<div class="col-md-12">
+					<div class="text-center" style="font-size:large;">
+					<h2 style="text-transform:uppercase; font-size:30px;">Recuperar<br><b id="ola">contraseña</b></h2>
+					</div>
+       		</div>
+   	</div>
+    
+    <div class="card-body col-md-12 offset-3" >
     <form action="{{route('EnviarDatos')}}" method="get">
         @csrf
       <div class="row">
@@ -27,11 +38,11 @@
                         <input class="form-control" required id="email" name="email" placeholder="Ingrese su email">
                 </div>
             </div>
-
-          <div class="col-md-6 mt-4">
+           
+          <div class="col-md-6 offset-3 mt-4">
             <div class="form-group">
-                <input type="submit" value="Enviar Correo" class="btn btn-success btn-lg btn-block">
-              <a value="Cancelar" href="{{route('home')}}" class="btn btn-danger btn-lg btn-block">Cancelar</a>
+                <input type="submit" value="Enviar Correo" class="btn btn-danger btn-lg btn-block" style="border-radius:25px;background-color:rgb(231, 76, 60)">
+              <a value="Cancelar" href="{{route('home')}}" class="btn btn-danger btn-lg btn-block" style="border-radius:25px;background-color:black">Cancelar</a>
             </div>
           </div>
         </div>
