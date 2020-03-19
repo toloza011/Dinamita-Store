@@ -73,10 +73,28 @@
                                 <a href="{{route('reviewSub',$sub->id_subscripcion)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                             </div>
                             @if($request->session()->has('identificador'))
-                                @if($sub->stock_subscripcion != 0 && $request->session()->get('identificador') != 4)
-                                    <div class="col-md-6">
-                                        <a href="{{route('carrito', $sub->stock_subscripcion)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-                                    </div>
+                                @if($sub->stock_suscripcion != 0 && $request->session()->get('identificador') != 4)
+                                    <?php
+                                        $flag=false;
+                                        $count = 0;
+                                        foreach($asd2 as $aux){
+                                            if($aux->id_subscripcion == $sub->id_subscripcion){
+                                                $count++;
+                                            }
+                                        }
+                                        if($count == $sub->stock_suscripcion){
+                                            $flag=true;
+                                        }
+                                    ?>
+                                    @if($flag)
+                                        <div class="col-md-6">
+                                            <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                        </div>
+                                    @else
+                                        <div class="col-md-6">
+                                            <a href="{{route('carrito2',$sub->id_subscripcion)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                        </div>
+                                    @endif
                                 @else
                                     <div class="col-md-6">
                                         <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>

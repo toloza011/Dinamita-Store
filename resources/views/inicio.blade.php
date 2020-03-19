@@ -28,16 +28,15 @@ h2::after {
 </style>
 
 <div class="container container-fluid">
-
 	<div class="row justify-content-center" align="center" style="margin-top:80px">
 		<h1 style="font-family: fantasy;color:rgb(219,21,48); font-size:100px">N</h1>
 		<h1 style="font-family: fantasy;color:rgb(41,39,52);font-size:100px">OVEDADES</h1>
 	</div>
-	<div class="row justify-content-center">
+	<div class="row justify-content-center" align="center">
 		<div class="carrusel-all">
 			<div align="center" class="content-carrousel">
 				@foreach($consulta as $item)
-				<figure><a href="{{route('review',$item->id_juego)}}"><img src="{{asset($item->url_juego)}}"></a></figure>
+				<figure><a href="{{route('review',$item->id_juego)}}"><img style="height:150px; width:240px;" src="{{asset($item->url_juego)}}"></a></figure>
 				@endforeach
 			</div>
 		</div>
@@ -92,7 +91,7 @@ h2::after {
 	@endphp
 	@foreach($populares as $item )
 	@php
-	$xx += 1;	
+	$xx += 1;
 	@endphp
 	@endforeach
 
@@ -106,7 +105,6 @@ h2::after {
    		</div>
 		@endif
 		   <br>
-		
 		@foreach($populares as $juego)
 		<div class="col-sm-4 col-md-3">
 			<div style="height:380px;" class="thumbnail">
@@ -123,7 +121,7 @@ h2::after {
 								@foreach($ofertas as $item)
 								@if($juego->id_juego == $item->id_juego)
 								<?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	?>
-                                
+
                                 @endif
 								@endforeach
 								<label>${{$juego->precio_juego}}</label>
@@ -149,12 +147,28 @@ h2::after {
 							<a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
 						</div>
 						@if($request->session()->has('identificador'))
-							@if($juego->stock_juego != 0 &&  $request->session()->get('identificador') != 4)
-								
-								<div class="col-md-6">
-									<a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-								</div>
-
+							@if($juego->stock_juego != 0 && $request->session()->get('identificador') != 4)
+								<?php
+									$flag=false;
+									$count = 0;
+									foreach($asd as $aux){
+										if($aux->id_juego == $juego->id_juego){
+											$count++;
+										}
+									}
+									if($count == $juego->stock_juego){
+										$flag=true;
+									}
+								?>
+								@if($flag)
+									<div class="col-md-6">
+										<a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+									</div>
+								@else
+									<div class="col-md-6">
+										<a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+									</div>
+								@endif
 							@else
 								<div class="col-md-6">
 									<a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
@@ -178,12 +192,9 @@ h2::after {
 					
 
                     if($request->session()->get('identificador') == 4)
-                    $texto = 'Función Comprar No Disponible Para La Cuenta';
-                    else{
-						
-						$texto = 'Stock No Disponible';
-					}
-                    
+                	$texto = 'Función Comprar No Disponible Para La Cuenta';
+					else
+                    $texto = 'Stock No Disponible';
                 ?>
 				<h4>{{$texto}}</h4>
 				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup btn btn-danger btn-product">Aceptar</a>

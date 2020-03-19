@@ -43,7 +43,7 @@ body {
 	padding: 20px;
 	text-align: center;
 	width: 400px;
-	
+
 	transition: .3s ease all;
 	transform: scale(0.7);
 	opacity: 0;
@@ -53,6 +53,8 @@ body {
 	font-size: 16px;
 	line-height: 16px;
 	text-align: center;
+	border-radius: 30px;
+	width: 150px;
 	background-color:rgb(231, 76, 60)
 }
 
@@ -120,3 +122,4 @@ body {
 		opacity: 1;
 	}
 }
+

@@ -96,9 +96,27 @@ $n=0;
                             </div>
                             @if($request->session()->has('identificador'))
                                 @if($juego->stock_juego != 0 && $request->session()->get('identificador') != 4)
-                                    <div class="col-md-6">
-                                        <a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-                                    </div>
+                                    <?php
+                                        $flag=false;
+                                        $count = 0;
+                                        foreach($asd as $aux){
+                                            if($aux->id_juego == $juego->id_juego){
+                                                $count++;
+                                            }
+                                        }
+                                        if($count == $juego->stock_juego){
+                                            $flag=true;
+                                        }
+                                    ?>
+                                    @if($flag)
+                                        <div class="col-md-6">
+                                            <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                        </div>
+                                    @else
+                                        <div class="col-md-6">
+                                            <a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                        </div>
+                                    @endif
                                 @else
                                     <div class="col-md-6">
                                         <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>

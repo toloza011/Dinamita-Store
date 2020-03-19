@@ -26,15 +26,18 @@
         $transaction = (new Webpay(Configuration :: forTestingWebpayPlusNormal()))->getNormalTransaction();
         $amount = $tot;
         $sessionId = 'sessionId';
-        $buyOrder = strval(rand(10000,9999999));
+        $buyOrder = $orden;
+        echo '<script>window.localStorage.setItem("buyOrder",' .  $buyOrder  . ' );</script>';
         $returnUrl = 'http://127.0.0.1:8000/retorno.blade.php';
-        $finalUrl = route('home');
+        $finalUrl = 'http://127.0.0.1:8000/final.blade.php';
 
         $initResult = $transaction->initTransaction(
-            $amount, $sessionId, $buyOrder, $returnUrl, $finalUrl
+            $amount, $buyOrder, $sessionId, $returnUrl, $finalUrl
         );
         $formAction = $initResult->url;
         $tokenWs = $initResult->token;
+    }else{
+        $formAction = 'http://127.0.0.1:8000/respuesta';
     }
 
     
@@ -94,10 +97,10 @@
                                 </div>
                                 <div class="row text-center ">
                                     <div class="col-md-6">
-                                        <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
+                                        <a href="{{route('review',$juego->id_juego)}}" style='height: 40px;' class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Reseña</a>
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="{{route('del',$juego->id_carrito)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-dark btn-product"><span style="margin-right:5px" class="flaticon2-trash"></span>Eliminar</a>
+                                        <a href="{{route('del',$juego->id_carrito)}}" style=" height: 40px; background-color:rgb(231, 76, 60);" class="btn btn-danger btn-product"><span style="margin-right:5px;" class="flaticon2-trash"></span>Eliminar</a>
                                     </div>
                                 </div>
                                 <p></p>
@@ -149,10 +152,10 @@
                                 </div>
                                 <div class="row text-center ">
                                     <div class="col-md-6">
-                                        <a href="{{route('review',$juego->id_juego)}}" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
+                                        <a href="{{route('reviewSub',$subcripcion->id_subscripcion)}}" style="height: 40px" class="btn btn-dark btn-product"><span style="margin-right:5px" class="glyphicon glyphicon-heart-empty"></span>Review</a>
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="{{route('del',$subcripcion->id_carrito)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-dark btn-product"><span style="margin-right:5px" class="flaticon2-trash"></span>Eliminar</a>
+                                        <a href="{{route('del',$subcripcion->id_carrito)}}" style="height: 40px; background-color:rgb(231, 76, 60)" class="btn btn-dark btn-product"><span style="margin-right:5px" class="flaticon2-trash"></span>Eliminar</a>
                                     </div>
                                 </div>
                                 <p></p>
@@ -204,7 +207,7 @@
             </div>
             <div class='col-md-1'>
                 @foreach($asd2 as $subcripcion)
-                    <p><a href="{{route('del',$juego->id_carrito)}}" class="flaticon2-trash"></a></p>
+                    <p><a href="{{route('del',$subcripcion->id_carrito)}}" class="flaticon2-trash"></a></p>
                 @endforeach
             </div>
         </div>
@@ -216,16 +219,26 @@
                 <h4><strong>CLP $ <?php echo $tot ?></strong></h4>
             </div>
         </div>
-        @if($tot != 0)
-            <form action="<?php echo $formAction ?>" method="POST">
-                <input type="hidden" name='token_ws' value='<?php echo $tokenWs ?>'>
-                <input type="submit" style="background-color:rgb(231, 76, 60); margin-top: 20px" class="btn btn-dark col-md-12 btn-lg" value= 'Comprar'/>
-            </form>
+        @if($asd2 != null || $asd != null)
+            @if($tot != 0)
+                <form action="<?php echo $formAction ?>" method="POST">
+                    <input type="hidden" name='token_ws' value='<?php echo $tokenWs ?>'>
+                    <input type="submit" style="background-color:rgb(231, 76, 60); border-radius: 30px; margin-top: 20px" class="btn btn-danger col-md-12 btn-lg" value= 'Comprar'/>
+                </form>
+            @else
+                <form action="{{route('respuesta')}}" method="get" id= 'regresar1'>
+                    @csrf
+                    <input type="submit" style="background-color:rgb(231, 76, 60); border-radius: 30px; margin-top: 20px" class="btn btn-danger col-md-12 btn-lg" value= 'Comprar'/>
+                </form>
+            @endif
         @else
-            <a href="{{route('botonPagar')}}" style="background-color:rgb(231, 76, 60); margin-top: 20px" class="btn btn-dark col-md-12 btn-lg">Comprar</a>
+            <form action="{{route('home')}}" method="get" id= 'regresar'>
+                @csrf
+            </form>
+            <script>
+                document.getElementById('regresar').submit();
+            </script>
         @endif
     </div>
 </div>
-
-
 @endsection

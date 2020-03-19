@@ -24,13 +24,10 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="description" content="Latest updates and statistic charts">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--begin::Fonts -->
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/adminlte.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -436,7 +433,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             @isset($asd2)
                                             @if($asd != null || $asd2 != null)
                                             <div class="kt-mycart__button kt-align-right">
-                                                <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: red">Pagar</a>
+                                                <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: rgb(231, 76, 60); width: 100px ; border-radius: 30px;">Pagar</a>
                                             </div>
                                             @endif
                                             @endisset
@@ -541,10 +538,11 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="alert alert-danger"><em> {!! session('mensaje2') !!}</em></div>
                         @endif
 
+
                         <form action="{{route('buscar')}}" method="GET">
                             <div style="margin-top:10px;margin-right:50px" class="row justify-content-end">
                                 <div style="width:30%">
-                                    <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
+                                    <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%;" placeholder="Buscar...">
                                 </div>
                                 <input id="buscarxd" type="submit" class="btn btn-dark" value="Buscar">
                             </div>
