@@ -127,7 +127,7 @@ class UserController extends Controller
 
             $mail->isHTML(true);
             $mail->Subject = 'Prueba enviar correos desde pagina web';
-            $mail->Body    = '<b>si te llega este correo porfavor avisame por wsp gracias PD: el manu <3 <3</b>';
+            $mail->Body    = '<b> <3 <3</b>';
 
             $mail->send();
             \Session::flash('mensaje', 'Hemos enviado un correo de confirmacion');
