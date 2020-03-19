@@ -43,7 +43,7 @@ body {
 	padding: 20px;
 	text-align: center;
 	width: 400px;
-	
+
 	transition: .3s ease all;
 	transform: scale(0.7);
 	opacity: 0;
@@ -120,3 +120,4 @@ body {
 		opacity: 1;
 	}
 }
+

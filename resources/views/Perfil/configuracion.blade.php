@@ -1,6 +1,7 @@
 @extends('layout')
 @section('url','Configuracion de usuario')
 @section('content')
+<link rel="stylesheet" href="{{asset('css/buscador.css')}}">
 <div class="card card-danger mt-3">
     <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x mt-3" style="background-image: url(./assets/media/misc/bg-1.jpg)">
         <div class="kt-user-card__avatar">

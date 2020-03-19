@@ -1,6 +1,7 @@
 @extends('layout')
 @section('url','Recuperar Contraseña')
 @section('content')
+<link rel="stylesheet" href="{{asset('css/buscador.css')}}">
 <?php
 $comprobar=true;
 ?>
