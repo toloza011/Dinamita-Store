@@ -54,11 +54,13 @@ class SuscripcionesController extends Controller
 
     public function updateStock($id_suscripcion)
     {
-
+        $codigos = Codigo::select('codigos.codigo')->where('id_subscripcion', '=', $id_suscripcion)->get(); 
         $codigo = $_POST['codigo'];
-
-
-
+        foreach($codigos as $item){
+            if($codigo == $item->codigo){
+            return redirect()->route('editarSus', $id_suscripcion)->with('mensaje', 'El codigo esta repetido');
+            }
+        }
         Codigo::insert(
             [
                 'codigo' => $codigo,

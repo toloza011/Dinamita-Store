@@ -200,7 +200,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                         @foreach($InfoPlataformaS as $item)
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="{{Route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
+                                            <a href="{{Route('plataformaS',$item->id_plataforma)}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">{{$item->nombre_plataforma}}</span>
                                             </a>
@@ -319,7 +319,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <?php $nombreUser = $request->session()->get('nombre');
                                $idUser = $request->session()->get('identificador'); ?>
                         <!--begin: My Cart -->
-                        @if($idUser != 4 )
+                        @if($idUser != 4)
                         <div class="kt-header__topbar-item dropdown">
                             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px" aria-expanded="true">
                                 <span class="kt-header__topbar-icon">
@@ -335,19 +335,24 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <span class="kt-mycart__icon"><i class="flaticon2-shopping-cart-1 kt-font-success"></i></span>
                                                 <h3 class="kt-mycart__title">Mi Carrito</h3>
                                             </div>
+                                            @if(auth()->check())
                                             <?php
                                             $tot = 0;
                                             ?>
+                                            @isset($asd)
                                             @foreach($asd as $item)
                                             <?php
                                             $tot += 1;
                                             ?>
                                             @endforeach
+                                            @endisset
+                                            @isset($asd2)
                                             @foreach($asd2 as $item)
                                             <?php
                                             $tot += 1;
                                             ?>
                                             @endforeach
+                                            @endisset
                                             <div class="kt-mycart__button">
                                                 <h6 class="kt-mycart__title"><strong><?php echo $tot ?> Items</strong></h6>
                                             </div>
@@ -358,6 +363,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <?php
                                                 $tot = 0;
                                                 ?>
+                                                @isset($asd)
                                                 @if($asd != null)
                                                 <h4 style="margin-left: 20px; margin-top:20px"><strong><u>JUEGOS</u></strong></h4>
                                                 @endif
@@ -371,6 +377,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <?php
                                                             $item->precio_juego = $item2->precio_juego - (($item2->descuento * $item2->precio_juego) / 100);
                                                             session(['x'=>1]);
+
                                                             ?>
                                                             @endif
                                                             @endforeach
@@ -386,6 +393,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </span>
                                                 </div>
                                                 @endforeach
+                                                @endisset
+                                                @isset($asd2)
                                                 @if($asd2 != null)
                                                 <h4 style="margin-left: 20px; margin-top:20px"><strong><u>SUSCRIPCIONES</u></strong></h4>
                                                 @endif
@@ -407,6 +416,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </span>
                                                 </div>
                                                 @endforeach
+                                                @endisset
                                             </div>
                                         </div>
                                         <!---------FIN ITEM CARRITO-------------------------------->
@@ -422,17 +432,22 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <span class="kt-font-dark">CLP $<?php echo $tot ?></span>
                                                 </div>
                                             </div>
+                                            @isset($asd)
+                                            @isset($asd2)
                                             @if($asd != null || $asd2 != null)
                                             <div class="kt-mycart__button kt-align-right">
                                                 <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: rgb(231, 76, 60); width: 100px ; border-radius: 30px;">Pagar</a>
                                             </div>
                                             @endif
+                                            @endisset
+                                            @endisset
                                         </div>
                                     </div>
                                     <!-- end:: Mycart -->
                                 </form>
                             </div>
                         </div>
+                        @endif
                         @endif
                         <!--end: My Cart -->
 
@@ -531,9 +546,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div style="width:30%">
                                     <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%;" placeholder="Buscar...">
                                 </div>
-                                <input type="submit" class="btn btn-dark" value="Buscar">
+                                <input id="buscarxd" type="submit" class="btn btn-dark" value="Buscar">
                             </div>
                         </form>
+
                     @yield('content')
                     </div>
                     <!-- CONTENIDO DE LA PAGINAAAAA AQUIIII -->

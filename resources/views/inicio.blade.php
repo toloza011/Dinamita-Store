@@ -9,6 +9,24 @@
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 
+<style>
+#ola{
+	color: #ff1e00;
+}
+
+h2::after {
+	content: "";
+	width: 100px;
+	position: absolute;
+	margin: 0 auto;
+	height: 4px;
+	background: rgba(230, 14, 14, 0.911);
+	left: 0;
+	right: 0;
+	bottom: -10px;
+}
+</style>
+
 <div class="container container-fluid">
 
 	<div class="row justify-content-center" align="center" style="margin-top:80px">
@@ -69,8 +87,25 @@
 		<script src="js/slider2.js"></script>
 	</div>
 	@endif
-	<div class="container">
-		<h5 style="margin-top:80px;margin-left:1%; color:black"><b>Lo más vendido</b></h5>
+	@php
+	$xx=0;
+	@endphp
+	@foreach($populares as $item )
+	@php
+	$xx += 1;	
+	@endphp
+	@endforeach
+
+		@if($xx!= 0)
+		<div  class="row mt-5">
+       		<div class="col-md-12">
+					<div class="text-center" style="font-size:large;">
+					<h2 style="text-transform:uppercase; font-size:30px;">Productos<br><b id="ola">de tendencia</b></h2>
+					</div>
+       		</div>
+   		</div>
+		@endif
+		   <br>
 		@foreach($populares as $juego)
 		<div class="col-sm-4 col-md-3">
 			<div style="height:380px;" class="thumbnail">
@@ -114,9 +149,27 @@
 						</div>
 						@if($request->session()->has('identificador'))
 							@if($juego->stock_juego != 0 && $request->session()->get('identificador') != 4)
-								<div class="col-md-6">
-									<a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-								</div>
+								<?php
+									$flag=false;
+									$count = 0;
+									foreach($asd as $aux){
+										if($aux->id_juego == $juego->id_juego){
+											$count++;
+										}
+									}
+									if($count == $juego->stock_juego){
+										$flag=true;
+									}
+								?>
+								@if($flag)
+									<div class="col-md-6">
+										<a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+									</div>
+								@else
+									<div class="col-md-6">
+										<a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+									</div>
+								@endif
 							@else
 								<div class="col-md-6">
 									<a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
@@ -138,8 +191,8 @@
 				<img alt="Logo" src="/assets/media/logos/x.png"/>
 				<?php
                     if($request->session()->get('identificador') == 4)
-                    $texto = 'Función Comprar No Disponible Para La Cuenta';
-                    else
+                	$texto = 'Función Comprar No Disponible Para La Cuenta';
+					else
                     $texto = 'Stock No Disponible';
                 ?>
 				<h4>{{$texto}}</h4>

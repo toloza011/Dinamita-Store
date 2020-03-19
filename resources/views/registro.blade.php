@@ -1,12 +1,44 @@
 @extends('layout')
 @section('url','Registro')
 @section('content')
-
-<div class="container-fluid">
+<style>
+  .btn-dark{
+    border-radius: 30px;
+    padding: 10px 20px 10px 20px;
+  } 
+  .btn-danger{
+    border-radius: 30px;
+    padding: 10px 20px 10px 20px;
+    background-color:rgb(231, 76, 60);
+  } 
+  #buscador{
+    display: none;
+  }
+  #buscarxd{
+    display:none;
+  }
+</style>
+<div class="container">
+  
+</div>
+<div class="container">
 <div class="row mt">
     <div class="col-lg-12">
-      <div class="form-panel">
-      <h4 class="mb"><i class="fa fa-angle-right"></i>Ingrese sus datos: </h4>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="col-md-offset-2 col-md-6 mt-3" >
+              <div class="kt-login__container center-block" >
+                <div class="kt-login__logo" style="margin-top: 1vh">
+                  <a href="#">
+                    <img src="{{asset('./assets/media/logos/imagenLogin.png')}}" style="height:150px;" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <form class="form-horizontal style-form" method="post" action="{{route('registro')}}">
         @csrf
@@ -37,30 +69,19 @@
           </div>
           <div class="form-group">
             <div class="col-md-offset-2 col-md-6">
-            <input class="btn btn-dark btn-product" type="submit" value="Registrar">
-            <a class="btn btn-danger btn-product" href="">Cancelar</a>
+            <input  class="btn btn-danger btn-product" type="submit" value="Registrar">
+            <a  class="btn btn-dark btn-product" href="">Cancelar</a>
           </div>
           </div>
           </div>
-          <div class="col-md-6">
-            <div class="col-md-offset-2 col-md-6 mt-3" >
-                <div class="kt-login__container center-block" >
-                    <div class="kt-login__logo" style="">
-                        <a href="#">
-                            <img src="{{asset('./assets/media/logos/imagenLogin.png')}}" style="height:230px;"/>
-                        </a>
-            </div>
-            </div>
-              </div>
-          </div>
+          
 
 
         </div>
         </form>
     </div>
 </div>
-</div>
-</div>
+
 
 
 

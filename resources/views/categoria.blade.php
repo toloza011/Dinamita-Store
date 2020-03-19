@@ -32,8 +32,9 @@
     <div class="row">
         <div class="col-md-12" style='margin-bottom: 20px'>
             @foreach($Juegos as $juego)
+            <?php $k=0; ?>  
             <div class="col-sm-4 col-md-3">
-                <div style="height:380px;" class="thumbnail">
+                <div style="height:400px;" class="thumbnail">
                     <h4 class="text-center"><span class="badge badge-dark">{{$juego->nombre_plataforma}}</span></h4>
                     <img src="{{asset($juego->url_juego)}}" class="img-responsive caratula">
                     <div class="caption">
@@ -41,15 +42,24 @@
                             <div class="col-md-8 col-xs-8">
                                 <h5>{{$juego->nombre_juego}}</h5>
                             </div>
-                            <div class="col-md-4 col-xs-4 price">
-
-                                <h5 align='right'>
+                            <div class="col-md-4 col-sm-6 col-xs-6 price">
+                                <h5 align='right'> 
                                     @foreach($ofertas as $item)
+                                    
                                     @if($juego->id_juego == $item->id_juego)
-                                    <?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);    ?>
+                                    <?php $kk = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);    ?>
+                                    <strike>
+                                        <h6 align="right" style="margin-top:4px">${{$juego->precio_juego}}</h6>
+                                    </strike>
+                                    <label align="right">${{$kk}}</label>
+                                    <?php $k=1;?>
+                                
                                     @endif
                                     @endforeach
-                                    <label>${{$juego->precio_juego}}</label></h5>
+                                    @if($k == 0)   
+                                    <h6 align="right" style="margin-top:4px">${{$juego->precio_juego}}</h6>
+                                    @endif
+                                </h5>
                             </div>
                         </div>
                         <div class="row">
@@ -72,9 +82,27 @@
                             </div>
                             @if($request->session()->has('identificador'))
                                 @if($juego->stock_juego != 0 && $request->session()->get('identificador') != 4)
-                                    <div class="col-md-6">
-                                        <a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-                                    </div>
+                                    <?php
+                                        $flag=false;
+                                        $count = 0;
+                                        foreach($asd as $aux){
+                                            if($aux->id_juego == $juego->id_juego){
+                                                $count++;
+                                            }
+                                        }
+                                        if($count == $juego->stock_juego){
+                                            $flag=true;
+                                        }
+                                    ?>
+                                    @if($flag)
+                                        <div class="col-md-6">
+                                            <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                        </div>
+                                    @else
+                                        <div class="col-md-6">
+                                            <a href="{{route('carrito',$juego->id_juego)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                        </div>
+                                    @endif
                                 @else
                                     <div class="col-md-6">
                                         <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>

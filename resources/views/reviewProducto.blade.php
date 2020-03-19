@@ -194,11 +194,29 @@
 
                     @if($request->session()->has('identificador'))
                         @if($InfoJuego->stock_juego != 0 && $request->session()->get('identificador') != 4)
-                        <div class="row">
-                            <div class="mt-4 col-md-12"  > 
-                                <a href="{{route('carrito',$InfoJuego->id_juego)}}" style="background-color:rgb(231, 76, 60) " class="btn btn-danger btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>
-                            </div>
-                            </div>
+                            <?php
+                                $flag=false;
+                                $count = 0;
+                                foreach($asd as $aux){
+                                    if($aux->id_juego == $InfoJuego->id_juego){
+                                        $count++;                                            
+                                    }
+                                }
+                                if($count == $InfoJuego->stock_juego){
+                                    $flag=true;
+                                }
+                            ?>
+                            @if($flag)
+                                <div class="mt-4">
+                                    <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>
+                                </div>
+                            @else
+                                <div class="row">
+                                    <div class="mt-4 col-md-12"  > 
+                                        <a href="{{route('carrito',$InfoJuego->id_juego)}}" style="background-color:rgb(231, 76, 60) " class="btn btn-danger btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>
+                                    </div>
+                                </div>
+                            @endif
                         @else
                             <div class="mt-4">
                                 <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-lg btn-flat"><i class="fas fa-cart-plus fa-lg mr-2"></i>Agregar al carrito</a>

@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{asset('css/estilos1.css')}}">
 <div class="row">
     <div class="container container-fluid">
-        <div >
+        <div>
             <div style="margin-top:4%" class="col-md-4">
                 <h5 style="color:black">Filtrar por plataforma: </h5>
                 <select style="width:300px" class="form-control" name="tablas" id="mySelect">
@@ -13,7 +13,6 @@
                     <option value="{{$categoria->id_plataforma}}">{{$categoria->nombre_plataforma}}</option>
                     @endforeach
                 </select>
-
             </div>
 
         </div>
@@ -64,9 +63,27 @@
                             </div>
                             @if($request->session()->has('identificador'))
                                 @if($subcripcion->stock_suscripcion != 0 && $request->session()->get('identificador') != 4)
-                                    <div class="col-md-6">
-                                        <a href="{{route('carrito2', $subcripcion->id_subscripcion)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
-                                    </div>
+                                    <?php
+                                        $flag=false;
+                                        $count = 0;
+                                        foreach($asd2 as $aux){
+                                            if($aux->id_subscripcion == $subcripcion->id_subscripcion){
+                                                $count++;                                            
+                                            }
+                                        }
+                                        if($count == $subcripcion->stock_suscripcion){
+                                            $flag=true;
+                                        }
+                                    ?>
+                                    @if($flag)
+                                        <div class="col-md-6">
+                                            <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                        </div>
+                                    @else
+                                        <div class="col-md-6">
+                                            <a href="{{route('carrito2', $subcripcion->id_subscripcion)}}" style="background-color:rgb(231, 76, 60)" class="btn btn-danger btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
+                                        </div>
+                                    @endif
                                 @else
                                     <div class="col-md-6">
                                         <a style="background-color:rgb(231, 76, 60); color:white" class="btn btn-danger btn-abrir-popup btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar</a>
@@ -106,7 +123,7 @@
     $("#mySelect").change(function() {
 
         var x = $("#mySelect").val();
-  
+
         ruta(x);
     });
 

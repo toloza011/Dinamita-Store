@@ -1,9 +1,11 @@
 @extends('layout')
 @section('url','Subcripciones')
 @section('content')
-<?php
 
-    require_once '../vendor/autoload.php';
+
+
+<?php
+        require_once '../vendor/autoload.php';
 
     use Transbank\Webpay\Webpay;
     use Transbank\Webpay\Configuration;
@@ -38,7 +40,10 @@
         $formAction = 'http://127.0.0.1:8000/respuesta';
     }
 
+    
 ?>
+
+
 <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
 <link rel="stylesheet" href="{{asset('css/slider.css')}}">
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
