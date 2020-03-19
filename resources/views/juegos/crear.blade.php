@@ -23,7 +23,7 @@
                     <div class="row col-12">
                         <div class="form-group col-6">
                             <label>Nombre</label>
-                            <input type="text" class="form-control " placeholder="Ingrese nombre" name="nombre" required>
+                            <input type="text" class="form-control " placeholder="Ingrese nombre" id="nombre" name="nombre" required>
                             @if ($errors->has('rut'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('categoria') }}</strong>
@@ -92,13 +92,13 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        
+
                             <div class="col-md-8" align="center">
                                 <div class="form-group">
                                     <input type="submit" value="registrar Juego" class="btn btn-dark" is="caja">
                                 </div>
                             </div>
-                        
+
                     </div>
 
                 </form>

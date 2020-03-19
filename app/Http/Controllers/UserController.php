@@ -12,8 +12,9 @@ use DB;
 use DataTables;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Generator\RandomGeneratorFactory;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -95,10 +96,17 @@ class UserController extends Controller
 
     public function EnviarDatos()
     {
-        $correo = $_GET['email'];
+        $correo = $_POST['email'];
         $verificarCorreo = DB::table('users')->select('email')->where('email','=',$correo)->get();
         //dd( $verificarCorreo);
+        $nombre = DB::table('users')->select('name')->where('email','=',$correo)->get();
+       $name = $nombre->first();
+        
+        $id=DB::table('users')->select('id')->where('email','=',$correo)->get();
+        $idUser=$id->first();
+
         $cont=0;
+        $token=bin2hex(random_bytes(64));
         foreach($verificarCorreo as $item){
             $cont+=1;
         }
@@ -120,15 +128,37 @@ class UserController extends Controller
                  ]
              ]);
 
+
             $mail->setFrom('DinamiteStore2020@gmail.com', 'Dinamite Store');
-            $mail->addAddress($correo, 'RECEPIENT_NAME');
-
-       
-
+            $mail->addAddress("manux.rayxxd@gmail.com", 'RECEPIENT_NAME');
             $mail->isHTML(true);
             $mail->Subject = 'Prueba enviar correos desde pagina web';
-            $mail->Body    = '<b> <3 <3</b>';
+            $mail->Body    =
+            '
+         <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                   <div class="col-md-6 offset-5">
+                    <div class="row">
+                        <h1>Recuperar Contraseña</h1>
+                    </div>
+                    <div class="row">
+                        <a ><h3>Hola,'.$name->name.'</h3></a>
+                    </div>
+                    <div class="row">
+                        <p>Hemos recibido una solicitud de resetear tu contraseña</p>
+                      <div class="form-group">
+                          <div class="col-md-6">
+                              <a href="http://127.0.0.1:8000/CambiarPass?id='. $idUser->id .'"><input type="submit"  class="btn btn-success" value="Continuar"></a>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+       ';
             $mail->send();
             \Session::flash('mensaje', 'Hemos enviado un correo de confirmacion');
             return Redirect::back();
@@ -137,13 +167,44 @@ class UserController extends Controller
             \Session::flash('mensaje2', 'No existe registro de este correo');
             return Redirect::back();
         }
-        
- 
+
+
+
+
+
+
     }
 
 
-    
-    public function CambiarPass(Request $request, $id)
+
+    public function CambiarPass(Request $request)
     {
+        $InfoCategoria = Categoria::all();
+        $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+        $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+        $id2 = $_GET["id"];
+        //dd($id2);
+        return view('CambiarPass', compact('request', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS',"id2"));
+
+    }
+
+    public function UpdatePass(Request $request,$id){
+
+        $pass = $_POST['pass'];
+        $pass2 = $_POST['passc'];
+
+        if($pass == $pass2){
+            $usuario = User::find($id);;
+            $usuario->password = Hash::make($pass);
+            $usuario->save();
+            \Session::flash('mensaje', 'Contraseña cambiada con exito');
+            return redirect()->route('login');
+        }else{
+            \Session::flash('mensaje2', 'Las contraseñas no coinciden');
+            return Redirect::back();
+        }
+      
+
+
     }
 }

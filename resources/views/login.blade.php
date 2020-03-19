@@ -18,13 +18,13 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class=""></div>
-		<div class="kt-login__container center-block" >
+			<div class="kt-login__container center-block" >
 				<div class="kt-login__logo" style="margin-top: 1vh">
 					<a href="#">
 						<img src="{{asset('./assets/media/logos/imagenLogin.png')}}" style="height:150px;"/>
 					</a>
-		</div>
-		</div>
+				</div>
+			</div>
 		</div>
 		<br>
 		<div class="row justify-content-center">
@@ -61,7 +61,7 @@
 										</div>-->
 									</div>
 									<div class="row justify-content-center">
-									
+
 											<input type="submit" id="kt_login_signin_submit" class="btn btn-danger form-control col-6 col-md-3 mt-2" style="border-radius:25px;background-color:rgb(231, 76, 60)" value="Acceder">
 											<!--<button id="kt_login_signin_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Acceder</button>-->
 							</div>
