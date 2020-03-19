@@ -1,23 +1,9 @@
 @extends('layout')
 @section('url','Recuperar Contraseña')
 @section('content')
-<<<<<<< HEAD
-
-<style>
-	
-	#buscador{
-    	display: none;
-  	}
-  	#buscarxd{
-    	display:none;
-  	}
-	
-</style>
-=======
 <?php
 $comprobar=true;
 ?>
->>>>>>> 9224eb9e2e8fd17714acdf9ebdb8dc7f5c05c584
 <div class="card card-danger">
    
     <div  class="row mt-5">
@@ -55,7 +41,6 @@ $comprobar=true;
     </form>
     </div>
 </div>
-
 
 
 @endsection
