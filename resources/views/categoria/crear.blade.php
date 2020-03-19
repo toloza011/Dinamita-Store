@@ -1,16 +1,19 @@
 @extends('layout')
 @section('content')
 
+<?php $idUser = $request->session()->get('identificador'); ?>
+
 @empty($asd)
+@if($idUser != 4)
 <form action="{{route('home')}}" method="GET" id='return-form1'>
                     <input type="hidden">
                 </form>
                 <script>
                     document.getElementById('return-form1').submit();
                 </script>
+@endif
  @endempty
 @if($request->session()->has('identificador'))
-<?php $idUser = $request->session()->get('identificador'); ?>
 
 @if($idUser == 4)
 
