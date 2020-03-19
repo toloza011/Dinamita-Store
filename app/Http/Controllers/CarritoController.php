@@ -11,9 +11,7 @@ class CarritoController extends Controller
 {
    public function index(Request $request,$id){
       $id_usuario = $request->session()->get('identificador');
-      Carrito::insert(
-         ['id'=> $id_usuario,'id_juego'=> $id]
-      );
+      Carrito::insert(['id'=> $id_usuario,'id_juego'=> $id]);
       //necesitamos validacion de la ruta
       \Session::flash('mensaje', 'El producto se agregó al carrito');
       return Redirect::back();
@@ -26,9 +24,7 @@ class CarritoController extends Controller
    }
    public function insert_subscripcion(Request $request,$id){
       $id_usuario = $request->session()->get('identificador');
-      Carrito::insert(
-         ['id'=> $id_usuario,'id_subscripcion'=> $id]
-      );
+      Carrito::insert(['id'=> $id_usuario,'id_subscripcion'=> $id]);
       //necesitamos validacion de la ruta
       \Session::flash('mensaje', 'El producto se agregó al carrito');
       return Redirect::back();

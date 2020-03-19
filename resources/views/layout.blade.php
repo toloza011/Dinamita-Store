@@ -433,7 +433,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             @isset($asd2)
                                             @if($asd != null || $asd2 != null)
                                             <div class="kt-mycart__button kt-align-right">
-                                                <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: red">Pagar</a>
+                                                <a type="button" href='{{route("pagar")}}' class="btn btn-danger btn-sm" style="background-color: rgb(231, 76, 60); width: 100px ; border-radius: 30px;">Pagar</a>
                                             </div>
                                             @endif
                                             @endisset
@@ -542,7 +542,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <form action="{{route('buscar')}}" method="GET">
                             <div style="margin-top:10px;margin-right:50px" class="row justify-content-end">
                                 <div style="width:30%">
-                                    <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
+                                    <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%;" placeholder="Buscar...">
                                 </div>
                                 <input id="buscarxd" type="submit" class="btn btn-dark" value="Buscar">
                             </div>

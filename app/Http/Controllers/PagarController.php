@@ -12,16 +12,12 @@ use DB;
 
 class PagarController extends Controller
 {
-    public function index(){
-        /* $transaction = (new Webpay(Configuration :: forTestingWebpayPlusNormal()))->getNormalTransaction();
-        $tokenWs = filter_input(INPUT_POST,'token_ws');
-        $result = $transaction->getTransactionResult($tokenWs); */
-        /* $output = $result->detailOutput;
-        if($output == 0){
-            $hola= 'PASÓ!!!!!!!';
+    public function index($responseCode){
+        if($responseCode == 0){
+            $tot = 'es cero';
         }else{
-            $hola= 'NO PASÓ!!!!!!!';
-        } */
-        return redirect()->route('home');
+            $tot = 'no es cero';
+        }
+        dd(tot);
     }
 }
