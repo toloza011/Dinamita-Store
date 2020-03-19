@@ -526,11 +526,10 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="alert alert-danger"><em> {!! session('mensaje2') !!}</em></div>
                         @endif
 
-
                         <form action="{{route('buscar')}}" method="GET">
                             <div style="margin-top:10px;margin-right:50px" class="row justify-content-end">
                                 <div style="width:30%">
-                                    <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
+                                    <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%;" placeholder="Buscar...">
                                 </div>
                                 <input type="submit" class="btn btn-dark" value="Buscar">
                             </div>

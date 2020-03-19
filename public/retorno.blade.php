@@ -15,11 +15,25 @@
         echo '<script>window.localStorage.setItem("amount",' .  $output->amount  . ' );</script>';
     }
 ?>
-<form action="<?php echo $result->urlRedirection ?>" method="POST" id='return-form'>
-    <input type="hidden" name="token_ws" value='<?php echo $tokenWs ?>'>
-</form>
-
-<script>
-    document.getElementById('return-form').submit();
-</script>
+<?php if($output->responseCode == 0): ?>
+    <form action="http://127.0.0.1:8000/respuesta" method="GET" id='return-form'>
+        <input type="hidden" name="token_ws" value='<?php echo $tokenWs ?>'>
+        <input type="hidden" name="urlRedirection" value='<?php echo $result->urlRedirection ?>'>
+        <input type="hidden" name="buyOrder" value='<?php echo $result->buyOrder ?>'>
+        <input type="hidden" name="responseCode" value='<?php echo $output->responseCode ?>'>
+        <input type="hidden" name="authorizationCode" value='<?php echo $output->authorizationCode ?>'>
+        <input type="hidden" name="amount" value='<?php echo $output->amount ?>'>
+    </form>
+    <script>
+        document.getElementById('return-form').submit();
+    </script>
+<?php else: ?>
+    <form action="http://127.0.0.1:8000/respuesta" method="GET" id='return-form1'>
+        <input type="hidden" name="token_ws" value='<?php echo $tokenWs ?>'>
+        <input type="hidden" name="responseCode" value='<?php echo $output->responseCode ?>'>
+    </form>
+    <script>
+        document.getElementById('return-form1').submit();
+    </script>
+<?php endif; ?>
     
