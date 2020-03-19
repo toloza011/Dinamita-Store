@@ -195,6 +195,8 @@ class JuegosController extends Controller
 
     public function insertar(Request $request)
     {
+
+
         $nombre = $_POST['nombre'];
         $precio = $_POST['precio'];
         $plataforma = $_POST['plataforma'];

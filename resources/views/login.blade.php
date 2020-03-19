@@ -44,7 +44,7 @@
 							<div class="col-12 col-md-4">
 
 									<div class="input-group {{$errors->has('email')?'alert alert-danger':''}}">
-										<input class="form-control" type="email" style="border-radius:15px, " placeholder="correo" name="email" value="{{old('email')}}"autocomplete="off" required>
+										<input class="form-control" type="email" style="border-radius:15px" placeholder="correo" name="email" value="{{old('email')}}"autocomplete="off" required>
                                         {!!$errors->first('email','<span class="help-block">:message</span>')!!}
 									</div>
 									<br>
