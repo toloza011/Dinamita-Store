@@ -29,7 +29,7 @@
 
                             <div class="form-group {{ $errors->has('nombre_juego') ? ' has-error' : '' }}">
                                 <label>Agregar Codigo</label>
-                                <input type="text" class="form-control" width="1500px" placeholder="Ingrese Codigo" id="codigo" name="codigo">
+                                <input type="text" class="form-control" width="1500px" placeholder="Ingrese Codigo" id="codigo" name="codigo" required>
 
                             </div>
 
