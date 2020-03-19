@@ -72,7 +72,7 @@ $n=0;
 								<h6 align="right" style="margin-top:4px">${{$juego->precio_juego}}</h6>
 							</strike>
 							<label align="right">${{$aux}}</label>
-						
+
 						</h5>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ $n=0;
                     </div>
                 </div>
 			</div>
-		
+
 			@endif
             @endforeach
             <div class="overlay" id="overlay">

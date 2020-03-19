@@ -62,7 +62,7 @@ class JuegosController extends Controller
 
     public function updateStock($id_juego)
     {
-        $codigos = Codigo::select('codigos.codigo')->where('id_juego', '=', $id_juego)->get(); 
+        $codigos = Codigo::select('codigos.codigo')->where('id_juego', '=', $id_juego)->get();
         $codigo = $_POST['codigo'];
         foreach($codigos as $item){
                 if($codigo == $item->codigo){
@@ -107,7 +107,7 @@ class JuegosController extends Controller
                         'url' => $archivo
                     ]
                 );
-                
+
             }
             if ($categoriasold != $categorias) {
                     DB::table('juegos_categoria')->where('id_juego', '=', $id_juego)->delete();
@@ -118,9 +118,9 @@ class JuegosController extends Controller
                                     'id_categoria' => $item,
                                 ]
                             );
-                           
+
                         }
-        
+
                     }
             return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Juego actualizado con exito');
         }else if($nuevoPrecio == '' && $nuevoNombre != ''){
@@ -146,9 +146,9 @@ class JuegosController extends Controller
                                 'id_categoria' => $item,
                             ]
                         );
-                       
+
                     }
-    
+
                 }
             return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Nombre actualizado con exito');
         }else if($nuevoPrecio != ''  && $nuevoNombre == ''){
@@ -174,9 +174,9 @@ class JuegosController extends Controller
                                 'id_categoria' => $item,
                             ]
                         );
-                       
+
                     }
-    
+
                 }
             return redirect()->route('editarJuego', $id_juego)->with('mensaje', 'Precio actualizado con exito');
         }
@@ -188,6 +188,7 @@ class JuegosController extends Controller
         $InfoCategoria = Categoria::all();
         $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+
 
         return view('juegos.crear', compact('InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
     }
@@ -203,8 +204,6 @@ class JuegosController extends Controller
         $file = $request->file('imagen');
         $name = time() . $file->getClientOriginalName();
         $url = "assets/media/juegos/" . $name;
-
-
 
         Storage::disk('public')->put($name, \File::get($file));
         Juego::insert(
@@ -253,6 +252,6 @@ class JuegosController extends Controller
 
 
         \Session::flash('mensaje', 'Juego eliminado con exito');
-        return redirect()->route('ListaJuegos'); 
+        return redirect()->route('ListaJuegos');
     }
 }

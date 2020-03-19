@@ -200,7 +200,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                         @foreach($InfoPlataformaS as $item)
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="{{Route('plataforma',$item->id_plataforma)}}" class="kt-menu__link ">
+                                            <a href="{{Route('plataformaS',$item->id_plataforma)}}" class="kt-menu__link ">
                                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
                                                 <span class="kt-menu__link-text">{{$item->nombre_plataforma}}</span>
                                             </a>
@@ -319,7 +319,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <?php $nombreUser = $request->session()->get('nombre');
                                $idUser = $request->session()->get('identificador'); ?>
                         <!--begin: My Cart -->
-                        @if($idUser != 4 )
+                        @if($idUser != 4)
                         <div class="kt-header__topbar-item dropdown">
                             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px" aria-expanded="true">
                                 <span class="kt-header__topbar-icon">
@@ -335,6 +335,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <span class="kt-mycart__icon"><i class="flaticon2-shopping-cart-1 kt-font-success"></i></span>
                                                 <h3 class="kt-mycart__title">Mi Carrito</h3>
                                             </div>
+                                            @if(auth()->check())
                                             <?php
                                             $tot = 0;
                                             ?>
@@ -376,6 +377,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <?php
                                                             $item->precio_juego = $item2->precio_juego - (($item2->descuento * $item2->precio_juego) / 100);
                                                             session(['x'=>1]);
+
                                                             ?>
                                                             @endif
                                                             @endforeach
@@ -445,6 +447,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </form>
                             </div>
                         </div>
+                        @endif
                         @endif
                         <!--end: My Cart -->
 
@@ -538,15 +541,15 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="alert alert-danger"><em> {!! session('mensaje2') !!}</em></div>
                         @endif
 
-
                         <form action="{{route('buscar')}}" method="GET">
                             <div style="margin-top:10px;margin-right:50px" class="row justify-content-end">
                                 <div style="width:30%">
                                     <input type="search" name="buscador" id="buscador" class="form-control " style="width:100%" placeholder="Buscar...">
                                 </div>
-                                <input type="submit" class="btn btn-dark" value="Buscar">
+                                <input id="buscarxd" type="submit" class="btn btn-dark" value="Buscar">
                             </div>
                         </form>
+
                     @yield('content')
                     </div>
                     <!-- CONTENIDO DE LA PAGINAAAAA AQUIIII -->

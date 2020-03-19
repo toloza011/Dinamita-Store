@@ -1,19 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\User;
 use Illuminate\Http\Request;
 use App\Categoria;
 use App\Plataforma;
 use App\Juego;
+use Redirect;
 use DB;
 use DataTables;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Generator\RandomGeneratorFactory;
+
 
 class UserController extends Controller
 {
     public function getUserAll()
     {
-        $Users =  User::select("id", "name","email")->where('id','<>',4);
+        $Users =  User::select("id", "name", "email")->where('id', '<>', 4);
 
         return DataTables::of($Users)->addColumn('action2', function ($id) {
             $token =  csrf_field();
@@ -40,7 +47,7 @@ class UserController extends Controller
         $nuevoNombre = $_GET['nombre'];
         $nuevoCorreo = $_GET['email'];
 
-        DB::table('users')->where("id", "=", $id)->update(['name' => $nuevoNombre,'email'=>$nuevoCorreo]);
+        DB::table('users')->where("id", "=", $id)->update(['name' => $nuevoNombre, 'email' => $nuevoCorreo]);
         return redirect()->route('ListaUsuarios')->with('mensaje', 'Usuario Modificado con exito');
     }
 
@@ -48,62 +55,130 @@ class UserController extends Controller
     {
 
         $id = $_POST['id'];
-            $id2= DB::table('clientes')->select('id_cliente')->where('id','=',$id)->get();
-            DB::table('users')->where('id', '=', $id)->delete();
-            DB::table('carritos')->where('id', '=', $id)->delete();
-            $tot=0;
-            foreach($id2 as $item)
+        $id2 = DB::table('clientes')->select('id_cliente')->where('id', '=', $id)->get();
+        DB::table('users')->where('id', '=', $id)->delete();
+        DB::table('carritos')->where('id', '=', $id)->delete();
+        $tot = 0;
+        foreach ($id2 as $item)
             $tot++;
-            
-            if($tot != 0){
-                DB::table('ventas')->where('id_cliente', '=', $id2)->delete();
-                DB::table('clientes')->where('id', '=', $id)->delete();
-            }
+
+        if ($tot != 0) {
+            DB::table('ventas')->where('id_cliente', '=', $id2)->delete();
+            DB::table('clientes')->where('id', '=', $id)->delete();
+        }
 
 
-            \Session::flash('mensaje', 'Usuario eliminado con exito');
+        \Session::flash('mensaje', 'Usuario eliminado con exito');
 
 
-            return redirect()->route('ListaUsuarios');
-
+        return redirect()->route('ListaUsuarios');
     }
-   public function UpdateUsuario($id){
-    $InfoCategoria = Categoria::all();
-    $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
-    $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
-
-    $nuevoNombre = $_GET['nombre'];
-    $nuevoCorreo = $_GET['email'];
-
-    DB::table('users')->where("id", "=", $id)->update(['name' => $nuevoNombre,'email'=>$nuevoCorreo]);
-    return redirect()->route('home')->with('mensaje', 'Usuario Modificado con exito');
-
-    }
-    public function RecuperarPass(Request $request){
+    public function UpdateUsuario($id)
+    {
         $InfoCategoria = Categoria::all();
         $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
-        return view('RecuperarContra',compact('request','InfoCategoria','InfoPlataformaJ','InfoPlataformaS'));
-   }
 
-   public function EnviarDatos(){
-     $data = $this->validate(request(),[
-        'email' => 'email'|'required|string',
-        'pass' =>  'required|string',
-        'passconfirm' => 'required|string'
-    ]);
-    if($data['pass']==$data['passconfirm']){
-        $updateUser = User::update([
-            'email' => $data['email'],
-            'password' => Hash::make($data['pass']),
-        ]);
-        return redirect()->route('login',compact('updateUser','data'))->with('mensaje','Usuario Actualizado exitosamente');
-    }else{
-        return redirect()->route('login')->with('mensaje','Error al actualizar datos, verifique sus datos.');
+        $nuevoNombre = $_GET['nombre'];
+        $nuevoCorreo = $_GET['email'];
+
+        DB::table('users')->where("id", "=", $id)->update(['name' => $nuevoNombre, 'email' => $nuevoCorreo]);
+        return redirect()->route('home')->with('mensaje', 'Usuario Modificado con exito');
     }
-   }
-   public function CambiarPass(Request $request,$id){
+    public function RecuperarPass(Request $request)
+    {
+        $InfoCategoria = Categoria::all();
+        $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+        $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+        return view('RecuperarContra', compact('request', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS'));
+    }
 
-   }
+    public function EnviarDatos()
+    {
+        $correo = $_POST['email'];
+        $verificarCorreo = DB::table('users')->select('email')->where('email','=',$correo)->get();
+        //dd( $verificarCorreo);
+        $nombre = DB::table('users')->select('name')->where('email','=',$correo)->get();
+        $name=$nombre->first();
+        $id=DB::table('users')->select('id')->where('email','=',$correo)->get();
+        $cont=0;
+        $token=bin2hex(random_bytes(64));
+        foreach($verificarCorreo as $item){
+            $cont+=1;
+        }
+        if($cont != 0){
+            require_once '../vendor/autoload.php';
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->Host = 'smtp.googlemail.com';  //gmail SMTP server
+            $mail->SMTPAuth = true;
+            $mail->Username = "DinamiteStore2020@gmail.com";   //username
+            $mail->Password = "dinamitestore++";   //password
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;                    //smtp port
+            $mail->smtpConnect([
+                'ssl' => [
+                     'verify_peer' => false,
+                     'verify_peer_name' => false,
+                     'allow_self_signed' => true
+                 ]
+             ]);
 
+
+            $mail->setFrom('DinamiteStore2020@gmail.com', 'Dinamite Store');
+            $mail->addAddress($correo, 'RECEPIENT_NAME');
+            $mail->isHTML(true);
+            $mail->Subject = 'Prueba enviar correos desde pagina web';
+            $mail->Body    =
+            '<form action="{{route("UpdatePass")}}" method="get">
+            @csrf
+         <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                   <div class="col-md-6 offset-5">
+                    <div class="row">
+                        <h1>Recuperar Contraseña</h1>
+                    </div>
+                    <div class="row">
+                        <h3>Hola,'.$name->name.'</h3>
+                    </div>
+                    <div class="row">
+                        <p>Hemos recibido una solicitud de resetear tu contraseña</p>
+                      <div class="form-group">
+                          <div class="col-md-6">
+                              <input type="submit" href="127.0.0.1:10/CambiarPass/'.$id.'" class="btn btn-success" value="Recuperar Contraseña">
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </form>';
+            $mail->send();
+            \Session::flash('mensaje', 'Hemos enviado un correo de confirmacion');
+            return Redirect::back();
+
+        }else{
+            \Session::flash('mensaje2', 'No existe registro de este correo');
+            return Redirect::back();
+        }
+
+
+
+
+
+
+    }
+
+
+
+    public function CambiarPass(Request $request)
+    {
+        $InfoCategoria = Categoria::all();
+        $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+        $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
+        return view('CambiarPass', compact('request', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS'));
+    }
 }
