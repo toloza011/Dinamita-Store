@@ -1,12 +1,18 @@
 @extends('layout')
 @section('url','Recuperar Contraseña')
 @section('content')
-<link rel="stylesheet" href="{{asset('css/buscador.css')}}">
+<style>
+#buscador{
+    	display: none;
+  	}
+  	#buscarxd{
+    	display:none;
+  	}
+</style>
 <?php
 $comprobar=true;
 ?>
 <div class="card card-danger">
-
     <div  class="row mt-5">
        		<div class="col-md-12">
 					<div class="text-center" style="font-size:large;">
@@ -35,14 +41,13 @@ $comprobar=true;
           <div class="col-md-6 offset-3 mt-4">
             <div class="form-group">
                 <input type="submit" class="btn btn-danger btn-lg btn-block" style="border-radius:25px;background-color:rgb(231, 76, 60)">
-              <a value="Cancelar" href="{{route('home')}}" class="btn btn-danger btn-lg btn-block" style="border-radius:25px;background-color:black">Cancelar</a>
+              <a value="Cancelar" href="{{route('home')}}" class="btn btn-dark btn-lg btn-block" style="border-radius:25px;background-color:black">Cancelar</a>
             </div>
           </div>
         </div>
     </form>
     </div>
 </div>
-
 
 
 @endsection

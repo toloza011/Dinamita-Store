@@ -27,7 +27,7 @@
                         <div class="kt-portlet__body">
                             <label>Agregar Codigo</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Ingrese Codigo" id="codigo" name="codigo">
+                                <input type="text" class="form-control" placeholder="Ingrese Codigo" id="codigo" name="codigo" required>
                             </div>
                         </div>
                     </div>
