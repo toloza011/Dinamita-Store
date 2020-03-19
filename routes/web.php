@@ -60,7 +60,10 @@ Route::get('buscar', 'VistasController@buscar')->name('buscar');
 Route::get('Configuracion/User/{id}','VistasController@InfoUsuario')->name('InfoUser');
 Route::get('Configuracion/User/{id}/editar','UserController@updateUsuario')->name('updateUser');
 Route::get('RecuperarPass','UserController@RecuperarPass')->name('RecuperarContra');
-Route::get('CambiarPass','UserController@EnviarDatos')->name('EnviarDatos');
+Route::post('EnviarDatos','UserController@EnviarDatos')->name('EnviarDatos');
+Route::post('CambiarPass','UserController@CambiarPass')->name('CambiarPass');
+Route::get('UpdatePass','UserController@UpdatePass')->name('UpdatePass');
+
 
 //Fin Perfil Usuario
 Route::get('OfertasRelampagos','VistasController@indexOfertas')->name('Ofertas');
