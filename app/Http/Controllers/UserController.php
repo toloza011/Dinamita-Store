@@ -130,7 +130,7 @@ class UserController extends Controller
 
 
             $mail->setFrom('DinamiteStore2020@gmail.com', 'Dinamite Store');
-            $mail->addAddress("manux.rayxxd@gmail.com", 'RECEPIENT_NAME');
+            $mail->addAddress($correo,$name->name );
             $mail->isHTML(true);
             $mail->Subject = 'Prueba enviar correos desde pagina web';
             $mail->Body    =

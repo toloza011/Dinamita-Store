@@ -14,6 +14,20 @@
 		border-radius:25px;
 		background-color:rgb(231, 76, 60);
 	}
+	.alert.alert-danger {
+    background: #fd397a;
+    border: 1px solid #fd397a;
+    
+	background-color:rgb(231, 76, 60);
+
+}
+.help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #ffff;
+}
+
 </style>
 <div class="container">
 	<div class="row justify-content-center">
@@ -72,6 +86,7 @@
                             <input type="submit" id="kt_login_signin_submit" class="btn btn-dark form-control col-6 col-md-3 mt-2" style="border-radius:25px;background-color:black" value="¿Olvidaste tu contraseña?">
                             <!--<button id="kt_login_signin_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Acceder</button>-->
                           </div>
+			
                     </form>
                     <!--- <a href="" class="kt-notification__item">
                                         <div class="kt-notification__item-icon">

@@ -1,6 +1,16 @@
 @extends('layout')
 @section('url','Recuperar Contraseña')
 @section('content')
+<style>
+#buscador{
+    	display: none;
+  	}
+  	#buscarxd{
+    	display:none;
+  	}
+
+
+</style>
 <?php
 $comprobar=true;
 ?>
@@ -34,7 +44,7 @@ $comprobar=true;
           <div class="col-md-6 offset-3 mt-4">
             <div class="form-group">
                 <input type="submit" class="btn btn-danger btn-lg btn-block" style="border-radius:25px;background-color:rgb(231, 76, 60)">
-              <a value="Cancelar" href="{{route('home')}}" class="btn btn-danger btn-lg btn-block" style="border-radius:25px;background-color:black">Cancelar</a>
+              <a value="Cancelar" href="{{route('home')}}" class="btn btn-dark btn-lg btn-block" style="border-radius:25px;background-color:black">Cancelar</a>
             </div>
           </div>
         </div>
