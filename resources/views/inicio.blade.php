@@ -28,16 +28,15 @@ h2::after {
 </style>
 
 <div class="container container-fluid">
-
 	<div class="row justify-content-center" align="center" style="margin-top:80px">
 		<h1 style="font-family: fantasy;color:rgb(219,21,48); font-size:100px">N</h1>
 		<h1 style="font-family: fantasy;color:rgb(41,39,52);font-size:100px">OVEDADES</h1>
 	</div>
-	<div class="row justify-content-center">
+	<div class="row justify-content-center" align="center">
 		<div class="carrusel-all">
 			<div align="center" class="content-carrousel">
 				@foreach($consulta as $item)
-				<figure><a href="{{route('review',$item->id_juego)}}"><img src="{{asset($item->url_juego)}}"></a></figure>
+				<figure><a href="{{route('review',$item->id_juego)}}"><img style="height:150px; width:240px;" src="{{asset($item->url_juego)}}"></a></figure>
 				@endforeach
 			</div>
 		</div>
@@ -92,7 +91,7 @@ h2::after {
 	@endphp
 	@foreach($populares as $item )
 	@php
-	$xx += 1;	
+	$xx += 1;
 	@endphp
 	@endforeach
 
@@ -122,7 +121,7 @@ h2::after {
 								@foreach($ofertas as $item)
 								@if($juego->id_juego == $item->id_juego)
 								<?php $juego->precio_juego = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);	?>
-                                
+
                                 @endif
 								@endforeach
 								<label>${{$juego->precio_juego}}</label>
@@ -190,6 +189,8 @@ h2::after {
 			<div class="popup" id="popup">
 				<img alt="Logo" src="/assets/media/logos/x.png"/>
 				<?php
+					
+
                     if($request->session()->get('identificador') == 4)
                 	$texto = 'Función Comprar No Disponible Para La Cuenta';
 					else

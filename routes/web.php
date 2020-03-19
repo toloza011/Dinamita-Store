@@ -63,8 +63,9 @@ Route::get('Configuracion/User/{id}','VistasController@InfoUsuario')->name('Info
 Route::get('Configuracion/User/{id}/editar','UserController@updateUsuario')->name('updateUser');
 Route::get('RecuperarPass','UserController@RecuperarPass')->name('RecuperarContra');
 Route::post('EnviarDatos','UserController@EnviarDatos')->name('EnviarDatos');
-Route::post('CambiarPass','UserController@CambiarPass')->name('CambiarPass');
-Route::get('UpdatePass','UserController@UpdatePass')->name('UpdatePass');
+Route::get('CambiarPass','UserController@CambiarPass')->name('CambiarPass');
+Route::post('Update/{id}','UserController@UpdatePass')->name('UpdatePass');
+
 
 
 //Fin Perfil Usuario
