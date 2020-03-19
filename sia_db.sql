@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-03-2020 a las 15:09:06
+-- Tiempo de generación: 19-03-2020 a las 06:45:52
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Versión de PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -23,8 +23,7 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-Create database sia_db;
-use sia_db;
+
 --
 -- Estructura de tabla para la tabla `administradores`
 --
@@ -47,15 +46,6 @@ CREATE TABLE `carritos` (
   `id_juego` int(11) DEFAULT NULL,
   `id_subscripcion` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `carritos`
---
-
-INSERT INTO `carritos` (`id_carrito`, `id`, `id_juego`, `id_subscripcion`) VALUES
-(47, 6, 10, NULL),
-(49, 6, 6, NULL),
-(50, 6, NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -97,26 +87,6 @@ INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
---
-
-CREATE TABLE `clientes` (
-  `id_cliente` int(11) NOT NULL,
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nombre_cl` varchar(200) NOT NULL,
-  `fono` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `clientes`
---
-
-INSERT INTO `clientes` (`id_cliente`, `id`, `nombre_cl`, `fono`) VALUES
-(3, 6, 'Cliente', 123);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `codigos`
 --
 
@@ -126,20 +96,6 @@ CREATE TABLE `codigos` (
   `id_subscripcion` int(11) DEFAULT NULL,
   `codigo` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `codigos`
---
-
-INSERT INTO `codigos` (`id_codigo`, `id_juego`, `id_subscripcion`, `codigo`) VALUES
-(1, 10, NULL, 'jashkdgasdjhgsdajk'),
-(2, 4, NULL, 'ljhgfsdgfghfdg'),
-(3, 4, NULL, 'etrretertretert'),
-(4, 3, NULL, 'zzzzzzzzzzz'),
-(5, 3, NULL, 'cxxxxxxxxxxxx'),
-(6, 9, NULL, 'gggggggggg'),
-(7, 9, NULL, 'yjytjjytjy'),
-(9, 3, NULL, 'asdasdasd');
 
 -- --------------------------------------------------------
 
@@ -232,7 +188,7 @@ CREATE TABLE `juegos` (
 
 INSERT INTO `juegos` (`id_juego`, `nombre_juego`, `precio_juego`, `stock_juego`, `descripcion_juego`, `url_juego`, `id_plataforma`) VALUES
 (2, 'Celeste', 9500, 0, 'Ayuda a Madeline a sobrevivir a los demonios de su interior en su viaje hasta la cima de la montaña Celeste, en este ajustadísimo plataforma, obra de los creadores de TowerFall. Enfréntate a cientos de desafíos diseñados a mano, devela retorcidos secretos y, y reconstruye el misterio de la montaña.', 'assets/media/juegos/Celeste.png', 1),
-(3, 'Dark Souls 3', 10000, 1, 'Dark Souls continúa redefiniendo los límites con el nuevo y ambicioso capítulo de esta serie revolucionaria, tan aclamada por la crítica. ¡Prepárate para sumergirte en la oscuridad!', 'assets/media/juegos/DarkSouls3.jpg', 2),
+(3, 'Dark Souls 3', 10000, 0, 'Dark Souls continúa redefiniendo los límites con el nuevo y ambicioso capítulo de esta serie revolucionaria, tan aclamada por la crítica. ¡Prepárate para sumergirte en la oscuridad!', 'assets/media/juegos/DarkSouls3.jpg', 2),
 (4, 'Assassins Creed Origins', 25000, 0, 'ASSASSIN’S CREED® ORIGINS ES UN NUEVO COMIENZO *¡Discovery Tour by Assassin’s Creed®: Antiguo Egipto está ya disponible como actualización gratuita!* El esplendor y el misterio del antiguo Egipto se desdibujan en una cruenta lucha por el poder.', 'assets/media/juegos/AssassinCreedO.jpg', 2),
 (5, 'Batman Arkham Knight', 3000, 0, 'Batman™: Arkham Knight es la épica conclusión de la galardonada trilogía de Arkham, creada por Rocksteady Studios. El título, desarrollado en exclusiva para plataformas de nueva generación, presenta la espectacular versión del batmóvil imaginada por Rocksteady.', 'assets/media/juegos/BatmanAK.jpg', 1),
 (6, 'Borderlands 3', 30000, 0, '¡Descubre el shooter cooperativo original, repleto de mejoras! Encarna a uno de los cuatro mercenarios de gatillo fácil, equípate con tropecientas armas y adéntrate en el planeta desértico de Pandora.', 'assets/media/juegos/Borderlands3.jpg', 1),
@@ -309,17 +265,18 @@ CREATE TABLE `ofertas` (
   `id_oferta` int(11) NOT NULL,
   `descripcion_oferta` varchar(500) DEFAULT NULL,
   `nombre_oferta` varchar(200) NOT NULL,
-  `url_oferta` varchar(500) NOT NULL
+  `fecha_inicio` timestamp NOT NULL DEFAULT current_timestamp(),
+  `fecha_fin` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `ofertas`
 --
 
-INSERT INTO `ofertas` (`id_oferta`, `descripcion_oferta`, `nombre_oferta`, `url_oferta`) VALUES
-(2, 'juegos al 50%', 'Oferta relampago', 'sdfsddfssdfdfssdf'),
-(3, 'Juegos al 20%', 'Ofertas XD', 'asddsaasdsad'),
-(4, 'Juegos free', 'Promo super mega duper super fantastica', 'asdasdasd');
+INSERT INTO `ofertas` (`id_oferta`, `descripcion_oferta`, `nombre_oferta`, `fecha_inicio`, `fecha_fin`) VALUES
+(2, 'juegos al 50%', 'Oferta relampago', '2020-03-15 03:00:00', '2020-03-15'),
+(3, 'Juegos al 20%', 'Ofertas XD', '2020-03-15 03:00:00', '2020-03-15'),
+(4, 'Juegos free', 'Promo super mega duper super fantastica', '2020-03-15 03:00:00', '2020-03-15');
 
 -- --------------------------------------------------------
 
@@ -358,6 +315,28 @@ INSERT INTO `plataformas` (`id_plataforma`, `nombre_plataforma`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `populares`
+--
+
+CREATE TABLE `populares` (
+  `id_populares` int(11) NOT NULL,
+  `orden_compra` int(11) NOT NULL,
+  `id_juego` int(11) DEFAULT NULL,
+  `id_subscripcion` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `populares`
+--
+
+INSERT INTO `populares` (`id_populares`, `orden_compra`, `id_juego`, `id_subscripcion`) VALUES
+(1, 1, 7, NULL),
+(2, 1, 7, NULL),
+(3, 1, NULL, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `promociones`
 --
 
@@ -373,9 +352,10 @@ CREATE TABLE `promociones` (
 --
 
 INSERT INTO `promociones` (`id_juego`, `id_oferta`, `time_oferta`, `descuento`) VALUES
+(2, 3, NULL, 35),
 (3, 4, 2, 100),
-(7, 3, 4, 20),
-(11, 2, 2, 50);
+(6, 3, NULL, 52),
+(12, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -397,12 +377,12 @@ CREATE TABLE `subscripciones` (
 --
 
 INSERT INTO `subscripciones` (`id_subscripcion`, `precio_subscripcion`, `tipo_subscripcion`, `url_subscripcion`, `id_plataforma`, `stock_suscripcion`) VALUES
-(3, 2500, '1 mes', 'assets/media/subs/Nintendo.png', 5, 0),
-(4, 5300, '3 meses', 'assets/media/subs/Nintendo.png', 5, 0),
-(5, 13500, '12 meses', 'assets/media/subs/Nintendo.png', 5, 0),
-(6, 6000, '1 mes', 'assets/media/subs/Xbox.jpg', 3, 0),
-(7, 17900, '3 meses', 'assets/media/subs/PS.jpg', 4, 0),
-(8, 35900, '12 meses', 'assets/media/subs/PS.jpg', 4, 0);
+(3, 2500, '1 mes', 'assets/media/juegos/Nintendo.png', 5, 0),
+(4, 5301, '3 mesesasd', 'assets/media/juegos/1584247392WhatsApp Image 2020-03-03 at 10.18.04 PM.jpeg', 2, 0),
+(5, 13500, '12 meses', 'assets/media/juegos/1584246989WhatsApp Image 2020-03-03 at 10.12.17 PM (1).jpeg', 5, 0),
+(6, 6000, '1 mes', 'assets/media/juegos/Xbox.jpg', 3, 0),
+(7, 17900, '3 meses', 'assets/media/juegos/PS.jpg', 4, 0),
+(8, 35900, '12 meses', 'assets/media/juegos/PS.jpg', 4, 0);
 
 -- --------------------------------------------------------
 
@@ -436,17 +416,17 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 
 CREATE TABLE `ventas` (
-  `id_cliente` int(11) NOT NULL,
-  `id_codigo` int(11) NOT NULL
+  `orden_compra` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id_cliente`, `id_codigo`) VALUES
-(3, 1),
-(3, 5);
+INSERT INTO `ventas` (`orden_compra`, `id_usuario`, `fecha`) VALUES
+(1, 6, '2020-03-19 05:43:40');
 
 --
 -- Índices para tablas volcadas
@@ -473,13 +453,6 @@ ALTER TABLE `categorias`
   ADD UNIQUE KEY `nombre_categoria` (`nombre_categoria`);
 
 --
--- Indices de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id_cliente`),
-  ADD KEY `id` (`id`);
-
---
 -- Indices de la tabla `codigos`
 --
 ALTER TABLE `codigos`
@@ -499,8 +472,7 @@ ALTER TABLE `failed_jobs`
 ALTER TABLE `imagenes`
   ADD PRIMARY KEY (`id_imagen`),
   ADD KEY `id_juego` (`id_juego`),
-  ADD KEY `id_subscripcion` (`id_subscripcion`),
-  ADD KEY `id_oferta` (`id_oferta`);
+  ADD KEY `id_subscripcion` (`id_subscripcion`);
 
 --
 -- Indices de la tabla `juegos`
@@ -541,6 +513,12 @@ ALTER TABLE `plataformas`
   ADD UNIQUE KEY `nombre_plataforma` (`nombre_plataforma`);
 
 --
+-- Indices de la tabla `populares`
+--
+ALTER TABLE `populares`
+  ADD PRIMARY KEY (`id_populares`);
+
+--
 -- Indices de la tabla `promociones`
 --
 ALTER TABLE `promociones`
@@ -564,8 +542,7 @@ ALTER TABLE `users`
 -- Indices de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  ADD PRIMARY KEY (`id_cliente`,`id_codigo`),
-  ADD KEY `id_codigo` (`id_codigo`);
+  ADD PRIMARY KEY (`orden_compra`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -581,7 +558,7 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de la tabla `carritos`
 --
 ALTER TABLE `carritos`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -590,16 +567,10 @@ ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT de la tabla `codigos`
 --
 ALTER TABLE `codigos`
-  MODIFY `id_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -629,7 +600,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
-  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `plataformas`
@@ -638,10 +609,16 @@ ALTER TABLE `plataformas`
   MODIFY `id_plataforma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `populares`
+--
+ALTER TABLE `populares`
+  MODIFY `id_populares` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `subscripciones`
 --
 ALTER TABLE `subscripciones`
-  MODIFY `id_subscripcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_subscripcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -658,12 +635,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `administradores`
   ADD CONSTRAINT `administradores_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`);
-
---
--- Filtros para la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `codigos`
@@ -693,13 +664,6 @@ ALTER TABLE `juegos_categoria`
 ALTER TABLE `promociones`
   ADD CONSTRAINT `promociones_ibfk_1` FOREIGN KEY (`id_juego`) REFERENCES `juegos` (`id_juego`) ON DELETE CASCADE,
   ADD CONSTRAINT `promociones_ibfk_2` FOREIGN KEY (`id_oferta`) REFERENCES `ofertas` (`id_oferta`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `ventas`
---
-ALTER TABLE `ventas`
-  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`) ON DELETE CASCADE,
-  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`id_codigo`) REFERENCES `codigos` (`id_codigo`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

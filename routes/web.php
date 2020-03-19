@@ -24,7 +24,7 @@ Route::get('carrito2/{id}', 'CarritoController@insert_subscripcion')->name('carr
 Route::get('del/{id}', 'CarritoController@delete')->name('del');
 
 //Pagar
-Route::get('botonPagar', 'PagarController@index')->name('botonPagar');
+Route::get('botonPagar/{id}', 'PagarController@index')->name('botonPagar');
 
 //Login-Registrar-Logout
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -36,6 +36,8 @@ Route::post('registro', 'Auth\RegisterController@create')->name('registro');
 Route::get('/getTableAll', 'AgregarJuegoController@getTableAll')->name('getTable');
 //Vista Pagar
 Route::get('pagar', 'VistasController@pagar')->name('pagar');
+//Vista  Respuesta
+Route::get('respuesta', 'VistasController@vistaRespuesta')->name('respuesta');
 //Vista Registrar
 Route::get('registrar', 'VistasController@registrar')->name('registrar');
 //Vista Juego
@@ -61,8 +63,9 @@ Route::get('Configuracion/User/{id}','VistasController@InfoUsuario')->name('Info
 Route::get('Configuracion/User/{id}/editar','UserController@updateUsuario')->name('updateUser');
 Route::get('RecuperarPass','UserController@RecuperarPass')->name('RecuperarContra');
 Route::post('EnviarDatos','UserController@EnviarDatos')->name('EnviarDatos');
-Route::post('CambiarPass','UserController@CambiarPass')->name('CambiarPass');
-Route::get('UpdatePass','UserController@UpdatePass')->name('UpdatePass');
+Route::get('CambiarPass','UserController@CambiarPass')->name('CambiarPass');
+Route::post('Update/{id}','UserController@UpdatePass')->name('UpdatePass');
+
 
 
 //Fin Perfil Usuario

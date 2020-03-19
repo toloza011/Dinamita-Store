@@ -14,6 +14,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Generator\RandomGeneratorFactory;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -99,8 +100,11 @@ class UserController extends Controller
         $verificarCorreo = DB::table('users')->select('email')->where('email','=',$correo)->get();
         //dd( $verificarCorreo);
         $nombre = DB::table('users')->select('name')->where('email','=',$correo)->get();
-        $name=$nombre->first();
+       $name = $nombre->first();
+        
         $id=DB::table('users')->select('id')->where('email','=',$correo)->get();
+        $idUser=$id->first();
+
         $cont=0;
         $token=bin2hex(random_bytes(64));
         foreach($verificarCorreo as $item){
@@ -126,12 +130,11 @@ class UserController extends Controller
 
 
             $mail->setFrom('DinamiteStore2020@gmail.com', 'Dinamite Store');
-            $mail->addAddress($correo, 'RECEPIENT_NAME');
+            $mail->addAddress($correo,$name->name );
             $mail->isHTML(true);
             $mail->Subject = 'Prueba enviar correos desde pagina web';
             $mail->Body    =
-            '<form action="{{route("UpdatePass")}}" method="get">
-            @csrf
+            '
          <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -140,13 +143,13 @@ class UserController extends Controller
                         <h1>Recuperar Contraseña</h1>
                     </div>
                     <div class="row">
-                        <h3>Hola,'.$name->name.'</h3>
+                        <a ><h3>Hola,'.$name->name.'</h3></a>
                     </div>
                     <div class="row">
                         <p>Hemos recibido una solicitud de resetear tu contraseña</p>
                       <div class="form-group">
                           <div class="col-md-6">
-                              <input type="submit" href="127.0.0.1:10/CambiarPass/'.$id.'" class="btn btn-success" value="Recuperar Contraseña">
+                              <a href="http://127.0.0.1:8000/CambiarPass?id='. $idUser->id .'"><input type="submit"  class="btn btn-success" value="Continuar"></a>
                           </div>
                       </div>
                     </div>
@@ -155,7 +158,7 @@ class UserController extends Controller
                 </div>
             </div>
         </div>
-        </form>';
+       ';
             $mail->send();
             \Session::flash('mensaje', 'Hemos enviado un correo de confirmacion');
             return Redirect::back();
@@ -179,6 +182,29 @@ class UserController extends Controller
         $InfoCategoria = Categoria::all();
         $InfoPlataformaJ = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
         $InfoPlataformaS = Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('subscripciones', 'plataformas.id_plataforma', '=', 'subscripciones.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
-        return view('CambiarPass', compact('request', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS'));
+        $id2 = $_GET["id"];
+        //dd($id2);
+        return view('CambiarPass', compact('request', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS',"id2"));
+
+    }
+
+    public function UpdatePass(Request $request,$id){
+
+        $pass = $_POST['pass'];
+        $pass2 = $_POST['passc'];
+
+        if($pass == $pass2){
+            $usuario = User::find($id);;
+            $usuario->password = Hash::make($pass);
+            $usuario->save();
+            \Session::flash('mensaje', 'Contraseña cambiada con exito');
+            return redirect()->route('login');
+        }else{
+            \Session::flash('mensaje2', 'Las contraseñas no coinciden');
+            return Redirect::back();
+        }
+      
+
+
     }
 }
