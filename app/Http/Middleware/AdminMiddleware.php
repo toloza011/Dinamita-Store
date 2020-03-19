@@ -15,19 +15,16 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        
-        
+
+
        if(auth()->check() && Auth::user()->id==4)
-        
        return $next($request);
 
-       if(auth()->check() && Auth::user()==false) 
-       return redirect('/');
-       
-    
-    
 
 
-       
+
+
+
+
     }
 }

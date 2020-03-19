@@ -62,7 +62,7 @@ class CategoriasController extends Controller
 
         $id_categoria = $_POST['id_categoria'];
         $contador = DB::table('juegos_categoria')->select(DB::raw('count(*) as contador '))->where('id_categoria', "=", $id_categoria)->get();
-       
+
         if ($contador[0]->contador == 0) {
             DB::table('categorias')
 
@@ -76,7 +76,7 @@ class CategoriasController extends Controller
             return redirect()->route('agregar');
         }else{
             \Session::flash('mensaje2', 'La Catagoria no se puede eliminar porque algunos datos ocupan esta catagoria');
-            return redirect()->route('agregar'); 
+            return redirect()->route('agregar');
         }
     }
 

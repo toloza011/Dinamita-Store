@@ -25,13 +25,15 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--begin::Fonts -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/adminlte.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/esm/popper-utils.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/bootstrap/main.min.js"></script>
     <!--end::Fonts -->
 
     <!--begin::Page Vendors Styles(used by this page) -->
@@ -293,7 +295,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <a href="{{route('subcripciones')}}" class="kt-menu__link "><span class="kt-menu__link-text">Suscripciones</span></a>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
-                                <a href="{{route('Ofertas')}}" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relampago</span></a>
+                                <a href="{{route('Ofertas')}}" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relámpago</span></a>
                                 </li>
                             </ul>
                         </div>

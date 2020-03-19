@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-03-2020 a las 06:45:52
+-- Tiempo de generación: 19-03-2020 a las 20:47:35
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -265,8 +265,8 @@ CREATE TABLE `ofertas` (
   `id_oferta` int(11) NOT NULL,
   `descripcion_oferta` varchar(500) DEFAULT NULL,
   `nombre_oferta` varchar(200) NOT NULL,
-  `fecha_inicio` timestamp NOT NULL DEFAULT current_timestamp(),
-  `fecha_fin` date NOT NULL DEFAULT current_timestamp()
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -274,9 +274,9 @@ CREATE TABLE `ofertas` (
 --
 
 INSERT INTO `ofertas` (`id_oferta`, `descripcion_oferta`, `nombre_oferta`, `fecha_inicio`, `fecha_fin`) VALUES
-(2, 'juegos al 50%', 'Oferta relampago', '2020-03-15 03:00:00', '2020-03-15'),
-(3, 'Juegos al 20%', 'Ofertas XD', '2020-03-15 03:00:00', '2020-03-15'),
-(4, 'Juegos free', 'Promo super mega duper super fantastica', '2020-03-15 03:00:00', '2020-03-15');
+(2, 'juegos al 50%', 'Oferta relampago', '2020-03-15', '2020-03-15'),
+(3, 'Juegos al 20%', 'Ofertas XD', '2020-03-15', '2020-03-15'),
+(4, 'Juegos free', 'Promo super mega duper super fantastica', '2020-03-15', '2020-03-15');
 
 -- --------------------------------------------------------
 
@@ -332,7 +332,8 @@ CREATE TABLE `populares` (
 INSERT INTO `populares` (`id_populares`, `orden_compra`, `id_juego`, `id_subscripcion`) VALUES
 (1, 1, 7, NULL),
 (2, 1, 7, NULL),
-(3, 1, NULL, 3);
+(3, 1, NULL, 3),
+(4, 2, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -426,7 +427,8 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`orden_compra`, `id_usuario`, `fecha`) VALUES
-(1, 6, '2020-03-19 05:43:40');
+(1, 6, '2020-03-19 05:43:40'),
+(2, 6, '2020-03-19 05:50:26');
 
 --
 -- Índices para tablas volcadas
@@ -558,7 +560,7 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de la tabla `carritos`
 --
 ALTER TABLE `carritos`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -570,7 +572,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `codigos`
 --
 ALTER TABLE `codigos`
-  MODIFY `id_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -612,7 +614,7 @@ ALTER TABLE `plataformas`
 -- AUTO_INCREMENT de la tabla `populares`
 --
 ALTER TABLE `populares`
-  MODIFY `id_populares` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_populares` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `subscripciones`

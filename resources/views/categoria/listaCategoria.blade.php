@@ -32,7 +32,6 @@
                 <div class="col-sm-12">
                     <table class="table table-striped- table-bordered table-responsive table-hover table-checkable dataTable no-footer dtr-inline" id="listCategoria" role="grid" aria-describedby="kt_table_1_info" style="width: 1536px;">
                         <thead>
-
                             <th width="2000">Nombre</th>
                             <th width="200">Editar</th>
                             <th width="200">Eliminar</th>

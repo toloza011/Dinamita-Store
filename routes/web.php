@@ -43,7 +43,7 @@ Route::get('registrar', 'VistasController@registrar')->name('registrar');
 //Vista Juego
 Route::get('juego', 'VistasController@vistajuego')->name('juego');
 //Vista Subscripciones
-Route::get('subscripciones', 'VistasController@vistaSubcripcion')->name('subcripciones');
+Route::get('suscripciones', 'VistasController@vistaSubcripcion')->name('subcripciones');
 //Review Producto
 Route::get('ReviewJuego/{id}', 'VistasController@vistaReview')->name('review');
 Route::get('ReviewSub/{id}', 'VistasController@vistaReviewSub')->name('reviewSub');
@@ -87,7 +87,7 @@ Route::post('insertarOferta','OfertasController@insertar');
 Route::post('QuitarOferta','OfertasController@QuitarOferta');
 Route::post('/updaOfertas/{id}', ['uses' => 'OfertasController@updateOferta'])->name('updateOferta');
 Route::post('editarPorcentaje','OfertasController@editarPorcentaje')->name("editarPorcentaje");
-
+Route::get('Crear',['uses' => 'CategoriasController@agregar'])->name('create');
 
 //midleware
 Route::group(['middleware'=>['admin']],function(){
@@ -100,7 +100,6 @@ Route::group(['middleware'=>['admin']],function(){
     Route::get('/getCategoriasAll', 'CategoriasController@getCategoriaAll')->name('getCategoria');
     Route::get('/categoria/{id_categoria}/editar', ['uses' => 'CategoriasController@edit'])->name('editarCategoria');
     Route::get('/update/{id_categoria}', ['uses' => 'CategoriasController@update'])->name('update');
-    Route::get('Crear','CategoriasController@agregar')->name('create');
 
     //rutas Plataforma
     Route::get('AgregarPlataforma', function (Request $request) {
