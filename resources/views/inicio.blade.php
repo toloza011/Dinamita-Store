@@ -171,29 +171,17 @@ h2::after {
 			</div>
 		</div>
 		@endforeach
-		@if($request->session()->has('identificador'))
 		<div class="overlay" id="overlay">
 			<div class="popup" id="popup">
 				<img alt="Logo" src="/assets/media/logos/x.png"/>
 				<?php
 					
-					
+
                     if($request->session()->get('identificador') == 4)
                     $texto = 'Función Comprar No Disponible Para La Cuenta';
                     else{
-						foreach($populares as $juego ){
-							$qwe=0;
-							foreach($asd as $item){
-								if($item->id_juego == $juego->id_juego){
-									$qwe+=1;
-								}
-							}
-							$salvador=$juego->stock_juego - $qwe;
-							if($salvador <= 0){
-								$texto = 'Stock No Disponible';
-							}
-						}
 						
+						$texto = 'Stock No Disponible';
 					}
                     
                 ?>
@@ -201,7 +189,6 @@ h2::after {
 				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup btn btn-danger btn-product">Aceptar</a>
 			</div>
 		</div>
-		@endif
 		<script src="js/popup.js"></script>
 	</div>
 	@endsection
