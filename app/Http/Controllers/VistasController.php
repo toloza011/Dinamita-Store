@@ -181,7 +181,7 @@ class VistasController extends Controller
                 }else{
                     return view('respuesta', compact('InfoPlataformaJ','request','asd','asd2','ofertas','InfoPlataformaS','InfoCategoria'));
                 }
-            }            
+            }
         }else
         return view('respuesta', compact('InfoPlataformaJ','request','InfoPlataformaS','InfoCategoria'));
     }
@@ -359,16 +359,16 @@ class VistasController extends Controller
         $InfoCategoria = Categoria::all();
         $Categoria = Categoria::all()->where('id_categoria', '=', $id)->first();
         $Juegos = DB::table('juegos_categoria')->select('juegos.id_juego', 'juegos.stock_juego', 'juegos.nombre_juego', 'juegos.precio_juego', 'juegos.url_juego', 'plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'juegos.id_juego', 'juegos_categoria.id_juego')->join('plataformas', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->where('juegos_categoria.id_categoria', '=', $id)->orderBy('stock_juego', 'DESC')->get();
-
+        $contJuegos=$Juegos->count();
         if (Auth::user() != null) {
             $idusuario = Auth::user()->id;
             $InfoUser = DB::select("SELECT users.id, users.name, users.email, users.password FROM users WHERE users.id = '$idusuario' ");
             $User = $InfoUser[0];
             $asd = DB::select("SELECT carritos.id_carrito,juegos.id_juego, juegos.nombre_juego, juegos.precio_juego, juegos.url_juego, plataformas.nombre_plataforma FROM juegos, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_juego = juegos.id_juego and plataformas.id_plataforma = juegos.id_plataforma");
             $asd2 = DB::select("SELECT carritos.id_carrito, subscripciones.id_subscripcion, subscripciones.precio_subscripcion, subscripciones.tipo_subscripcion, subscripciones.url_subscripcion, plataformas.nombre_plataforma FROM subscripciones, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_subscripcion = subscripciones.id_subscripcion and plataformas.id_plataforma = subscripciones.id_plataforma");
-            return view('categoria', compact('User', 'asd', 'asd2', 'ofertas', 'Juegos', 'Categoria', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
+            return view('categoria', compact('contJuegos','User', 'asd', 'asd2', 'ofertas', 'Juegos', 'Categoria', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
         } else {
-            return view('categoria', compact('ofertas', 'Juegos', 'Categoria', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
+            return view('categoria', compact('contJuegos','ofertas', 'Juegos', 'Categoria', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
         }
     }
 

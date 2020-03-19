@@ -128,10 +128,14 @@
         </div>
     </div>
 </div>
-
 @else
-<h1>No hay Resultados para este filtro :(</h1>
+<div class="container">
+   <div class="row">
+     <h1>Oops! No hay resultados para este filtro :(</h1>
+   </div>
+</div>
 @endif
+
 
 <!---- FIN Catalogo JUEGOS--------->
 
