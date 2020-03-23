@@ -3,6 +3,9 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('css/estilos1.css')}}">
 
+
+
+@if($contJuegos>0)
 <div class="row">
     <div class="container container-fluid">
         <div >
@@ -10,7 +13,7 @@
                 <h5 style="color:black">Filtrar por categoria: </h5>
                 <select style="width:300px" class="form-control " name="tablas" id="mySelect">
                     <option value="0" >Todos</option>
-                 
+
                     @foreach ($InfoCategoria as $categoria)
                     @if($Categoria->nombre_categoria == $categoria->nombre_categoria)
                     <option value="{{$categoria->id_categoria}}" selected>{{$categoria->nombre_categoria}}</option>
@@ -32,7 +35,7 @@
     <div class="row">
         <div class="col-md-12" style='margin-bottom: 20px'>
             @foreach($Juegos as $juego)
-            <?php $k=0; ?>  
+            <?php $k=0; ?>
             <div class="col-sm-4 col-md-3">
                 <div style="height:400px;" class="thumbnail">
                     <h4 class="text-center"><span class="badge badge-dark">{{$juego->nombre_plataforma}}</span></h4>
@@ -43,9 +46,9 @@
                                 <h5>{{$juego->nombre_juego}}</h5>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-6 price">
-                                <h5 align='right'> 
+                                <h5 align='right'>
                                     @foreach($ofertas as $item)
-                                    
+
                                     @if($juego->id_juego == $item->id_juego)
                                     <?php $kk = $item->precio_juego - (($item->descuento * $item->precio_juego) / 100);    ?>
                                     <strike>
@@ -53,10 +56,10 @@
                                     </strike>
                                     <label align="right">${{$kk}}</label>
                                     <?php $k=1;?>
-                                
+
                                     @endif
                                     @endforeach
-                                    @if($k == 0)   
+                                    @if($k == 0)
                                     <h6 align="right" style="margin-top:4px">${{$juego->precio_juego}}</h6>
                                     @endif
                                 </h5>
@@ -136,17 +139,24 @@
         </div>
     </div>
 </div>
+@else
+<div class="container">
+    <div class="row">
+      <h1>Oops! No hay resultados para este filtro :(</h1>
+    </div>
+ </div>
 
+@endif
 <script>
-  
+
     $("#mySelect").change(function(){
-        
+
         var x = $("#mySelect").val();
         if(x == "0"){
             url = '{{ route("juego") }}';
             window.location.href=url;
-        }else{ 
-        ruta(x);  
+        }else{
+        ruta(x);
         }
     });
     function ruta(id){
@@ -155,14 +165,14 @@
         location.href=url;
     }
     $("#mySelect2").change(function(){
-        
+
         var x = $("#mySelect2").val();
         if(x == "0"){
             url = '{{ route("juego") }}';
             window.location.href=url;
         }else{
-        
-        rutas2(x);  
+
+        rutas2(x);
         }
     });
 

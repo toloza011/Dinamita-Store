@@ -1,6 +1,11 @@
 @extends('layout')
 @section('url','Review Producto')
 @section('content')
+
+@php
+use PHPMailer\PHPMailer\PHPMailer;
+
+@endphp
     <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
     <link rel="stylesheet" href="{{asset('css/slider.css')}}">
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -14,6 +19,7 @@
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     @if(isset($responseCode))
         @if($responseCode == 0)
+
             <div align='center' style='margin-top: 40px'>
                 <h1><strong>¡Compra Realizada con Exito!</strong></h1>
                 <div style='margin-top: 50px; margin-bottom: 60px'>
@@ -32,7 +38,7 @@
                     <div class='col-md-3'>
                     </div>
                 </div>
-                
+
                 <div class="dataTables_wrapper">
                     <div class="row">
                         <div style='margin-left: 250px; margin-top: 50px; width: 800px'>
@@ -54,7 +60,13 @@
                     </div>
                 </div>
             </div>
-        @else
+
+
+
+
+
+
+            @else
             <div align='center' style='margin-top: 40px'>
                 <h1><strong>¡Error al Realizar el Pago!</strong></h1>
                 <div style='margin-top: 50px'>
@@ -72,7 +84,7 @@
                     <h5>La compra a sido realizada exitosamente, los datos de los productos están</h5>
                     <h5>organizados en la siguiente tabla.</h5>
                 </div>
-                
+
                 <div class="dataTables_wrapper">
                     <div class="row">
                         <div style='margin-left: 250px; margin-top: 50px; width: 800px'>
@@ -94,6 +106,9 @@
                     </div>
                 </div>
             </div>
+
+
+
         @else
             <form action="{{route(home)}}" method="GET" id='return-form1'>
                 @csrf
@@ -103,4 +118,16 @@
             </script>
         @endif
     @endif
+
+
+    @if(isset($responseCode))
+    @if($responseCode == 0)
+
+
+        @endif
+        @endif
+
+
+
+
 @endsection

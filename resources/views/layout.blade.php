@@ -24,23 +24,25 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="description" content="Latest updates and statistic charts">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--begin::Fonts -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/adminlte.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
-    <!--end::Fonts -->
 
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!--end::Fonts -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!--begin::Page Vendors Styles(used by this page) -->
     <link href="/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Page Vendors Styles -->
     <link rel="stylesheet" href="assets/css/catalogo.css">
 
     <!--begin::Global Theme Styles(used by all pages) -->
-    <link href="/assets/vendors/global/vendors.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/assets/vendors/global/vendors.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="/assets/css/demo12/style.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles -->
 
@@ -293,7 +295,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <a href="{{route('subcripciones')}}" class="kt-menu__link "><span class="kt-menu__link-text">Suscripciones</span></a>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
-                                <a href="{{route('Ofertas')}}" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relampago</span></a>
+                                <a href="{{route('Ofertas')}}" class="kt-menu__link "><span class="kt-menu__link-text">Ofertas Relámpago</span></a>
                                 </li>
                             </ul>
                         </div>

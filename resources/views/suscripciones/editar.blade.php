@@ -31,15 +31,10 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="row" align="center">
                         <div class="col-8">
                             <div class="form-group">
-
-
                                 <input style="margin-top:45px" type="submit" value="Agregar Codigo" class="btn btn-dark" id="caja">
-
                             </div>
                         </div>
                     </div>

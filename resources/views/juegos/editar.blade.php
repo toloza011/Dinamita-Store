@@ -7,7 +7,7 @@
 @if($idUser == 4)
 
 
-<div class="kt-portlet">
+<div class="kt-portlet" style="margin-bottom:100px">
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">

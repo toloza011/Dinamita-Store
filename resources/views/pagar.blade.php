@@ -27,6 +27,9 @@
         $amount = $tot;
         $sessionId = 'sessionId';
         $buyOrder = $orden;
+
+
+
         echo '<script>window.localStorage.setItem("buyOrder",' .  $buyOrder  . ' );</script>';
         $returnUrl = 'http://127.0.0.1:8000/retorno.blade.php';
         $finalUrl = 'http://127.0.0.1:8000/final.blade.php';
@@ -40,7 +43,7 @@
         $formAction = 'http://127.0.0.1:8000/respuesta';
     }
 
-    
+
 ?>
 
 
@@ -223,6 +226,8 @@
             @if($tot != 0)
                 <form action="<?php echo $formAction ?>" method="POST">
                     <input type="hidden" name='token_ws' value='<?php echo $tokenWs ?>'>
+                    <input type="hidden" name='token_ws' value='<?php echo $orden ?>'>
+                    <input type="hidden" name='token_ws' value='<?php echo $amount ?>'>
                     <input type="submit" style="background-color:rgb(231, 76, 60); border-radius: 30px; margin-top: 20px" class="btn btn-danger col-md-12 btn-lg" value= 'Comprar'/>
                 </form>
             @else

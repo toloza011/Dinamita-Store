@@ -16,6 +16,8 @@ use App\Imagenes;
 use App\Codigo;
 use App\Oferta;
 use DB;
+use PHPMailer\PHPMailer\PHPMailer;
+
 
 class VistasController extends Controller
 {
@@ -110,12 +112,84 @@ class VistasController extends Controller
                     DB::table('carritos')->where('id', '=',$idusuario)->delete();
                     $asd = DB::select("SELECT carritos.id_carrito, juegos.stock_juego,juegos.id_juego, juegos.nombre_juego, juegos.precio_juego, juegos.url_juego, plataformas.nombre_plataforma FROM juegos, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_juego = juegos.id_juego and plataformas.id_plataforma = juegos.id_plataforma");
                     $asd2 = DB::select("SELECT carritos.id_carrito, subscripciones.stock_suscripcion, subscripciones.id_subscripcion, subscripciones.precio_subscripcion, subscripciones.tipo_subscripcion, subscripciones.url_subscripcion, plataformas.nombre_plataforma FROM subscripciones, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_subscripcion = subscripciones.id_subscripcion and plataformas.id_plataforma = subscripciones.id_plataforma");
+
+                    //------Enviar correo---------//
+                    //dd( $verificarCorreo);
+                    $id=Auth::user()->id;
+                    $correo = DB::table('users')->select('email')->where('id','=',$id)->get();
+                    $email=$correo[0]->email;
+                    $nombre = DB::table('users')->select('name')->where('id','=',$id)->get();
+                    $name=$nombre[0]->name;
+                    require_once '../vendor/autoload.php';
+                    $mail = new PHPMailer(true);
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.googlemail.com';  //gmail SMTP server
+                    $mail->SMTPAuth = true;
+                    $mail->Username = "DinamiteStore2020@gmail.com";   //username
+                    $mail->Password = "dinamitestore++";   //password
+                    $mail->SMTPSecure = 'ssl';
+                    $mail->Port = 465;                    //smtp port
+                    $mail->smtpConnect([
+                        'ssl' => [
+                            'verify_peer' => false,
+                            'verify_peer_name' => false,
+                            'allow_self_signed' => true
+                        ]
+                    ]);
+
+
+                    $mail->setFrom('DinamiteStore2020@gmail.com', 'Dinamite Store');
+                    $mail->addAddress($email,$name);
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Prueba enviar correos desde pagina web';
+                    $a='';
+                    $b='';
+                    $c='';
+                    for ($i=0; $i < $flag; $i++) {
+                        $a = $a.'<div><p>'. $nom[$i].'</p></div>';
+                        $b =$b.'<div><p>'.$pre[$i].'</p></div>';
+                        $c =$c.'<div><p>'.$key[$i].'</p></div>';
+                    }
+
+                    $correo = '<div class="container">
+                                    <div class="dataTables_wrapper">
+                                    <div class="row">
+                                        <h1>Gracias por comprar</h1>
+                                    </div>';
+                                
+                    for($i=0; $i < $flag; $i++){
+                        $correo = $correo.'<div class="row">-----------------------------------';
+                        $correo = $correo.'<h3 style="color:red;">'.$nom[$i] .'</h3>' ;
+                        $correo = $correo.'<p>Precio: $'.$pre[$i] .'</p>' ;
+                        $correo = $correo.'<p>Codigo: '.$key[$i] .'</p>' ;
+                        $correo = $correo.'-----------------------------------</div>';
+                    }
+                    $correo=$correo.'</div></div>';                
+                    $mail->Body    =$correo;
+                    $mail->send();
+                    \Session::flash('mensaje', 'Hemos enviado un correo de confirmacion');
+
+
+
+
+
+                    //----fin enviar correo-------//
+
+
+
+
+
                     return view('respuesta', compact('idusuario','request','tokenWs','urlRedirection','request','nom','flag','pre','key','responseCode','User','ofertas','InfoCategoria','asd','InfoPlataformaJ','InfoPlataformaS','asd2'));
+
                 }else{
+
+
+
                     return view('respuesta', compact('responseCode','request','InfoPlataformaJ','ofertas','InfoPlataformaS','InfoCategoria','asd','asd2'));
                 }
             }else{
                 if($asd != null || $asd2 != null){
+
                     $precio = 0;
                     foreach($asd as $item){
                         foreach($ofertas as $item3){
@@ -174,14 +248,71 @@ class VistasController extends Controller
                         DB::table('carritos')->where('id', '=',$idusuario)->delete();
                         $asd = DB::select("SELECT carritos.id_carrito, juegos.stock_juego,juegos.id_juego, juegos.nombre_juego, juegos.precio_juego, juegos.url_juego, plataformas.nombre_plataforma FROM juegos, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_juego = juegos.id_juego and plataformas.id_plataforma = juegos.id_plataforma");
                         $asd2 = DB::select("SELECT carritos.id_carrito, subscripciones.stock_suscripcion, subscripciones.id_subscripcion, subscripciones.precio_subscripcion, subscripciones.tipo_subscripcion, subscripciones.url_subscripcion, plataformas.nombre_plataforma FROM subscripciones, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_subscripcion = subscripciones.id_subscripcion and plataformas.id_plataforma = subscripciones.id_plataforma");
+
+
+                        $id=Auth::user()->id;
+                    $correo = DB::table('users')->select('email')->where('id','=',$id)->get();
+                    $email=$correo[0]->email;
+                    $nombre = DB::table('users')->select('name')->where('id','=',$id)->get();
+                    $name=$nombre[0]->name;
+                    require_once '../vendor/autoload.php';
+                    $mail = new PHPMailer(true);
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.googlemail.com';  //gmail SMTP server
+                    $mail->SMTPAuth = true;
+                    $mail->Username = "DinamiteStore2020@gmail.com";   //username
+                    $mail->Password = "dinamitestore++";   //password
+                    $mail->SMTPSecure = 'ssl';
+                    $mail->Port = 465;                    //smtp port
+                    $mail->smtpConnect([
+                        'ssl' => [
+                            'verify_peer' => false,
+                            'verify_peer_name' => false,
+                            'allow_self_signed' => true
+                        ]
+                    ]);
+
+
+                    $mail->setFrom('DinamiteStore2020@gmail.com', 'Dinamite Store');
+                    $mail->addAddress($email,$name);
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Prueba enviar correos desde pagina web';
+                    $a='';
+                    $b='';
+                    $c='';
+                    for ($i=0; $i < $flag; $i++) {
+                        $a = $a.'<div><p>'. $nom[$i].'</p></div>';
+                        $b =$b.'<div><p>'.$pre[$i].'</p></div>';
+                        $c =$c.'<div><p>'.$key[$i].'</p></div>';
+                    }
+
+                    $correo = '<div class="container">
+                                    <div class="dataTables_wrapper">
+                                    <div class="row">
+                                        <h1>Gracias por comprar</h1>
+                                    </div>';
+                                
+                    for($i=0; $i < $flag; $i++){
+                        $correo = $correo.'<div class="row">-----------------------------------';
+                        $correo = $correo.'<h3 style="color:red;">'.$nom[$i] .'</h3>' ;
+                        $correo = $correo.'<p>Precio: $'.$pre[$i] .'</p>' ;
+                        $correo = $correo.'<p>Codigo: '.$key[$i] .'</p>' ;
+                        $correo = $correo.'-----------------------------------</div>';
+                    }
+                    $correo=$correo.'</div></div>';                
+                    $mail->Body    =$correo;
+                    $mail->send();
+                    \Session::flash('mensaje', 'Hemos enviado un correo de confirmacion');
+
                         return view('respuesta', compact('idusuario','request','precio','request','nom','flag','pre','key','User','InfoCategoria','asd','InfoPlataformaJ','InfoPlataformaS','asd2'));
                     }else{
+
                         return view('respuesta', compact('InfoPlataformaJ','request','asd','asd2','ofertas','InfoPlataformaS','InfoCategoria'));
                     }
                 }else{
                     return view('respuesta', compact('InfoPlataformaJ','request','asd','asd2','ofertas','InfoPlataformaS','InfoCategoria'));
                 }
-            }            
+            }
         }else
         return view('respuesta', compact('InfoPlataformaJ','request','InfoPlataformaS','InfoCategoria'));
     }
@@ -359,16 +490,16 @@ class VistasController extends Controller
         $InfoCategoria = Categoria::all();
         $Categoria = Categoria::all()->where('id_categoria', '=', $id)->first();
         $Juegos = DB::table('juegos_categoria')->select('juegos.id_juego', 'juegos.stock_juego', 'juegos.nombre_juego', 'juegos.precio_juego', 'juegos.url_juego', 'plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'juegos.id_juego', 'juegos_categoria.id_juego')->join('plataformas', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->where('juegos_categoria.id_categoria', '=', $id)->orderBy('stock_juego', 'DESC')->get();
-
+        $contJuegos=$Juegos->count();
         if (Auth::user() != null) {
             $idusuario = Auth::user()->id;
             $InfoUser = DB::select("SELECT users.id, users.name, users.email, users.password FROM users WHERE users.id = '$idusuario' ");
             $User = $InfoUser[0];
             $asd = DB::select("SELECT carritos.id_carrito,juegos.id_juego, juegos.nombre_juego, juegos.precio_juego, juegos.url_juego, plataformas.nombre_plataforma FROM juegos, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_juego = juegos.id_juego and plataformas.id_plataforma = juegos.id_plataforma");
             $asd2 = DB::select("SELECT carritos.id_carrito, subscripciones.id_subscripcion, subscripciones.precio_subscripcion, subscripciones.tipo_subscripcion, subscripciones.url_subscripcion, plataformas.nombre_plataforma FROM subscripciones, carritos, plataformas WHERE carritos.id = '$idusuario' and carritos.id_subscripcion = subscripciones.id_subscripcion and plataformas.id_plataforma = subscripciones.id_plataforma");
-            return view('categoria', compact('User', 'asd', 'asd2', 'ofertas', 'Juegos', 'Categoria', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
+            return view('categoria', compact('contJuegos','User', 'asd', 'asd2', 'ofertas', 'Juegos', 'Categoria', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
         } else {
-            return view('categoria', compact('ofertas', 'Juegos', 'Categoria', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
+            return view('categoria', compact('contJuegos','ofertas', 'Juegos', 'Categoria', 'InfoCategoria', 'InfoPlataformaJ', 'InfoPlataformaS', 'request'));
         }
     }
 

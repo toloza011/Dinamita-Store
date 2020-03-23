@@ -36,4 +36,3 @@
         document.getElementById('return-form1').submit();
     </script>
 <?php endif; ?>
-    
