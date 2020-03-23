@@ -152,6 +152,9 @@ class UserController extends Controller
                               <a href="http://127.0.0.1:8000/CambiarPass?id='. $idUser->id .'"><input type="submit"  class="btn btn-success" value="Continuar"></a>
                           </div>
                       </div>
+
+
+                      
                     </div>
                     </div>
 
