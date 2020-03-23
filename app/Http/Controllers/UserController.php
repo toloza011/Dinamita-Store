@@ -100,8 +100,8 @@ class UserController extends Controller
         $verificarCorreo = DB::table('users')->select('email')->where('email','=',$correo)->get();
         //dd( $verificarCorreo);
         $nombre = DB::table('users')->select('name')->where('email','=',$correo)->get();
-       $name = $nombre->first();
-        
+        $name = $nombre->first();
+
         $id=DB::table('users')->select('id')->where('email','=',$correo)->get();
         $idUser=$id->first();
 
@@ -203,7 +203,7 @@ class UserController extends Controller
             \Session::flash('mensaje2', 'Las contraseñas no coinciden');
             return Redirect::back();
         }
-      
+
 
 
     }

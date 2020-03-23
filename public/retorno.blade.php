@@ -16,7 +16,7 @@
     }
 ?>
 <?php if($output->responseCode == 0): ?>
-    <form action="http://127.0.0.1:8000/respuesta" method="GET" id='return-form'>
+    <form action="http://127.0.0.1:8001/respuesta" method="GET" id='return-form'>
         <input type="hidden" name="token_ws" value='<?php echo $tokenWs ?>'>
         <input type="hidden" name="urlRedirection" value='<?php echo $result->urlRedirection ?>'>
         <input type="hidden" name="buyOrder" value='<?php echo $result->buyOrder ?>'>
@@ -28,7 +28,7 @@
         document.getElementById('return-form').submit();
     </script>
 <?php else: ?>
-    <form action="http://127.0.0.1:8000/respuesta" method="GET" id='return-form1'>
+    <form action="http://127.0.0.1:8001/respuesta" method="GET" id='return-form1'>
         <input type="hidden" name="token_ws" value='<?php echo $tokenWs ?>'>
         <input type="hidden" name="responseCode" value='<?php echo $output->responseCode ?>'>
     </form>
@@ -36,4 +36,3 @@
         document.getElementById('return-form1').submit();
     </script>
 <?php endif; ?>
-    
