@@ -215,7 +215,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                             @if($idUser == 4)
                             <li class="kt-menu__section ">
-                                <h4 class="kt-menu__section-text">Admin</h4>
+                                <h4 class="kt-menu__section-text">Administrador</h4>
                                 <i class="kt-menu__section-icon flaticon-more-v2"></i>
                             </li>
 
@@ -494,7 +494,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                                     <div class="kt-notification__custom kt-space-between">
-                                        <a href="{{route('logout')}}" class="btn btn-label btn-label-brand btn-sm btn-bold">Cerrar sesion</a>
+                                        <a href="{{route('logout')}}" class="btn btn-label btn-label-brand btn-sm btn-bold">Cerrar sesión</a>
 
                                     </div>
                                 </div>
@@ -505,10 +505,10 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
                             <ul class="kt-menu__nav ">
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
-                                    <a href="login" class="kt-menu__link "><span class="kt-menu__link-text">Iniciar sesion</span></a>
+                                    <a href="login" class="kt-menu__link "><span class="kt-menu__link-text">Iniciar sesión</span></a>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
-                                    <a href="registrar" class="kt-menu__link "><span class="kt-menu__link-text">Registrate</span></a>
+                                    <a href="registrar" class="kt-menu__link "><span class="kt-menu__link-text">Regístrate</span></a>
                                 </li>
                             </ul>
                         </div>

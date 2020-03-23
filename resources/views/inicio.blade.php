@@ -99,7 +99,7 @@ h2::after {
 		<div  class="row mt-5">
        		<div class="col-md-12">
 					<div class="text-center" style="font-size:large;">
-					<h2 style="text-transform:uppercase; font-size:30px;">Productos<br><b id="ola">de tendencia</b></h2>
+					<h2 style="text-transform:uppercase; font-size:30px;">Productos<br><b id="ola">en tendencia</b></h2>
 					</div>
        		</div>
    		</div>

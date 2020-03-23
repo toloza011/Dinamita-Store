@@ -35,10 +35,8 @@
                                 <i class="fas fa-envelope"></i>
                             </span>
                         </div>
-                        <input class="form-control" value={{$User->email}} id="email" name="email" placeholder="Ingrese su email">
+                        <input type="email" class="form-control" value={{$User->email}} id="email" name="email" placeholder="Ingrese su email">
                 </div>
-                
-                
             </div>
             
 

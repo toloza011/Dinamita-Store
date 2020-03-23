@@ -4,7 +4,6 @@
 
 @php
 use PHPMailer\PHPMailer\PHPMailer;
-
 @endphp
     <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
     <link rel="stylesheet" href="{{asset('css/slider.css')}}">
@@ -20,7 +19,7 @@ use PHPMailer\PHPMailer\PHPMailer;
     @if(isset($responseCode))
         @if($responseCode == 0)
 
-            <div align='center' style='margin-top: 40px'>
+            <div align='center' style='margin-top: 40px; margin-bottom: 80px'>
                 <h1><strong>¡Compra Realizada con Exito!</strong></h1>
                 <div style='margin-top: 50px; margin-bottom: 60px'>
                     <h5>La compra a sido realizada exitosamente, los datos de los productos están</h5>
@@ -78,7 +77,7 @@ use PHPMailer\PHPMailer\PHPMailer;
         @endif
     @else
         @if(isset($precio))
-            <div align='center' style='margin-top: 40px'>
+            <div align='center' style='margin-top: 40px; margin-bottom: 80px'>
                 <h1><strong>¡Compra Realizada con Exito!</strong></h1>
                 <div style='margin-top: 50px; margin-bottom: 60px'>
                     <h5>La compra a sido realizada exitosamente, los datos de los productos están</h5>
@@ -110,7 +109,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 
         @else
-            <form action="{{route(home)}}" method="GET" id='return-form1'>
+            <form action="{{route('home')}}" method="GET" id='return-form1'>
                 @csrf
             </form>
             <script>
