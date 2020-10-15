@@ -17,7 +17,7 @@ class AdminMiddleware
     {
 
 
-       if(auth()->check() && Auth::user()->id==4)
+       if(auth()->check() && Auth::user()->id==14)
        return $next($request);
 
 

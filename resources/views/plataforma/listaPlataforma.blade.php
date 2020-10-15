@@ -14,7 +14,7 @@
 @if($request->session()->has('identificador'))
 <?php $idUser = $request->session()->get('identificador'); ?>
 
-@if($idUser == 4)
+@if($idUser == 14)
 
 
 

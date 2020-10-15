@@ -21,7 +21,7 @@ class UserController extends Controller
 {
     public function getUserAll()
     {
-        $Users =  User::select("id", "name", "email")->where('id', '<>', 4);
+        $Users =  User::select("id", "name", "email")->where('id', '<>', 14);
 
         return DataTables::of($Users)->addColumn('action2', function ($id) {
             $token =  csrf_field();

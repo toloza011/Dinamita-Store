@@ -15,7 +15,7 @@
 @if($request->session()->has('identificador'))
 <?php $idUser = $request->session()->get('identificador'); ?>
 
-@if($idUser == 4)
+@if($idUser == 14)
 
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 <div class="kt-portlet">

@@ -90,7 +90,7 @@ Route::post('editarPorcentaje','OfertasController@editarPorcentaje')->name("edit
 Route::get('Crear',['uses' => 'CategoriasController@agregar'])->name('create');
 
 //midleware
-Route::group(['middleware'=>['admin']],function(){
+//Route::group(['middleware'=>['admin']],function(){
     Route::get('Agregar', function (Request $request) {
         $InfoCategoria = App\Categoria::all();
         $InfoPlataformaJ = App\Plataforma::select('plataformas.id_plataforma', 'plataformas.nombre_plataforma')->join('juegos', 'plataformas.id_plataforma', '=', 'juegos.id_plataforma')->groupBy('id_plataforma', 'nombre_plataforma')->get();
@@ -169,7 +169,7 @@ Route::group(['middleware'=>['admin']],function(){
     Route::get('CrearOferta','OfertasController@agregar')->name('createOferta');
 
 
-});
+//});
 
 //----FIN MIDDLEWARE---->
 

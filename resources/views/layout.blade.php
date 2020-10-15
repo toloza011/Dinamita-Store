@@ -213,7 +213,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             @if($request->session()->has('identificador'))
                             <?php $idUser = $request->session()->get('identificador');?>
 
-                            @if($idUser == 4)
+                            @if($idUser == 14)
                             <li class="kt-menu__section ">
                                 <h4 class="kt-menu__section-text">Administrador</h4>
                                 <i class="kt-menu__section-icon flaticon-more-v2"></i>
@@ -318,7 +318,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <?php $nombreUser = $request->session()->get('nombre');
                                $idUser = $request->session()->get('identificador'); ?>
                         <!--begin: My Cart -->
-                        @if($idUser != 4)
+                        @if($idUser != 14)
                         <div class="kt-header__topbar-item dropdown">
                             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px" aria-expanded="true">
                                 <span class="kt-header__topbar-icon">
